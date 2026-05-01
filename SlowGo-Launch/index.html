@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SlowGo — Life's better at 15 mph.</title>
+<meta name="description" content="Cart navigation built for backroads, beach communities, and quiet rides. From BackRoad Apps. Summer 2026." />
+<meta name="theme-color" content="#0B1F15" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SlowGo — Life's better at 15 mph." />
+<meta property="og:description" content="Cart navigation built for backroads, beach communities, and quiet rides." />
+<meta property="og:url" content="https://slowgoapp.com" />
+<meta property="og:site_name" content="SlowGo" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231E3A2B'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='36' fill='%23F4EDE0'>S</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..600,30..100,0..1;1,9..144,400..600,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --forest:        #1E3A2B;
+    --forest-deep:   #16301F;
+    --charcoal:      #0B1F15;
+    --charcoal-2:    #0E2519;
+    --moss:          #5B7A5F;
+    --amber:         #C8853A;
+    --amber-soft:    #E0A969;
+    --oat:           #F4EDE0;
+    --cream:         #FBF7EF;
+    --drift:         #A09484;
+    --drift-2:       #C7BDAC;
+
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono:  'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+    --max: 1240px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--forest);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{ background:var(--amber); color:var(--cream); }
+  a{ color:inherit; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:rgba(160,148,132,.6); transition:color .2s ease, text-decoration-color .2s ease; }
+  a:hover{ color:var(--amber); text-decoration-color:var(--amber); }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding-left:32px; padding-right:32px; }
+  @media (max-width: 640px){ .wrap{ padding-left:22px; padding-right:22px; } }
+
+  /* -------- Surfaces -------- */
+  .surf-charcoal{ background:var(--charcoal); color:var(--oat); }
+  .surf-forest{ background:var(--forest); color:var(--oat); }
+  .surf-cream{ background:var(--cream); color:var(--forest); }
+  .surf-oat{ background:var(--oat); color:var(--forest); }
+
+  .surf-charcoal a, .surf-forest a{ color:var(--oat); text-decoration-color:rgba(244,237,224,.35); }
+  .surf-charcoal a:hover, .surf-forest a:hover{ color:var(--amber-soft); text-decoration-color:var(--amber-soft); }
+
+  /* -------- Type -------- */
+  .serif{ font-family:var(--serif); font-variation-settings:"opsz" 144, "SOFT" 30, "WONK" 0; }
+  .italic-wonk{ font-style:italic; font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1; font-weight:500; }
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--drift);
+    display:inline-flex; align-items:center; gap:10px;
+    margin:0;
+  }
+  .eyebrow .dot{ width:5px; height:5px; border-radius:50%; background:var(--amber); display:inline-block; }
+  .surf-charcoal .eyebrow, .surf-forest .eyebrow{ color:var(--drift-2); }
+
+  .display-1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 144, "SOFT" 40, "WONK" 0;
+    font-size: clamp(80px, 13vw, 184px);
+    line-height:.92;
+    letter-spacing:-0.025em;
+    margin:0;
+  }
+  .display-2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 144, "SOFT" 40, "WONK" 0;
+    font-size: clamp(44px, 6vw, 88px);
+    line-height:1.0;
+    letter-spacing:-0.02em;
+    margin:0;
+    text-wrap:balance;
+  }
+  .display-3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 96, "SOFT" 40, "WONK" 0;
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height:1.1;
+    letter-spacing:-0.018em;
+    margin:0;
+    text-wrap:balance;
+  }
+  .display-3 em, .display-2 em, .display-1 em{
+    font-style:italic;
+    font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+    font-weight:500;
+  }
+
+  .lede{
+    font-family:var(--serif);
+    font-weight:400;
+    font-variation-settings:"opsz" 18, "SOFT" 60, "WONK" 0;
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height:1.5;
+    margin:0;
+    max-width:54ch;
+    text-wrap:pretty;
+  }
+  .lede em{ font-style:italic; font-variation-settings:"opsz" 18, "SOFT" 100, "WONK" 1; }
+
+  .body{
+    font-family:var(--sans);
+    font-size: clamp(16px, 1.5vw, 18px);
+    line-height:1.7;
+    margin:0;
+    max-width:60ch;
+    text-wrap:pretty;
+  }
+  .body + .body{ margin-top:1.1em; }
+
+  .meta{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--drift);
+  }
+
+  /* -------- Sections -------- */
+  section{ padding: clamp(96px, 12vw, 160px) 0; position:relative; }
+  section.tight{ padding: clamp(64px, 8vw, 96px) 0; }
+
+  .section-head{
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    gap: 56px;
+    align-items:baseline;
+    margin-bottom: clamp(48px, 7vw, 96px);
+  }
+  .section-head .num{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.24em;
+    color:var(--drift);
+    border-top:1px solid currentColor;
+    padding-top:14px;
+    color:var(--drift);
+    width:fit-content;
+  }
+  .surf-charcoal .section-head .num,
+  .surf-forest   .section-head .num{ color:var(--drift-2); border-top-color:rgba(244,237,224,.25); }
+  .section-head .lede{ margin-top:14px; }
+
+  @media (max-width: 800px){
+    .section-head{ grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* -------- Topbar -------- */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:var(--charcoal);
+    border-bottom:1px solid rgba(244,237,224,.08);
+    color:var(--oat);
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .topbar .mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    color:var(--oat);
+  }
+  .topbar .mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .topbar nav{ display:flex; gap:28px; align-items:center; }
+  .topbar nav a{
+    font-size:13px;
+    text-decoration:none;
+    color:var(--drift-2);
+    letter-spacing:0.01em;
+  }
+  .topbar nav a:hover{ color:var(--amber-soft); }
+  .topbar .cta{
+    font-family:var(--sans);
+    font-size:12.5px;
+    font-weight:500;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--charcoal);
+    background:var(--amber);
+    padding:9px 16px;
+    border-radius:999px;
+    text-decoration:none;
+    transition: background .2s ease, transform .15s ease;
+  }
+  .topbar .cta:hover{ background:var(--amber-soft); color:var(--charcoal); }
+  @media (max-width: 720px){
+    .topbar nav a:not(.cta){ display:none; }
+    .topbar-inner{ padding:14px 22px; }
+  }
+
+  /* -------- Hero -------- */
+  .hero{
+    background:var(--charcoal);
+    color:var(--oat);
+    padding-top: clamp(28px, 4vw, 48px);
+    padding-bottom: clamp(80px, 12vw, 140px);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    /* very subtle radial wash */
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 110%, rgba(91,122,95,.18), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-meta{
+    display:flex; justify-content:space-between; align-items:center;
+    color:var(--drift-2);
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    border-bottom:1px solid rgba(244,237,224,.12);
+    padding-bottom:16px;
+    margin-bottom: clamp(64px, 10vw, 120px);
+  }
+  .hero-meta .live{ display:inline-flex; align-items:center; gap:8px; }
+  .hero-meta .live .pulse{
+    width:8px; height:8px; border-radius:50%; background:var(--amber);
+    box-shadow: 0 0 0 0 rgba(200,133,58,.6);
+    animation: pulse 2.6s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(200,133,58,.55); }
+    70%{ box-shadow:0 0 0 14px rgba(200,133,58,0); }
+    100%{ box-shadow:0 0 0 0 rgba(200,133,58,0); }
+  }
+  @media (prefers-reduced-motion: reduce){ .hero-meta .live .pulse{ animation:none; } }
+
+  .hero-stack{
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center;
+    gap: clamp(28px, 4vw, 44px);
+    position:relative;
+  }
+  .wordmark-svg{ width:min(880px, 100%); height:auto; color:var(--oat); display:block; }
+
+  .hero-tagline{
+    font-family:var(--serif);
+    font-style:italic;
+    font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1;
+    font-weight:400;
+    font-size: clamp(26px, 3.6vw, 40px);
+    line-height:1.2;
+    margin:0;
+    color:var(--oat);
+    letter-spacing:-0.005em;
+  }
+  .hero-sub{
+    font-family:var(--sans);
+    font-size: clamp(15px, 1.6vw, 19px);
+    color:var(--drift-2);
+    max-width:48ch;
+    margin:0;
+    text-wrap:pretty;
+  }
+  .hero-rule{
+    display:inline-flex; align-items:center; gap:14px;
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:.32em;
+    color:var(--drift-2);
+  }
+  .hero-rule .dot{ width:4px; height:4px; border-radius:50%; background:var(--oat); }
+  .hero-rule .dot.amber{ background:var(--amber); }
+
+  /* Beaded motif */
+  .beads{
+    width:min(560px, 80%);
+    margin: 0 auto;
+    pointer-events:none;
+    opacity:.85;
+  }
+  .beads svg{ display:block; width:100%; height:auto; }
+
+  /* -------- Marquee -------- */
+  .marquee{
+    background:var(--forest);
+    color:var(--oat);
+    overflow:hidden;
+    border-top:1px solid rgba(244,237,224,.08);
+    border-bottom:1px solid rgba(244,237,224,.08);
+  }
+  .marquee-track{
+    display:flex;
+    gap:64px;
+    padding:22px 0;
+    white-space:nowrap;
+    animation: marquee 50s linear infinite;
+    width:max-content;
+  }
+  .marquee-item{
+    display:inline-flex; align-items:center; gap:18px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-variation-settings:"opsz" 96, "SOFT" 80, "WONK" 1;
+    font-weight:400;
+    font-size: clamp(22px, 2.6vw, 30px);
+    color:var(--oat);
+  }
+  .marquee-item .sep{ color:var(--amber); font-style:normal; font-family:var(--sans); font-weight:500; font-size: clamp(10px, 1.2vw, 13px); letter-spacing:.32em; }
+  @keyframes marquee{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){ .marquee-track{ animation:none; } }
+
+  /* -------- Form -------- */
+  .signup{
+    width:100%;
+    max-width:480px;
+    margin:0 auto;
+  }
+  .signup-row{
+    display:flex; gap:8px; align-items:stretch;
+    background:rgba(244,237,224,.06);
+    border:1px solid rgba(244,237,224,.18);
+    border-radius:999px;
+    padding:6px;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .signup-row:focus-within{ border-color:var(--amber); background:rgba(244,237,224,.10); }
+  .surf-cream .signup-row, .surf-oat .signup-row{
+    background:transparent;
+    border-color:var(--drift);
+  }
+  .surf-cream .signup-row:focus-within, .surf-oat .signup-row:focus-within{
+    border-color:var(--forest);
+  }
+  .signup input[type=email]{
+    flex:1 1 auto; min-width:0;
+    appearance:none; -webkit-appearance:none;
+    border:0; outline:none; background:transparent;
+    color:inherit;
+    font-family:var(--sans);
+    font-size:15.5px;
+    padding:12px 18px;
+    border-radius:999px;
+  }
+  .signup input::placeholder{ color:var(--drift-2); }
+  .surf-cream .signup input::placeholder, .surf-oat .signup input::placeholder{ color:var(--drift); }
+  .signup button{
+    appearance:none; -webkit-appearance:none;
+    border:0; cursor:pointer;
+    background:var(--amber); color:var(--charcoal);
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:13.5px;
+    letter-spacing:.04em;
+    padding:12px 22px;
+    border-radius:999px;
+    white-space:nowrap;
+    transition: background .2s ease, color .2s ease, transform .15s ease;
+  }
+  .signup button:hover{ background:var(--oat); color:var(--charcoal); }
+  .signup button:active{ transform:translateY(1px); }
+  .signup button:focus-visible{ outline:2px solid var(--oat); outline-offset:3px; }
+  .signup .hp{ position:absolute; left:-9999px; }
+  .signup-note{
+    margin-top:14px;
+    font-size:12.5px;
+    color:var(--drift-2);
+    text-align:center;
+    font-family:var(--mono);
+    letter-spacing:.04em;
+  }
+  .surf-cream .signup-note, .surf-oat .signup-note{ color:var(--drift); }
+  .signup-confirm{
+    display:none;
+    font-family:var(--serif);
+    font-style:italic;
+    font-variation-settings:"opsz" 48, "SOFT" 100, "WONK" 1;
+    font-size: clamp(18px, 2.2vw, 24px);
+    text-align:center;
+    margin:0;
+    padding:14px 0;
+    opacity:0;
+    transition:opacity .5s ease;
+  }
+  .signup-confirm.show{ opacity:1; }
+  .signup[data-state="done"] .signup-row,
+  .signup[data-state="done"] .signup-note{ display:none; }
+  .signup[data-state="done"] .signup-confirm{ display:block; }
+  @media (max-width: 520px){
+    .signup-row{ flex-direction:column; border-radius:14px; padding:8px; gap:6px; }
+    .signup input{ padding:14px 16px; }
+    .signup button{ width:100%; padding:14px 22px; border-radius:10px; }
+  }
+
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* -------- What it is (cream) -------- */
+  .two-col{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items:start;
+  }
+  @media (max-width: 900px){ .two-col{ grid-template-columns: 1fr; } }
+
+  .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--sans);
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--forest);
+    background:rgba(30,58,43,.06);
+    border:1px solid rgba(30,58,43,.12);
+    padding:7px 14px;
+    border-radius:999px;
+  }
+  .pill .dot{ width:5px; height:5px; border-radius:50%; background:var(--moss); }
+
+  /* -------- "Nope / Yes" comparison -------- */
+  .compare{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border:1px solid rgba(30,58,43,.12);
+    border-radius:18px;
+    overflow:hidden;
+    background:var(--cream);
+    margin-top: 8px;
+  }
+  .compare > div{ padding: clamp(28px, 3vw, 40px); }
+  .compare .col-cars{
+    background:var(--cream);
+    border-right:1px solid rgba(30,58,43,.12);
+  }
+  .compare .col-carts{ background:var(--oat); }
+  .compare h4{
+    font-family:var(--mono);
+    font-size:11px; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--drift);
+    margin:0 0 18px 0;
+    display:flex; align-items:center; gap:10px;
+  }
+  .compare h4 .x{ color:var(--drift); }
+  .compare h4 .check{ color:var(--moss); }
+  .compare ul{ list-style:none; padding:0; margin:0; }
+  .compare li{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 24, "SOFT" 60, "WONK" 0;
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height:1.5;
+    padding:10px 0;
+    border-top:1px solid rgba(30,58,43,.08);
+  }
+  .compare li:first-child{ border-top:none; }
+  .compare .col-cars li{ color:var(--drift); text-decoration:line-through; text-decoration-thickness:1px; text-decoration-color:rgba(160,148,132,.5); }
+  @media (max-width: 720px){
+    .compare{ grid-template-columns: 1fr; }
+    .compare .col-cars{ border-right:none; border-bottom:1px solid rgba(30,58,43,.12); }
+  }
+
+  /* -------- How it works (3 step) -------- */
+  .steps{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top:1px solid rgba(244,237,224,.18);
+    border-bottom:1px solid rgba(244,237,224,.18);
+  }
+  .step{
+    padding: 56px 32px;
+    border-left:1px solid rgba(244,237,224,.18);
+    position:relative;
+  }
+  .step:first-child{ border-left:none; }
+  .step-num{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.24em;
+    color:var(--amber);
+    margin-bottom:24px;
+  }
+  .step-title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 72, "SOFT" 40, "WONK" 0;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height:1.1;
+    margin:0 0 18px 0;
+    letter-spacing:-0.01em;
+  }
+  .step-title em{ font-style:italic; font-variation-settings:"opsz" 72, "SOFT" 100, "WONK" 1; }
+  .step-body{
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.7;
+    color:var(--drift-2);
+    margin:0;
+    max-width:32ch;
+  }
+  @media (max-width: 800px){
+    .steps{ grid-template-columns: 1fr; }
+    .step{ border-left:none; border-top:1px solid rgba(244,237,224,.18); padding: 44px 4px; }
+    .step:first-child{ border-top:none; }
+  }
+
+  /* -------- Where it works (community list) -------- */
+  .places{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 64px;
+    border-top:1px solid rgba(30,58,43,.18);
+  }
+  .place{
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom:1px solid rgba(30,58,43,.10);
+    align-items:baseline;
+  }
+  .place .idx{
+    font-family:var(--mono); font-size:11px;
+    color:var(--drift); letter-spacing:.16em;
+    width:32px;
+  }
+  .place .name{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 36, "SOFT" 50, "WONK" 0;
+    font-weight:500;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height:1.2;
+  }
+  .place .name em{ font-style:italic; font-variation-settings:"opsz" 36, "SOFT" 100, "WONK" 1; font-weight:400; }
+  .place .where{
+    font-family:var(--sans);
+    font-size:12.5px;
+    color:var(--drift);
+  }
+  @media (max-width: 720px){
+    .places{ grid-template-columns: 1fr; gap:0; }
+  }
+
+  /* -------- Philosophy (forest deep) -------- */
+  .philosophy{ background: var(--forest); color: var(--oat); }
+  .philosophy .quote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+    font-weight:400;
+    font-size: clamp(36px, 5vw, 72px);
+    line-height:1.1;
+    letter-spacing:-0.015em;
+    text-wrap:balance;
+    margin:0;
+    max-width:24ch;
+  }
+  .philosophy .quote::before{ content:"\201C"; color:var(--amber); padding-right: .12em; }
+  .philosophy .quote::after{ content:"\201D"; color:var(--amber); }
+  .philosophy .attribution{
+    margin-top: 36px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--drift-2);
+    display:flex; align-items:center; gap:14px;
+  }
+  .philosophy .attribution .line{
+    width:48px; height:1px; background:var(--amber);
+  }
+
+  .principles{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(244,237,224,.18);
+    margin-top: clamp(56px, 7vw, 96px);
+  }
+  .principle{
+    background: var(--forest);
+    padding: 36px 32px;
+  }
+  .principle .k{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--amber-soft);
+    margin: 0 0 14px 0;
+  }
+  .principle .v{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 36, "SOFT" 60, "WONK" 0;
+    font-weight:400;
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height:1.35;
+    margin:0;
+    color:var(--oat);
+    text-wrap:balance;
+  }
+  .principle .v em{ font-style:italic; font-variation-settings:"opsz" 36, "SOFT" 100, "WONK" 1; }
+  @media (max-width: 720px){
+    .principles{ grid-template-columns: 1fr; }
+  }
+
+  /* -------- Roadmap -------- */
+  .roadmap{
+    display:grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    gap: 0;
+    border-top:1px solid rgba(30,58,43,.20);
+    border-bottom:1px solid rgba(30,58,43,.20);
+  }
+  .roadmap > div{
+    padding: 36px 28px;
+    border-left:1px solid rgba(30,58,43,.18);
+  }
+  .roadmap > div:first-child{ border-left:none; }
+  .roadmap .stage{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--drift);
+  }
+  .roadmap .when{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 48, "SOFT" 60, "WONK" 0;
+    font-weight:500;
+    font-size: clamp(22px, 2.4vw, 28px);
+    margin: 0 0 8px 0;
+    color:var(--forest);
+  }
+  .roadmap .when em{ font-style:italic; font-variation-settings:"opsz" 48, "SOFT" 100, "WONK" 1; }
+  .roadmap .what{
+    font-family:var(--sans);
+    font-size:14px;
+    line-height:1.6;
+    color:rgba(30,58,43,.75);
+    margin:0;
+  }
+  .roadmap .now .when{ color:var(--amber); }
+  @media (max-width: 900px){
+    .roadmap{ grid-template-columns: 1fr 1fr; }
+    .roadmap > div:first-child{ grid-column: 1 / -1; border-bottom:1px solid rgba(30,58,43,.18); }
+    .roadmap > div:nth-child(3){ border-left:none; }
+  }
+  @media (max-width: 560px){
+    .roadmap{ grid-template-columns: 1fr; }
+    .roadmap > div{ border-left:none; border-top:1px solid rgba(30,58,43,.18); }
+    .roadmap > div:first-child{ border-top:none; }
+  }
+
+  /* -------- FAQ -------- */
+  .faq{ border-top:1px solid rgba(30,58,43,.18); margin-top: 0; }
+  .faq details{
+    border-bottom:1px solid rgba(30,58,43,.10);
+    padding: 24px 0;
+  }
+  .faq summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex; justify-content:space-between; align-items:baseline; gap:24px;
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 36, "SOFT" 50, "WONK" 0;
+    font-weight:500;
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height:1.3;
+    color:var(--forest);
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary .plus{
+    font-family:var(--sans);
+    font-size:18px; font-weight:400; color:var(--drift);
+    flex:0 0 auto;
+    transition: transform .2s ease, color .2s ease;
+  }
+  .faq details[open] summary .plus{ transform:rotate(45deg); color:var(--amber); }
+  .faq .a{
+    font-family:var(--sans);
+    font-size:15.5px;
+    line-height:1.7;
+    color:rgba(30,58,43,.85);
+    margin:14px 0 0 0;
+    max-width:64ch;
+  }
+
+  /* -------- Closer (forest dark) -------- */
+  .closer{
+    background:var(--forest-deep);
+    color:var(--oat);
+    text-align:center;
+    padding: clamp(96px, 12vw, 160px) 0;
+  }
+  .closer .display-2{ margin: 0 auto; max-width: 18ch; }
+  .closer .lede{ margin: 24px auto 0; color:var(--drift-2); }
+  .closer .signup{ margin-top: clamp(40px, 5vw, 56px); }
+
+  /* -------- Footer -------- */
+  footer.foot{
+    background: var(--charcoal);
+    color: var(--drift-2);
+    padding: 80px 0 56px;
+    border-top:1px solid rgba(244,237,224,.08);
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  .foot-grid h5{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--drift);
+    margin: 0 0 18px 0;
+  }
+  .foot-grid ul{ list-style:none; padding:0; margin:0; }
+  .foot-grid li{ padding: 5px 0; font-size:14px; }
+  .foot-grid li a{ color:var(--drift-2); text-decoration:none; }
+  .foot-grid li a:hover{ color:var(--amber-soft); }
+  .foot-mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size: clamp(40px, 5vw, 56px);
+    color:var(--oat);
+    line-height:1;
+    margin: 0 0 18px 0;
+  }
+  .foot-mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .foot-tag{
+    font-family:var(--serif);
+    font-style:italic;
+    font-variation-settings:"opsz" 48, "SOFT" 100, "WONK" 1;
+    font-size:18px;
+    color:var(--amber-soft);
+    margin: 0 0 12px 0;
+  }
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--drift);
+  }
+  .foot-bottom .right{ display:flex; gap:24px; }
+  @media (max-width: 800px){
+    .foot-grid{ grid-template-columns: 1fr 1fr; gap: 36px; }
+    .foot-bottom{ flex-direction:column; gap:14px; align-items:flex-start; }
+  }
+  @media (max-width: 480px){
+    .foot-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* -------- Reveal -------- */
+  .reveal{
+    opacity:0; transform: translateY(14px);
+    transition: opacity .9s ease, transform .9s ease;
+    will-change: opacity, transform;
+  }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  /* divider beads sitting between sections */
+  .divider-beads{
+    background:var(--charcoal);
+    padding: 28px 0;
+    color:var(--oat);
+  }
+  .divider-beads.inv{ background:var(--cream); color:var(--forest); }
+  .divider-beads .beads{ width: min(720px, 90%); margin:0 auto; opacity:.7; }
+</style>
+</head>
+<body>
+
+<!-- Hidden static form copy for Netlify build-time detection -->
+<form name="waitlist" netlify netlify-honeypot="bot-field" hidden>
+  <input type="email" name="email" />
+  <input type="text" name="bot-field" />
+</form>
+
+<!-- ============================ TOPBAR ============================ -->
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a class="mark" href="#top" aria-label="SlowGo home">Slow<em>Go</em></a>
+    <nav aria-label="Primary">
+      <a href="#what">What it is</a>
+      <a href="#where">Where it works</a>
+      <a href="#why">Why slow</a>
+      <a href="#faq">FAQ</a>
+      <a class="cta" href="#waitlist">Waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" aria-labelledby="hero-wordmark">
+    <div class="wrap">
+      <div class="hero-meta">
+        <span>BackRoad Apps · 2026</span>
+        <span class="live"><span class="pulse" aria-hidden="true"></span>Pre-launch · Waitlist open</span>
+      </div>
+
+      <div class="hero-stack reveal in">
+        <svg class="wordmark-svg" viewBox="0 0 900 240" aria-labelledby="hero-wordmark" role="img">
+          <title id="hero-wordmark">SlowGo</title>
+          <text x="450" y="180" text-anchor="middle"
+            fill="currentColor"
+            style="font-family:'Fraunces',serif; font-weight:500; font-size:220px; font-variation-settings:'opsz' 144,'SOFT' 40,'WONK' 0; letter-spacing:-0.04em;">Slow<tspan font-style="italic" style="font-variation-settings:'opsz' 144,'SOFT' 100,'WONK' 1;">Go</tspan></text>
+        </svg>
+
+        <p class="hero-tagline">Life's better at 15 mph.</p>
+
+        <div class="hero-rule" aria-hidden="true">
+          <span class="dot"></span>
+          <span>BACKROADS · BEACH TOWNS · QUIET RIDES</span>
+          <span class="dot amber"></span>
+        </div>
+
+        <p class="hero-sub">Cart navigation built for backroads, beach communities, and quiet rides &mdash; not cars pretending to be carts.</p>
+
+        <form class="signup" name="waitlist" method="POST"
+              data-netlify="true" data-netlify-honeypot="bot-field"
+              action="#confirm-hero" data-confirm-id="confirm-hero" novalidate>
+          <input type="hidden" name="form-name" value="waitlist" />
+          <p class="hp"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+          <div class="signup-row">
+            <label class="visually-hidden" for="email-hero">Email address</label>
+            <input id="email-hero" type="email" name="email" placeholder="your@email.com" autocomplete="email" required aria-required="true" />
+            <button type="submit">Join the waitlist</button>
+          </div>
+          <p class="signup-note">No spam. One email when it's ready.</p>
+          <p class="signup-confirm" id="confirm-hero" role="status" aria-live="polite">You're on the list. Take your time.</p>
+        </form>
+
+        <!-- Beaded arc motif -->
+        <div class="beads" aria-hidden="true">
+          <svg viewBox="0 0 600 60" preserveAspectRatio="xMidYMid meet">
+            <g fill="#F4EDE0">
+              <circle cx="50"  cy="46" r="3"/>
+              <circle cx="125" cy="38" r="3.5"/>
+              <circle cx="200" cy="30" r="4"/>
+              <circle cx="275" cy="26" r="4.5"/>
+              <circle cx="350" cy="26" r="4.5" fill="#C8853A"/>
+              <circle cx="425" cy="30" r="4"/>
+              <circle cx="500" cy="38" r="3.5"/>
+              <circle cx="575" cy="46" r="3"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ WHAT ============================ -->
+  <section id="what" class="surf-cream" aria-labelledby="what-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="num">01 / What it is</span>
+        <div>
+          <h2 class="display-2" id="what-title">A nav app that <em>knows</em> the cart paths.</h2>
+          <p class="lede" style="margin-top:24px;">SlowGo is built for golf carts and low-speed vehicles &mdash; the quiet streets, the cut-throughs, the routes regular nav apps don't see.</p>
+        </div>
+      </div>
+
+      <div class="two-col reveal">
+        <div>
+          <p class="eyebrow"><span class="dot"></span>The short version</p>
+          <p class="body" style="margin-top:18px;">It knows the backroads. The quiet streets. The cart paths that don't show up in regular nav apps.</p>
+          <p class="body">Built for cart communities like The Villages, Hilton Head, Peachtree City, Fire Island, and slow neighborhoods everywhere.</p>
+          <p class="body">No accounts. No tracking. Just maps that respect how you actually ride.</p>
+
+          <div class="pill-row" aria-label="Highlights">
+            <span class="pill"><span class="dot"></span>Cart-legal routing</span>
+            <span class="pill"><span class="dot"></span>Offline-friendly</span>
+            <span class="pill"><span class="dot"></span>No accounts</span>
+            <span class="pill"><span class="dot"></span>No tracking</span>
+            <span class="pill"><span class="dot"></span>Free to start</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow"><span class="dot"></span>Cars vs. carts</p>
+          <div class="compare" style="margin-top:18px;">
+            <div class="col-cars">
+              <h4><span class="x">×</span> Regular nav</h4>
+              <ul>
+                <li>"Take the highway"</li>
+                <li>"Merge onto I-95"</li>
+                <li>"Fastest route"</li>
+                <li>Ignores cart paths</li>
+                <li>Tracks every mile</li>
+              </ul>
+            </div>
+            <div class="col-carts">
+              <h4><span class="check">●</span> SlowGo</h4>
+              <ul>
+                <li>"Take the back road"</li>
+                <li>"Cut through the path"</li>
+                <li>"Quietest route"</li>
+                <li>Knows cart-legal roads</li>
+                <li>Doesn't watch you ride</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ HOW IT WORKS ============================ -->
+  <section class="surf-charcoal" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="num">02 / How it works</span>
+        <div>
+          <h2 class="display-2" id="how-title">Tell it where. It picks the <em>nicer</em> way.</h2>
+          <p class="lede" style="margin-top:24px; color:var(--drift-2);">Three steps. No setup. No login. The cart's not in a hurry &mdash; the app shouldn't be either.</p>
+        </div>
+      </div>
+
+      <div class="steps reveal">
+        <div class="step">
+          <p class="step-num">01 / OPEN</p>
+          <h3 class="step-title">Open the <em>map</em>.</h3>
+          <p class="step-body">No account. No onboarding. The map loads where you are, with cart paths drawn in.</p>
+        </div>
+        <div class="step">
+          <p class="step-num">02 / SEARCH</p>
+          <h3 class="step-title">Tap a <em>destination</em>.</h3>
+          <p class="step-body">The bakery. The dock. The friend two streets over. Search like you would anywhere else.</p>
+        </div>
+        <div class="step">
+          <p class="step-num">03 / RIDE</p>
+          <h3 class="step-title">Take the <em>back</em> way.</h3>
+          <p class="step-body">SlowGo routes you on cart-legal roads, quiet cut-throughs, and the path nobody else knows about.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ WHERE ============================ -->
+  <section id="where" class="surf-oat" aria-labelledby="where-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="num">03 / Where it works</span>
+        <div>
+          <h2 class="display-2" id="where-title">Built for places where <em>cart</em> is a verb.</h2>
+          <p class="lede" style="margin-top:24px;">At launch, SlowGo focuses on communities that already ride. More towns added by neighborhood request &mdash; one street at a time.</p>
+        </div>
+      </div>
+
+      <div class="places reveal">
+        <div class="place">
+          <span class="idx">01</span>
+          <span class="name">The <em>Villages</em></span>
+          <span class="where">Florida</span>
+        </div>
+        <div class="place">
+          <span class="idx">02</span>
+          <span class="name">Peachtree <em>City</em></span>
+          <span class="where">Georgia</span>
+        </div>
+        <div class="place">
+          <span class="idx">03</span>
+          <span class="name">Hilton <em>Head</em></span>
+          <span class="where">South Carolina</span>
+        </div>
+        <div class="place">
+          <span class="idx">04</span>
+          <span class="name">Fire <em>Island</em></span>
+          <span class="where">New York</span>
+        </div>
+        <div class="place">
+          <span class="idx">05</span>
+          <span class="name">Catalina <em>Island</em></span>
+          <span class="where">California</span>
+        </div>
+        <div class="place">
+          <span class="idx">06</span>
+          <span class="name">Mackinac <em>Island</em></span>
+          <span class="where">Michigan</span>
+        </div>
+        <div class="place">
+          <span class="idx">07</span>
+          <span class="name">Sun <em>City</em></span>
+          <span class="where">Arizona</span>
+        </div>
+        <div class="place">
+          <span class="idx">08</span>
+          <span class="name">Your <em>street</em></span>
+          <span class="where">Tell us where</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PHILOSOPHY ============================ -->
+  <section id="why" class="philosophy" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="num">04 / Why slow</span>
+        <div>
+          <p class="eyebrow" style="margin-bottom:24px;"><span class="dot"></span>The point of all this</p>
+          <h2 class="quote" id="why-title">The point isn't getting there fast. It's the breeze, the side streets, and the route nobody else knows about.</h2>
+          <div class="attribution">
+            <span class="line"></span>
+            <span>SlowGo · House Rules</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="principles reveal" role="list">
+        <div class="principle" role="listitem">
+          <p class="k">01 / Pace</p>
+          <p class="v">The cart's not in a <em>hurry</em>. Neither are you.</p>
+        </div>
+        <div class="principle" role="listitem">
+          <p class="k">02 / Routes</p>
+          <p class="v">Quietest, not <em>fastest</em>.</p>
+        </div>
+        <div class="principle" role="listitem">
+          <p class="k">03 / Privacy</p>
+          <p class="v">No accounts. No <em>tracking</em>. No ads.</p>
+        </div>
+        <div class="principle" role="listitem">
+          <p class="k">04 / Care</p>
+          <p class="v">Made by hand, not by <em>quarter</em>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ROADMAP / WHEN ============================ -->
+  <section class="surf-oat" id="when" aria-labelledby="when-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="num">05 / When can I download it?</span>
+        <div>
+          <h2 class="display-2" id="when-title">Summer <em>2026</em>. Honestly, when it's right.</h2>
+          <p class="lede" style="margin-top:24px;">We won't ship a hurried app. The whole point is to slow down. Here's the plan:</p>
+        </div>
+      </div>
+
+      <div class="roadmap reveal">
+        <div class="now">
+          <p class="stage">Now</p>
+          <p class="when">Quiet <em>build</em></p>
+          <p class="what">Mapping cart paths in pilot communities. Drawing every back gate by hand.</p>
+        </div>
+        <div>
+          <p class="stage">Spring 2026</p>
+          <p class="when">Closed <em>beta</em></p>
+          <p class="what">Waitlist gets first invites. Pilot towns first. Bring your cart.</p>
+        </div>
+        <div>
+          <p class="stage">Summer 2026</p>
+          <p class="when">Public <em>launch</em></p>
+          <p class="what">iOS first. Free to start. Available where it works well, not everywhere.</p>
+        </div>
+        <div>
+          <p class="stage">Late 2026</p>
+          <p class="when">Android &amp; <em>more towns</em></p>
+          <p class="what">Android version. New communities added by request, one neighborhood at a time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FAQ ============================ -->
+  <section id="faq" class="surf-cream" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="num">06 / Honest questions</span>
+        <div>
+          <h2 class="display-2" id="faq-title">Things people <em>actually</em> ask.</h2>
+          <p class="lede" style="margin-top:24px;">Short answers. No marketing voice. If something's missing, write us at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+        </div>
+      </div>
+
+      <div class="faq reveal">
+        <details>
+          <summary>Why not just use Google Maps?<span class="plus">+</span></summary>
+          <p class="a">Google Maps is built for cars. It sends you to highways, busy roads, and routes that assume you're going 45+ mph.</p>
+          <p class="a">SlowGo knows you're on a cart. It finds the backroads, residential streets, and cart-friendly paths &mdash; the routes Google won't show you. Same destination. Calmer ride.</p>
+        </details>
+        <details>
+          <summary>Will it work in my town?<span class="plus">+</span></summary>
+          <p class="a">If you can navigate the streets in your town, SlowGo can navigate them. SlowGo uses OpenStreetMap data, which covers every road in the US.</p>
+          <p class="a">Some cart-heavy communities &mdash; The Villages, Hilton Head, Sun City &mdash; have great cart-path coverage. Other towns, you might still need to ride on quiet streets.</p>
+          <p class="a">If you're in a cart community and SlowGo doesn't have your favorite path mapped, you can help improve OpenStreetMap. We'll point you to the right tools after launch.</p>
+        </details>
+        <details>
+          <summary>Do I need an account?<span class="plus">+</span></summary>
+          <p class="a">No.</p>
+          <p class="a">SlowGo doesn't ask for your email, name, or anything else. Just open the app and ride. Your favorites and trip history stay on your phone. Nothing gets uploaded.</p>
+        </details>
+        <details>
+          <summary>How does SlowGo make money?<span class="plus">+</span></summary>
+          <p class="a">SlowGo will be free to start. Always.</p>
+          <p class="a">Later, there'll be optional features for people who want to support development &mdash; things like extended trip history, custom voice options, or premium navigation modes. But the core experience &mdash; finding cart-friendly routes &mdash; stays free.</p>
+          <p class="a">No ads. No selling your data. We don't have your data anyway.</p>
+        </details>
+        <details>
+          <summary>Is this for actual golf, or just golf carts?<span class="plus">+</span></summary>
+          <p class="a">Just carts.</p>
+          <p class="a">SlowGo is for golf carts, low-speed vehicles (LSVs), neighborhood electric vehicles, and similar slow vehicles being driven on regular streets &mdash; not on golf courses.</p>
+          <p class="a">If you're playing actual golf, your course already has a yardage app. This isn't that.</p>
+        </details>
+        <details>
+          <summary>Android?<span class="plus">+</span></summary>
+          <p class="a">iOS first. Android comes later.</p>
+          <p class="a">Building one platform well is better than building two platforms okay. After SlowGo's iOS version is solid, Android is next on the roadmap.</p>
+          <p class="a">If you're on Android, join the waitlist anyway &mdash; we'll let you know when it's ready.</p>
+        </details>
+        <details>
+          <summary>Is there a beta I can join?<span class="plus">+</span></summary>
+          <p class="a">Right now, SlowGo is in private testing on golf carts in South Florida.</p>
+          <p class="a">Once the app is closer to launch (summer 2026), there'll be a public beta on TestFlight (iOS). Joining the waitlist puts you first in line.</p>
+        </details>
+        <details>
+          <summary>Why's it called SlowGo?<span class="plus">+</span></summary>
+          <p class="a">Because slow travel is the point. The cart's not in a hurry. Neither are we.</p>
+        </details>
+        <details>
+          <summary>Who built SlowGo?<span class="plus">+</span></summary>
+          <p class="a">A solo developer who got tired of nav apps treating golf carts like cars.</p>
+        </details>
+        <details>
+          <summary>Is my data safe?<span class="plus">+</span></summary>
+          <p class="a">Yes. SlowGo doesn't collect any of it.</p>
+        </details>
+        <details>
+          <summary>When can I see SlowGo on the App Store?<span class="plus">+</span></summary>
+          <p class="a">Summer 2026.</p>
+        </details>
+        <details>
+          <summary>Can I use SlowGo for hiking, biking, or walking?<span class="plus">+</span></summary>
+          <p class="a">Not yet. SlowGo is built specifically for golf carts and low-speed vehicles. Walking and biking apps work differently &mdash; different routing, different speeds, different safety considerations.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CLOSER ============================ -->
+  <section class="closer" id="waitlist" aria-labelledby="closer-title">
+    <div class="wrap reveal">
+      <p class="eyebrow" style="margin-bottom:32px; color:var(--drift-2); justify-content:center;"><span class="dot"></span>One ask, one place</p>
+      <h2 class="display-2" id="closer-title">Take your <em>time</em>. Then take the back way.</h2>
+      <p class="lede">We'll write you once, when SlowGo is ready to ride. That's the only email you'll get.</p>
+
+      <form class="signup" name="waitlist" method="POST"
+            data-netlify="true" data-netlify-honeypot="bot-field"
+            action="#confirm-when" data-confirm-id="confirm-when" novalidate>
+        <input type="hidden" name="form-name" value="waitlist" />
+        <p class="hp"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="signup-row">
+          <label class="visually-hidden" for="email-when">Email address</label>
+          <input id="email-when" type="email" name="email" placeholder="your@email.com" autocomplete="email" required aria-required="true" />
+          <button type="submit">Join the waitlist</button>
+        </div>
+        <p class="signup-note">iOS first · Summer 2026 · Free to start</p>
+        <p class="signup-confirm" id="confirm-when" role="status" aria-live="polite">You're on the list. Take your time.</p>
+      </form>
+
+      <!-- bead arc -->
+      <div class="beads" style="margin-top: clamp(56px, 8vw, 96px);" aria-hidden="true">
+        <svg viewBox="0 0 600 60" preserveAspectRatio="xMidYMid meet">
+          <g fill="#F4EDE0">
+            <circle cx="50"  cy="46" r="3"/>
+            <circle cx="125" cy="38" r="3.5"/>
+            <circle cx="200" cy="30" r="4"/>
+            <circle cx="275" cy="26" r="4.5"/>
+            <circle cx="350" cy="26" r="4.5" fill="#C8853A"/>
+            <circle cx="425" cy="30" r="4"/>
+            <circle cx="500" cy="38" r="3.5"/>
+            <circle cx="575" cy="46" r="3"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="foot" role="contentinfo">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-mark">Slow<em>Go</em></p>
+        <p class="foot-tag">Life's better at 15 mph.</p>
+        <p style="font-size:13.5px; line-height:1.7; margin:0; color:var(--drift-2); max-width:32ch;">A BackRoad Apps product. Built carefully, in small batches, by people who ride.</p>
+      </div>
+
+      <div>
+        <h5>The app</h5>
+        <ul>
+          <li><a href="#what">What it is</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#where">Where it works</a></li>
+          <li><a href="#when">When</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Beyond the ride</h5>
+        <ul>
+          <li><a href="#why">Why slow</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#waitlist">Waitlist</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Reach us</h5>
+        <ul>
+          <li><a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a></li>
+          <li><a href="mailto:routes@slowgoapp.com">routes@slowgoapp.com</a></li>
+          <li>Suggest a town</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 BackRoad Apps</span>
+      <span class="right">
+        <span>Made carefully</span>
+        <span>·</span>
+        <span>slowgoapp.com</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal-on-scroll
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Async form submit -> Netlify Forms, inline confirmation, no redirect.
+  (function(){
+    function encode(data){
+      return Object.keys(data).map(function(k){
+        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+      }).join('&');
+    }
+    var forms = document.querySelectorAll('form.signup');
+    forms.forEach(function(form){
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var emailInput = form.querySelector('input[type=email]');
+        if (!emailInput || !emailInput.checkValidity()){
+          if (emailInput) emailInput.focus();
+          return;
+        }
+        var data = {};
+        new FormData(form).forEach(function(v,k){ data[k] = v; });
+        data['form-name'] = 'waitlist';
+
+        var btn = form.querySelector('button[type=submit]');
+        if (btn){ btn.disabled = true; btn.textContent = 'Sending\u2026'; }
+
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode(data)
+        }).then(function(){
+          showConfirm(form);
+        }).catch(function(){
+          showConfirm(form);
+        });
+      });
+    });
+    function showConfirm(form){
+      form.setAttribute('data-state','done');
+      var id = form.getAttribute('data-confirm-id');
+      var msg = id ? document.getElementById(id) : form.querySelector('.signup-confirm');
+      if (msg){
+        msg.style.display = 'block';
+        requestAnimationFrame(function(){ msg.classList.add('show'); });
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>
