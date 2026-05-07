@@ -159,7 +159,7 @@
   }
 
   /* -------- Sections -------- */
-  section{ padding: clamp(96px, 12vw, 160px) 0; position:relative; }
+  section{ padding: clamp(80px, 10vw, 132px) 0; position:relative; }
   section.tight{ padding: clamp(64px, 8vw, 96px) 0; }
 
   .section-head{
@@ -167,7 +167,7 @@
     grid-template-columns: 200px 1fr;
     gap: 56px;
     align-items:baseline;
-    margin-bottom: clamp(48px, 7vw, 96px);
+    margin-bottom: clamp(40px, 6vw, 80px);
   }
   .section-head .num{
     font-family:var(--mono);
@@ -822,6 +822,41 @@
   }
   .divider-beads.inv{ background:var(--cream); color:var(--forest); }
   .divider-beads .beads{ width: min(720px, 90%); margin:0 auto; opacity:.7; }
+
+  /* -------- See: app screenshots row -------- */
+  .see{ padding: clamp(96px, 12vw, 160px) 0; }
+  .see-kicker{
+    display:block;
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--amber);
+    text-align:center;
+    margin: 0 0 clamp(72px, 9vw, 120px) 0;
+  }
+  .see-kicker::after{
+    content:"";
+    display:block;
+    width:48px;
+    height:1px;
+    background:var(--amber);
+    margin: 12px auto 0;
+  }
+  .phones{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0, 280px));
+    justify-content:center;
+    align-items:start;
+    gap: clamp(32px, 4vw, 64px);
+  }
+  .phone{ margin:0; padding:0; }
+  .phone img{ display:block; width:100%; height:auto; }
+  @media (max-width: 700px){
+    .see{ padding: 64px 0; }
+    .phones{ grid-template-columns: minmax(0, 280px); gap: 40px; }
+  }
 </style>
 </head>
 <body>
@@ -990,6 +1025,24 @@
           <h3 class="step-title">Take the <em>back</em> way.</h3>
           <p class="step-body">SlowGo routes you on cart-legal roads, quiet cut-throughs, and the path nobody else knows about.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SEE INSIDE ============================ -->
+  <section id="see" class="surf-forest see reveal" aria-label="A look inside the SlowGo app">
+    <div class="wrap">
+      <p class="see-kicker">A look inside</p>
+      <div class="phones">
+        <figure class="phone">
+          <img src="screenshots/home.png" alt="SlowGo home screen: a search field reading 'Where to today?', a Favorites button, and a street map of cart-friendly roads." width="600" height="1300" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="phone">
+          <img src="screenshots/route-choice.png" alt="SlowGo route picker titled 'Slow or slower?' offering two options — Backroads at 22 minutes and Less Backroads at 17 minutes." width="600" height="1300" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="phone">
+          <img src="screenshots/turn-by-turn.png" alt="SlowGo turn-by-turn navigation: a cart icon on the map with speed, arrival time, trip duration, and remaining distance shown at the bottom." width="600" height="1300" loading="lazy" decoding="async" />
+        </figure>
       </div>
     </div>
   </section>
