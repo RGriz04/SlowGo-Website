@@ -142,7 +142,7 @@
 
   .body{
     font-family:var(--sans);
-    font-size: clamp(16px, 1.5vw, 18px);
+    font-size: clamp(18px, 1.5vw, 19px);
     line-height:1.7;
     margin:0;
     max-width:60ch;
@@ -725,7 +725,7 @@
   .faq details[open] summary .plus{ transform:rotate(45deg); color:var(--amber); }
   .faq .a{
     font-family:var(--sans);
-    font-size:15.5px;
+    font-size:18px;
     line-height:1.7;
     color:rgba(30,58,43,.85);
     margin:14px 0 0 0;
@@ -888,7 +888,123 @@
     .see{ padding: 64px 0; }
     .phones{ grid-template-columns: minmax(0, 280px); gap: 40px; }
   }
+
+  /* -------- A11y: lift muted labels off Driftwood to Forest Ink on light
+     surfaces (Driftwood #A09484 on Oat/Cream is ~2.5:1, below WCAG AA) -------- */
+  .surf-cream .eyebrow,      .surf-oat .eyebrow,
+  .surf-cream .section-head .num, .surf-oat .section-head .num,
+  .surf-cream .compare h4,
+  .surf-oat .place .idx,
+  .surf-oat .place .where,
+  .surf-oat .roadmap .stage,
+  .surf-cream .faq summary .plus{ color:var(--forest); }
 </style>
+
+<!-- FAQPage structured data — generated from the on-page FAQ, wording unchanged -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why not just use Google Maps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google Maps is built for cars. It sends you to highways, busy roads, and routes that assume you're going 45+ mph. SlowGo knows you're on a cart. It finds the backroads, residential streets, and cart-friendly paths — the routes Google won't show you. Same destination. Calmer ride."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it work in my town?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you can navigate the streets in your town, SlowGo can navigate them. SlowGo uses OpenStreetMap data, which covers every road in the US. Some cart-heavy communities — The Villages, Hilton Head, Sun City — have great cart-path coverage. Other towns, you might still need to ride on quiet streets. If you're in a cart community and SlowGo doesn't have your favorite path mapped, you can help improve OpenStreetMap. We'll point you to the right tools after launch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. SlowGo doesn't ask for your email, name, or anything else. Just open the app and ride. Route requests are processed on our server and not kept beyond short-lived technical logs. Favorites and history stay on your phone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does SlowGo make money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SlowGo will be free to start. Always. Later, there'll be optional features for people who want to support development — things like extended trip history, custom voice options, or premium navigation modes. But the core experience — finding cart-friendly routes — stays free. No ads. No selling your data. Route requests aren't kept beyond short-lived technical logs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this for actual golf, or just golf carts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Just carts. SlowGo is for golf carts, low-speed vehicles (LSVs), neighborhood electric vehicles, and similar slow vehicles being driven on regular streets — not on golf courses. If you're playing actual golf, your course already has a yardage app. This isn't that."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Android?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "iOS first. Android comes later. Building one platform well is better than building two platforms okay. After SlowGo's iOS version is solid, Android is next on the roadmap. If you're on Android, join the waitlist anyway — we'll let you know when it's ready."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a beta I can join?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beta riding is underway in The Villages, Florida. TestFlight invites go to the waitlist first, this summer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why's it called SlowGo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because slow travel is the point. The cart's not in a hurry. Neither are we."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who built SlowGo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ron. Eleven years in housing finance, zero years as a professional developer, and one year of nights and weekends building this anyway — with a lot of help from AI tools and a stubborn belief that carts deserve better maps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No accounts, no ad tracking. Route requests are processed on our server and not kept beyond short-lived technical logs. Favorites and history stay on your phone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When can I see SlowGo on the App Store?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Summer 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use SlowGo for hiking, biking, or walking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet. SlowGo is built specifically for golf carts and low-speed vehicles. Walking and biking apps work differently — different routing, different speeds, different safety considerations."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -989,7 +1105,8 @@
       <div class="two-col reveal">
         <div>
           <p class="eyebrow"><span class="dot"></span>The short version</p>
-          <p class="body" style="margin-top:18px;">It knows the backroads. The quiet streets. The cart paths that don't show up in regular nav apps.</p>
+          <p class="body" style="margin-top:18px;">SlowGo is a golf cart GPS &mdash; a navigation app for golf carts, LSVs, and NEVs that keeps every route on roads posted 35 mph and under wherever possible, and clearly marks the rare faster stretch it can't avoid.</p>
+          <p class="body">It knows the backroads. The quiet streets. The cart paths that don't show up in regular nav apps.</p>
           <p class="body">Built for cart communities like The Villages, Hilton Head, Peachtree City, Fire Island, and slow neighborhoods everywhere.</p>
           <p class="body">No accounts. No tracking. Just maps that respect how you actually ride.</p>
 
@@ -1091,7 +1208,7 @@
         </div>
       </div>
 
-      <p class="body reveal" style="margin-bottom: clamp(28px, 4vw, 48px); color:var(--drift);">Map quality varies by community. We're adding neighborhoods one at a time.</p>
+      <p class="body reveal" style="margin-bottom: clamp(28px, 4vw, 48px); color:var(--forest);">Map quality varies by community. We're adding neighborhoods one at a time.</p>
 
       <div class="places reveal">
         <div class="place">
