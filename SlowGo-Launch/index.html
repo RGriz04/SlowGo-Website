@@ -817,6 +817,35 @@
     color:var(--amber-soft);
     margin: 0 0 12px 0;
   }
+  .foot-legal{
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    margin-bottom: 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap: 32px;
+    flex-wrap:wrap;
+  }
+  .foot-legal p{
+    font-size:12.5px;
+    line-height:1.7;
+    color:var(--drift);
+    margin:0;
+    max-width:44ch;
+  }
+  .foot-legal .entity{ color:var(--drift-2); }
+  .foot-legal a{ color:var(--drift); text-decoration-color:rgba(160,148,132,.45); }
+  .foot-legal a:hover{ color:var(--amber-soft); text-decoration-color:var(--amber-soft); }
+  .foot-legal-links{
+    list-style:none; margin:0; padding:0;
+    display:flex; gap:24px; align-items:center;
+    font-size:12.5px;
+  }
+  .foot-legal-links a{ text-decoration:none; }
+  @media (max-width: 640px){
+    .foot-legal{ flex-direction:column; gap:18px; }
+  }
   .foot-bottom{
     display:flex; justify-content:space-between; align-items:center;
     border-top:1px solid rgba(244,237,224,.10);
@@ -1494,8 +1523,20 @@
       </li>
     </ul>
 
+    <div class="foot-legal">
+      <p class="entity">
+        SlowGo is a product of <strong style="font-weight:500;">BackRoad Apps LLC</strong>.<br />
+        4498 Main St, Ste 4 #5690, Amherst, NY 14226<br />
+        <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>
+      </p>
+      <ul class="foot-legal-links" role="list">
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+      </ul>
+    </div>
+
     <div class="foot-bottom">
-      <span>© 2026 BackRoad Apps</span>
+      <span>© 2026 BackRoad Apps LLC. All rights reserved.</span>
       <span class="right">
         <span>Made carefully</span>
         <span>·</span>
