@@ -3,3 +3,15 @@
 http://slowgoapp.com/*    https://slowgoapp.com/:splat    301!
 http://www.slowgoapp.com/*    https://slowgoapp.com/:splat    301!
 https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
+
+# Clean URLs for the legal pages. These are rewrites (status 200), so the
+# address bar keeps showing /terms and /privacy while the .html file is served.
+#
+# Netlify's "Pretty URLs" post-processing setting would normally do this, but
+# these two URLs are referenced by the App Store privacy-policy field and by
+# in-app links, so they must not depend on a dashboard toggle that someone
+# could turn off. Keep these rules.
+/terms      /terms.html      200
+/terms/     /terms.html      200
+/privacy    /privacy.html    200
+/privacy/   /privacy.html    200
