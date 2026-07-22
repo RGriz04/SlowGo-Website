@@ -6,7 +6,13 @@
 <title>Terms of Service — SlowGo</title>
 <meta name="description" content="Terms of service for SlowGo, a product of BackRoad Apps LLC." />
 <meta name="theme-color" content="#0B1F15" />
-<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://slowgoapp.com/terms" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Terms of Service — SlowGo" />
+<meta property="og:description" content="Terms of service for SlowGo, a product of BackRoad Apps LLC." />
+<meta property="og:url" content="https://slowgoapp.com/terms" />
+<meta property="og:site_name" content="SlowGo" />
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231E3A2B'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='36' fill='%23F4EDE0'>S</text></svg>" />
 
@@ -21,6 +27,7 @@
     --moss:          #5B7A5F;
     --amber:         #C8853A;
     --amber-soft:    #E0A969;
+    --amber-deep:    #8A5620;
     --oat:           #F4EDE0;
     --cream:         #FBF7EF;
     --drift:         #A09484;
@@ -34,7 +41,8 @@
   }
 
   *,*::before,*::after{ box-sizing:border-box; }
-  html{ -webkit-text-size-adjust:100%; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
   body{
     margin:0;
     background:var(--cream);
@@ -52,9 +60,17 @@
   ::selection{ background:var(--amber); color:var(--cream); }
   a{ color:inherit; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:rgba(160,148,132,.6); transition:color .2s ease, text-decoration-color .2s ease; }
   a:hover{ color:var(--amber); text-decoration-color:var(--amber); }
+  a:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; border-radius:2px; }
 
   .wrap{ max-width:var(--max); margin:0 auto; padding-left:32px; padding-right:32px; }
   @media (max-width: 640px){ .wrap{ padding-left:22px; padding-right:22px; } }
+
+  .skip{
+    position:absolute; left:-9999px; top:0;
+    background:var(--charcoal); color:var(--oat);
+    padding:12px 18px; z-index:50; text-decoration:none; font-size:14px;
+  }
+  .skip:focus{ left:0; }
 
   /* -------- Topbar -------- */
   .topbar{
@@ -89,7 +105,7 @@
   }
 
   /* -------- Legal page body -------- */
-  .legal{ flex:1 0 auto; padding: clamp(72px, 10vw, 128px) 0 clamp(80px, 10vw, 140px); }
+  .legal{ flex:1 0 auto; padding: clamp(64px, 8vw, 104px) 0 clamp(80px, 10vw, 140px); }
   .eyebrow{
     font-family:var(--sans);
     font-size:11px;
@@ -105,18 +121,153 @@
     font-family:var(--serif);
     font-weight:500;
     font-variation-settings:"opsz" 144, "SOFT" 40, "WONK" 0;
-    font-size: clamp(44px, 6vw, 88px);
+    font-size: clamp(40px, 5.4vw, 76px);
     line-height:1.0;
     letter-spacing:-0.02em;
     margin:0;
     text-wrap:balance;
   }
-  .legal p{
-    font-size:18px;
-    line-height:1.75;
+  .updated{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--drift);
+    margin:26px 0 0;
+  }
+
+  /* -------- Legal prose -------- */
+  .prose{
+    max-width:74ch;
+    margin:48px 0 0;
+    font-size:16.5px;
+    line-height:1.78;
+    color:var(--forest);
+  }
+  .prose > p{ margin:20px 0 0; }
+  .prose .lede{
+    font-size:19px;
+    line-height:1.7;
     color:var(--moss);
-    max-width:56ch;
-    margin: 28px 0 0;
+    margin-top:0;
+  }
+  .prose h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 96, "SOFT" 40, "WONK" 0;
+    font-size: clamp(25px, 3vw, 32px);
+    line-height:1.2;
+    letter-spacing:-0.015em;
+    color:var(--forest);
+    margin:56px 0 0;
+    padding-top:28px;
+    border-top:1px solid rgba(160,148,132,.28);
+    scroll-margin-top:24px;
+  }
+  .prose h3{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:-0.005em;
+    color:var(--forest);
+    margin:36px 0 0;
+    scroll-margin-top:24px;
+  }
+  .prose ul{ margin:18px 0 0; padding-left:22px; }
+  .prose li{ margin:9px 0 0; }
+  .prose li::marker{ color:var(--amber); }
+  .prose strong{ font-weight:600; color:var(--forest); }
+  .prose a{ text-decoration-color:rgba(200,133,58,.5); }
+
+  /* Conspicuous notices — Sections 5, 12, 13, 16 and the read-me-first callout.
+     These must stay visually prominent; do not flatten to body copy. */
+  .notice{
+    background:var(--oat);
+    border:1px solid rgba(200,133,58,.35);
+    border-left:4px solid var(--amber);
+    border-radius:3px;
+    padding:22px 26px;
+    margin:28px 0 0;
+  }
+  .notice p{ margin:0; color:var(--forest); }
+  .notice p + p{ margin-top:16px; }
+  .notice.caps p{
+    font-size:15px;
+    line-height:1.72;
+    font-weight:600;
+    letter-spacing:.005em;
+  }
+  .notice.lead p{ font-size:17px; font-weight:600; }
+  @media (max-width: 640px){
+    .notice{ padding:18px 20px; }
+  }
+
+  /* "Important" flag on the heavyweight sections */
+  .flag{
+    display:inline-block;
+    vertical-align:middle;
+    margin-left:12px;
+    font-family:var(--mono);
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--amber-deep);
+    background:rgba(200,133,58,.12);
+    border:1px solid rgba(200,133,58,.4);
+    border-radius:100px;
+    padding:5px 11px 4px;
+    white-space:nowrap;
+    position:relative;
+    top:-3px;
+  }
+
+  /* -------- Contents -------- */
+  .toc{
+    margin:44px 0 0;
+    padding:26px 30px 30px;
+    background:rgba(244,237,224,.55);
+    border:1px solid rgba(160,148,132,.3);
+    border-radius:4px;
+    max-width:74ch;
+  }
+  .toc h2{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--drift);
+    margin:0 0 16px;
+    border:0; padding:0;
+  }
+  .toc ol{
+    list-style:none;
+    margin:0; padding:0;
+    columns:2;
+    column-gap:40px;
+    font-size:14.5px;
+  }
+  .toc li{ margin:0 0 7px; break-inside:avoid; }
+  .toc a{ text-decoration:none; color:var(--forest); }
+  .toc a:hover{ color:var(--amber); }
+  .toc .key a{ font-weight:600; }
+  .toc .key a::after{
+    content:"·";
+    color:var(--amber);
+    margin-left:7px;
+    font-weight:700;
+  }
+  @media (max-width: 640px){
+    .toc{ padding:22px 20px 24px; }
+    .toc ol{ columns:1; }
+  }
+
+  /* -------- Contact block -------- */
+  .contact{
+    margin:24px 0 0;
+    font-style:normal;
+    line-height:1.85;
   }
 
   /* -------- Footer -------- */
@@ -183,6 +334,8 @@
 </head>
 <body>
 
+<a class="skip" href="#doc">Skip to the terms</a>
+
 <header class="topbar" role="banner">
   <div class="topbar-inner">
     <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
@@ -196,7 +349,278 @@
   <div class="wrap">
     <p class="eyebrow"><span class="dot"></span> Legal</p>
     <h1>Terms of Service</h1>
-    <p>Our full terms of service are being finalized and will be posted here shortly. Questions? Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+    <p class="updated">Last updated: July 22, 2026</p>
+
+    <nav class="toc" aria-labelledby="toc-heading">
+      <h2 id="toc-heading">Contents</h2>
+      <ol>
+        <li><a href="#agreement">Your agreement to these Terms</a></li>
+        <li><a href="#s1">1. Eligibility and permitted users</a></li>
+        <li><a href="#s2">2. What SlowGo Does — and Does Not Do</a></li>
+        <li><a href="#s3">3. No Account; Device Responsibility</a></li>
+        <li class="key"><a href="#s4">4. Safety and Legal-Use Requirements</a></li>
+        <li class="key"><a href="#s5">5. Assumption of Risk; Release</a></li>
+        <li><a href="#s6">6. License and Acceptable Use</a></li>
+        <li><a href="#s7">7. Ownership, Trademarks, and Feedback</a></li>
+        <li><a href="#s8">8. Third-Party Services and Data</a></li>
+        <li><a href="#s9">9. Availability, Updates, and Beta Features</a></li>
+        <li><a href="#s10">10. Purchases and Subscriptions</a></li>
+        <li><a href="#s11">11. Privacy</a></li>
+        <li class="key"><a href="#s12">12. Disclaimer of Warranties</a></li>
+        <li class="key"><a href="#s13">13. Limitation of Liability</a></li>
+        <li><a href="#s14">14. Indemnification for Wrongful Misuse</a></li>
+        <li><a href="#s15">15. Apple App Store Terms</a></li>
+        <li class="key"><a href="#s16">16. Dispute Resolution; Arbitration</a></li>
+        <li><a href="#s17">17. Governing Law and Judicial Venue</a></li>
+        <li><a href="#s18">18. Suspension and Termination</a></li>
+        <li><a href="#s19">19. Changes to These Terms</a></li>
+        <li><a href="#s20">20. General</a></li>
+        <li><a href="#s21">21. Contact</a></li>
+      </ol>
+    </nav>
+
+    <article class="prose" id="doc">
+
+      <p class="lede">These Terms of Service (the "<strong>Terms</strong>") are a binding agreement between you and <strong>BackRoad Apps LLC</strong>, a New York limited liability company ("<strong>BackRoad Apps</strong>," "<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>"), governing your use of the SlowGo mobile application (the "<strong>App</strong>"), the slowgoapp.com website (the "<strong>Site</strong>"), and the routing, mapping, weather, and related features we provide (together, the "<strong>Service</strong>").</p>
+
+      <h2 id="agreement">Your agreement to these Terms</h2>
+
+      <p><strong>In the App:</strong> before you can calculate your first route, SlowGo asks you to agree to these Terms and acknowledge our Privacy Policy by reviewing them and tapping "<strong>Agree and continue</strong>." You must do this to use the Service.</p>
+
+      <p>By tapping "Agree and continue," or otherwise using the Service, you agree to these Terms and our <a href="/privacy">Privacy Policy</a>. If you do not agree, do not use the Service.</p>
+
+      <div class="notice lead">
+        <p>Please read Sections 4, 5, 12, 13, and 16 carefully. They describe your responsibilities as a driver, release and limit our liability, and require individual arbitration of most disputes.</p>
+      </div>
+
+      <h2 id="s1">1. Eligibility and permitted users</h2>
+
+      <p>You must be at least 18 years old to agree to these Terms and use the Service. You may only use the Service in connection with a vehicle you are legally permitted to operate, and you are responsible for satisfying all licensing, registration, insurance, equipment, age, and other requirements that apply to you and your vehicle under the laws of the places where you drive. The Service is intended for use in the United States.</p>
+
+      <h2 id="s2">2. What SlowGo Does — and Does Not Do</h2>
+
+      <p>SlowGo is a navigation and trip-planning tool configured to prefer roads that available map data reports as posted at 35 miles per hour or below. Depending on your settings, the App may also display route segments that available data reports as posted between 36 and 45 miles per hour.</p>
+
+      <p>The Service provides route suggestions, map displays, place-search results, estimated travel times and distances, weather information, and related estimates. Those outputs are generated from software, GPS signals, your inputs, and third-party data that may be inaccurate, incomplete, delayed, or out of date. <strong>They are provided for general informational and trip-planning purposes only and are not a substitute for your own attention, judgment, and compliance with the law.</strong></p>
+
+      <p>SlowGo does <strong>not</strong>:</p>
+
+      <ul>
+        <li>certify that any route or road is safe, lawful, open, public, paved, maintained, passable, accessible, or suitable for your vehicle;</li>
+        <li>independently verify posted speed limits, traffic controls, road ownership, bridge or tunnel restrictions, vehicle-width or weight limits, turn clearances, surface conditions, gates, construction, flooding, obstacles, private-property access, community rules, seasonal closures, or law-enforcement restrictions;</li>
+        <li>know your vehicle's classification, equipment, registration, insurance, licensing, condition, range, or braking ability, or your local permissions;</li>
+        <li>provide real-time traffic, emergency, legal, engineering, or professional advice; or</li>
+        <li>replace your own observation, judgment, route planning, or compliance with signs and law.</li>
+      </ul>
+
+      <h2 id="s3">3. No Account; Device Responsibility</h2>
+
+      <p>The Service does not require an account. Certain features (such as ride history, favorites, and settings) store information on your device; you are responsible for the security of your device.</p>
+
+      <h2 id="s4">4. Safety and Legal-Use Requirements <span class="flag">Important</span></h2>
+
+      <h3 id="s4-1">4.1 You are always the driver</h3>
+
+      <p>You are solely responsible for the safe and lawful operation of your vehicle at all times. This includes, without limitation: obeying all posted signs, signals, and speed limits; following all federal, state, county, municipal, and community rules that apply to your vehicle and the roads you travel; maintaining control of your vehicle; and adjusting to actual road, traffic, and weather conditions. <strong>If anything in the Service ever conflicts with what you see on the road or with applicable law, the road and the law control — always.</strong></p>
+
+      <h3 id="s4-2">4.2 Route, speed, and access data may be wrong</h3>
+
+      <p>The Service's understanding of roads, posted speed limits, and access comes from third-party map data, including OpenStreetMap, that may be inaccurate, incomplete, or out of date. A road the Service treats as posted at 35 mph may in fact be posted higher or lower, may have changed, or may be closed, private, gated, or restricted. Roads may be missing, misclassified, or unsuitable for your vehicle, including due to surface, width, bridges, tunnels, turn restrictions, one-way designations, or seasonal or construction closures. We do not independently verify this information. <strong>Never rely on the Service's road or speed information in place of posted signs and actual conditions.</strong></p>
+
+      <h3 id="s4-3">4.3 SlowGo does not determine legal eligibility</h3>
+
+      <p>Whether a golf cart or low-speed vehicle may lawfully travel on a particular road varies by state, county, municipality, and community, and may also depend on your vehicle's equipment, registration, insurance, and your driver's license status. The Service does not know your vehicle, your licensing, or your local rules, and <strong>we make no representation that any suggested route — or any portion of one — is legal for you to drive.</strong> Confirming and complying with the rules that apply to you is your responsibility.</p>
+
+      <h3 id="s4-4">4.4 Higher-speed segments</h3>
+
+      <p>By default, the Service is configured to prefer roads that available data reports as 35 mph or below. If you enable the optional setting that permits reported 36–45 mph segments, the App may identify those segments using a different visual treatment (amber) and an estimated duration. Any such classification or duration may be wrong.</p>
+
+      <p>Enabling that setting, or selecting a route that includes such a segment, is your voluntary choice, and <strong>you assume all risks of that choice.</strong> It is not a representation that the segment is legal, safe, or suitable for your vehicle. The routing system is configured to avoid roads its current data reports above the selected threshold, but that configuration depends on incomplete and changing data and can fail. <strong>It is a routing preference, not a guarantee, warranty, or safety certification.</strong></p>
+
+      <h3 id="s4-5">4.5 Do not interact while moving</h3>
+
+      <p>Do not look at, touch, or interact with the App while your vehicle is in motion. Set your destination before you begin, use voice guidance, and pull over safely if you need to interact with your device. You are responsible for complying with all laws regarding device use while operating a vehicle.</p>
+
+      <h3 id="s4-6">4.6 Conditions, GPS, weather, and estimates</h3>
+
+      <p>The Service does not reflect real-time conditions such as construction, closures, obstacles, surface conditions, traffic, events, or weather hazards. GPS positioning varies in accuracy and may be degraded or unavailable. Arrival times, distances, durations, weather information, and gas-savings figures are estimates only. The Service depends on network connectivity and third-party providers and may be interrupted, delayed, inaccurate, or unavailable.</p>
+
+      <h3 id="s4-7">4.7 No emergency use</h3>
+
+      <p>The Service is not intended for use in emergencies and is not intended for emergency vehicles. In an emergency, contact local emergency services.</p>
+
+      <h2 id="s5">5. Assumption of Risk; Release of Ordinary-Negligence Claims <span class="flag">Important</span></h2>
+
+      <div class="notice caps">
+        <p>NOTICE: THIS SECTION AFFECTS RIGHTS RELATING TO PROPERTY DAMAGE, BODILY INJURY, AND DEATH.</p>
+      </div>
+
+      <p>Operating a golf cart, low-speed vehicle, or other vehicle — particularly on or near public roads — involves known and unknown, foreseen and unforeseen risks, including collision, overturn, roadway departure, striking an object or person, trespass, traffic citations, property damage, serious injury, and death. Route and map errors may increase those risks. You knowingly and voluntarily accept the risks inherent in operating your vehicle and in choosing whether to use or rely on route information.</p>
+
+      <div class="notice">
+        <p><strong>To the maximum extent permitted by applicable law, you release and discharge BackRoad Apps and its members, managers, officers, employees, and agents (the "Released Parties") from claims for bodily injury, death, property damage, and other loss arising out of or relating to your use of or reliance on the Service, including claims caused by the ordinary negligence of a Released Party in designing, providing, maintaining, updating, or failing to update route, map, road, speed-limit, access, legality, weather, warning, or other Service information.</strong></p>
+      </div>
+
+      <p>This release does <strong>not</strong> apply to gross negligence, reckless conduct, willful or intentional misconduct, fraud, or any liability that applicable law does not permit a person to release in advance. It also does not release any third party, road owner, vehicle manufacturer, or other person who is not a Released Party.</p>
+
+      <p><strong>Independent protections.</strong> Some jurisdictions restrict or prohibit pre-injury releases, especially for personal injury or death. In those jurisdictions, this Section applies only to the maximum extent permitted, and its full or partial unenforceability does not affect anything else in these Terms. The safety obligations and acknowledgments in Section 4, the warranty disclaimers in Section 12, the liability limitations in Section 13, the arbitration agreement in Section 16, and all other defenses remain separate and independent, and each applies independently of the others to the maximum extent permitted by applicable law.</p>
+
+      <h2 id="s6">6. License and Acceptable Use</h2>
+
+      <h3 id="s6-1">6.1 License</h3>
+
+      <p>Subject to these Terms, we grant you a limited, personal, non-exclusive, non-transferable, revocable license to install and use the App on Apple-branded products that you own or control, as permitted by the App Store Terms of Service (including the Usage Rules) and by the Apple-required terms in Section 15, and to use the Service for your personal, non-commercial use.</p>
+
+      <h3 id="s6-2">6.2 Restrictions</h3>
+
+      <p>You agree not to: (a) copy, modify, distribute, sell, lease, sublicense, or create derivative works of the Service; (b) reverse engineer, decompile, or attempt to extract the source code of the App, except to the extent applicable law expressly permits; (c) access the Service by automated means (including scraping, bots, or bulk requests) or use the Service to build a competing product or dataset; (d) interfere with or disrupt the Service or the servers and networks that provide it, or circumvent any technical or security measure; (e) use the Service to violate any law or the rights of any person; or (f) use the Service for commercial fleet, dispatch, or rideshare operations without our prior written agreement.</p>
+
+      <h2 id="s7">7. Ownership, Trademarks, and Feedback</h2>
+
+      <p>The Service, including its software, design, text, graphics, logos, and trademarks (including "SlowGo" and "Life's better at 15 mph"), is owned by BackRoad Apps or its licensors and is protected by intellectual-property laws. Except for the limited license in Section 6, no rights are granted to you. Third-party map data incorporated in the Service is licensed as described in Section 8, and open-source components are provided under their own licenses, with notices available in the App.</p>
+
+      <p>If you send us feedback, suggestions, or ideas about the Service, you grant us a perpetual, irrevocable, worldwide, royalty-free license to use them for any purpose, without obligation or compensation to you.</p>
+
+      <h2 id="s8">8. Third-Party Services and Data</h2>
+
+      <p>The Service relies on third-party data and services, including: map data © OpenStreetMap contributors, available under the Open Database License (<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">openstreetmap.org/copyright</a>); map tiles and styles by Stadia Maps and OpenMapTiles; routing by the open-source Valhalla engine, including a routing server operated by us and backup routing provided by Stadia Maps; an additional public fallback routing service used only after your in-app consent; place search and details from OpenStreetMap-based services; and weather data from the U.S. National Weather Service.</p>
+
+      <p>These providers are not affiliated with BackRoad Apps, we do not control their data or availability, and their data and services are provided under their own terms, which you agree to comply with where applicable. Attribution is displayed in the App's About screen and on the map, and must not be removed or obscured.</p>
+
+      <h2 id="s9">9. Availability, Updates, and Beta Features</h2>
+
+      <p>We may change, suspend, update, or discontinue any part of the Service at any time, and we may offer beta or pre-release features that may be incomplete or may change. The Service may be unavailable from time to time. We are not liable for any modification, suspension, or discontinuation of the Service.</p>
+
+      <h2 id="s10">10. Purchases and Subscriptions</h2>
+
+      <p>The Service is currently offered free of charge. We may in the future offer optional paid features or subscriptions (for example, a premium tier). If we do: (a) purchases made through the App will be billed by Apple through your App Store account, and Apple's payment terms will apply; (b) any subscription will automatically renew at the disclosed price and interval unless you cancel at least 24 hours before the end of the current period, and you can manage or cancel subscriptions in your App Store account settings; (c) we will disclose the title, duration, price, renewal terms, and features before you purchase, provide the required cancellation information, and give notice of price changes as required by applicable automatic-renewal laws and Apple's policies; and (d) refunds for App Store purchases are handled by Apple under Apple's policies. Except as required by law or by Apple's policies, purchases are non-refundable.</p>
+
+      <h2 id="s11">11. Privacy</h2>
+
+      <p>Our <a href="/privacy">Privacy Policy</a> (available at slowgoapp.com/privacy and in the App) describes what information the Service collects and how it is used, and is incorporated into these Terms by reference.</p>
+
+      <h2 id="s12">12. Disclaimer of Warranties <span class="flag">Important</span></h2>
+
+      <div class="notice caps">
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING WITHOUT LIMITATION IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, ACCURACY, AND RELIABILITY, AND ANY WARRANTIES ARISING FROM COURSE OF DEALING OR USAGE OF TRADE. WITHOUT LIMITING THE FOREGOING, BACKROAD APPS MAKES NO WARRANTY THAT ANY ROUTE, MAP, ROAD, SPEED-LIMIT, LEGALITY, WEATHER, ARRIVAL, OR SAVINGS INFORMATION IS ACCURATE, COMPLETE, CURRENT, LEGAL FOR YOUR VEHICLE, SAFE, OR SUITABLE FOR YOUR PURPOSES, OR THAT THE SERVICE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE. NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM US OR THROUGH THE SERVICE, CREATES ANY WARRANTY NOT EXPRESSLY MADE IN THESE TERMS. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES, SO SOME OF THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU.</p>
+      </div>
+
+      <h2 id="s13">13. Limitation of Liability <span class="flag">Important</span></h2>
+
+      <h3 id="s13-1">13.1 Excluded damages</h3>
+
+      <div class="notice caps">
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, BACKROAD APPS AND ITS MEMBERS, MANAGERS, OFFICERS, EMPLOYEES, AGENTS, LICENSORS, AND SERVICE PROVIDERS WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE, BUSINESS, OPPORTUNITY, DATA, USE, OR GOODWILL, ARISING OUT OF OR RELATING TO THE SERVICE OR THESE TERMS, UNDER ANY THEORY OF LIABILITY, EVEN IF ADVISED THAT SUCH DAMAGES WERE POSSIBLE.</p>
+      </div>
+
+      <h3 id="s13-2">13.2 Aggregate cap for non-personal-injury claims</h3>
+
+      <div class="notice caps">
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, BACKROAD APPS' TOTAL AGGREGATE LIABILITY FOR ALL CLAIMS THAT DO NOT INVOLVE BODILY INJURY OR DEATH WILL NOT EXCEED THE GREATER OF: (A) THE AMOUNT YOU PAID DIRECTLY TO BACKROAD APPS FOR THE SERVICE DURING THE 12 MONTHS BEFORE THE EVENT GIVING RISE TO THE CLAIM; OR (B) ONE HUNDRED U.S. DOLLARS (US $100).</p>
+      </div>
+
+      <h3 id="s13-3">13.3 Bodily injury, death, and non-excludable liability</h3>
+
+      <p>The release in Section 5 and the other defenses in these Terms apply to bodily-injury and death claims only to the extent permitted by applicable law. The monetary cap in Section 13.2 does not purport to cap liability for bodily injury or death where such a cap is prohibited or would be unenforceable. <strong>Nothing in these Terms excludes or limits liability for gross negligence, reckless conduct, willful or intentional misconduct, fraud, or any other liability that cannot lawfully be excluded or limited.</strong> Some jurisdictions do not allow certain exclusions or limitations, so portions of this Section may not apply to you.</p>
+
+      <h2 id="s14">14. Indemnification for Wrongful Misuse</h2>
+
+      <p>To the maximum extent permitted by applicable law, you will indemnify and hold harmless BackRoad Apps and its members, managers, officers, employees, and agents from third-party claims, damages, judgments, penalties, costs, and reasonable attorneys' fees to the extent caused by your: (a) unlawful, fraudulent, reckless, or willful misuse of the Service; (b) infringement or violation of another person's rights through content you submit; or (c) material breach of Sections 4, 6, or 7.</p>
+
+      <p>This Section does not require you to indemnify a BackRoad Apps party for that party's own negligence, gross negligence, reckless conduct, willful misconduct, or violation of law. We will provide reasonable notice of a covered claim and may control its defense, while allowing you to participate with your own counsel at your expense. You may not settle a claim in a manner that admits wrongdoing by, or imposes an obligation on, a BackRoad Apps party without our written consent.</p>
+
+      <h2 id="s15">15. Apple App Store Terms</h2>
+
+      <p>These additional terms apply because the App is distributed through Apple's App Store:</p>
+
+      <p>(a) <strong>Acknowledgment.</strong> These Terms are concluded between you and BackRoad Apps only, and not with Apple Inc. ("Apple"). BackRoad Apps, not Apple, is solely responsible for the App and its content. Your use of the App must also comply with the App Store Terms of Service, and the license granted in Section 6.1 is limited to a non-transferable license to use the App on any Apple-branded products that you own or control, and as permitted by the Usage Rules set forth in the App Store Terms of Service, except that the App may be accessed and used by other accounts associated with you via Family Sharing or volume purchasing.</p>
+
+      <p>(b) <strong>Maintenance and support.</strong> BackRoad Apps, not Apple, is solely responsible for providing any maintenance and support services for the App. Apple has no obligation whatsoever to furnish any maintenance or support services with respect to the App.</p>
+
+      <p>(c) <strong>Warranty.</strong> In the event of any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price of the App (if any) to you. To the maximum extent permitted by applicable law, Apple has no other warranty obligation whatsoever with respect to the App, and any other claims, losses, liabilities, damages, costs, or expenses attributable to any failure to conform to any warranty are the sole responsibility of BackRoad Apps.</p>
+
+      <p>(d) <strong>Product claims.</strong> BackRoad Apps, not Apple, is responsible for addressing any claims by you or any third party relating to the App or your possession and/or use of the App, including but not limited to: (i) product liability claims; (ii) any claim that the App fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.</p>
+
+      <p>(e) <strong>Intellectual property claims.</strong> In the event of any third-party claim that the App or your possession and use of the App infringes that third party's intellectual property rights, BackRoad Apps, not Apple, is solely responsible for the investigation, defense, settlement, and discharge of that claim.</p>
+
+      <p>(f) <strong>Legal compliance.</strong> You represent and warrant that (i) you are not located in a country subject to a U.S. Government embargo or designated by the U.S. Government as a "terrorist supporting" country, and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.</p>
+
+      <p>(g) <strong>Developer contact.</strong> Questions, complaints, or claims regarding the App should be directed to: BackRoad Apps LLC, 4498 Main St, Ste 4 #5690, Amherst, NY 14226, USA; email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>; telephone <a href="tel:+17162353669">(716) 235-3669</a>.</p>
+
+      <p>(h) <strong>Third-party terms.</strong> You must comply with applicable third-party terms of agreement when using the App (for example, your wireless data service agreement).</p>
+
+      <p>(i) <strong>Third-party beneficiary.</strong> Apple and Apple's subsidiaries are third-party beneficiaries of these Terms, and upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary.</p>
+
+      <h2 id="s16">16. Dispute Resolution; Binding Individual Arbitration <span class="flag">Important</span></h2>
+
+      <div class="notice caps">
+        <p>PLEASE READ THIS SECTION CAREFULLY. IT AFFECTS YOUR LEGAL RIGHTS, INCLUDING YOUR RIGHT TO FILE A LAWSUIT IN COURT AND TO HAVE A JURY TRIAL.</p>
+      </div>
+
+      <h3 id="s16-1">16.1 Informal notice and good-faith resolution</h3>
+
+      <p>Before starting an arbitration, you agree to send a written description of the dispute to <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a> and give us 30 days to try to resolve it informally. Any applicable statute of limitations is tolled during this 30-day period.</p>
+
+      <h3 id="s16-2">16.2 Agreement to arbitrate</h3>
+
+      <p>Except as provided in Section 16.5, any dispute, claim, or controversy arising out of or relating to the Service or these Terms that is not resolved informally will be resolved by <strong>binding individual arbitration</strong> administered by the American Arbitration Association ("AAA") under its Consumer Arbitration Rules then in effect. The arbitration will be conducted in the county where you reside or another mutually agreed location, or by videoconference or on written submissions where the AAA rules allow. The arbitrator's award may be entered in any court of competent jurisdiction. The Federal Arbitration Act governs the interpretation and enforcement of this Section.</p>
+
+      <h3 id="s16-3">16.3 Fees</h3>
+
+      <p>We will pay AAA filing, administrative, and arbitrator fees to the extent required by the AAA Consumer Arbitration Rules and Consumer Due Process Protocol, and we will pay any additional amounts necessary to prevent the arbitration from being cost-prohibitive to you, as determined by the arbitrator or the AAA rules.</p>
+
+      <h3 id="s16-4">16.4 Court and arbitrator authority</h3>
+
+      <p>Only a court, and not an arbitrator, will decide disputes about the formation, existence, scope, or enforceability of this arbitration agreement or the class-action waiver, including whether you agreed to these Terms, whether you validly opted out, and which version of the Terms applies. All other issues are for the arbitrator.</p>
+
+      <h3 id="s16-5">16.5 Exceptions</h3>
+
+      <p>Either party may (a) bring an individual claim in small-claims court if it qualifies; (b) seek injunctive or other equitable relief in a court of competent jurisdiction to protect intellectual property or prevent unauthorized use of the Service; and (c) to the extent your applicable state law provides a non-waivable right to seek public injunctive relief, bring such a claim in a court of competent jurisdiction, which claim is severed from arbitration and stayed pending the arbitration of any individual claims.</p>
+
+      <h3 id="s16-6">16.6 Class and representative action waiver</h3>
+
+      <div class="notice caps">
+        <p>YOU AND BACKROAD APPS EACH AGREE THAT DISPUTES WILL BE RESOLVED ONLY ON AN INDIVIDUAL BASIS, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS, CONSOLIDATED, OR REPRESENTATIVE PROCEEDING. THE ARBITRATOR MAY NOT CONSOLIDATE CLAIMS OR PRESIDE OVER ANY FORM OF REPRESENTATIVE OR CLASS PROCEEDING.</p>
+      </div>
+
+      <p>If this waiver is found unenforceable as to a particular claim, that claim (and only that claim) will proceed in court, and the remainder of this Section 16 remains in effect.</p>
+
+      <h3 id="s16-7">16.7 Opt-out right</h3>
+
+      <p>You may opt out of this arbitration agreement and the class-action waiver by emailing <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a> within <strong>30 days</strong> of first accepting these Terms, with the subject line "Arbitration Opt-Out" and stating your name and the email or device/acceptance identifier you use with the Service. Opting out will not affect any other provision of these Terms.</p>
+
+      <h3 id="s16-8">16.8 Changes to arbitration terms</h3>
+
+      <p>If we make a material change to this Section 16, the change will apply prospectively only, and you may reject it by the method and within the time we specify at the time of the change; your rejection will not affect the rest of these Terms.</p>
+
+      <h2 id="s17">17. Governing Law and Judicial Venue</h2>
+
+      <p>These Terms and any dispute arising out of or relating to them or the Service are governed by the laws of the State of New York, without regard to its conflict-of-laws rules, except that Section 16 is governed by the Federal Arbitration Act. Subject to Section 16, any judicial proceeding will be brought exclusively in the state or federal courts located in Erie County, New York, and the parties consent to personal jurisdiction and venue there. Nothing in this Section deprives you of the mandatory consumer protections of the law of the place where you reside.</p>
+
+      <h2 id="s18">18. Suspension and Termination</h2>
+
+      <p>You may stop using the Service at any time by deleting the App. We may suspend or terminate your access to the Service at any time, with or without notice, if we reasonably believe you have violated these Terms or if we discontinue the Service. Sections 4, 5, 7, 8, and 11 through 20 survive termination.</p>
+
+      <h2 id="s19">19. Changes to These Terms</h2>
+
+      <p>We may update these Terms from time to time. If we make material changes — including to the release (Section 5), liability limits (Section 13), or arbitration (Section 16) — we will provide notice and, where the change is material, require your affirmative acceptance before the change applies to you, and such changes will apply prospectively. For non-material changes, we will update the "Last updated" date. Your continued use of the Service after non-material changes take effect constitutes acceptance. If you do not agree to a change, stop using the Service.</p>
+
+      <h2 id="s20">20. General</h2>
+
+      <p>If any provision of these Terms is held unenforceable, the remaining provisions remain in full force, and the unenforceable provision will be modified to the minimum extent necessary to make it enforceable. These Terms, together with the Privacy Policy, are the entire agreement between you and BackRoad Apps regarding the Service and supersede any prior agreements. Our failure to enforce any provision is not a waiver. You may not assign these Terms; we may assign them in connection with a merger, acquisition, or sale of assets. Nothing in these Terms creates any agency, partnership, or joint venture.</p>
+
+      <h2 id="s21">21. Contact</h2>
+
+      <address class="contact">
+        <strong>BackRoad Apps LLC</strong><br />
+        4498 Main St, Ste 4 #5690<br />
+        Amherst, NY 14226, USA<br />
+        Email: <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a><br />
+        Telephone: <a href="tel:+17162353669">(716) 235-3669</a><br />
+        Web: <a href="/">slowgoapp.com</a>
+      </address>
+
+    </article>
   </div>
 </main>
 

@@ -6,7 +6,13 @@
 <title>Privacy Policy — SlowGo</title>
 <meta name="description" content="Privacy policy for SlowGo, a product of BackRoad Apps LLC." />
 <meta name="theme-color" content="#0B1F15" />
-<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://slowgoapp.com/privacy" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Privacy Policy — SlowGo" />
+<meta property="og:description" content="Privacy policy for SlowGo, a product of BackRoad Apps LLC." />
+<meta property="og:url" content="https://slowgoapp.com/privacy" />
+<meta property="og:site_name" content="SlowGo" />
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231E3A2B'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='36' fill='%23F4EDE0'>S</text></svg>" />
 
@@ -21,6 +27,7 @@
     --moss:          #5B7A5F;
     --amber:         #C8853A;
     --amber-soft:    #E0A969;
+    --amber-deep:    #8A5620;
     --oat:           #F4EDE0;
     --cream:         #FBF7EF;
     --drift:         #A09484;
@@ -34,7 +41,8 @@
   }
 
   *,*::before,*::after{ box-sizing:border-box; }
-  html{ -webkit-text-size-adjust:100%; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
   body{
     margin:0;
     background:var(--cream);
@@ -52,9 +60,17 @@
   ::selection{ background:var(--amber); color:var(--cream); }
   a{ color:inherit; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:rgba(160,148,132,.6); transition:color .2s ease, text-decoration-color .2s ease; }
   a:hover{ color:var(--amber); text-decoration-color:var(--amber); }
+  a:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; border-radius:2px; }
 
   .wrap{ max-width:var(--max); margin:0 auto; padding-left:32px; padding-right:32px; }
   @media (max-width: 640px){ .wrap{ padding-left:22px; padding-right:22px; } }
+
+  .skip{
+    position:absolute; left:-9999px; top:0;
+    background:var(--charcoal); color:var(--oat);
+    padding:12px 18px; z-index:50; text-decoration:none; font-size:14px;
+  }
+  .skip:focus{ left:0; }
 
   /* -------- Topbar -------- */
   .topbar{
@@ -89,7 +105,7 @@
   }
 
   /* -------- Legal page body -------- */
-  .legal{ flex:1 0 auto; padding: clamp(72px, 10vw, 128px) 0 clamp(80px, 10vw, 140px); }
+  .legal{ flex:1 0 auto; padding: clamp(64px, 8vw, 104px) 0 clamp(80px, 10vw, 140px); }
   .eyebrow{
     font-family:var(--sans);
     font-size:11px;
@@ -105,18 +121,155 @@
     font-family:var(--serif);
     font-weight:500;
     font-variation-settings:"opsz" 144, "SOFT" 40, "WONK" 0;
-    font-size: clamp(44px, 6vw, 88px);
+    font-size: clamp(40px, 5.4vw, 76px);
     line-height:1.0;
     letter-spacing:-0.02em;
     margin:0;
     text-wrap:balance;
   }
-  .legal p{
-    font-size:18px;
-    line-height:1.75;
+  .updated{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--drift);
+    margin:26px 0 0;
+  }
+
+  /* -------- Legal prose -------- */
+  .prose{
+    max-width:74ch;
+    margin:48px 0 0;
+    font-size:16.5px;
+    line-height:1.78;
+    color:var(--forest);
+  }
+  .prose > p{ margin:20px 0 0; }
+  .prose .lede{
+    font-size:19px;
+    line-height:1.7;
     color:var(--moss);
-    max-width:56ch;
-    margin: 28px 0 0;
+    margin-top:0;
+  }
+  .prose h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 96, "SOFT" 40, "WONK" 0;
+    font-size: clamp(25px, 3vw, 32px);
+    line-height:1.2;
+    letter-spacing:-0.015em;
+    color:var(--forest);
+    margin:56px 0 0;
+    padding-top:28px;
+    border-top:1px solid rgba(160,148,132,.28);
+    scroll-margin-top:24px;
+  }
+  .prose h3{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:-0.005em;
+    color:var(--forest);
+    margin:36px 0 0;
+    scroll-margin-top:24px;
+  }
+  .prose ul{ margin:18px 0 0; padding-left:22px; }
+  .prose li{ margin:9px 0 0; }
+  .prose li::marker{ color:var(--amber); }
+  .prose strong{ font-weight:600; color:var(--forest); }
+  .prose a{ text-decoration-color:rgba(200,133,58,.5); }
+
+  /* Conspicuous notices */
+  .notice{
+    background:var(--oat);
+    border:1px solid rgba(200,133,58,.35);
+    border-left:4px solid var(--amber);
+    border-radius:3px;
+    padding:22px 26px;
+    margin:28px 0 0;
+  }
+  .notice p{ margin:0; color:var(--forest); }
+  .notice p + p{ margin-top:16px; }
+  .notice.lead p{ font-size:17px; }
+  @media (max-width: 640px){
+    .notice{ padding:18px 20px; }
+  }
+
+  /* -------- Provider table -------- */
+  .table-scroll{
+    margin:26px 0 0;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    border:1px solid rgba(160,148,132,.32);
+    border-radius:4px;
+  }
+  table.providers{
+    border-collapse:collapse;
+    width:100%;
+    min-width:640px;
+    font-size:15px;
+    line-height:1.6;
+    background:rgba(244,237,224,.4);
+  }
+  table.providers th,
+  table.providers td{
+    text-align:left;
+    vertical-align:top;
+    padding:14px 18px;
+    border-bottom:1px solid rgba(160,148,132,.28);
+  }
+  table.providers thead th{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--drift);
+    background:rgba(244,237,224,.85);
+    white-space:nowrap;
+  }
+  table.providers tbody th{ font-weight:600; color:var(--forest); }
+  table.providers tbody tr:last-child th,
+  table.providers tbody tr:last-child td{ border-bottom:0; }
+
+  /* -------- Contents -------- */
+  .toc{
+    margin:44px 0 0;
+    padding:26px 30px 30px;
+    background:rgba(244,237,224,.55);
+    border:1px solid rgba(160,148,132,.3);
+    border-radius:4px;
+    max-width:74ch;
+  }
+  .toc h2{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--drift);
+    margin:0 0 16px;
+    border:0; padding:0;
+  }
+  .toc ol{
+    list-style:none;
+    margin:0; padding:0;
+    columns:2;
+    column-gap:40px;
+    font-size:14.5px;
+  }
+  .toc li{ margin:0 0 7px; break-inside:avoid; }
+  .toc a{ text-decoration:none; color:var(--forest); }
+  .toc a:hover{ color:var(--amber); }
+  @media (max-width: 640px){
+    .toc{ padding:22px 20px 24px; }
+    .toc ol{ columns:1; }
+  }
+
+  /* -------- Contact block -------- */
+  .contact{
+    margin:24px 0 0;
+    font-style:normal;
+    line-height:1.85;
   }
 
   /* -------- Footer -------- */
@@ -183,6 +336,8 @@
 </head>
 <body>
 
+<a class="skip" href="#doc">Skip to the policy</a>
+
 <header class="topbar" role="banner">
   <div class="topbar-inner">
     <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
@@ -196,7 +351,177 @@
   <div class="wrap">
     <p class="eyebrow"><span class="dot"></span> Legal</p>
     <h1>Privacy Policy</h1>
-    <p>Our full privacy policy is being finalized and will be posted here shortly. Questions? Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+    <p class="updated">Last updated: July 22, 2026</p>
+
+    <nav class="toc" aria-labelledby="toc-heading">
+      <h2 id="toc-heading">Contents</h2>
+      <ol>
+        <li><a href="#s1">1. Information We Collect</a></li>
+        <li><a href="#s2">2. How We Use Information</a></li>
+        <li><a href="#s3">3. Where Your Information Goes</a></li>
+        <li><a href="#s4">4. Crash and Error Reports</a></li>
+        <li><a href="#s5">5. What Stays on Your Phone</a></li>
+        <li><a href="#s6">6. Data Retention</a></li>
+        <li><a href="#s7">7. Security</a></li>
+        <li><a href="#s8">8. Your Choices</a></li>
+        <li><a href="#s9">9. Your Privacy Rights</a></li>
+        <li><a href="#s10">10. Children</a></li>
+        <li><a href="#s11">11. Changes to This Policy</a></li>
+        <li><a href="#s12">12. Contact Us</a></li>
+      </ol>
+    </nav>
+
+    <article class="prose" id="doc">
+
+      <p class="lede">This Privacy Policy describes how <strong>BackRoad Apps LLC</strong> ("<strong>BackRoad Apps</strong>," "<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>") handles information in connection with the SlowGo mobile application (the "<strong>App</strong>") and the slowgoapp.com website (the "<strong>Site</strong>") (together, the "<strong>Service</strong>").</p>
+
+      <div class="notice lead">
+        <p><strong>The short version:</strong> SlowGo uses your location to do its job — showing where you are, suggesting routes, and checking your local weather. Your saved ride history stays on your phone. We don't require accounts, we don't sell your information, and we don't show ads.</p>
+      </div>
+
+      <h2 id="s1">1. Information We Collect</h2>
+
+      <p><strong>We do not require an account.</strong> The App does not ask for your name, email address, phone number, or any login.</p>
+
+      <p><strong>Precise location.</strong> With your permission (through your device's location prompt), the App collects your device's precise location while you use it, to show your position on the map, calculate and display routes, search for nearby places, and provide local weather. When you request a route or search, the relevant coordinates are transmitted to the providers that fulfill the request (see Section 3). You can withdraw location permission at any time in your device settings; core features of a navigation app will not work without it.</p>
+
+      <p><strong>Ride, favorite, and settings data (stored on your device).</strong> The App stores your ride history, favorite places, recent destinations, and settings on your device. See Section 5 for details and controls.</p>
+
+      <p><strong>Diagnostics and reliability data.</strong> If the App crashes or encounters an error, a diagnostic report may be generated so we can find and fix the problem. Before any report is sent, the App is configured to remove location coordinates and other trip-revealing fields (see Section 4). We also process limited technical information to keep the Service reliable, such as which routing provider served a request and whether it succeeded.</p>
+
+      <p><strong>Device and technical information.</strong> Providers that serve the App's requests (Section 3) receive standard technical information necessary to respond, such as your IP address and basic device and app information. Our Site is a largely static website; our hosting provider may process standard server logs (such as IP address and browser type) to operate and secure the Site.</p>
+
+      <p><strong>Information you send us.</strong> If you email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>, we receive your email address and the contents of your message, which we use to respond and to improve the Service.</p>
+
+      <p><strong>We do not collect</strong> contacts, photos or videos, microphone audio, health data, biometric data, advertising identifiers, or precise location while the App is closed.</p>
+
+      <h2 id="s2">2. How We Use Information; Notice at Collection</h2>
+
+      <p>We use information to: provide the Service (position, routing, place search, weather); operate the App's safety-related display features (for example, identifying higher-speed segments of a route); diagnose and fix crashes and reliability problems; secure and operate the Service; respond to your messages; and comply with law. The categories we process, the purposes, and our retention approach are described in this Policy and, for location and diagnostics, are surfaced in the App at the point of collection. We do <strong>not</strong> use your information for advertising, and we do not build advertising or tracking profiles of you.</p>
+
+      <h2 id="s3">3. Where Your Information Goes</h2>
+
+      <p>To fulfill your requests, the App sends your coordinates and related request data to the services that do the work:</p>
+
+      <div class="table-scroll">
+        <table class="providers">
+          <thead>
+            <tr>
+              <th scope="col">Provider</th>
+              <th scope="col">What it does</th>
+              <th scope="col">What it receives</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">BackRoad Apps routing server (Valhalla, operated by us)</th>
+              <td>Calculates cart-friendly routes</td>
+              <td>Trip start/end coordinates and route requests</td>
+            </tr>
+            <tr>
+              <th scope="row">Stadia Maps</th>
+              <td>Map tiles and styles, place search (geocoding), backup routing</td>
+              <td>Map-area coordinates, search queries, and routing requests</td>
+            </tr>
+            <tr>
+              <th scope="row">Public routing fallback (OSRM)</th>
+              <td>Backup routing, used only after you consent in the App</td>
+              <td>Trip start/end coordinates, only when used</td>
+            </tr>
+            <tr>
+              <th scope="row">OpenStreetMap-based services</th>
+              <td>Nearby-place search and place details</td>
+              <td>Search-area coordinates and queries</td>
+            </tr>
+            <tr>
+              <th scope="row">U.S. National Weather Service</th>
+              <td>Local weather and forecasts</td>
+              <td>Approximate area coordinates</td>
+            </tr>
+            <tr>
+              <th scope="row">Sentry</th>
+              <td>Crash and error reporting</td>
+              <td>Diagnostics, configured to exclude location and trip-revealing data before sending</td>
+            </tr>
+            <tr>
+              <th scope="row">Apple</th>
+              <td>App distribution, and payment processing if paid features are offered</td>
+              <td>Per Apple's own terms and privacy policy</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>These providers process requests to deliver the Service under their own terms and our agreements with them. <strong>We do not maintain user accounts and do not intentionally build a persistent, account-linked history of where you go.</strong> Our routing server processes route requests to answer them; our access and security logs are configured not to record route coordinates. Providers may retain request and security logs under their own policies, including where reasonably necessary for security, fraud prevention, legal compliance, or backups.</p>
+
+      <p>We may also disclose information if required by law, to protect the rights, safety, or property of BackRoad Apps or others, or in connection with a merger, acquisition, or sale of assets (in which case this Policy will continue to apply to previously collected information unless you are notified otherwise).</p>
+
+      <div class="notice">
+        <p><strong>We do not sell your personal information, and we do not share it for cross-context behavioral advertising.</strong></p>
+      </div>
+
+      <h2 id="s4">4. Crash and Error Reports</h2>
+
+      <p>If SlowGo crashes or hits an error, a diagnostic report may be sent to our crash-reporting provider (Sentry) so we can fix the problem. Crash-reporting tools can otherwise capture sensitive context, so before anything is sent the App is configured to remove latitude and longitude, addresses, route endpoints, search text, and request bodies, URLs, or breadcrumbs that could reveal a trip or destination. We configure the provider to limit IP-address storage, minimize default data collection, and restrict retention and access. Crash reports are about the App's health, not about where you went.</p>
+
+      <h2 id="s5">5. What Stays on Your Phone</h2>
+
+      <p><strong>Your saved ride history stays on your phone.</strong> SlowGo keeps your most recent rides (up to 100) in the App's storage on your device, and stores their start and end points at reduced precision — close enough to remember the trip, not close enough to point at a doorstep. Favorites are stored at full precision so they take you exactly where you saved. (Separately, when you actually request a route, that route's start and end coordinates are transmitted to providers to calculate it, as described in Section 3 — this is different from the on-device history.)</p>
+
+      <p><strong>Your controls:</strong> you can turn ride saving off ("Save ride history" in Settings), and you can delete all saved rides at any time ("Clear ride history" in Settings). Deleting the App removes its on-device data.</p>
+
+      <p><strong>Device protections and backups:</strong> on-device data is stored using standard iOS app storage and is protected by your device's own protections (such as your passcode and the operating system's safeguards). Your device backups (for example, iCloud or computer backups) may include the App's data. We do not separately encrypt this data beyond the protections your device provides.</p>
+
+      <h2 id="s6">6. Data Retention</h2>
+
+      <p>Ride history, favorites, recents, and settings remain on your device until you delete them or delete the App. For information we or our infrastructure process: our access and security logs are retained no more than 14 days and are configured not to include route coordinates; reliability telemetry and Sentry crash events are retained approximately 90 days; emails you send us are retained approximately 24 months, or longer if needed for a legal matter; and routine Site server logs are retained approximately 30 days. If we introduce paid features, transaction and tax records may be retained up to 7 years as required by law. Third-party providers retain request data under their own policies. These periods are targets we configure and may adjust as reasonably necessary for security, legal, or operational reasons.</p>
+
+      <h2 id="s7">7. Security</h2>
+
+      <p>Requests between the App and service providers are transmitted using industry-standard encryption in transit (HTTPS/TLS). On-device data is protected by your device's safeguards as described in Section 5. No method of transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
+
+      <h2 id="s8">8. Your Choices</h2>
+
+      <ul>
+        <li><strong>Location:</strong> manage the App's location permission in your device settings.</li>
+        <li><strong>Ride history:</strong> toggle saving off, or clear it, in the App's Settings.</li>
+        <li><strong>Crash reporting and reliability data:</strong> these are limited and configured to exclude trip data; deleting the App stops all collection.</li>
+        <li><strong>Do Not Track / Global Privacy Control:</strong> the Service does not track you across other companies' apps or websites, so there is nothing for these signals to opt out of.</li>
+      </ul>
+
+      <h2 id="s9">9. Your Privacy Rights</h2>
+
+      <h3 id="s9-us">United States state privacy rights</h3>
+
+      <p>Depending on where you live (for example, California, Colorado, Connecticut, Texas, Utah, Virginia, and other states with comprehensive privacy laws), you may have rights to know, access, correct, delete, or obtain a copy of personal information, to opt out of sale, sharing, or targeted advertising, and to withdraw consent to processing of sensitive data such as precise location. <strong>Our practices make most of this simple:</strong> we do not sell or share personal information for advertising, we do not profile you, precise location is used only to provide the Service, and the personal information the Service keeps (your rides, favorites, and settings) lives on your device under your direct control — you can access it in the App and delete it yourself at any time (Section 5).</p>
+
+      <p>For anything else — including questions, or access or deletion requests concerning emails you have sent us — contact us at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a> and tell us the state where you reside. We will verify and respond as required by applicable law, we will not discriminate against you for exercising your rights, and if we deny a request you may appeal by replying to our response. You may use an authorized agent where applicable law allows.</p>
+
+      <p><strong>California notice:</strong> in the preceding 12 months, we have collected the categories described in Section 1 (identifiers such as IP address; precise geolocation; internet/electronic activity and diagnostic information; and communications you send us), for the purposes in Section 2, disclosed to the service providers in Section 3, and retained per Section 6. We do not sell or share personal information as those terms are defined by California law, and we have no actual knowledge of selling or sharing personal information of consumers under 16. California residents may exercise the rights described above.</p>
+
+      <h3 id="s9-intl">Outside the United States</h3>
+
+      <p>The Service is intended for use in the United States, and information is processed in the United States. If you access the Service from outside the United States, you do so on your own initiative and are responsible for compliance with local law.</p>
+
+      <h2 id="s10">10. Children</h2>
+
+      <p>The Service is intended only for users who are at least 18 years old, and we do not knowingly collect personal information from anyone under 18. If you believe someone under 18 has provided us personal information, contact us at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a> and we will investigate and delete it where appropriate.</p>
+
+      <h2 id="s11">11. Changes to This Policy</h2>
+
+      <p>We may update this Privacy Policy from time to time. We will post the updated version at slowgoapp.com/privacy and update the "Last updated" date, and for material changes we will provide additional notice through the App or the Site. Your continued use of the Service after changes take effect constitutes acceptance of the updated Policy.</p>
+
+      <h2 id="s12">12. Contact Us</h2>
+
+      <address class="contact">
+        <strong>BackRoad Apps LLC</strong><br />
+        4498 Main St, Ste 4 #5690<br />
+        Amherst, NY 14226, USA<br />
+        Email: <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a><br />
+        Web: <a href="/">slowgoapp.com</a>
+      </address>
+
+    </article>
   </div>
 </main>
 
