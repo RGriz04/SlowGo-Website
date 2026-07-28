@@ -34,6 +34,7 @@
     --moss:          #5B7A5F;
     --amber:         #C8853A;
     --amber-soft:    #E0A969;
+    --amber-deep:    #8A5620;
     --oat:           #F4EDE0;
     --cream:         #FBF7EF;
     --drift:         #A09484;
@@ -434,6 +435,19 @@
     .signup input{ padding:14px 16px; }
     .signup button{ width:100%; padding:14px 22px; border-radius:10px; }
   }
+
+  /* Submit failure. Shown only when the POST did not succeed; the form stays
+     filled and usable underneath so nobody has to retype. */
+  .form-error{
+    margin:14px 0 0;
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.6;
+    color:var(--amber-soft);
+    text-align:center;
+  }
+  .surf-cream .form-error, .surf-oat .form-error{ color:var(--amber-deep); }
+  .townform .form-error{ text-align:left; }
 
   .visually-hidden{
     position:absolute; width:1px; height:1px; padding:0; margin:-1px;
@@ -1275,6 +1289,7 @@
             <button type="submit">Join the waitlist</button>
           </div>
           <p class="signup-note">No spam. One email when it's ready.</p>
+          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment?</p>
           <p class="signup-confirm" id="confirm-hero" role="status" aria-live="polite">You're on the list. Take your time.</p>
         </form>
 
@@ -1507,6 +1522,7 @@
           <button type="submit">Put it on the map</button>
         </div>
         <p class="townform-note">We'll write once, when we've checked your roads.</p>
+        <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment?</p>
         <p class="townform-confirm" id="confirm-town" role="status" aria-live="polite">Noted. We'll write when we've checked your roads.</p>
       </form>
     </div>
@@ -1671,6 +1687,7 @@
           <button type="submit">Join the waitlist</button>
         </div>
         <p class="signup-note">iOS first · Summer 2026 · Free to start</p>
+        <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment?</p>
         <p class="signup-confirm" id="confirm-when" role="status" aria-live="polite">You're on the list. Take your time.</p>
       </form>
 
@@ -1805,6 +1822,11 @@
     }
     var forms = document.querySelectorAll('form.signup, form.townform');
     forms.forEach(function(form){
+      var btn = form.querySelector('button[type=submit]');
+      // Captured once, before the first submit overwrites it, so a retry
+      // restores the real label instead of "Sending\u2026".
+      var btnLabel = btn ? btn.textContent : '';
+
       form.addEventListener('submit', function(e){
         e.preventDefault();
         // Validate every required field, not just the email one \u2014 the
@@ -1815,21 +1837,27 @@
         });
         if (invalid){ invalid.focus(); return; }
 
+        hideError(form);
+
         var data = {};
         new FormData(form).forEach(function(v,k){ data[k] = v; });
         data['form-name'] = form.getAttribute('name') || 'waitlist';
 
-        var btn = form.querySelector('button[type=submit]');
         if (btn){ btn.disabled = true; btn.textContent = 'Sending\u2026'; }
 
         fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: encode(data)
-        }).then(function(){
+        }).then(function(res){
+          // A 4xx/5xx still resolves the promise, so check the status too \u2014
+          // otherwise a rejected submission would read as a success.
+          if (!res || !res.ok) throw new Error('Submit failed: ' + (res && res.status));
           showConfirm(form);
         }).catch(function(){
-          showConfirm(form);
+          // Leave the fields as the rider typed them and say what happened.
+          if (btn){ btn.disabled = false; btn.textContent = btnLabel; }
+          showError(form);
         });
       });
     });
@@ -1841,6 +1869,14 @@
         msg.style.display = 'block';
         requestAnimationFrame(function(){ msg.classList.add('show'); });
       }
+    }
+    function showError(form){
+      var err = form.querySelector('.form-error');
+      if (err) err.hidden = false;
+    }
+    function hideError(form){
+      var err = form.querySelector('.form-error');
+      if (err) err.hidden = true;
     }
   })();
 </script>
