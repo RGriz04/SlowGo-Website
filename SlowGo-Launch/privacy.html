@@ -351,7 +351,7 @@
   <div class="wrap">
     <p class="eyebrow"><span class="dot"></span> Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: July 22, 2026</p>
+    <p class="updated">Last updated: July 28, 2026</p>
 
     <nav class="toc" aria-labelledby="toc-heading">
       <h2 id="toc-heading">Contents</h2>
@@ -415,8 +415,8 @@
           <tbody>
             <tr>
               <th scope="row">BackRoad Apps routing server (Valhalla, operated by us)</th>
-              <td>Calculates cart-friendly routes</td>
-              <td>Trip start/end coordinates and route requests</td>
+              <td>Calculates cart-friendly routes, and looks up the posted speed limits along a route it has calculated</td>
+              <td>Trip start/end coordinates, route requests, and the shape of a calculated route</td>
             </tr>
             <tr>
               <th scope="row">Stadia Maps</th>
@@ -430,8 +430,8 @@
             </tr>
             <tr>
               <th scope="row">OpenStreetMap-based services</th>
-              <td>Nearby-place search and place details</td>
-              <td>Search-area coordinates and queries</td>
+              <td>Nearby-place search, place details, and checking whether paths on a route are cart-legal</td>
+              <td>Search-area coordinates and queries, and sample points along a calculated route</td>
             </tr>
             <tr>
               <th scope="row">U.S. National Weather Service</th>
@@ -468,7 +468,13 @@
 
       <p><strong>Your saved ride history stays on your phone.</strong> SlowGo keeps your most recent rides (up to 100) in the App's storage on your device, and stores their start and end points at reduced precision — close enough to remember the trip, not close enough to point at a doorstep. Favorites are stored at full precision so they take you exactly where you saved. (Separately, when you actually request a route, that route's start and end coordinates are transmitted to providers to calculate it, as described in Section 3 — this is different from the on-device history.)</p>
 
-      <p><strong>Your controls:</strong> you can turn ride saving off ("Save ride history" in Settings), and you can delete all saved rides at any time ("Clear ride history" in Settings). Deleting the App removes its on-device data.</p>
+      <p><strong>Your most recent position is also saved on your phone.</strong> So the map can open where you left off instead of a blank screen while your first GPS reading arrives, the App keeps your <strong>single most recent location reading at full precision</strong>, along with what produced it (a live reading or the position your device had already cached), when it was taken, and how accurate it was. It is a single point, not a trail: each new reading overwrites the previous one, and no history of these readings is kept. It stays on your device until you delete the App. This is the most precise location the App keeps on your phone, which is why we name it here specifically.</p>
+
+      <p><strong>An in-progress ride is saved so you can resume it.</strong> When you start navigating, the App saves that ride's <strong>destination at full precision</strong> (with its label), the custom starting point if you set one, and the time you started, so that if the App is closed or crashes mid-ride it can offer to pick the trip back up. It is cleared as soon as you arrive, when you end the ride, when you decline the offer to resume, and automatically if it is more than 90 minutes old or you are no longer near the trip when the App next opens.</p>
+
+      <p><strong>The map's last position is saved.</strong> The App separately stores <strong>where the map was last looking</strong> — a center point and zoom level — so re-opening the App restores your view instead of jumping. This is a map view, not a record of where you were; you can pan the map anywhere without going there. It is overwritten as you move the map and stays on your device until you delete the App.</p>
+
+      <p><strong>Your controls:</strong> you can turn ride saving off ("Save ride history" in Settings), and you can delete all saved rides at any time ("Clear ride history" in Settings). Turning off the App's location permission stops new position readings from being taken or saved. Deleting the App removes all of its on-device data, including the three items above — which, apart from the in-progress ride clearing itself as described, is how they are removed.</p>
 
       <p><strong>Device protections and backups:</strong> on-device data is stored using standard iOS app storage and is protected by your device's own protections (such as your passcode and the operating system's safeguards). Your device backups (for example, iCloud or computer backups) may include the App's data. We do not separately encrypt this data beyond the protections your device provides.</p>
 

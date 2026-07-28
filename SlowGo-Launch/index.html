@@ -918,6 +918,163 @@
     .phones{ grid-template-columns: minmax(0, 280px); gap: 40px; }
   }
 
+  /* -------- App Store CTA (pre-launch: hidden) --------
+     Launch day: delete the `hidden` attribute on .appstore-cta in the hero.
+     Swap the placeholder pill for Apple's official "Download on the App Store"
+     badge asset (Apple requires their artwork, not a lookalike) and point the
+     href at the real listing. */
+  .appstore-cta{ display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .appstore-cta[hidden]{ display:none; }
+  .appstore-badge{
+    display:inline-flex; align-items:center; gap:12px;
+    border:1px solid rgba(244,237,224,.45);
+    border-radius:12px;
+    padding:10px 22px;
+    text-decoration:none;
+    color:var(--oat);
+    background:rgba(244,237,224,.06);
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .appstore-badge:hover{ background:rgba(244,237,224,.12); border-color:var(--amber); color:var(--oat); }
+  .appstore-badge svg{ width:22px; height:22px; fill:currentColor; flex:0 0 auto; }
+  .appstore-badge .l1{
+    display:block; font-family:var(--sans); font-size:10px;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--drift-2); line-height:1.3;
+  }
+  .appstore-badge .l2{
+    display:block; font-family:var(--sans); font-size:17px; font-weight:600;
+    letter-spacing:-0.01em; line-height:1.25;
+  }
+
+  /* -------- Coverage callout (honest scope) -------- */
+  .coverage{
+    max-width:64ch;
+    margin: 0 0 clamp(36px, 5vw, 56px);
+    padding: 26px 30px;
+    background:var(--cream);
+    border:1px solid rgba(30,58,43,.14);
+    border-left:4px solid var(--amber);
+    border-radius:4px;
+  }
+  .coverage h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 48, "SOFT" 40, "WONK" 0;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height:1.2;
+    letter-spacing:-0.012em;
+    margin:0 0 14px 0;
+    color:var(--forest);
+  }
+  .coverage p{
+    font-family:var(--sans);
+    font-size:16.5px;
+    line-height:1.7;
+    margin:0;
+    color:var(--forest);
+    text-wrap:pretty;
+  }
+  .coverage p + p{ margin-top:14px; }
+  @media (max-width: 640px){ .coverage{ padding:20px 22px; } }
+
+  /* -------- Green / Amber / NoGo -------- */
+  .signals{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1px;
+    background:rgba(30,58,43,.14);
+    border:1px solid rgba(30,58,43,.14);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .signal{ background:var(--cream); padding: 36px 30px; }
+  .signal .k{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--mono);
+    font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--forest);
+    margin:0 0 16px 0;
+  }
+  .signal .k .swatch{ width:22px; height:4px; border-radius:2px; flex:0 0 auto; }
+  .signal .k .swatch.green{ background:var(--moss); }
+  .signal .k .swatch.amber{ background:var(--amber); }
+  .signal .k .swatch.nogo{ background:var(--drift); }
+  .signal p{
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.7;
+    margin:0;
+    color:rgba(30,58,43,.88);
+    max-width:34ch;
+  }
+  @media (max-width: 820px){
+    .signals{ grid-template-columns: 1fr; }
+    .signal{ padding: 28px 24px; }
+  }
+
+  /* -------- Town request form -------- */
+  .townform{
+    max-width:520px;
+    margin: clamp(36px, 5vw, 52px) 0 0;
+  }
+  .townform .fields{ display:flex; flex-direction:column; gap:10px; }
+  .townform input[type=text],
+  .townform input[type=email]{
+    appearance:none; -webkit-appearance:none;
+    width:100%;
+    border:1px solid var(--drift);
+    border-radius:999px;
+    background:transparent;
+    color:var(--forest);
+    font-family:var(--sans);
+    font-size:15.5px;
+    padding:13px 20px;
+    outline:none;
+    transition: border-color .2s ease;
+  }
+  .townform input::placeholder{ color:var(--drift); }
+  .townform input:focus{ border-color:var(--forest); }
+  .townform button{
+    appearance:none; -webkit-appearance:none;
+    border:0; cursor:pointer;
+    background:var(--forest); color:var(--oat);
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:13.5px;
+    letter-spacing:.04em;
+    padding:14px 26px;
+    border-radius:999px;
+    align-self:flex-start;
+    transition: background .2s ease, transform .15s ease;
+  }
+  .townform button:hover{ background:var(--amber); color:var(--charcoal); }
+  .townform button:active{ transform:translateY(1px); }
+  .townform button:focus-visible{ outline:2px solid var(--forest); outline-offset:3px; }
+  .townform .hp{ position:absolute; left:-9999px; }
+  .townform .townform-note{
+    margin:14px 0 0;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.04em;
+    color:var(--forest);
+  }
+  .townform-confirm{
+    display:none;
+    font-family:var(--serif);
+    font-style:italic;
+    font-variation-settings:"opsz" 48, "SOFT" 100, "WONK" 1;
+    font-size: clamp(18px, 2.2vw, 24px);
+    color:var(--forest);
+    margin:0;
+    padding:14px 0;
+    opacity:0;
+    transition:opacity .5s ease;
+  }
+  .townform-confirm.show{ opacity:1; }
+  .townform[data-state="done"] .fields,
+  .townform[data-state="done"] .townform-note{ display:none; }
+  .townform[data-state="done"] .townform-confirm{ display:block; }
+
   /* -------- A11y: lift muted labels off Driftwood to Forest Ink on light
      surfaces (Driftwood #A09484 on Oat/Cream is ~2.5:1, below WCAG AA) -------- */
   .surf-cream .eyebrow,      .surf-oat .eyebrow,
@@ -948,7 +1105,7 @@
       "name": "Will it work in my town?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "If you can navigate the streets in your town, SlowGo can navigate them. SlowGo uses OpenStreetMap data, which covers every road in the US. Some cart-heavy communities — The Villages, Hilton Head, Sun City — have great cart-path coverage. Other towns, you might still need to ride on quiet streets. If you're in a cart community and SlowGo doesn't have your favorite path mapped, you can help improve OpenStreetMap. We'll point you to the right tools after launch."
+        "text": "Today, if your town is in Florida, yes. SlowGo builds routes from its own speed-limit data, and that data covers Florida. Anywhere else, you can open the app, search, browse the map, and plan a ride — but SlowGo won't start one until we've checked the roads in your state. We'd rather say \"not yet\" than guess at a speed limit and put you somewhere you shouldn't be. We're adding states one at a time. Tell us your town and we'll write when yours is on."
       }
     },
     {
@@ -1037,8 +1194,13 @@
 </head>
 <body>
 
-<!-- Hidden static form copy for Netlify build-time detection -->
+<!-- Hidden static form copies for Netlify build-time detection -->
 <form name="waitlist" netlify netlify-honeypot="bot-field" hidden>
+  <input type="email" name="email" />
+  <input type="text" name="bot-field" />
+</form>
+<form name="town-request" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="town" />
   <input type="email" name="email" />
   <input type="text" name="bot-field" />
 </form>
@@ -1077,12 +1239,29 @@
 
         <p class="hero-tagline">Life's better at 15 mph.</p>
 
-        <p class="hero-sub">Navigation for golf carts and LSVs. Slow roads first &mdash; 35 mph and under wherever possible, and honest when it isn't.</p>
+        <p class="hero-sub">Navigation for golf carts and LSVs. Slow roads first &mdash; 35 mph and under wherever possible, and honest when it isn't. Rides start in Florida today; more states as we check their roads.</p>
 
         <div class="hero-rule" aria-hidden="true">
           <span class="dot amber"></span>
           <span>BACKROADS · BEACH TOWNS · QUIET RIDES</span>
           <span class="dot amber"></span>
+        </div>
+
+        <!-- ===================== APP STORE CTA — PRE-LAUNCH =====================
+             LAUNCH DAY: delete the `hidden` attribute on the line below. That is
+             the whole change. Then swap the placeholder pill for Apple's official
+             "Download on the App Store" badge artwork (Apple's guidelines require
+             their asset, not a lookalike) and set href to the real listing URL.
+             ==================================================================== -->
+        <div class="appstore-cta" hidden>
+          <a class="appstore-badge" href="#" aria-label="Download SlowGo on the App Store">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.05 12.54c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.71-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.18-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.21 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.33-3.54zM14.9 5.9c.61-.74 1.02-1.77.91-2.8-.88.04-1.94.59-2.57 1.32-.56.65-1.05 1.7-.92 2.7.98.08 1.98-.5 2.58-1.22z"/></svg>
+            <span>
+              <span class="l1">Download on the</span>
+              <span class="l2">App Store</span>
+            </span>
+          </a>
+          <p class="signup-note" style="margin-top:0;">Free to start. iOS.</p>
         </div>
 
         <form class="signup" name="waitlist" method="POST"
@@ -1136,7 +1315,7 @@
           <p class="eyebrow"><span class="dot"></span>The short version</p>
           <p class="body" style="margin-top:18px;">SlowGo is a golf cart GPS &mdash; a navigation app for golf carts, LSVs, and NEVs that keeps every route on roads posted 35 mph and under wherever possible, and clearly marks the rare faster stretch it can't avoid.</p>
           <p class="body">It knows the backroads. The quiet streets. The cart paths that don't show up in regular nav apps.</p>
-          <p class="body">Built for cart communities like The Villages, Hilton Head, Peachtree City, Fire Island, and slow neighborhoods everywhere.</p>
+          <p class="body">Built for cart communities like The Villages, Hilton Head, Peachtree City, and Fire Island. Florida is on today &mdash; <a href="#where">the rest is where we're headed</a>.</p>
           <p class="body">No accounts. No tracking. Just maps that respect how you actually ride.</p>
 
           <div class="pill-row" aria-label="Highlights">
@@ -1208,6 +1387,33 @@
     </div>
   </section>
 
+  <!-- ============================ GREEN / AMBER / NOGO ============================ -->
+  <section id="signals" class="surf-cream" aria-labelledby="signals-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="num">03 / Green, amber, NoGo</span>
+        <div>
+          <h2 class="display-2" id="signals-title">Three colors. That's the whole <em>system</em>.</h2>
+        </div>
+      </div>
+
+      <div class="signals reveal" role="list">
+        <div class="signal" role="listitem">
+          <p class="k"><span class="swatch green" aria-hidden="true"></span>Green</p>
+          <p>Roads posted 35 and under. That's the default, and most rides never leave it.</p>
+        </div>
+        <div class="signal" role="listitem">
+          <p class="k"><span class="swatch amber" aria-hidden="true"></span>Amber</p>
+          <p>Stretches posted 36 to 45. Shown only if you allow them &mdash; and when you do, you see exactly how many minutes of it before you go.</p>
+        </div>
+        <div class="signal" role="listitem">
+          <p class="k"><span class="swatch nogo" aria-hidden="true"></span>NoGo</p>
+          <p>When there's no reasonable slow way, SlowGo says so. It won't quietly put you on a fast road to make the trip work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================ SEE INSIDE ============================ -->
   <section id="see" class="surf-forest see reveal" aria-label="A look inside the SlowGo app">
     <div class="wrap">
@@ -1230,57 +1436,79 @@
   <section id="where" class="surf-oat" aria-labelledby="where-title">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="num">03 / Where it works</span>
+        <span class="num">04 / Where it works</span>
         <div>
           <h2 class="display-2" id="where-title">Built for places where <em>cart</em> is a way of life.</h2>
           <p class="lede" style="margin-top:24px;">Launching in The Villages first. Then wherever carts live.</p>
         </div>
       </div>
 
-      <p class="body reveal" style="margin-bottom: clamp(28px, 4vw, 48px); color:var(--forest);">Map quality varies by community. We're adding neighborhoods one at a time.</p>
+      <div class="coverage reveal">
+        <h3>Where SlowGo works today</h3>
+        <p>SlowGo builds routes from its own speed-limit data, which covers Florida today. Outside Florida you can search, browse, and plan a ride &mdash; but SlowGo won't start one until we've checked the roads there. We'd rather say "not yet" than guess.</p>
+        <p>Florida includes The Villages, Sun City Center, Naples, and Ocean Reef.</p>
+      </div>
+
+      <p class="body reveal" style="margin-bottom: clamp(28px, 4vw, 48px); color:var(--forest);">The list below is where we're headed, in roughly the order we mean to get there. It isn't where SlowGo works now &mdash; we check a state's roads before we turn it on. Want yours next? <a href="#town-request">Tell us where</a>.</p>
 
       <div class="places reveal">
         <div class="place">
           <span class="idx">01</span>
           <span class="name">The <em>Villages</em></span>
-          <span class="where">AT LAUNCH</span>
+          <span class="where">COVERED</span>
         </div>
         <div class="place">
           <span class="idx">02</span>
           <span class="name">Peachtree <em>City</em></span>
-          <span class="where">ON THE LIST</span>
+          <span class="where">NOT YET</span>
         </div>
         <div class="place">
           <span class="idx">03</span>
           <span class="name">Hilton <em>Head</em></span>
-          <span class="where">ON THE LIST</span>
+          <span class="where">NOT YET</span>
         </div>
         <div class="place">
           <span class="idx">04</span>
           <span class="name">Fire <em>Island</em></span>
-          <span class="where">ON THE LIST</span>
+          <span class="where">NOT YET</span>
         </div>
         <div class="place">
           <span class="idx">05</span>
           <span class="name">Catalina <em>Island</em></span>
-          <span class="where">ON THE LIST</span>
+          <span class="where">NOT YET</span>
         </div>
         <div class="place">
           <span class="idx">06</span>
           <span class="name">Mackinac <em>Island</em></span>
-          <span class="where">ON THE LIST</span>
+          <span class="where">NOT YET</span>
         </div>
         <div class="place">
           <span class="idx">07</span>
           <span class="name">Sun <em>City</em></span>
-          <span class="where">ON THE LIST</span>
+          <span class="where">NOT YET</span>
         </div>
         <div class="place">
           <span class="idx">08</span>
           <span class="name">Your <em>street</em></span>
-          <span class="where">Tell us where</span>
+          <span class="where"><a href="#town-request">Tell us where</a></span>
         </div>
       </div>
+
+      <form class="townform reveal" id="town-request" name="town-request" method="POST"
+            data-netlify="true" data-netlify-honeypot="bot-field"
+            action="#confirm-town" data-confirm-id="confirm-town" novalidate>
+        <input type="hidden" name="form-name" value="town-request" />
+        <p class="hp"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="fields">
+          <label class="visually-hidden" for="town">Town or community</label>
+          <input id="town" type="text" name="town" placeholder="Town or community" autocomplete="address-level2" required aria-required="true" />
+          <label class="visually-hidden" for="email-town">Email address</label>
+          <input id="email-town" type="email" name="email" placeholder="your@email.com" autocomplete="email" required aria-required="true" />
+          <button type="submit">Put it on the map</button>
+        </div>
+        <p class="townform-note">We'll write once, when we've checked your roads.</p>
+        <p class="townform-confirm" id="confirm-town" role="status" aria-live="polite">Noted. We'll write when we've checked your roads.</p>
+      </form>
     </div>
   </section>
 
@@ -1288,7 +1516,7 @@
   <section id="why" class="philosophy" aria-labelledby="why-title">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="num">04 / Why slow</span>
+        <span class="num">05 / Why slow</span>
         <div>
           <p class="eyebrow" style="margin-bottom:24px;"><span class="dot"></span>The point of all this</p>
           <h2 class="quote" id="why-title">The point isn't getting there fast. It's the breeze, the side streets, and the route nobody else knows about.</h2>
@@ -1324,7 +1552,7 @@
   <section class="surf-oat" id="when" aria-labelledby="when-title">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="num">05 / When can I download it?</span>
+        <span class="num">06 / When can I download it?</span>
         <div>
           <h2 class="display-2" id="when-title">Summer <em>2026</em>. Honestly, when it's right.</h2>
           <p class="lede" style="margin-top:24px;">We won't ship a hurried app. The whole point is to slow down. Here's the plan:</p>
@@ -1340,12 +1568,12 @@
         <div>
           <p class="stage">Summer 2026</p>
           <p class="when">Public <em>launch</em></p>
-          <p class="what">iOS, free to start. The Villages first, then outward.</p>
+          <p class="what">iOS, free to start. Florida first, The Villages leading, then outward.</p>
         </div>
         <div>
           <p class="stage">Later</p>
           <p class="when">Android</p>
-          <p class="what">Android, and new towns by request.</p>
+          <p class="what">Android, and new states as we finish checking their roads.</p>
         </div>
       </div>
     </div>
@@ -1355,7 +1583,7 @@
   <section id="faq" class="surf-cream" aria-labelledby="faq-title">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="num">06 / Honest questions</span>
+        <span class="num">07 / Honest questions</span>
         <div>
           <h2 class="display-2" id="faq-title">Things people <em>actually</em> ask.</h2>
           <p class="lede" style="margin-top:24px;">Short answers. No marketing voice. If something's missing, write us at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
@@ -1370,9 +1598,9 @@
         </details>
         <details>
           <summary>Will it work in my town?<span class="plus">+</span></summary>
-          <p class="a">If you can navigate the streets in your town, SlowGo can navigate them. SlowGo uses OpenStreetMap data, which covers every road in the US.</p>
-          <p class="a">Some cart-heavy communities &mdash; The Villages, Hilton Head, Sun City &mdash; have great cart-path coverage. Other towns, you might still need to ride on quiet streets.</p>
-          <p class="a">If you're in a cart community and SlowGo doesn't have your favorite path mapped, you can help improve OpenStreetMap. We'll point you to the right tools after launch.</p>
+          <p class="a">Today, if your town is in Florida, yes. SlowGo builds routes from its own speed-limit data, and that data covers Florida.</p>
+          <p class="a">Anywhere else, you can open the app, search, browse the map, and plan a ride &mdash; but SlowGo won't start one until we've checked the roads in your state. We'd rather say "not yet" than guess at a speed limit and put you somewhere you shouldn't be.</p>
+          <p class="a">We're adding states one at a time. <a href="#town-request">Tell us your town</a> and we'll write when yours is on.</p>
         </details>
         <details>
           <summary>Do I need an account?<span class="plus">+</span></summary>
@@ -1482,6 +1710,7 @@
         <ul>
           <li><a href="#what">What it is</a></li>
           <li><a href="#how">How it works</a></li>
+          <li><a href="#signals">Green, amber, NoGo</a></li>
           <li><a href="#where">Where it works</a></li>
           <li><a href="#when">When</a></li>
         </ul>
@@ -1500,7 +1729,7 @@
         <h5>Reach us</h5>
         <ul>
           <li><a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a></li>
-          <li><a href="mailto:hello@slowgoapp.com?subject=Town%20suggestion">Suggest a town</a></li>
+          <li><a href="#town-request">Suggest a town</a></li>
         </ul>
       </div>
     </div>
@@ -1574,18 +1803,21 @@
         return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
       }).join('&');
     }
-    var forms = document.querySelectorAll('form.signup');
+    var forms = document.querySelectorAll('form.signup, form.townform');
     forms.forEach(function(form){
       form.addEventListener('submit', function(e){
         e.preventDefault();
-        var emailInput = form.querySelector('input[type=email]');
-        if (!emailInput || !emailInput.checkValidity()){
-          if (emailInput) emailInput.focus();
-          return;
-        }
+        // Validate every required field, not just the email one \u2014 the
+        // town-request form has two.
+        var invalid = null;
+        form.querySelectorAll('input[required]').forEach(function(input){
+          if (!invalid && !input.checkValidity()) invalid = input;
+        });
+        if (invalid){ invalid.focus(); return; }
+
         var data = {};
         new FormData(form).forEach(function(v,k){ data[k] = v; });
-        data['form-name'] = 'waitlist';
+        data['form-name'] = form.getAttribute('name') || 'waitlist';
 
         var btn = form.querySelector('button[type=submit]');
         if (btn){ btn.disabled = true; btn.textContent = 'Sending\u2026'; }
