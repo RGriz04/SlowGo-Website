@@ -14,7 +14,7 @@ This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "*
 
 **Ride, favorite, and settings data (stored on your device).** The App stores your ride history, favorite places, recent destinations, and settings on your device. See Section 5 for details and controls.
 
-**Diagnostics and reliability data.** If the App crashes or encounters an error, a diagnostic report may be generated so we can find and fix the problem. Before any report is sent, the App is configured to remove location coordinates and other trip-revealing fields (see Section 4). We also process limited technical information to keep the Service reliable, such as whether a route request succeeded.
+**Diagnostics and reliability data.** If the App crashes or encounters an error, a diagnostic report may be generated so we can find and fix the problem. Before any report is sent, the App is configured to remove location coordinates and other trip-revealing fields (see Section 4). We also process a small, fixed set of coordinate-free product metrics to keep the Service reliable — whether a route request was served, which quick-link category was tapped, and how many map tiles a session loaded. Section 4 lists them in full.
 
 **Device and technical information.** Providers that serve the App's requests (Section 3) receive standard technical information necessary to respond, such as your IP address and basic device and app information. Our Site is a largely static website; our hosting provider may process standard server logs (such as IP address and browser type) to operate and secure the Site.
 
@@ -36,7 +36,7 @@ To fulfill your requests, the App sends your coordinates and related request dat
 | Stadia Maps | Map tiles and styles, place search (geocoding) | The map area being viewed, and search text with a nearby coordinate for distance ranking |
 | OpenStreetMap community services (Overpass API) | Nearby-place search, place details, and checking whether paths on a route are cart-legal | Search-area coordinates and queries, and sample points along a calculated route |
 | U.S. National Weather Service | Local weather and forecasts | Approximate area coordinates |
-| Sentry | Crash and error reporting | Diagnostics, configured to exclude location and trip-revealing data before sending |
+| Sentry | Crash and error reporting, and a small set of coordinate-free product metrics we use to keep the App healthy | Diagnostics, configured to exclude location and trip-revealing data before sending; and three app-health events — whether a route request was served, which quick-link category was tapped, and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text) |
 | Apple | App distribution, and payment processing if paid features are offered | Per Apple's own terms and privacy policy |
 
 **Routing stays with us.** Route calculations and speed-limit verification are performed on SlowGo's own servers. No third party receives your route's origin or destination. The App previously used outside routing services as a backup when our own server could not be reached; it no longer does, and no such request is made under any circumstances.
@@ -47,9 +47,11 @@ We may also disclose information if required by law, to protect the rights, safe
 
 **We do not sell your personal information, and we do not share it for cross-context behavioral advertising.**
 
-## 4. Crash and Error Reports
+## 4. Crash and Error Reports, and Product Metrics
 
 If SlowGo crashes or hits an error, a diagnostic report may be sent to our crash-reporting provider (Sentry) so we can fix the problem. Crash-reporting tools can otherwise capture sensitive context, so before anything is sent the App is configured to remove latitude and longitude, addresses, route endpoints, search text, and request bodies, URLs, or breadcrumbs that could reveal a trip or destination. We configure the provider to limit IP-address storage, minimize default data collection, and restrict retention and access. Crash reports are about the App's health, not about where you went.
+
+The same connection also carries three product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not, which quick-link category (for example "Coffee" or "Pharmacy") was tapped, and how many map tiles a session loaded. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working and to keep our map-tile usage within budget.
 
 ## 5. What Stays on Your Phone
 
