@@ -1,6 +1,6 @@
 # SlowGo Privacy Policy
 
-**Last updated: July 28, 2026**
+**Last updated: July 31, 2026**
 
 This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "**we**," "**us**," or "**our**") handles information in connection with the SlowGo mobile application (the "**App**") and the slowgoapp.com website (the "**Site**") (together, the "**Service**").
 
@@ -14,7 +14,7 @@ This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "*
 
 **Ride, favorite, and settings data (stored on your device).** The App stores your ride history, favorite places, recent destinations, and settings on your device. See Section 5 for details and controls.
 
-**Diagnostics and reliability data.** If the App crashes or encounters an error, a diagnostic report may be generated so we can find and fix the problem. Before any report is sent, the App is configured to remove location coordinates and other trip-revealing fields (see Section 4). We also process limited technical information to keep the Service reliable, such as which routing provider served a request and whether it succeeded.
+**Diagnostics and reliability data.** If the App crashes or encounters an error, a diagnostic report may be generated so we can find and fix the problem. Before any report is sent, the App is configured to remove location coordinates and other trip-revealing fields (see Section 4). We also process limited technical information to keep the Service reliable, such as whether a route request succeeded.
 
 **Device and technical information.** Providers that serve the App's requests (Section 3) receive standard technical information necessary to respond, such as your IP address and basic device and app information. Our Site is a largely static website; our hosting provider may process standard server logs (such as IP address and browser type) to operate and secure the Site.
 
@@ -33,12 +33,13 @@ To fulfill your requests, the App sends your coordinates and related request dat
 | Provider | What it does | What it receives |
 |---|---|---|
 | BackRoad Apps routing server (Valhalla, operated by us) | Calculates cart-friendly routes, and looks up the posted speed limits along a route it has calculated | Trip start/end coordinates, route requests, and the shape of a calculated route |
-| Stadia Maps | Map tiles and styles, place search (geocoding), backup routing | Map-area coordinates, search queries, and routing requests |
-| Public routing fallback (OSRM) | Backup routing, used only after you consent in the App | Trip start/end coordinates, only when used |
+| Stadia Maps | Map tiles and styles, place search (geocoding) | The map area being viewed, and search text with a nearby coordinate for distance ranking |
 | OpenStreetMap-based services | Nearby-place search, place details, and checking whether paths on a route are cart-legal | Search-area coordinates and queries, and sample points along a calculated route |
 | U.S. National Weather Service | Local weather and forecasts | Approximate area coordinates |
 | Sentry | Crash and error reporting | Diagnostics, configured to exclude location and trip-revealing data before sending |
 | Apple | App distribution, and payment processing if paid features are offered | Per Apple's own terms and privacy policy |
+
+**Routing stays with us.** Route calculations and speed-limit verification are performed on SlowGo's own servers. No third party receives your route's origin or destination. The App previously used outside routing services as a backup when our own server could not be reached; it no longer does, and no such request is made under any circumstances.
 
 These providers process requests to deliver the Service under their own terms and our agreements with them. **We do not maintain user accounts and do not intentionally build a persistent, account-linked history of where you go.** Our routing server processes route requests to answer them; our access and security logs are configured not to record route coordinates. Providers may retain request and security logs under their own policies, including where reasonably necessary for security, fraud prevention, legal compliance, or backups.
 
@@ -107,4 +108,5 @@ We may update this Privacy Policy from time to time. We will post the updated ve
 4498 Main St, Ste 4 #5690
 Amherst, NY 14226, USA
 Email: hello@slowgoapp.com
+Telephone: (716) 235-3699
 Web: slowgoapp.com

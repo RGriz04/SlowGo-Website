@@ -351,7 +351,7 @@
   <div class="wrap">
     <p class="eyebrow"><span class="dot"></span> Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: July 28, 2026</p>
+    <p class="updated">Last updated: July 31, 2026</p>
 
     <nav class="toc" aria-labelledby="toc-heading">
       <h2 id="toc-heading">Contents</h2>
@@ -387,7 +387,7 @@
 
       <p><strong>Ride, favorite, and settings data (stored on your device).</strong> The App stores your ride history, favorite places, recent destinations, and settings on your device. See Section 5 for details and controls.</p>
 
-      <p><strong>Diagnostics and reliability data.</strong> If the App crashes or encounters an error, a diagnostic report may be generated so we can find and fix the problem. Before any report is sent, the App is configured to remove location coordinates and other trip-revealing fields (see Section 4). We also process limited technical information to keep the Service reliable, such as which routing provider served a request and whether it succeeded.</p>
+      <p><strong>Diagnostics and reliability data.</strong> If the App crashes or encounters an error, a diagnostic report may be generated so we can find and fix the problem. Before any report is sent, the App is configured to remove location coordinates and other trip-revealing fields (see Section 4). We also process limited technical information to keep the Service reliable, such as whether a route request succeeded.</p>
 
       <p><strong>Device and technical information.</strong> Providers that serve the App's requests (Section 3) receive standard technical information necessary to respond, such as your IP address and basic device and app information. Our Site is a largely static website; our hosting provider may process standard server logs (such as IP address and browser type) to operate and secure the Site.</p>
 
@@ -420,13 +420,8 @@
             </tr>
             <tr>
               <th scope="row">Stadia Maps</th>
-              <td>Map tiles and styles, place search (geocoding), backup routing</td>
-              <td>Map-area coordinates, search queries, and routing requests</td>
-            </tr>
-            <tr>
-              <th scope="row">Public routing fallback (OSRM)</th>
-              <td>Backup routing, used only after you consent in the App</td>
-              <td>Trip start/end coordinates, only when used</td>
+              <td>Map tiles and styles, place search (geocoding)</td>
+              <td>The map area being viewed, and search text with a nearby coordinate for distance ranking</td>
             </tr>
             <tr>
               <th scope="row">OpenStreetMap-based services</th>
@@ -451,6 +446,8 @@
           </tbody>
         </table>
       </div>
+
+      <p><strong>Routing stays with us.</strong> Route calculations and speed-limit verification are performed on SlowGo's own servers. No third party receives your route's origin or destination. The App previously used outside routing services as a backup when our own server could not be reached; it no longer does, and no such request is made under any circumstances.</p>
 
       <p>These providers process requests to deliver the Service under their own terms and our agreements with them. <strong>We do not maintain user accounts and do not intentionally build a persistent, account-linked history of where you go.</strong> Our routing server processes route requests to answer them; our access and security logs are configured not to record route coordinates. Providers may retain request and security logs under their own policies, including where reasonably necessary for security, fraud prevention, legal compliance, or backups.</p>
 
@@ -524,6 +521,7 @@
         4498 Main St, Ste 4 #5690<br />
         Amherst, NY 14226, USA<br />
         Email: <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a><br />
+        Telephone: <a href="tel:+17162353699">(716) 235-3699</a><br />
         Web: <a href="/">slowgoapp.com</a>
       </address>
 

@@ -1,6 +1,6 @@
 # SlowGo Terms of Service
 
-**Last updated: July 22, 2026**
+**Last updated: July 31, 2026**
 
 These Terms of Service (the "**Terms**") are a binding agreement between you and **BackRoad Apps LLC**, a New York limited liability company ("**BackRoad Apps**," "**we**," "**us**," or "**our**"), governing your use of the SlowGo mobile application (the "**App**"), the slowgoapp.com website (the "**Site**"), and the routing, mapping, weather, and related features we provide (together, the "**Service**").
 
@@ -96,7 +96,7 @@ If you send us feedback, suggestions, or ideas about the Service, you grant us a
 
 ## 8. Third-Party Services and Data
 
-The Service relies on third-party data and services, including: map data © OpenStreetMap contributors, available under the Open Database License (openstreetmap.org/copyright); map tiles and styles by Stadia Maps and OpenMapTiles; routing by the open-source Valhalla engine, including a routing server operated by us and backup routing provided by Stadia Maps; an additional public fallback routing service used only after your in-app consent; place search and details from OpenStreetMap-based services; and weather data from the U.S. National Weather Service.
+The Service relies on third-party data and services, including: map data © OpenStreetMap contributors, available under the Open Database License (openstreetmap.org/copyright); map tiles and styles by Stadia Maps and OpenMapTiles; place search (geocoding) by Stadia Maps; routing by the open-source Valhalla engine, running on a routing server operated by us; place search and details from OpenStreetMap-based services; and weather data from the U.S. National Weather Service.
 
 These providers are not affiliated with BackRoad Apps, we do not control their data or availability, and their data and services are provided under their own terms, which you agree to comply with where applicable. Attribution is displayed in the App's About screen and on the map, and must not be removed or obscured.
 
@@ -152,7 +152,7 @@ These additional terms apply because the App is distributed through Apple's App 
 
 (f) **Legal compliance.** You represent and warrant that (i) you are not located in a country subject to a U.S. Government embargo or designated by the U.S. Government as a "terrorist supporting" country, and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.
 
-(g) **Developer contact.** Questions, complaints, or claims regarding the App should be directed to: BackRoad Apps LLC, 4498 Main St, Ste 4 #5690, Amherst, NY 14226, USA; email hello@slowgoapp.com; telephone (716) 235-3669.
+(g) **Developer contact.** Questions, complaints, or claims regarding the App should be directed to: BackRoad Apps LLC, 4498 Main St, Ste 4 #5690, Amherst, NY 14226, USA; email hello@slowgoapp.com; telephone (716) 235-3699.
 
 (h) **Third-party terms.** You must comply with applicable third-party terms of agreement when using the App (for example, your wireless data service agreement).
 
@@ -216,5 +216,5 @@ If any provision of these Terms is held unenforceable, the remaining provisions 
 4498 Main St, Ste 4 #5690
 Amherst, NY 14226, USA
 Email: hello@slowgoapp.com
-Telephone: (716) 235-3669
+Telephone: (716) 235-3699
 Web: slowgoapp.com
