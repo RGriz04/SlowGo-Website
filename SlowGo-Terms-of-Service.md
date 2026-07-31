@@ -96,7 +96,7 @@ If you send us feedback, suggestions, or ideas about the Service, you grant us a
 
 ## 8. Third-Party Services and Data
 
-The Service relies on third-party data and services, including: map data © OpenStreetMap contributors, available under the Open Database License (openstreetmap.org/copyright); map tiles and styles by Stadia Maps and OpenMapTiles; place search (geocoding) by Stadia Maps; routing by the open-source Valhalla engine, running on a routing server operated by us; place search and details from OpenStreetMap-based services; and weather data from the U.S. National Weather Service.
+The Service relies on third-party data and services, including: map data © OpenStreetMap contributors, available under the Open Database License (openstreetmap.org/copyright); map tiles and styles by Stadia Maps and OpenMapTiles; place search (geocoding) by Stadia Maps; routing by the open-source Valhalla engine, running on a routing server operated by us; place search and details from OpenStreetMap community services (Overpass API); and weather data from the U.S. National Weather Service.
 
 These providers are not affiliated with BackRoad Apps, we do not control their data or availability, and their data and services are provided under their own terms, which you agree to comply with where applicable. Attribution is displayed in the App's About screen and on the map, and must not be removed or obscured.
 

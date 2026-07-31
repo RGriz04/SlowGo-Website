@@ -34,14 +34,14 @@ To fulfill your requests, the App sends your coordinates and related request dat
 |---|---|---|
 | BackRoad Apps routing server (Valhalla, operated by us) | Calculates cart-friendly routes, and looks up the posted speed limits along a route it has calculated | Trip start/end coordinates, route requests, and the shape of a calculated route |
 | Stadia Maps | Map tiles and styles, place search (geocoding) | The map area being viewed, and search text with a nearby coordinate for distance ranking |
-| OpenStreetMap-based services | Nearby-place search, place details, and checking whether paths on a route are cart-legal | Search-area coordinates and queries, and sample points along a calculated route |
+| OpenStreetMap community services (Overpass API) | Nearby-place search, place details, and checking whether paths on a route are cart-legal | Search-area coordinates and queries, and sample points along a calculated route |
 | U.S. National Weather Service | Local weather and forecasts | Approximate area coordinates |
 | Sentry | Crash and error reporting | Diagnostics, configured to exclude location and trip-revealing data before sending |
 | Apple | App distribution, and payment processing if paid features are offered | Per Apple's own terms and privacy policy |
 
 **Routing stays with us.** Route calculations and speed-limit verification are performed on SlowGo's own servers. No third party receives your route's origin or destination. The App previously used outside routing services as a backup when our own server could not be reached; it no longer does, and no such request is made under any circumstances.
 
-These providers process requests to deliver the Service under their own terms and our agreements with them. **We do not maintain user accounts and do not intentionally build a persistent, account-linked history of where you go.** Our routing server processes route requests to answer them; our access and security logs are configured not to record route coordinates. Providers may retain request and security logs under their own policies, including where reasonably necessary for security, fraud prevention, legal compliance, or backups.
+These providers process requests to deliver the Service under their own terms or public usage policies, and our agreements with them where they exist. **We do not maintain user accounts and do not intentionally build a persistent, account-linked history of where you go.** Our routing server processes route requests to answer them; our access and security logs are configured not to record route coordinates. Providers may retain request and security logs under their own policies, including where reasonably necessary for security, fraud prevention, legal compliance, or backups.
 
 We may also disclose information if required by law, to protect the rights, safety, or property of BackRoad Apps or others, or in connection with a merger, acquisition, or sale of assets (in which case this Policy will continue to apply to previously collected information unless you are notified otherwise).
 
