@@ -1,6 +1,6 @@
 # SlowGo Privacy Policy
 
-**Last updated: July 31, 2026**
+**Last updated: August 1, 2026**
 
 This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "**we**," "**us**," or "**our**") handles information in connection with the SlowGo mobile application (the "**App**") and the slowgoapp.com website (the "**Site**") (together, the "**Service**").
 
@@ -20,15 +20,17 @@ This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "*
 
 **Information you send us.** If you email hello@slowgoapp.com, we receive your email address and the contents of your message, which we use to respond and to improve the Service.
 
+**Information you give us through the Site's forms.** The Site has a waitlist form, which asks for your email address, and a town-request form, which asks for your email address and the name of a town or community. Both are optional, and neither is part of the App. Section 3 describes what happens to what you submit.
+
 **We do not collect** contacts, photos or videos, microphone audio, health data, biometric data, advertising identifiers, or precise location while the App is closed.
 
 ## 2. How We Use Information; Notice at Collection
 
-We use information to: provide the Service (position, routing, place search, weather); operate the App's safety-related display features (for example, identifying higher-speed segments of a route); diagnose and fix crashes and reliability problems; secure and operate the Service; respond to your messages; and comply with law. The categories we process, the purposes, and our retention approach are described in this Policy and, for location and diagnostics, are surfaced in the App at the point of collection. We do **not** use your information for advertising, and we do not build advertising or tracking profiles of you.
+We use information to: provide the Service (position, routing, place search, weather); operate the App's safety-related display features (for example, identifying higher-speed segments of a route); diagnose and fix crashes and reliability problems; secure and operate the Service; respond to your messages; write to you about the launch and plan where to build coverage next, if you asked us to through a Site form; and comply with law. The categories we process, the purposes, and our retention approach are described in this Policy and, for location and diagnostics, are surfaced in the App at the point of collection. We do **not** use your information for advertising, and we do not build advertising or tracking profiles of you.
 
 ## 3. Where Your Information Goes
 
-To fulfill your requests, the App sends your coordinates and related request data to the services that do the work:
+To fulfill your requests, the Service sends your coordinates and related request data to the services that do the work:
 
 | Provider | What it does | What it receives |
 |---|---|---|
@@ -37,15 +39,26 @@ To fulfill your requests, the App sends your coordinates and related request dat
 | OpenStreetMap community services (Overpass API) | Nearby-place search, place details, and checking whether paths on a route are cart-legal | Search-area coordinates and queries, and sample points along a calculated route |
 | U.S. National Weather Service | Local weather and forecasts | Approximate area coordinates |
 | Sentry | Crash and error reporting, and a small set of coordinate-free product metrics we use to keep the App healthy | Diagnostics, configured to exclude location and trip-revealing data before sending; and three app-health events — whether a route request was served, which quick-link category was tapped, and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text) |
+| Netlify | Hosts the Site and receives what you submit through its waitlist and town-request forms | The email address, and for a town request the town or community name, that you type into a Site form; plus standard server logs such as IP address and browser type |
 | Apple | App distribution, and payment processing if paid features are offered | Per Apple's own terms and privacy policy |
 
-**Routing stays with us.** Route calculations and speed-limit verification are performed on SlowGo's own servers. No third party receives your route's origin or destination. The App previously used outside routing services as a backup when our own server could not be reached; it no longer does, and no such request is made under any circumstances.
+**Routing stays with us.** Route calculations and speed-limit verification are performed on SlowGo's own servers. No third party receives your route request — your origin and destination are sent only to our own routing server. (Place search sends your search text and a nearby coordinate to the search providers listed above.) The App previously used outside routing services as a backup when our own server could not be reached; it no longer does, and no such request is made under any circumstances.
 
 These providers process requests to deliver the Service under their own terms or public usage policies, and our agreements with them where they exist. **We do not maintain user accounts and do not intentionally build a persistent, account-linked history of where you go.** Our routing server processes route requests to answer them; our access and security logs are configured not to record route coordinates. Providers may retain request and security logs under their own policies, including where reasonably necessary for security, fraud prevention, legal compliance, or backups.
 
 We may also disclose information if required by law, to protect the rights, safety, or property of BackRoad Apps or others, or in connection with a merger, acquisition, or sale of assets (in which case this Policy will continue to apply to previously collected information unless you are notified otherwise).
 
 **We do not sell your personal information, and we do not share it for cross-context behavioral advertising.**
+
+### The Site's waitlist and town-request forms
+
+The Site has two optional forms. The **waitlist** form collects your email address. The **town-request** form collects your email address and the name of a town or community. Nothing else is asked for, and the App never uses these forms.
+
+We use what you submit for one purpose each: to write to you when SlowGo is available where you ride, and to decide which areas to build coverage for next. Submissions are handled by **Netlify**, which hosts the Site and stores form entries for us as a service provider.
+
+**We do not sell this information, we do not share it for advertising, and we do not use it for marketing beyond the purpose you submitted it for.** You will not receive a newsletter, a drip campaign, or promotions from us.
+
+We keep a submission until we have sent the launch notification for your area, or until you ask us to delete it, whichever comes first. To have your entry removed at any time, email hello@slowgoapp.com from the address you submitted, or tell us the address you used, and we will delete it.
 
 ## 4. Crash and Error Reports, and Product Metrics
 
@@ -69,7 +82,7 @@ The same connection also carries three product metrics, and we list them here ra
 
 ## 6. Data Retention
 
-Ride history, favorites, recents, and settings remain on your device until you delete them or delete the App. For information we or our infrastructure process: our access and security logs are retained no more than 14 days and are configured not to include route coordinates; reliability telemetry and Sentry crash events are retained approximately 90 days; emails you send us are retained approximately 24 months, or longer if needed for a legal matter; and routine Site server logs are retained approximately 30 days. If we introduce paid features, transaction and tax records may be retained up to 7 years as required by law. Third-party providers retain request data under their own policies. These periods are targets we configure and may adjust as reasonably necessary for security, legal, or operational reasons.
+Ride history, favorites, recents, and settings remain on your device until you delete them or delete the App. For information we or our infrastructure process: our access and security logs are retained no more than 14 days and are configured not to include route coordinates; reliability telemetry and Sentry crash events are retained approximately 90 days; emails you send us are retained approximately 24 months, or longer if needed for a legal matter; waitlist and town-request submissions are kept until the launch notification for that area has been sent or you ask us to delete them, whichever comes first; and routine Site server logs are retained approximately 30 days. If we introduce paid features, transaction and tax records may be retained up to 7 years as required by law. Third-party providers retain request data under their own policies. These periods are targets we configure and may adjust as reasonably necessary for security, legal, or operational reasons.
 
 ## 7. Security
 
@@ -80,6 +93,7 @@ Requests between the App and service providers are transmitted using industry-st
 - **Location:** manage the App's location permission in your device settings.
 - **Ride history:** toggle saving off, or clear it, in the App's Settings.
 - **Crash reporting and reliability data:** these are limited and configured to exclude trip data; deleting the App stops all collection.
+- **Waitlist and town requests:** email hello@slowgoapp.com to have your submission deleted.
 - **Do Not Track / Global Privacy Control:** the Service does not track you across other companies' apps or websites, so there is nothing for these signals to opt out of.
 
 ## 9. Your Privacy Rights
@@ -88,9 +102,9 @@ Requests between the App and service providers are transmitted using industry-st
 
 Depending on where you live (for example, California, Colorado, Connecticut, Texas, Utah, Virginia, and other states with comprehensive privacy laws), you may have rights to know, access, correct, delete, or obtain a copy of personal information, to opt out of sale, sharing, or targeted advertising, and to withdraw consent to processing of sensitive data such as precise location. **Our practices make most of this simple:** we do not sell or share personal information for advertising, we do not profile you, precise location is used only to provide the Service, and the personal information the Service keeps (your rides, favorites, and settings) lives on your device under your direct control — you can access it in the App and delete it yourself at any time (Section 5).
 
-For anything else — including questions, or access or deletion requests concerning emails you have sent us — contact us at hello@slowgoapp.com and tell us the state where you reside. We will verify and respond as required by applicable law, we will not discriminate against you for exercising your rights, and if we deny a request you may appeal by replying to our response. You may use an authorized agent where applicable law allows.
+For anything else — including questions, or access or deletion requests concerning emails you have sent us or anything you submitted through a Site form — contact us at hello@slowgoapp.com and tell us the state where you reside. We will verify and respond as required by applicable law, we will not discriminate against you for exercising your rights, and if we deny a request you may appeal by replying to our response. You may use an authorized agent where applicable law allows.
 
-**California notice:** in the preceding 12 months, we have collected the categories described in Section 1 (identifiers such as IP address; precise geolocation; internet/electronic activity and diagnostic information; and communications you send us), for the purposes in Section 2, disclosed to the service providers in Section 3, and retained per Section 6. We do not sell or share personal information as those terms are defined by California law, and we have no actual knowledge of selling or sharing personal information of consumers under 16. California residents may exercise the rights described above.
+**California notice:** in the preceding 12 months, we have collected the categories described in Section 1 (identifiers such as IP address, and the email address and town you may submit through a Site form; precise geolocation; internet/electronic activity and diagnostic information; and communications you send us), for the purposes in Section 2, disclosed to the service providers in Section 3, and retained per Section 6. We do not sell or share personal information as those terms are defined by California law, and we have no actual knowledge of selling or sharing personal information of consumers under 16. California residents may exercise the rights described above.
 
 ### Outside the United States
 
