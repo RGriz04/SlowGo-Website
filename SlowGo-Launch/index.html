@@ -4,20 +4,25 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>SlowGo — Life's better at 15 mph.</title>
-<meta name="description" content="Life's better at 15 mph. Cart navigation, summer 2026." />
+<meta name="description" content="Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads." />
 <meta name="theme-color" content="#0B1F15" />
+<link rel="canonical" href="https://slowgoapp.com/" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="SlowGo" />
-<meta property="og:description" content="Life's better at 15 mph. Cart navigation, summer 2026." />
-<meta property="og:url" content="https://slowgoapp.com" />
+<meta property="og:title" content="SlowGo — Life's better at 15 mph." />
+<meta property="og:description" content="Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads." />
+<meta property="og:url" content="https://slowgoapp.com/" />
 <meta property="og:image" content="https://slowgoapp.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
 <meta property="og:site_name" content="SlowGo" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="SlowGo" />
-<meta name="twitter:description" content="Life's better at 15 mph. Cart navigation, summer 2026." />
+<meta name="twitter:title" content="SlowGo — Life's better at 15 mph." />
+<meta name="twitter:description" content="Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads." />
 <meta name="twitter:image" content="https://slowgoapp.com/og-image.png" />
+<meta name="twitter:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231E3A2B'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='36' fill='%23F4EDE0'>S</text></svg>" />
 
@@ -494,15 +499,15 @@
     border-right:1px solid rgba(30,58,43,.12);
   }
   .compare .col-carts{ background:var(--oat); }
-  .compare h4{
+  .compare h3{
     font-family:var(--mono);
     font-size:11px; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
     color:var(--drift);
     margin:0 0 18px 0;
     display:flex; align-items:center; gap:10px;
   }
-  .compare h4 .x{ color:var(--drift); }
-  .compare h4 .check{ color:var(--moss); }
+  .compare h3 .x{ color:var(--drift); }
+  .compare h3 .check{ color:var(--moss); }
   .compare ul{ list-style:none; padding:0; margin:0; }
   .compare li{
     font-family:var(--serif);
@@ -801,7 +806,10 @@
     .foot-social{ justify-content:center; }
     .foot-social svg{ width:18px; height:18px; }
   }
-  .foot-grid h5{
+  /* Footer column headings are h2, not h5: they continue the page outline after
+     the last section's h2 rather than jumping two levels. Every visual property
+     is set here, so the tag carries no browser default styling. */
+  .foot-grid h2{
     font-family:var(--mono);
     font-size:11px;
     font-weight:500;
@@ -809,6 +817,7 @@
     text-transform:uppercase;
     color:var(--drift);
     margin: 0 0 18px 0;
+    line-height:1.65;
   }
   .foot-grid ul{ list-style:none; padding:0; margin:0; }
   .foot-grid li{ padding: 5px 0; font-size:14px; }
@@ -1093,12 +1102,55 @@
      surfaces (Driftwood #A09484 on Oat/Cream is ~2.5:1, below WCAG AA) -------- */
   .surf-cream .eyebrow,      .surf-oat .eyebrow,
   .surf-cream .section-head .num, .surf-oat .section-head .num,
-  .surf-cream .compare h4,
+  .surf-cream .compare h3,
   .surf-oat .place .idx,
   .surf-oat .place .where,
   .surf-oat .roadmap .stage,
   .surf-cream .faq summary .plus{ color:var(--forest); }
 </style>
+
+<!-- Organization + WebSite structured data.
+     TODO (launch day): add a SoftwareApplication node once the App Store listing
+     exists — it needs the real listing URL, and applicationCategory/operatingSystem
+     ("NavigationApplication" / "iOS"). Leaving it out until then rather than
+     publishing a URL that 404s. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://slowgoapp.com/#organization",
+      "name": "BackRoad Apps LLC",
+      "url": "https://slowgoapp.com/",
+      "email": "hello@slowgoapp.com",
+      "logo": "https://slowgoapp.com/og-image.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4498 Main St, Ste 4 #5690",
+        "addressLocality": "Amherst",
+        "addressRegion": "NY",
+        "postalCode": "14226",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://www.instagram.com/slowgoapp",
+        "https://x.com/slowgoapp",
+        "https://www.tiktok.com/@slowgoapp"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://slowgoapp.com/#website",
+      "name": "SlowGo",
+      "url": "https://slowgoapp.com/",
+      "description": "Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under.",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://slowgoapp.com/#organization" }
+    }
+  ]
+}
+</script>
 
 <!-- FAQPage structured data — generated from the on-page FAQ, wording unchanged -->
 <script type="application/ld+json">
@@ -1251,7 +1303,7 @@
             style="font-family:'Fraunces',serif; font-weight:500; font-size:220px; font-variation-settings:'opsz' 144,'SOFT' 40,'WONK' 0; letter-spacing:-0.04em;">Slow<tspan font-style="italic" style="font-variation-settings:'opsz' 144,'SOFT' 100,'WONK' 1;">Go</tspan></text>
         </svg>
 
-        <p class="hero-tagline">Life's better at 15 mph.</p>
+        <h1 class="hero-tagline">Life's better at 15 mph.</h1>
 
         <p class="hero-sub">Navigation for golf carts and LSVs. Slow roads first &mdash; 35 mph and under wherever possible, and honest when it isn't. Rides start in Florida and Georgia today; more states as we check their roads.</p>
 
@@ -1346,7 +1398,7 @@
           <p class="eyebrow"><span class="dot"></span>Cars vs. carts</p>
           <div class="compare" style="margin-top:18px;">
             <div class="col-cars">
-              <h4><span class="x">×</span> Regular nav</h4>
+              <h3><span class="x">×</span> Regular nav</h3>
               <ul>
                 <li>"Take the highway"</li>
                 <li>"Merge onto I-95"</li>
@@ -1356,7 +1408,7 @@
               </ul>
             </div>
             <div class="col-carts">
-              <h4><span class="check">●</span> SlowGo</h4>
+              <h3><span class="check">●</span> SlowGo</h3>
               <ul>
                 <li>"Take the back road"</li>
                 <li>"Cut through the path"</li>
@@ -1723,7 +1775,7 @@
       </div>
 
       <div>
-        <h5>The app</h5>
+        <h2>The app</h2>
         <ul>
           <li><a href="#what">What it is</a></li>
           <li><a href="#how">How it works</a></li>
@@ -1734,7 +1786,7 @@
       </div>
 
       <div>
-        <h5>Beyond the ride</h5>
+        <h2>Beyond the ride</h2>
         <ul>
           <li><a href="#why">Why slow</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -1743,7 +1795,7 @@
       </div>
 
       <div>
-        <h5>Reach us</h5>
+        <h2>Reach us</h2>
         <ul>
           <li><a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a></li>
           <li><a href="#town-request">Suggest a town</a></li>

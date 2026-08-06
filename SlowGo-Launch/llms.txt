@@ -1,0 +1,55 @@
+# SlowGo
+
+> Navigation for golf carts and low-speed vehicles. SlowGo builds routes that stay
+> on roads posted 35 mph and under wherever possible, and says so plainly when a
+> trip can't avoid something faster. A product of BackRoad Apps LLC.
+
+SlowGo is pre-launch. The iOS app is expected in summer 2026; there is no App Store
+listing yet, and the site currently collects waitlist signups. Android comes later.
+
+## Status and coverage
+
+- Routing is live in **Florida and Georgia** only. Those two states are where
+  SlowGo's speed-limit data is checked today.
+- Outside Florida and Georgia you can search, browse the map, and plan a ride,
+  but SlowGo will not start a turn-by-turn route. States are added one at a time,
+  after their roads are checked, rather than guessed at.
+- Built with cart communities in mind — The Villages, Hilton Head, Peachtree City,
+  Fire Island, and similar places.
+
+## How routing works
+
+- **Green** — roads posted 35 mph and under. This is the default, and most rides
+  never leave it.
+- **Amber** — roads posted 36 to 45 mph. Offered only if the rider opts in to
+  faster stretches, and the length of the stretch is shown before the ride starts.
+- **NoGo** — no route exists that stays on 35-and-under roads. SlowGo says so
+  rather than quietly routing onto a fast road.
+- Roads posted above 45 mph are not offered.
+
+## Privacy posture
+
+- No accounts, no sign-in, no ads, no ad tracking.
+- Route requests are processed on a first-party server and are not kept beyond
+  short-lived technical logs.
+- Favorites and trip history stay on the device. Trip start and end points are
+  stored roughly, not precisely.
+
+## Pages
+
+- [Home](https://slowgoapp.com/): what the app is, how it works, where it works,
+  the roadmap, FAQ, and the waitlist form.
+- [Support](https://slowgoapp.com/support): common questions and direct contact.
+  Answered by one person.
+- [Privacy Policy](https://slowgoapp.com/privacy): what is collected, what is not,
+  and how long anything is kept.
+- [Terms of Service](https://slowgoapp.com/terms): the terms of use, including the
+  safety rules for riding.
+
+## Who makes it
+
+BackRoad Apps LLC, 4498 Main St, Ste 4 #5690, Amherst, NY 14226.
+Contact: hello@slowgoapp.com
+
+SlowGo is built by one person, nights and weekends. Claims on this site are meant
+to be literal — if the site says a thing is not ready, it is not ready.

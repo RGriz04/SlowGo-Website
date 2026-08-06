@@ -3,26 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Support — SlowGo</title>
-<meta name="description" content="Help and answers for SlowGo, the navigation app for golf carts and low-speed vehicles. Written and answered by one person." />
+<title>Page not found — SlowGo</title>
+<meta name="description" content="That page isn't here. Links back to the SlowGo home page, support, privacy policy, and terms of service." />
 <meta name="theme-color" content="#0B1F15" />
-<link rel="canonical" href="https://slowgoapp.com/support" />
 
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Support — SlowGo" />
-<meta property="og:description" content="Help and answers for SlowGo, the navigation app for golf carts and low-speed vehicles. Written and answered by one person." />
-<meta property="og:url" content="https://slowgoapp.com/support" />
-<meta property="og:image" content="https://slowgoapp.com/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
-<meta property="og:site_name" content="SlowGo" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Support — SlowGo" />
-<meta name="twitter:description" content="Help and answers for SlowGo, the navigation app for golf carts and low-speed vehicles. Written and answered by one person." />
-<meta name="twitter:image" content="https://slowgoapp.com/og-image.png" />
-<meta name="twitter:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
+<!-- Netlify serves this file for any unmatched path. It is deliberately kept out
+     of sitemap.xml and marked noindex: a soft-404 in the index helps nobody. -->
+<meta name="robots" content="noindex, follow" />
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231E3A2B'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='36' fill='%23F4EDE0'>S</text></svg>" />
 
@@ -37,7 +24,6 @@
     --moss:          #5B7A5F;
     --amber:         #C8853A;
     --amber-soft:    #E0A969;
-    --amber-deep:    #8A5620;
     --oat:           #F4EDE0;
     --cream:         #FBF7EF;
     --drift:         #A09484;
@@ -51,8 +37,7 @@
   }
 
   *,*::before,*::after{ box-sizing:border-box; }
-  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
-  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  html{ -webkit-text-size-adjust:100%; }
   body{
     margin:0;
     background:var(--cream);
@@ -115,79 +100,79 @@
   }
 
   /* -------- Page body -------- */
-  .legal{ flex:1 0 auto; padding: clamp(64px, 8vw, 104px) 0 clamp(80px, 10vw, 140px); }
+  .missing{ flex:1 0 auto; padding: clamp(72px, 9vw, 120px) 0 clamp(80px, 10vw, 140px); }
   .eyebrow{
     font-family:var(--sans);
     font-size:11px;
     font-weight:600;
     letter-spacing:.22em;
     text-transform:uppercase;
-    color:var(--drift);
+    color:var(--forest);
     display:inline-flex; align-items:center; gap:10px;
     margin:0 0 20px 0;
   }
   .eyebrow .dot{ width:5px; height:5px; border-radius:50%; background:var(--amber); display:inline-block; }
-  .legal h1{
+  .missing h1{
     font-family:var(--serif);
     font-weight:500;
     font-variation-settings:"opsz" 144, "SOFT" 40, "WONK" 0;
-    font-size: clamp(40px, 5.4vw, 76px);
+    font-size: clamp(44px, 6vw, 84px);
     line-height:1.0;
     letter-spacing:-0.02em;
     margin:0;
     text-wrap:balance;
+    max-width:18ch;
   }
-
-  /* -------- Prose -------- */
-  .prose{
-    max-width:74ch;
-    margin:48px 0 0;
-    /* Support page runs at 17px, while terms.html and privacy.html sit at 16.5px.
-       This 0.5px difference is deliberate and temporary: this page serves a 55+
-       audience reading outdoors, so it meets the 17px minimum now. The legal pages
-       will be bumped to match after they return from attorney review — until then,
-       do NOT "fix" this back down to 16.5px to match the other pages. */
-    font-size:17px;
-    line-height:1.78;
-    color:var(--forest);
+  .missing h1 em{
+    font-style:italic;
+    font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
   }
-  .prose > p{ margin:20px 0 0; }
-  .prose .lede{
+  .missing .lede{
     font-size:19px;
     line-height:1.7;
     color:var(--moss);
-    margin-top:0;
+    margin:32px 0 0;
+    max-width:56ch;
   }
-  .prose h2{
-    font-family:var(--serif);
-    font-weight:500;
-    font-variation-settings:"opsz" 96, "SOFT" 40, "WONK" 0;
-    font-size: clamp(25px, 3vw, 32px);
-    line-height:1.2;
-    letter-spacing:-0.015em;
-    color:var(--forest);
-    margin:56px 0 0;
-    padding-top:28px;
-    border-top:1px solid rgba(160,148,132,.28);
-    scroll-margin-top:24px;
-  }
-  .prose h3{
-    font-family:var(--sans);
-    font-weight:600;
+  .missing .body{
     font-size:17px;
-    letter-spacing:-0.005em;
-    color:var(--forest);
-    margin:36px 0 0;
-    scroll-margin-top:24px;
+    line-height:1.78;
+    margin:20px 0 0;
+    max-width:56ch;
   }
-  .prose strong{ font-weight:600; color:var(--forest); }
-  .prose a{ text-decoration-color:rgba(200,133,58,.5); }
 
-  /* -------- Contact block -------- */
-  .contact{
-    margin:24px 0 0;
-    font-style:normal;
-    line-height:1.85;
+  /* -------- Where to next -------- */
+  .onward{
+    margin:48px 0 0;
+    padding-top:32px;
+    border-top:1px solid rgba(160,148,132,.28);
+  }
+  .onward h2{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--forest);
+    margin:0 0 20px 0;
+    line-height:1.65;
+  }
+  .onward ul{ list-style:none; margin:0; padding:0; }
+  .onward li{
+    padding:12px 0;
+    border-top:1px solid rgba(160,148,132,.20);
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 24, "SOFT" 60, "WONK" 0;
+    font-size:19px;
+  }
+  .onward li:first-child{ border-top:none; }
+  .onward li a{ text-decoration-color:rgba(200,133,58,.5); }
+  .onward li span{
+    display:block;
+    font-family:var(--sans);
+    font-size:14px;
+    color:var(--moss);
+    margin-top:2px;
   }
 
   /* -------- Footer -------- */
@@ -254,7 +239,7 @@
 </head>
 <body>
 
-<a class="skip" href="#doc">Skip to support</a>
+<a class="skip" href="#doc">Skip to content</a>
 
 <header class="topbar" role="banner">
   <div class="topbar-inner">
@@ -265,57 +250,36 @@
   </div>
 </header>
 
-<main class="legal">
+<main class="missing" id="doc">
   <div class="wrap">
-    <p class="eyebrow"><span class="dot"></span> Support</p>
-    <h1>Support</h1>
+    <p class="eyebrow"><span class="dot"></span> Error 404</p>
+    <h1>That one's a <em>NoGo</em>.</h1>
 
-    <article class="prose" id="doc">
+    <p class="lede">There's no page at this address. Either the link was typed a little wrong, or something used to live here and doesn't anymore.</p>
 
-      <p class="lede">SlowGo is made by one person in Western New York. If something isn't working, write to me and I'll answer.</p>
+    <p class="body">No harm done. Here's everything the site actually has.</p>
 
-      <address class="contact">
-        <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a><br />
-        <a href="tel:+17162353699">(716) 235-3699</a>
-      </address>
-
-      <h2 id="questions">Questions people ask</h2>
-
-      <h3>What do the green and amber lines mean?</h3>
-      <p>Green is a road posted 35 mph and under. Amber is a road posted 36 to 45. SlowGo builds routes around the green ones. Amber appears only if you've chosen to include faster stretches, and when it does, you'll see how long it lasts before you start. Roads posted above 45 are not offered.</p>
-
-      <h3>It says "That one's a NoGo." What now?</h3>
-      <p>It means there's no route to that place that stays on roads posted 35 and under. Rather than quietly putting you on a fast road, SlowGo tells you. On that card you can tap "Show routes with faster stretches (36–45)" to see the other options for that trip, or try a different spot.</p>
-
-      <h3>How do I get a one-tap route home?</h3>
-      <p>Save your home as a favorite and name it Home. After that, when you arrive somewhere, SlowGo will offer to take you back.</p>
-
-      <h3>Can I turn the voice off?</h3>
-      <p>Yes. Settings, under Navigation, then Voice Directions. The Volume setting just below it controls how loud it is.</p>
-
-      <h3>Can I see what I'm saving by taking the cart instead of the car?</h3>
-      <p>Yes. Settings, under Gas Savings. Turn on Track Gas Savings, then set the gas price and your car's mileage, and SlowGo keeps a running total.</p>
-
-      <h3>Where do I tell it about my cart?</h3>
-      <p>Settings, under Cart Preferences. You can say whether you drive a golf cart or an LSV, and roughly how far you go on a charge.</p>
-
-      <h3>What happens to my trips?</h3>
-      <p>They stay on this phone. SlowGo keeps your last 100 and stores their start and end points roughly — close enough to remember the trip, not close enough to point at a doorstep. You can turn saving off, or clear them, in Settings under Privacy.</p>
-
-      <h3>Does it work outside The Villages?</h3>
-      <p>Yes, if you're in Florida or Georgia. Those two states are where SlowGo's speed-limit data lives today &mdash; The Villages, Sun City Center, Naples, Ocean Reef, Peachtree City, and the rest of both states. Where a road carries a posted limit, SlowGo checks it. Where it doesn't, SlowGo judges conservatively from the kind of road it is and tells you so on the route.</p>
-      <p>Outside those two states you can search, browse the map, and plan a ride, but SlowGo won't start one. We check a state's roads before we turn it on, rather than guess at a speed limit. If you want your state next, tell me where you ride.</p>
-
-      <h3>I searched for a place and it didn't come up.</h3>
-      <p>Try the full name, or a nearby cross street. If somewhere you know is missing, send it to me. A name and a town is enough.</p>
-
-      <h3>Do I need an account? What does it cost?</h3>
-      <p>No account, no ads, and nothing to pay. There's a short setup the first time you open the app &mdash; the terms, a few preferences, the safety basics &mdash; and then it stays out of your way.</p>
-
-      <h3>Something's wrong.</h3>
-      <p>Write to me. Tell me where you were, where you were going, and what happened. That's usually enough for me to find it.</p>
-
-    </article>
+    <nav class="onward" aria-labelledby="onward-title">
+      <h2 id="onward-title">Where to next</h2>
+      <ul>
+        <li>
+          <a href="/">SlowGo home</a>
+          <span>What the app is, where it works, and the waitlist.</span>
+        </li>
+        <li>
+          <a href="/support">Support</a>
+          <span>Common questions, and how to reach a person.</span>
+        </li>
+        <li>
+          <a href="/privacy">Privacy Policy</a>
+          <span>What's collected, what isn't, and where it's kept.</span>
+        </li>
+        <li>
+          <a href="/terms">Terms of Service</a>
+          <span>The terms you agree to when you use SlowGo.</span>
+        </li>
+      </ul>
+    </nav>
   </div>
 </main>
 
@@ -330,7 +294,7 @@
         <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>
       </p>
       <ul class="foot-legal-links" role="list">
-        <li>Support</li>
+        <li><a href="/support">Support</a></li>
         <li><a href="/privacy">Privacy Policy</a></li>
         <li><a href="/terms">Terms of Service</a></li>
       </ul>
