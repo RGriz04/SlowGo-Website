@@ -1,6 +1,6 @@
 # SlowGo Privacy Policy
 
-**Last updated: August 1, 2026**
+**Last updated: August 7, 2026**
 
 This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "**we**," "**us**," or "**our**") handles information in connection with the SlowGo mobile application (the "**App**") and the slowgoapp.com website (the "**Site**") (together, the "**Service**").
 
@@ -10,7 +10,7 @@ This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "*
 
 **We do not require an account.** The App does not ask for your name, email address, phone number, or any login.
 
-**Precise location.** With your permission (through your device's location prompt), the App collects your device's precise location while you use it, to show your position on the map, calculate and display routes, search for nearby places, and provide local weather. When you request a route or search, the relevant coordinates are transmitted to the providers that fulfill the request (see Section 3). You can withdraw location permission at any time in your device settings; core features of a navigation app will not work without it.
+**Precise location.** With your permission (through your device's location prompt), the App collects your device's precise location while you use it, to show your position on the map, calculate and display routes, search for nearby places, and provide local weather. When you request a route or search, the relevant coordinates are transmitted to the providers that fulfill the request (see Section 3). Opening the ride postcard also looks up the general area a ride started and ended in, so the card can name those places; that lookup sends only an approximate position — rounded to about 110 metres — and never your exact start or end point. You can withdraw location permission at any time in your device settings; core features of a navigation app will not work without it.
 
 **Ride, favorite, and settings data (stored on your device).** The App stores your ride history, favorite places, recent destinations, and settings on your device. See Section 5 for details and controls.
 
@@ -35,12 +35,18 @@ To fulfill your requests, the Service sends your coordinates and related request
 | Provider | What it does | What it receives |
 |---|---|---|
 | BackRoad Apps routing server (Valhalla, operated by us) | Calculates cart-friendly routes, and looks up the posted speed limits along a route it has calculated | Trip start/end coordinates, route requests, and the shape of a calculated route |
-| Stadia Maps | Map tiles and styles, place search (geocoding) | The map area being viewed, and search text with a nearby coordinate for distance ranking |
+| Stadia Maps | Map tiles and styles, place search (geocoding), and neighborhood names for the ride postcard | The map area you are viewing; your search text along with a nearby coordinate so results can be ranked by distance; and, when you open a ride postcard, the approximate trip start/end areas (rounded to about 110 metres) |
 | OpenStreetMap community services (Overpass API) | Nearby-place search, place details, and checking whether paths on a route are cart-legal | Search-area coordinates and queries, and sample points along a calculated route |
 | U.S. National Weather Service | Local weather and forecasts | Approximate area coordinates |
 | Sentry | Crash and error reporting, and a small set of coordinate-free product metrics we use to keep the App healthy | Diagnostics, configured to exclude location and trip-revealing data before sending; and three app-health events — whether a route request was served, which quick-link category was tapped, and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text) |
 | Netlify | Hosts the Site and receives what you submit through its waitlist and town-request forms | The email address, and for a town request the town or community name, that you type into a Site form; plus standard server logs such as IP address and browser type |
 | Apple | App distribution, and payment processing if paid features are offered | Per Apple's own terms and privacy policy |
+
+**When you share.** Some things leave the App because you ask them to, through your device's own share sheet. What you send goes to whichever app you pick there — Messages, Mail, a notes app, anything installed — and from that point it is handled by that app and its provider, not by us. We do not receive a copy and we do not keep a record of what you shared or who you sent it to.
+
+- **Sharing a place** sends the place's name and a standard map link containing its exact coordinates, so the person receiving it can open it in a maps app.
+- **Sharing a ride postcard** sends the picture: your ride's stats, the general areas it started and ended in, and any note you wrote. It does not include a map, the shape of your route, or your exact start or end point.
+- **Sharing your savings summary** sends a few lines of text about totals. It contains no locations at all.
 
 **Routing stays with us.** Route calculations and speed-limit verification are performed on SlowGo's own servers. No third party receives your route request — your origin and destination are sent only to our own routing server. (Place search sends your search text and a nearby coordinate to the search providers listed above.) The App previously used outside routing services as a backup when our own server could not be reached; it no longer does, and no such request is made under any circumstances.
 
@@ -62,17 +68,23 @@ We keep a submission until we have sent the launch notification for your area, o
 
 ## 4. Crash and Error Reports, and Product Metrics
 
-If SlowGo crashes or hits an error, a diagnostic report may be sent to our crash-reporting provider (Sentry) so we can fix the problem. Crash-reporting tools can otherwise capture sensitive context, so before anything is sent the App is configured to remove latitude and longitude, addresses, route endpoints, search text, and request bodies, URLs, or breadcrumbs that could reveal a trip or destination. We configure the provider to limit IP-address storage, minimize default data collection, and restrict retention and access. Crash reports are about the App's health, not about where you went.
+If SlowGo crashes or hits an error, a diagnostic report may be sent to our crash-reporting provider (Sentry) so we can fix the problem. Crash-reporting tools can otherwise capture sensitive context, so the App is configured to keep location out of them in three separate ways.
+
+**Reports raised by the App's own code** pass through a filter before they leave the device. That filter works from a list of fields it is allowed to send — anything it does not recognise is dropped rather than forwarded — and it removes latitude and longitude, addresses, route endpoints, search text, and request bodies, URLs, or breadcrumbs that could reveal a trip or destination. Values that look like coordinates are removed outright, not blurred or rounded.
+
+**Reports raised by a crash in the device's own layer** are assembled by the crash reporter itself and do not pass through that filter. They contain no location because there is none for them to find: the App never gives the crash reporter your position, your route, or any place data, and we switch off the reporter's own capture of network requests, which is the other way a coordinate could reach it.
+
+**In both cases we send no personal identifiers.** There is no account, and the App does not attach a user ID, an email address, or a name to any report. We configure the provider to limit IP-address storage, minimize default data collection, and restrict retention and access. Crash reports are about the App's health, not about where you went.
 
 The same connection also carries three product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not, which quick-link category (for example "Coffee" or "Pharmacy") was tapped, and how many map tiles a session loaded. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working and to keep our map-tile usage within budget.
 
 ## 5. What Stays on Your Phone
 
-**Your saved ride history stays on your phone.** SlowGo keeps your most recent rides (up to 100) in the App's storage on your device, and stores their start and end points at reduced precision — close enough to remember the trip, not close enough to point at a doorstep. Favorites are stored at full precision so they take you exactly where you saved. (Separately, when you actually request a route, that route's start and end coordinates are transmitted to providers to calculate it, as described in Section 3 — this is different from the on-device history.)
+**Your saved ride history stays on your phone.** SlowGo keeps your most recent rides (up to 100) in the App's storage on your device, and stores their start and end points at reduced precision: rounded to four decimal places, which is a grid of roughly 11 metres. That is coarser than the reading your device produces, and it is what the App keeps rather than the exact point. Favorites are stored at full precision so they take you exactly where you saved. (Separately, when you actually request a route, that route's start and end coordinates are transmitted to providers to calculate it, as described in Section 3 — this is different from the on-device history.)
 
 **Your most recent position is also saved on your phone.** So the map can open where you left off instead of a blank screen while your first GPS reading arrives, the App keeps your **single most recent location reading at full precision**, along with what produced it (a live reading or the position your device had already cached), when it was taken, and how accurate it was. It is a single point, not a trail: each new reading overwrites the previous one, and no history of these readings is kept. It stays on your device until you delete the App. This is the most precise location the App keeps on your phone, which is why we name it here specifically.
 
-**An in-progress ride is saved so you can resume it.** When you start navigating, the App saves that ride's **destination at full precision** (with its label), the custom starting point if you set one, and the time you started, so that if the App is closed or crashes mid-ride it can offer to pick the trip back up. It is cleared as soon as you arrive, when you end the ride, when you decline the offer to resume, and automatically if it is more than 90 minutes old or you are no longer near the trip when the App next opens.
+**An in-progress ride is saved so you can resume it.** When you start navigating, the App saves that ride's **destination at full precision** (with its label), where the ride started, the shape of the route itself (rounded to roughly 11 metres), the custom starting point if you set one, and the time you started, so that if the App is closed or crashes mid-ride it can offer to pick the trip back up. The route's shape is what lets the App tell that you are still somewhere on the trip, rather than only whether you are near its destination. It is cleared as soon as you arrive, when you end the ride, when you decline the offer to resume, and automatically if it is more than 90 minutes old or you are no longer on the trip when the App next opens.
 
 **The map's last position is saved.** The App separately stores **where the map was last looking** — a center point and zoom level — so re-opening the App restores your view instead of jumping. This is a map view, not a record of where you were; you can pan the map anywhere without going there. It is overwritten as you move the map and stays on your device until you delete the App.
 
