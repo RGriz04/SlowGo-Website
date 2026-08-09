@@ -1,6 +1,6 @@
 # SlowGo — Netlify Export
 
-Static site for **slowgoapp.com**. Five hand-written HTML pages plus Netlify
+Static site for **slowgoapp.com**. Six hand-written HTML pages plus Netlify
 configuration. No build step, no framework, no `node_modules`.
 
 ## What's in this folder
@@ -11,11 +11,12 @@ SlowGo-Launch/
 ├── privacy.html     # Privacy Policy — served at /privacy
 ├── terms.html       # Terms of Service — served at /terms
 ├── support.html     # Support & FAQ — served at /support
+├── safety.html      # How SlowGo is built to be careful — served at /safety
 ├── 404.html         # Not-found page (Netlify serves this by convention)
 ├── netlify.toml     # Build config + security/caching headers
-├── _redirects       # HTTPS + www → apex, and clean URLs for the legal pages
+├── _redirects       # HTTPS + www → apex, and clean URLs for the non-index pages
 ├── robots.txt       # Allow all crawlers
-├── sitemap.xml      # Four live pages, each with lastmod
+├── sitemap.xml      # Five live pages, each with lastmod
 ├── llms.txt         # Plain-language site summary for language models
 ├── og-image.png     # 1200×630 social preview card
 ├── screenshots/     # Three app screenshots used on index.html
@@ -37,12 +38,25 @@ so the address bar stays clean. Those two URLs are referenced by the App Store
 privacy-policy field and by in-app links, so the rules must not be removed in
 favour of Netlify's "Pretty URLs" dashboard toggle, which someone could turn off.
 
+## The safety page
+
+`safety.html` is served at `/safety`; `/how-its-built` is a 301 to it, so a link
+written either way lands in the same place.
+
+Every factual claim on that page comes from the app repo: `APP-REVIEW-NOTES.md`
+(the ratified product constitution, the speed policy, the coverage and outage
+behaviour, the validation language) and `SlowGo-Privacy-Policy.md`. Do not add a
+claim to it that is not in one of those two files, and keep the validation
+wording **measured** — no "field-tested", "driven", or "road-tested". No human
+has ridden these routes in a cart yet, and nothing on this site may read as
+though one has.
+
 ## SEO and metadata
 
 - **Unique `<title>` and meta description** on every page.
-- **`rel=canonical`** on all four live pages, absolute URLs. `404.html` has none
+- **`rel=canonical`** on all five live pages, absolute URLs. `404.html` has none
   by design — it is `noindex, follow` and deliberately absent from the sitemap.
-- **Open Graph + Twitter card** on all four live pages, all pointing at
+- **Open Graph + Twitter card** on all five live pages, all pointing at
   `og-image.png` (1200×630) with alt text.
 - **Structured data** in `index.html`, as two JSON-LD blocks:
   - `Organization` (BackRoad Apps LLC) + `WebSite`, as an `@graph`
@@ -135,6 +149,7 @@ Edit the HTML directly and push. There is no build step, no framework, no
 |---|---|---|
 | `404.html` | ~10 KB | |
 | `support.html` | ~14 KB | |
+| `safety.html` | ~15 KB | |
 | `privacy.html` | ~33 KB | |
 | `terms.html` | ~43 KB | |
 | `index.html` | ~76 KB | plus ~200 KB of screenshots, lazy-loaded |

@@ -1160,6 +1160,14 @@
   "mainEntity": [
     {
       "@type": "Question",
+      "name": "Is SlowGo safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's built to be careful, and to say so when it isn't sure. Routes are built around roads posted 35 mph and under. Every route is checked against speed data before the Start button unlocks, and if that check can't finish, the button stays locked rather than guessing. Where a road carries no posted limit in the map data, SlowGo says that instead of inventing a number. What it won't do is decide whether a cart is legal on your street, or replace what you can see from the seat. The long version is here: how SlowGo is built to be careful."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Why not just use Google Maps?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -1478,6 +1486,8 @@
           <p>When there's no reasonable slow way, SlowGo says so. It won't quietly put you on a fast road to make the trip work.</p>
         </div>
       </div>
+
+      <p class="body reveal" style="margin-top: clamp(28px, 4vw, 44px); max-width:66ch; color:var(--forest);">Behind those three colors is a check that has to finish before the Start button will unlock. If someone in your house wants the longer answer &mdash; what gets checked, what gets refused, and what the app admits it can't know &mdash; it's written out in <a href="/safety">how SlowGo is built to be careful</a>.</p>
     </div>
   </section>
 
@@ -1660,6 +1670,11 @@
 
       <div class="faq reveal">
         <details>
+          <summary>Is SlowGo safe?<span class="plus">+</span></summary>
+          <p class="a">It's built to be careful, and to say so when it isn't sure.</p>
+          <p class="a">Routes are built around roads posted 35 mph and under. Every route is checked against speed data before the Start button unlocks, and if that check can't finish, the button stays locked rather than guessing. Where a road carries no posted limit in the map data, SlowGo says that instead of inventing a number. What it won't do is decide whether a cart is legal on your street, or replace what you can see from the seat. The long version is here: <a href="/safety">how SlowGo is built to be careful</a>.</p>
+        </details>
+        <details>
           <summary>Why not just use Google Maps?<span class="plus">+</span></summary>
           <p class="a">Google Maps is built for cars. It sends you to highways, busy roads, and routes that assume you're going 45+ mph.</p>
           <p class="a">SlowGo knows you're on a cart. It finds the backroads, residential streets, and cart-friendly paths &mdash; the routes Google won't show you. Same destination. Calmer ride.</p>
@@ -1788,6 +1803,7 @@
       <div>
         <h2>Beyond the ride</h2>
         <ul>
+          <li><a href="/safety">Safety</a></li>
           <li><a href="#why">Why slow</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#waitlist">Waitlist</a></li>
@@ -1828,6 +1844,7 @@
         <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>
       </p>
       <ul class="foot-legal-links" role="list">
+        <li><a href="/safety">Safety</a></li>
         <li><a href="/support">Support</a></li>
         <li><a href="/privacy">Privacy Policy</a></li>
         <li><a href="/terms">Terms of Service</a></li>

@@ -17,3 +17,11 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 /privacy/   /privacy.html    200
 /support    /support.html    200
 /support/   /support.html    200
+/safety     /safety.html     200
+/safety/    /safety.html     200
+
+# The safety page was drafted under two possible names. /safety is the one a
+# worried family member types; /how-its-built redirects to it so a link written
+# either way lands in the same place.
+/how-its-built     /safety    301!
+/how-its-built/    /safety    301!

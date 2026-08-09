@@ -25,7 +25,11 @@ listing yet, and the site currently collects waitlist signups. Android comes lat
   faster stretches, and the length of the stretch is shown before the ride starts.
 - **NoGo** — no route exists that stays on 35-and-under roads. SlowGo says so
   rather than quietly routing onto a fast road.
-- Roads posted above 45 mph are not offered.
+- Roads confirmed above 45 mph are never routed along.
+- Where a road carries no posted limit in the map data, SlowGo judges it by road
+  type, labels it as judged, and never invents a number.
+- Every route is speed-checked before the Start button unlocks. A check that
+  can't finish leaves the button locked.
 
 ## Privacy posture
 
@@ -39,6 +43,10 @@ listing yet, and the site currently collects waitlist signups. Android comes lat
 
 - [Home](https://slowgoapp.com/): what the app is, how it works, where it works,
   the roadmap, FAQ, and the waitlist form.
+- [Safety](https://slowgoapp.com/safety): how routes are checked before the Start
+  button unlocks, what SlowGo refuses to route, what it labels as judged rather
+  than read, and what it leaves to the rider. Also at /how-its-built, which
+  redirects here.
 - [Support](https://slowgoapp.com/support): common questions and direct contact.
   Answered by one person.
 - [Privacy Policy](https://slowgoapp.com/privacy): what is collected, what is not,
