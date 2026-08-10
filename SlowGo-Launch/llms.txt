@@ -30,6 +30,11 @@ listing yet, and the site currently collects waitlist signups. Android comes lat
   type, labels it as judged, and never invents a number.
 - Every route is speed-checked before the Start button unlocks. A check that
   can't finish leaves the button locked.
+- Where a route uses a material stretch of path, SlowGo also checks whether that
+  path has cart-access notes recorded on the shared map. That check holds Start
+  only while it is pending; the answer is disclosed, never used to block, and an
+  absent note is treated as missing information rather than a prohibition. SlowGo
+  does not determine whether a route is legal for a given cart.
 
 ## Privacy posture
 

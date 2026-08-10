@@ -51,6 +51,25 @@ wording **measured** — no "field-tested", "driven", or "road-tested". No human
 has ridden these routes in a cart yet, and nothing on this site may read as
 though one has.
 
+There is no claim table on the page itself; this is where a claim is traced to
+its source. One row per section that makes a checkable assertion:
+
+| Section | Source in the app repo |
+|---|---|
+| "One rule, and the rest follows" | `APP-REVIEW-NOTES.md` — "How routes are chosen" (≤35 build, 36–45 disclosed in amber, never routed **along** a confirmed >45 road, crossings disclosed separately) |
+| "Checked before you can start" | `APP-REVIEW-NOTES.md` — the end-to-end speed check, *"Checking speed limits…"*, *"We couldn't confirm the speed limits out here."*, partial check treated as failure |
+| "Paths get a second question" | `APP-REVIEW-NOTES.md` ~142–148 and the questions-table row *"What are the 'cart-path checks' in the location list?"* — materiality threshold, *"Checking path access…"* holds Start only while pending, *"Includes 0.4 mi of paths — cart access not confirmed"*, *"Couldn't check path access — ride these sections with local knowledge"*, both startable, absent tag is absence of data |
+| "When we don't know, we say so" | `APP-REVIEW-NOTES.md` — "Where the speed limits come from", the judged-by-road-type label, "35 mph and under" reserved for fully posted routes |
+| "No route beats a bad route" | `APP-REVIEW-NOTES.md` — the refusal screen, *"That one's a NoGo."* |
+| "Your eyes are still in charge" | `APP-REVIEW-NOTES.md` — "cart legality varies by municipality and SlowGo does not adjudicate it"; `SlowGo-Terms-of-Service.md` §4.3 |
+| "Your privacy, in one breath" | `SlowGo-Privacy-Policy.md` — §3 provider table, §5 on-device storage |
+| "How it's tested" | `APP-REVIEW-NOTES.md` — "How well validated is each?" (the two signed runs, 2026-08-08, neither state ridden in a cart) |
+
+The page describes the cart-path check as **disclosure**, never as a legality
+verdict. That distinction is the app's, not a hedge added here: an absent
+`golf_cart` tag is an absence of data. Nothing on this site may say the app
+determines whether a route is cart-legal — the Terms disclaim exactly that.
+
 ## SEO and metadata
 
 - **Unique `<title>` and meta description** on every page.
