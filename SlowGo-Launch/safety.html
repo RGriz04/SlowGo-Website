@@ -279,6 +279,10 @@
       <h2 id="unknown">When we don't know, we say so</h2>
       <p>Plenty of roads carry no posted speed limit in the map data at all. SlowGo does not invent a number for them. It judges them conservatively by the kind of road they are, and then says exactly that on the route &mdash; <em>0.4 mi unposted, judged by road type</em> &mdash; instead of a tidy figure it never read. The flat phrase <em>35 mph and under</em> is reserved for routes where every limit came off an actual sign.</p>
 
+      <h2 id="no-posted-limit">When a road has no speed on record</h2>
+      <p>Not every road has a speed limit on record. Sometimes there's no sign. Sometimes the sign exists but nobody wrote it down in any public dataset. Either way, we don't know the number &mdash; and we never invent one.</p>
+      <p>What we do instead is look at what kind of road it is. A quiet residential street gets treated like a quiet residential street, and we'll route you on it with the label you'll see elsewhere on this page. But a road built like a fast road gets treated as over 45 and kept out of your route, and the app tells you why: <em>treated as over 45 &mdash; no posted limit on record</em>. The phrase <em>treated as</em> is doing real work. It means this is our call about the road, not a number we found posted on it. We'd rather send you around a road that turns out to be fine than down one that turns out not to be.</p>
+
       <h2 id="nogo">No route beats a bad route</h2>
       <p>Sometimes there is no way to get where you're going that stays on slow roads. SlowGo says so and stops. The screen reads <em>That one's a NoGo.</em> It will not quietly put you on a fast road to make the trip work &mdash; that's the app telling you the truth about the roads, not the app failing.</p>
 

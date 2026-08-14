@@ -5,3 +5,14 @@
 
 # Windows metadata
 Thumbs.db
+
+# Secrets and credentials — never commit
+.env
+.env.*
+*.pem
+*.p8
+*.p12
+*.keystore
+*.jks
+*.key
+*.mobileprovision
