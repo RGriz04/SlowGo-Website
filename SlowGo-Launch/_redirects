@@ -26,9 +26,9 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 /how-its-built     /safety    301!
 /how-its-built/    /safety    301!
 
-# TestFlight beta invite. 302 (temporary) on purpose: this join link is only
-# good for the current beta and changes when it ends. A 301 would be cached in
-# testers' browsers permanently and keep sending them to a dead invite long
-# after the URL here was updated.
-/beta     https://testflight.apple.com/join/FwPSjgK3    302
-/beta/    https://testflight.apple.com/join/FwPSjgK3    302
+# /beta is a real page now, not a redirect. It used to bounce straight to
+# TestFlight, but a redirect has no HTML for iMessage to read, so shared links
+# previewed as the bare app icon. beta.html carries the OG card and holds the
+# TestFlight link as a button. Rewrite (200), same as the pages above.
+/beta       /beta.html       200
+/beta/      /beta.html       200
