@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<!-- ===================================================================
+     /go — a doorway, not a page.
+
+     This used to be a bare 302 in _redirects. A redirect carries no HTML,
+     so iMessage, Slack and the rest had nothing to read and improvised a
+     preview from whatever they found at the end of the hop — usually an
+     App Store screenshot. One card everywhere is the rule, so /go now
+     serves this file: the homepage's exact Open Graph card, and an
+     immediate hand-off to the App Store for anyone who is not a bot.
+
+     Three ways out, in order, because each can fail on its own:
+       1. meta refresh   — works with JS disabled
+       2. location.replace — faster, and leaves no history entry to trap
+                             the back button on the way home
+       3. the badge      — visible fallback if both are blocked
+
+     Preview crawlers run none of them. They read the tags above the fold
+     and stop, which is the entire point.
+
+     The tags below are copied from index.html verbatim and must stay that
+     way. If the homepage card changes, change it here in the same pass —
+     the whole reason this file exists is that the two must match.
+     =================================================================== -->
+
+<title>SlowGo — Life's better at 15 mph.</title>
+<meta name="description" content="Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads." />
+<meta name="theme-color" content="#0B1F15" />
+
+<!-- A doorway, not a destination. Keep it out of the index: the homepage
+     is the page that should rank, and this one has no content to offer. -->
+<meta name="robots" content="noindex, follow" />
+
+<meta name="apple-itunes-app" content="app-id=6803226504">
+
+<!-- Hand-off #1. Zero delay. Runs even with JavaScript turned off. -->
+<meta http-equiv="refresh" content="0;url=https://apps.apple.com/app/slowgo/id6803226504" />
+
+<link rel="canonical" href="https://slowgoapp.com/go" />
+
+<!-- The homepage's card, byte-for-byte, with only og:url changed. Absolute
+     image URL: iMessage and Slack do not resolve relative paths. -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SlowGo — Life's better at 15 mph." />
+<meta property="og:description" content="Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads." />
+<meta property="og:url" content="https://slowgoapp.com/go" />
+<meta property="og:image" content="https://slowgoapp.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
+<meta property="og:site_name" content="SlowGo" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SlowGo — Life's better at 15 mph." />
+<meta name="twitter:description" content="Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads." />
+<meta name="twitter:image" content="https://slowgoapp.com/og-image.png" />
+<meta name="twitter:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231E3A2B'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='36' fill='%23F4EDE0'>S</text></svg>" />
+
+<!-- No Google Fonts here on purpose. This page is meant to be gone before
+     a webfont could finish loading, and a blocking stylesheet would only
+     lengthen the charcoal flash it exists to keep short. System stack. -->
+<style>
+  html,body{ margin:0; height:100%; }
+  body{
+    background:#0B1F15;
+    color:#F4EDE0;
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:26px;
+    padding:24px;
+    text-align:center;
+    -webkit-font-smoothing:antialiased;
+  }
+  p{
+    margin:0;
+    font-size:15px;
+    letter-spacing:.02em;
+    color:#C7BDAC;
+  }
+  a{ display:inline-block; line-height:0; border-radius:12px; padding:8px; }
+  a:focus-visible{ outline:2px solid #C8853A; outline-offset:2px; }
+  img{ display:block; width:180px; height:auto; }
+</style>
+</head>
+<body>
+
+  <p>Taking you to the App Store&hellip;</p>
+
+  <!-- Hand-off #3, and the only thing a person sees if the other two are
+       blocked. Apple's unaltered artwork, same asset as the homepage. This
+       one points at the listing directly rather than /go — it is already
+       on /go, and pointing back here would loop. -->
+  <a href="https://apps.apple.com/app/slowgo/id6803226504">
+    <img src="/app-store-badge.svg" width="180" height="60"
+         alt="Download SlowGo on the App Store" />
+  </a>
+
+<script>
+  // Hand-off #2. replace(), not assign(): this page must not sit in the
+  // history stack, or "back" from the App Store would land here and bounce
+  // the rider straight out again.
+  location.replace('https://apps.apple.com/app/slowgo/id6803226504');
+</script>
+
+</body>
+</html>

@@ -33,11 +33,16 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 /beta       /beta.html       200
 /beta/      /beta.html       200
 
-# The App Store listing. 302 (temporary), same reasoning as /beta above and the
-# reason the QR code encodes this path rather than the Apple URL: /go is printed
-# on signage and cards that cannot be reprinted once they are out in the world.
-# A 301 would be cached permanently in the browser of every phone that ever
-# scanned it, pinning that hardware to today's destination forever. 302 keeps
-# the decision here, in this file, where it can still be changed.
-/go     https://apps.apple.com/app/slowgo/id6803226504    302
-/go/    https://apps.apple.com/app/slowgo/id6803226504    302
+# /go is a real page now, not a redirect to Apple. It used to be a 302 straight
+# to the App Store, but a redirect carries no HTML, so iMessage and Slack had no
+# card to read and invented one from an App Store screenshot. go/index.html holds
+# the homepage's exact OG card and hands off to the store itself, three ways.
+#
+# Rewrites (200), same as the pages above, and for the same reason those exist:
+# /go is the address printed on the QR code and it has no trailing slash. Left to
+# Netlify's directory handling, a bare /go would 301 to /go/ — or 404 outright if
+# someone turns off the "Pretty URLs" toggle. Neither is acceptable for a URL
+# that is already printed on signage we cannot reprint. These two lines make /go
+# resolve to the page directly, at 200, no matter what the dashboard says.
+/go     /go/index.html    200
+/go/    /go/index.html    200

@@ -19,6 +19,7 @@ SlowGo-Launch/
 ├── sitemap.xml      # Five live pages, each with lastmod
 ├── llms.txt         # Plain-language site summary for language models
 ├── og-image.png     # 1200×630 social preview card
+├── go/index.html    # /go — App Store doorway page, carries the OG card
 ├── app-store-badge.svg  # Apple's official badge artwork, unaltered
 ├── screenshots/     # Four App Store screens used on index.html, webp + png
 │                   #   (see screenshots/SOURCES.md for provenance)
@@ -37,11 +38,52 @@ without syncing the app repo in the same pass.
 
 ## The App Store link
 
-`/go` is a 302 to the App Store listing. Everything that points at the app —
-the hero badge, the QR code in `brand-assets/qr/`, anything printed — links to
-`/go` and never to `apps.apple.com` directly, so the destination stays editable
-in `_redirects`. It is a 302 rather than a 301 because a 301 would sit in the
-cache of every phone that ever scanned the printed code.
+`/go` is a **page**, `go/index.html`, not a `_redirects` rule. Everything that
+points at the app — the hero badge, the footer badge, the QR code in
+`brand-assets/qr/`, anything printed — links to `/go` and never to
+`apps.apple.com` directly, so the destination stays editable here.
+
+### Why it stopped being a redirect
+
+It began as a 302 straight to the App Store. That worked for people and broke
+for link previews: a redirect carries no HTML, so when `/go` was shared in
+iMessage there were no Open Graph tags to read and the preview was improvised
+from whatever sat at the end of the hop — an App Store screenshot. The homepage
+rendered the branded green card and `/go` rendered something else entirely.
+
+One card everywhere. `go/index.html` carries the homepage's Open Graph and
+Twitter tags **verbatim**, changing only `og:url`. Preview crawlers read those
+and stop. Everyone else is handed to the store three ways, because each can fail
+on its own:
+
+1. `<meta http-equiv="refresh" content="0;...">` — works with JavaScript off
+2. `location.replace(...)` — faster, and leaves no history entry, so *back* from
+   the App Store does not land on `/go` and bounce the rider out again
+3. the visible badge — if both are blocked
+
+**If the homepage's card ever changes, change it in `go/index.html` in the same
+pass.** The entire point of the file is that the two match. Nothing checks this
+automatically.
+
+The page is `noindex, follow` and deliberately absent from `sitemap.xml`. It is
+a doorway, not something that should rank against the homepage.
+
+**Trade-off on record:** a person tapping `/go` may catch roughly 100 ms of
+charcoal before the store opens. That is the price of controlling the preview,
+and it was accepted knowingly. Printed QR codes are unaffected — they encode
+`/go` and always did.
+
+### Why `/go` is still two lines in `_redirects`
+
+They are **rewrites (200)** now, not redirects, pointing at `go/index.html`.
+They look redundant next to a real file at that path, and they are not: `/go`
+is the address printed on the QR code and it has **no trailing slash**. Left to
+Netlify's directory handling a bare `/go` would 301 to `/go/`, or 404 outright
+if someone switched off the "Pretty URLs" toggle — the same toggle this file
+already warns against depending on for `/privacy` and `/terms`. For a URL
+already printed on signage that cannot be reprinted, neither is acceptable.
+These two lines make `/go` resolve at 200, directly, regardless of the
+dashboard. Keep them.
 
 `app-store-badge.svg` is Apple's own artwork, byte-for-byte as they serve it.
 Their guidelines require the real badge and forbid altering it — do not inline
