@@ -85,6 +85,13 @@ already printed on signage that cannot be reprinted, neither is acceptable.
 These two lines make `/go` resolve at 200, directly, regardless of the
 dashboard. Keep them.
 
+They are written `200!`, forced, and **the bang is load-bearing**. Netlify
+silently ignores a redirect rule whose path collides with something that already
+exists in the publish directory — and `go/` is a real directory. Unforced, these
+lines look right, deploy without complaint, and do nothing at all: `/go` 301s to
+`/go/` and the rule never fires. This was measured on production, not reasoned
+about. If you ever see `/go` answering 301, the bang has gone missing.
+
 `app-store-badge.svg` is Apple's own artwork, byte-for-byte as they serve it.
 Their guidelines require the real badge and forbid altering it — do not inline
 it, recolour it, or redraw it. It is the white variant because the hero is dark.

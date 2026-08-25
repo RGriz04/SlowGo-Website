@@ -40,9 +40,13 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 #
 # Rewrites (200), same as the pages above, and for the same reason those exist:
 # /go is the address printed on the QR code and it has no trailing slash. Left to
-# Netlify's directory handling, a bare /go would 301 to /go/ — or 404 outright if
-# someone turns off the "Pretty URLs" toggle. Neither is acceptable for a URL
-# that is already printed on signage we cannot reprint. These two lines make /go
-# resolve to the page directly, at 200, no matter what the dashboard says.
-/go     /go/index.html    200
-/go/    /go/index.html    200
+# Netlify's directory handling, a bare /go 301s to /go/ — measured on production,
+# not guessed — and that hop is cached in the browser of every phone that ever
+# scanned the code. Not acceptable for a URL on signage we cannot reprint.
+#
+# Both rules are FORCED (200!). The bang is load-bearing: a rule whose path
+# collides with something that already exists in the publish directory is
+# silently ignored by Netlify unless it is forced, and go/ is a real directory.
+# Without the bang these two lines look correct, deploy clean, and do nothing.
+/go     /go/index.html    200!
+/go/    /go/index.html    200!
