@@ -23,13 +23,15 @@
      Preview crawlers run none of them. They read the tags above the fold
      and stop, which is the entire point.
 
-     The tags below are copied from index.html verbatim and must stay that
-     way. If the homepage card changes, change it here in the same pass —
-     the whole reason this file exists is that the two must match.
+     One IMAGE everywhere, not one card. og:image here and og:image on the
+     homepage must never drift apart. Every line of text around it — og:title,
+     og:description, their twitter: twins, and the plain title and description
+     elements a non-OG scraper falls back to — is this page's own, because this
+     link goes somewhere the homepage does not.
      =================================================================== -->
 
-<title>SlowGo — Life's better at 15 mph.</title>
-<meta name="description" content="Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads." />
+<title>Download SlowGo — free on the App Store</title>
+<meta name="description" content="Free golf cart GPS for iPhone. Covers Florida and Georgia, more states on the way." />
 <meta name="theme-color" content="#0B1F15" />
 
 <!-- A doorway, not a destination. Keep it out of the index: the homepage
@@ -43,11 +45,25 @@
 
 <link rel="canonical" href="https://slowgoapp.com/go" />
 
-<!-- The homepage's card, byte-for-byte, with only og:url changed. Absolute
-     image URL: iMessage and Slack do not resolve relative paths. -->
+<!-- The homepage's card IMAGE, and a title line of this page's own.
+
+     og:image is identical to the homepage's and must stay that way forever —
+     one image everywhere. The title and description deliberately differ: this
+     card is shown for a link whose destination is the App Store, so it names
+     that. Do not "fix" the difference back to matching the homepage.
+
+     The title and description elements above say the same thing, for the same
+     reason: they are what a scraper that does not read Open Graph falls back
+     to, and a fallback that named the homepage would defeat the point.
+
+     Note there is deliberately no literal meta markup written inside these
+     comments. A browser ignores a comment; a crude regex-based preview bot
+     does not always, and this page exists to be read correctly by bots.
+
+     Absolute image URL: iMessage and Slack do not resolve relative paths. -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="SlowGo — Life's better at 15 mph." />
-<meta property="og:description" content="Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads." />
+<meta property="og:title" content="Download SlowGo — free on the App Store" />
+<meta property="og:description" content="Free golf cart GPS for iPhone. Covers Florida and Georgia, more states on the way." />
 <meta property="og:url" content="https://slowgoapp.com/go" />
 <meta property="og:image" content="https://slowgoapp.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -56,8 +72,8 @@
 <meta property="og:site_name" content="SlowGo" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="SlowGo — Life's better at 15 mph." />
-<meta name="twitter:description" content="Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads." />
+<meta name="twitter:title" content="Download SlowGo — free on the App Store" />
+<meta name="twitter:description" content="Free golf cart GPS for iPhone. Covers Florida and Georgia, more states on the way." />
 <meta name="twitter:image" content="https://slowgoapp.com/og-image.png" />
 <meta name="twitter:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
 

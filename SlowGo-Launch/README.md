@@ -51,19 +51,48 @@ iMessage there were no Open Graph tags to read and the preview was improvised
 from whatever sat at the end of the hop — an App Store screenshot. The homepage
 rendered the branded green card and `/go` rendered something else entirely.
 
-One card everywhere. `go/index.html` carries the homepage's Open Graph and
-Twitter tags **verbatim**, changing only `og:url`. Preview crawlers read those
-and stop. Everyone else is handed to the store three ways, because each can fail
-on its own:
+One **image** everywhere. `go/index.html` carries the homepage's `og:image`,
+and a title line of its own. Preview crawlers read those and stop. Everyone else
+is handed to the store three ways, because each can fail on its own:
 
 1. `<meta http-equiv="refresh" content="0;...">` — works with JavaScript off
 2. `location.replace(...)` — faster, and leaves no history entry, so *back* from
    the App Store does not land on `/go` and bounce the rider out again
 3. the visible badge — if both are blocked
 
-**If the homepage's card ever changes, change it in `go/index.html` in the same
-pass.** The entire point of the file is that the two match. Nothing checks this
-automatically.
+### What must match, and what must not
+
+The two files share a card image and nothing else. Read this before "tidying"
+either one.
+
+| Tag | Rule |
+|---|---|
+| `og:image`, `og:image:width/height/alt` | **Identical forever.** If the homepage's card art changes, change it here in the same pass. Nothing checks this automatically. |
+| `og:site_name`, `og:type`, `twitter:card`, `twitter:image`, `twitter:image:alt` | Identical. |
+| `og:url` | Differs — each page names itself. |
+| `og:title`, `twitter:title` | **Deliberately different.** |
+| `og:description`, `twitter:description` | **Deliberately different.** |
+| `<title>`, `<meta name="description">` | **Deliberately different** — same strings as the two rows above. |
+
+Nine tags match, seven differ, and nothing is unclassified.
+
+The text around the image is **meant** to diverge, and that is a ruling, not
+drift. A link to `/go` goes to the App Store, so its card says so:
+
+> **Download SlowGo — free on the App Store**
+> Free golf cart GPS for iPhone. Covers Florida and Georgia, more states on the
+> way.
+
+The homepage keeps its own line — *Life's better at 15 mph.* — because a link to
+the homepage goes to the homepage. Same picture, honest label underneath.
+
+The plain `<title>` and `<meta name="description">` carry those same two strings
+rather than the homepage's. They are what a scraper that does not read Open
+Graph falls back to, and a fallback naming the homepage would quietly undo the
+ruling for exactly the crawlers least likely to be noticed.
+
+**Do not "fix" any of this back to matching.** It will look like a copy-paste
+mistake to anyone who has not read this table. It is not.
 
 The page is `noindex, follow` and deliberately absent from `sitemap.xml`. It is
 a doorway, not something that should rank against the homepage.
