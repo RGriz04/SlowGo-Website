@@ -4,8 +4,8 @@
 > on roads posted 35 mph and under wherever possible, and says so plainly when a
 > trip can't avoid something faster. A product of BackRoad Apps LLC.
 
-SlowGo is pre-launch. The iOS app is expected in summer 2026; there is no App Store
-listing yet, and the site currently collects waitlist signups. Android comes later.
+SlowGo v1.0 is released. The iOS app is on the App Store as of 25 August 2026, free
+to start, at https://slowgoapp.com/go. Android comes later.
 
 ## Status and coverage
 
@@ -47,7 +47,7 @@ listing yet, and the site currently collects waitlist signups. Android comes lat
 ## Pages
 
 - [Home](https://slowgoapp.com/): what the app is, how it works, where it works,
-  the roadmap, FAQ, and the waitlist form.
+  the roadmap, FAQ, and the App Store link.
 - [Safety](https://slowgoapp.com/safety): how routes are checked before the Start
   button unlocks, what SlowGo refuses to route, what it labels as judged rather
   than read, and what it leaves to the rider. Also at /how-its-built, which

@@ -19,7 +19,9 @@ SlowGo-Launch/
 ├── sitemap.xml      # Five live pages, each with lastmod
 ├── llms.txt         # Plain-language site summary for language models
 ├── og-image.png     # 1200×630 social preview card
-├── screenshots/     # Three app screenshots used on index.html
+├── app-store-badge.svg  # Apple's official badge artwork, unaltered
+├── screenshots/     # Four App Store screens used on index.html, webp + png
+│                   #   (see screenshots/SOURCES.md for provenance)
 └── README.md        # This file
 ```
 
@@ -32,6 +34,22 @@ the `lastmod` in `sitemap.xml` moves with them.
 
 Both pages carry a visible "Last updated" date. Do not edit the legal copy here
 without syncing the app repo in the same pass.
+
+## The App Store link
+
+`/go` is a 302 to the App Store listing. Everything that points at the app —
+the hero badge, the QR code in `brand-assets/qr/`, anything printed — links to
+`/go` and never to `apps.apple.com` directly, so the destination stays editable
+in `_redirects`. It is a 302 rather than a 301 because a 301 would sit in the
+cache of every phone that ever scanned the printed code.
+
+`app-store-badge.svg` is Apple's own artwork, byte-for-byte as they serve it.
+Their guidelines require the real badge and forbid altering it — do not inline
+it, recolour it, or redraw it. It is the white variant because the hero is dark.
+
+The Smart App Banner (`<meta name="apple-itunes-app" content="app-id=6803226504">`)
+is in the `<head>` of all seven pages, so Safari on iPhone offers the install
+banner wherever someone lands, not only on the homepage.
 
 `_redirects` rewrites `/privacy` and `/terms` to the `.html` files at status 200,
 so the address bar stays clean. Those two URLs are referenced by the App Store
@@ -79,10 +97,13 @@ determines whether a route is cart-legal — the Terms disclaim exactly that.
   `og-image.png` (1200×630) with alt text.
 - **Structured data** in `index.html`, as two JSON-LD blocks:
   - `Organization` (BackRoad Apps LLC) + `WebSite`, as an `@graph`
-  - `FAQPage`, generated from the on-page FAQ with the wording unchanged
-  - A `SoftwareApplication` node is still **TODO** — it needs the real App Store
-    URL and is left out rather than shipped pointing at a placeholder.
-- **`llms.txt`** describes the product honestly: pre-launch, Florida and Georgia
+  - `FAQPage`, generated from the on-page FAQ with the wording unchanged. If you
+    edit an FAQ answer on the page, edit the matching `text` in the JSON-LD in
+    the same pass - they are kept in step by hand, not generated.
+  - A `SoftwareApplication` node is still **TODO**. It was blocked on the real
+    App Store URL, which now exists (id 6803226504) - so it is now doable and
+    simply has not been written.
+- **`llms.txt`** describes the product honestly: released, Florida and Georgia
   only, the green/amber/NoGo system, and the no-accounts privacy posture.
 
 ## Deploy — Git (preferred)
@@ -103,17 +124,36 @@ Pushing `main` deploys to Netlify. There is no staging site.
 4. **Site settings → Domain management → Add custom domain → `slowgoapp.com`**.
 5. Set `slowgoapp.com` as the **Primary domain** (not `www`).
 
-## Forms — already wired
+## The screenshots
 
-`index.html` has three live forms using Netlify Forms: two `waitlist` forms (one
-in the hero, one in the waitlist section) and one `town-request` form.
+The four screens on the homepage are the **v1.0 App Store submission images**,
+downscaled from the 1290x2796 originals in `/Users/ron/Desktop/AppStore/6.9in/`.
+They are not captures of the store page. `screenshots/SOURCES.md` records which
+original each one came from, with the SHA-256 of the original, and how to
+regenerate the derivatives.
 
-- Live forms carry `data-netlify="true"` and `data-netlify-honeypot="bot-field"`.
-- Two hidden static stubs (`waitlist`, `town-request`) sit at the top of `<body>`
-  so Netlify's build-time HTML scraper detects both forms even though the live
-  ones are JS-enhanced.
-- Each carries `<input type="hidden" name="form-name" ... />` so the async fetch
+Each ships as WebP with a PNG fallback in a `<picture>` element - about half the
+bytes, still no build step. Replace both formats together or the fallback drifts.
+
+Do not add device frames, crop, or upscale. The site shows the screens as they
+actually appear in the app.
+
+## Forms - one, and it is the town request
+
+`index.html` has **one** live form using Netlify Forms: `town-request`.
+
+- It carries `data-netlify="true"` and `data-netlify-honeypot="bot-field"`.
+- A hidden static stub (`town-request`) sits at the top of `<body>` so Netlify's
+  build-time HTML scraper detects it even though the live one is JS-enhanced.
+- It carries `<input type="hidden" name="form-name" ... />` so the async fetch
   submit routes to the right form.
+
+The two email-signup forms that used to sit in the hero and the closing section
+were **retired at launch**, along with their hidden stub - the app is out, so
+there is nothing left to sign up for. Removing them from the HTML stops new
+submissions, but it does **not** delete what Netlify already stored: the old form
+and its submissions have to be deleted in the Netlify dashboard under
+**Site -> Forms**. That is a dashboard action, not a repo change.
 
 Submissions post via `fetch` with an inline confirmation and no redirect. A non-OK
 response restores the button label and shows an error rather than reading as success.
@@ -171,7 +211,11 @@ Edit the HTML directly and push. There is no build step, no framework, no
 | `safety.html` | ~15 KB | |
 | `privacy.html` | ~33 KB | |
 | `terms.html` | ~43 KB | |
-| `index.html` | ~76 KB | plus ~200 KB of screenshots, lazy-loaded |
+| `index.html` | ~76 KB | plus ~207 KB of screenshots (WebP), lazy-loaded |
+
+The four WebP screenshots weigh about what the three PNGs they replaced did. The
+PNG fallbacks (~406 KB) sit in the repo but are only fetched by a browser that
+cannot take WebP.
 
 Google Fonts (Fraunces + Inter + JetBrains Mono) load over the network on first
 paint. `og-image.png` (~59 KB) is fetched by social crawlers, not on page render.

@@ -32,3 +32,12 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 # TestFlight link as a button. Rewrite (200), same as the pages above.
 /beta       /beta.html       200
 /beta/      /beta.html       200
+
+# The App Store listing. 302 (temporary), same reasoning as /beta above and the
+# reason the QR code encodes this path rather than the Apple URL: /go is printed
+# on signage and cards that cannot be reprinted once they are out in the world.
+# A 301 would be cached permanently in the browser of every phone that ever
+# scanned it, pinning that hardware to today's destination forever. 302 keeps
+# the decision here, in this file, where it can still be changed.
+/go     https://apps.apple.com/app/slowgo/id6803226504    302
+/go/    https://apps.apple.com/app/slowgo/id6803226504    302
