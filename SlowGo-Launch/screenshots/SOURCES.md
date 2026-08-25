@@ -8,7 +8,7 @@ Confirmed against the live listing on 2026-08-25: the screenshot filenames the
 iTunes lookup API returns for id 6803226504 match this set one-for-one, in
 order. Version 1.0.
 
-**The originals live at `/Users/ron/Desktop/AppStore/6.9in/` and are untouched.**
+**The originals live at `~/Desktop/AppStore/6.9in/` and are untouched.**
 They are not copied into this repo - they are about 1.1 MB each. The SHA-256 of
 each original is recorded here so any derivative can be traced back to the file
 it came from.

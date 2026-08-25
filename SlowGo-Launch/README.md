@@ -139,7 +139,7 @@ Pushing `main` deploys to Netlify. There is no staging site.
 ## The screenshots
 
 The four screens on the homepage are the **v1.0 App Store submission images**,
-downscaled from the 1290x2796 originals in `/Users/ron/Desktop/AppStore/6.9in/`.
+downscaled from the 1290x2796 originals in `~/Desktop/AppStore/6.9in/`.
 They are not captures of the store page. `screenshots/SOURCES.md` records which
 original each one came from, with the SHA-256 of the original, and how to
 regenerate the derivatives.
