@@ -100,9 +100,21 @@ determines whether a route is cart-legal — the Terms disclaim exactly that.
   - `FAQPage`, generated from the on-page FAQ with the wording unchanged. If you
     edit an FAQ answer on the page, edit the matching `text` in the JSON-LD in
     the same pass - they are kept in step by hand, not generated.
-  - A `SoftwareApplication` node is still **TODO**. It was blocked on the real
-    App Store URL, which now exists (id 6803226504) - so it is now doable and
-    simply has not been written.
+  - `SoftwareApplication`, in the same `@graph`. Every field comes from the
+    iTunes lookup API for id 6803226504 rather than from memory - version,
+    price, minimum iOS, release date, file size, content rating. Re-check it
+    when a new version ships; `softwareVersion` and `datePublished` go stale
+    on their own.
+
+    It carries **no `aggregateRating`**, on purpose: the listing has no ratings
+    yet, and an invented one is precisely what Google penalises. Add it when
+    there are real reviews. `applicationCategory` is `TravelApplication`
+    because `NavigationApplication` is not a schema.org value; the intent
+    lives in `applicationSubCategory` instead.
+
+    Its `url`/`downloadUrl` point at `apps.apple.com` directly - the one place
+    on the site that does not use `/go`. This is crawler metadata, not a link
+    handed to a person, and a redirect would only weaken it.
 - **`llms.txt`** describes the product honestly: released, Florida and Georgia
   only, the green/amber/NoGo system, and the no-accounts privacy posture.
 

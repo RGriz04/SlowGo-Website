@@ -1053,11 +1053,25 @@
   .surf-cream .faq summary .plus{ color:var(--forest); }
 </style>
 
-<!-- Organization + WebSite structured data.
-     TODO (launch day): add a SoftwareApplication node once the App Store listing
-     exists — it needs the real listing URL, and applicationCategory/operatingSystem
-     ("NavigationApplication" / "iOS"). Leaving it out until then rather than
-     publishing a URL that 404s. -->
+<!-- Organization + WebSite + SoftwareApplication structured data.
+
+     The SoftwareApplication node was held back until the listing existed. It
+     exists now (id 6803226504), so it is filled in from the listing itself
+     rather than from memory: version, price, minimum iOS, release date, file
+     size and content rating all come from the iTunes lookup API for that id.
+
+     Two deliberate choices:
+
+     - No aggregateRating. The listing has 0 ratings. A rating node here would
+       be invented, and invented ratings are exactly what Google penalises.
+       Add one when there are real reviews to point at.
+     - applicationCategory is "TravelApplication", not "NavigationApplication".
+       The latter reads better but is not a schema.org value; the intent is kept
+       in applicationSubCategory instead.
+
+     url/downloadUrl point at apps.apple.com directly. That is the one place we
+     do not use /go: this is machine-readable metadata for crawlers, not a link
+     we hand to a person, and a redirect here would be worse for it. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1091,6 +1105,39 @@
       "description": "Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under.",
       "inLanguage": "en-US",
       "publisher": { "@id": "https://slowgoapp.com/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://slowgoapp.com/#app",
+      "name": "SlowGo",
+      "description": "Navigation for golf carts and low-speed vehicles, routing on roads posted 35 mph and under. Florida and Georgia today, with more states as we check their roads.",
+      "url": "https://apps.apple.com/app/slowgo/id6803226504",
+      "downloadUrl": "https://apps.apple.com/app/slowgo/id6803226504",
+      "installUrl": "https://apps.apple.com/app/slowgo/id6803226504",
+      "applicationCategory": "TravelApplication",
+      "applicationSubCategory": "Navigation",
+      "operatingSystem": "iOS 15.1 or later",
+      "softwareVersion": "1.0",
+      "datePublished": "2026-08-25",
+      "fileSize": "38 MB",
+      "contentRating": "4+",
+      "inLanguage": "en-US",
+      "image": "https://slowgoapp.com/og-image.png",
+      "screenshot": [
+        "https://slowgoapp.com/screenshots/route-chooser.png",
+        "https://slowgoapp.com/screenshots/heads-up.png",
+        "https://slowgoapp.com/screenshots/turn-by-turn.png",
+        "https://slowgoapp.com/screenshots/nogo.png"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://apps.apple.com/app/slowgo/id6803226504"
+      },
+      "publisher": { "@id": "https://slowgoapp.com/#organization" },
+      "author": { "@id": "https://slowgoapp.com/#organization" }
     }
   ]
 }
