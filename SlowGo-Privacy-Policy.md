@@ -1,6 +1,6 @@
 # SlowGo Privacy Policy
 
-**Last updated: August 7, 2026**
+**Last updated: September 8, 2026**
 
 This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "**we**," "**us**," or "**our**") handles information in connection with the SlowGo mobile application (the "**App**") and the slowgoapp.com website (the "**Site**") (together, the "**Service**").
 
@@ -76,7 +76,11 @@ If SlowGo crashes or hits an error, a diagnostic report may be sent to our crash
 
 **In both cases we send no personal identifiers.** There is no account, and the App does not attach a user ID, an email address, or a name to any report. We configure the provider to limit IP-address storage, minimize default data collection, and restrict retention and access. Crash reports are about the App's health, not about where you went.
 
+Our crash-reporting provider's own software also attaches an opaque installation identifier to device-layer crash reports. It is not linked to you, your account (there is none), or your location, and we do not use it to identify you.
+
 The same connection also carries three product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not, which quick-link category (for example "Coffee" or "Pharmacy") was tapped, and how many map tiles a session loaded. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working and to keep our map-tile usage within budget.
+
+When SlowGo is connected to a car display, the App also records that the connection started and ended, and whether its map screen loaded — counts and fixed categories only, never coordinates, your route, or your search text.
 
 ## 5. What Stays on Your Phone
 
