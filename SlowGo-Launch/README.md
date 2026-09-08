@@ -36,6 +36,11 @@ the `lastmod` in `sitemap.xml` moves with them.
 Both pages carry a visible "Last updated" date. Do not edit the legal copy here
 without syncing the app repo in the same pass.
 
+A privacy-policy edit touches four things in one pass: `SlowGo-Privacy-Policy.md`
+in the app repo (the source of truth), the copy of it at the root of this repo,
+`privacy.html` here, and the `lastmod` for `/privacy` in `sitemap.xml`. The
+visible "Last updated" line moves with them.
+
 ## The App Store link
 
 `/go` is a **page**, `go/index.html`, not a `_redirects` rule. Everything that
@@ -113,6 +118,21 @@ already warns against depending on for `/privacy` and `/terms`. For a URL
 already printed on signage that cannot be reprinted, neither is acceptable.
 These two lines make `/go` resolve at 200, directly, regardless of the
 dashboard. Keep them.
+
+### `/card` — the same doorway, counted separately
+
+`/card` is two more forced rewrites to the same `go/index.html`. It exists so a
+scan of the printed **card** can be told apart from a scan of the cart-path
+signage in Netlify Analytics, which reports on the path that was requested — the
+rewrite is invisible to the rider and visible in the log.
+
+It is deliberately **not** a redirect to `apps.apple.com`. Routing it through the
+doorway keeps the store URL written in exactly one place and gives `/card` the
+same Open Graph card as `/go`, so a shared `/card` link previews correctly too.
+Both rules are forced (`200!`) for the reason above — `go/` is a real directory.
+
+The QR artwork in `brand-assets/qr/` still encodes `/go`; a `/card` symbol is a
+new, separately versioned file, and this rule is the destination it points at.
 
 They are written `200!`, forced, and **the bang is load-bearing**. Netlify
 silently ignores a redirect rule whose path collides with something that already

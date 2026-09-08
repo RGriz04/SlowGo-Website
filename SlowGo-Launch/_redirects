@@ -50,3 +50,20 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 # Without the bang these two lines look correct, deploy clean, and do nothing.
 /go     /go/index.html    200!
 /go/    /go/index.html    200!
+
+# /card is /go under a second name, for the printed QR card only.
+#
+# Same destination, same doorway page, same Open Graph card — the only thing it
+# changes is the path in the request log, so a card scan can be told apart from
+# a scan of the cart-path signage in Netlify Analytics. Two rules, because a
+# printed URL has no trailing slash and the bare form must not 301 to it.
+#
+# Rewrites, not a redirect to Apple, and FORCED for the same two reasons the /go
+# rules above are: the App Store URL stays written in exactly one place
+# (go/index.html), and an unforced rule colliding with the real go/ directory is
+# ignored without complaint. If /card ever answers 301, the bang has gone missing.
+#
+# The QR artwork in brand-assets/qr/ still encodes /go. A /card QR is a new,
+# separately versioned symbol — this rule is what it will point at.
+/card     /go/index.html    200!
+/card/    /go/index.html    200!
