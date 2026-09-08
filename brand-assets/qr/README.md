@@ -12,9 +12,11 @@ forever. Pointing it at our own domain means the destination is decided in
 `SlowGo-Launch/_redirects`, in this repo, where it can still be changed. Pointing
 it at Apple would hand that decision permanently to a URL we do not control.
 
-For the same reason `/go` is a **302**, not a 301. A 301 is cached in the browser
-permanently, which would pin every phone that ever scanned the code to today's
-destination no matter what `_redirects` said afterward.
+For the same reason `/go` answers **200**, not a 301. It is a forced rewrite to
+`go/index.html`, so the printed address serves the page itself and there is no
+redirect hop for a browser to remember. A 301 would be cached permanently,
+pinning every phone that ever scanned the code to today's destination no matter
+what `_redirects` said afterward.
 
 ## Files
 
