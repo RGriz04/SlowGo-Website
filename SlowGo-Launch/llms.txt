@@ -14,6 +14,9 @@ to start, at https://slowgoapp.com/go. Android comes later.
 - Outside Florida and Georgia you can search, browse the map, and plan a ride,
   but SlowGo will not start a turn-by-turn route. States are added one at a time,
   after their roads are checked, rather than guessed at.
+- Works with CarPlay. Plug the phone in and the route, the turn-by-turn card and
+  the same speed labels show on the cart's screen; saved favorites can be chosen
+  and a ride started from the screen; the phone can stay locked in the cupholder.
 - Built with cart communities in mind — The Villages, Hilton Head, Peachtree City,
   Fire Island, and similar places.
 

@@ -39,3 +39,23 @@ against truecolour.
 
 Do not upscale, do not crop, and do not add device frames. The site shows the
 screens as they actually appear in the app.
+
+## The CarPlay frame
+
+`carplay-guidance.webp` / `carplay-guidance.png` (1200x675) on the homepage's
+"A look inside" section is a **CarPlay Simulator capture**, not a photograph of
+a head unit: Xcode's CarPlay Simulator app connected to a real iPhone, the
+1920x1080 widescreen preset, build 26, desk session of 2026-09-17, mid-ride on
+the Lockport test route. It is the screen and nothing else — no dashboard, no
+bezel, nothing cropped in or out.
+
+| On the page | Source original | SHA-256 of the 1920x1080 original |
+|---|---|---|
+| `carplay-guidance.webp` / `carplay-guidance.png` | `~/Desktop/carplay/Main-VideoStream-2026-09-17-10-16-49.png` | `23762654cbf7414299ebcf77c9bd0ce867f0104a64ded70cbb313349fa296e7f` |
+
+The original carries a sRGB chunk and an EXIF block from the capture; both
+were dropped. The derivatives were made with Pillow: Lanczos to 1200 wide,
+re-pasted onto a fresh canvas so no metadata travels, WebP at quality 82, PNG
+quantised to 128 colours with Floyd-Steinberg dither — the same recipe as the
+phone screens. The "Unverified" label on the turn card is what the app shows
+on that road (an unposted limit); it is not retouched.
