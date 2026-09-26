@@ -874,20 +874,6 @@
     background:var(--amber);
     margin: 12px auto 0;
   }
-  /* The CarPlay frame sits above the four phones, full width of the wrap. */
-  .dash{
-    margin: 0 auto clamp(48px, 6vw, 80px);
-    max-width: 960px;
-  }
-  .dash img{ display:block; width:100%; height:auto; border-radius:18px; }
-  .dash figcaption{
-    font-family:var(--sans);
-    font-size:13px;
-    letter-spacing:.02em;
-    color:var(--drift-2);
-    text-align:center;
-    margin-top:14px;
-  }
   .phones{
     display:grid;
     grid-template-columns: repeat(4, minmax(0, 240px));
@@ -1511,19 +1497,6 @@
       <!-- These are the v1.0 App Store submission screens, downscaled from the
            1290x2796 originals. Not captures of the store page. Provenance and
            the SHA-256 of each original are in screenshots/SOURCES.md. -->
-      <!-- The cart's screen. A CarPlay frame of guidance from the desk session
-           of 2026-09-17 (build 26, the 1920x1080 widescreen preset), downscaled
-           to 1200x675 with every byte of metadata stripped. Nothing outside the
-           screen is in the frame. Provenance and the SHA-256 of the original are
-           in screenshots/SOURCES.md. -->
-      <figure class="dash">
-        <picture>
-          <source srcset="screenshots/carplay-guidance.webp" type="image/webp" />
-          <img src="screenshots/carplay-guidance.png" alt="SlowGo on a CarPlay screen mid-ride: the turn card reads &lsquo;0.2 mi, Turn right onto Old Beattie Rd.&rsquo; with an Unverified label and then &lsquo;Turn left onto Hamm Rd.&rsquo;, the cart marker sits on the route line along Harvest Ridge Way, and the estimates read 10:30 arrival, 14 min, 2.6 mi."
-               width="1200" height="675" loading="lazy" decoding="async" />
-        </picture>
-        <figcaption>On the cart&rsquo;s screen, with the phone locked in the cupholder.</figcaption>
-      </figure>
       <div class="phones">
         <figure class="phone">
           <picture>

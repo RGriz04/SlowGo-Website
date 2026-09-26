@@ -248,11 +248,6 @@ bytes, still no build step. Replace both formats together or the fallback drifts
 Do not add device frames, crop, or upscale. The site shows the screens as they
 actually appear in the app.
 
-The fifth image is the CarPlay frame above the four phones — a CarPlay
-Simulator capture of guidance, 1200x675, metadata stripped, same WebP + PNG
-pair. Its provenance is in `screenshots/SOURCES.md` too. It is the car's screen
-and nothing else.
-
 ## Forms - one, and it is the town request
 
 `index.html` has **one** live form using Netlify Forms: `town-request`.
