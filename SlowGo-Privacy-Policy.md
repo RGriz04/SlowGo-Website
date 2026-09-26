@@ -1,6 +1,6 @@
 # SlowGo Privacy Policy
 
-**Last updated: September 8, 2026**
+**Last updated: September 26, 2026**
 
 This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "**we**," "**us**," or "**our**") handles information in connection with the SlowGo mobile application (the "**App**") and the slowgoapp.com website (the "**Site**") (together, the "**Service**").
 
@@ -10,7 +10,7 @@ This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "*
 
 **We do not require an account.** The App does not ask for your name, email address, phone number, or any login.
 
-**Precise location.** With your permission (through your device's location prompt), the App collects your device's precise location while you use it, to show your position on the map, calculate and display routes, search for nearby places, and provide local weather. When you request a route or search, the relevant coordinates are transmitted to the providers that fulfill the request (see Section 3). Opening the ride postcard also looks up the general area a ride started and ended in, so the card can name those places; that lookup sends only an approximate position — rounded to about 110 metres — and never your exact start or end point. You can withdraw location permission at any time in your device settings; core features of a navigation app will not work without it.
+**Precise location.** With your permission (through your device's location prompt), the App collects your device's precise location while you use it, to show your position on the map, calculate and display routes, search for nearby places, and provide local weather. During a ride you have started, the App keeps reading your position while your phone is locked or the App is in the background, so guidance continues; this stops when the ride ends. When you request a route or search, the relevant coordinates are transmitted to the providers that fulfill the request (see Section 3). Opening the ride postcard also looks up the general area a ride started and ended in, so the card can name those places; that lookup sends only an approximate position — rounded to about 110 metres — and never your exact start or end point. You can withdraw location permission at any time in your device settings; core features of a navigation app will not work without it.
 
 **Ride, favorite, and settings data (stored on your device).** The App stores your ride history, favorite places, recent destinations, and settings on your device. See Section 5 for details and controls.
 
@@ -38,7 +38,7 @@ To fulfill your requests, the Service sends your coordinates and related request
 | Stadia Maps | Map tiles and styles, place search (geocoding), and neighborhood names for the ride postcard | The map area you are viewing; your search text along with a nearby coordinate so results can be ranked by distance; and, when you open a ride postcard, the approximate trip start/end areas (rounded to about 110 metres) |
 | OpenStreetMap community services (Overpass API) | Nearby-place search, place details, and checking whether paths along a route have cart-access notes recorded on the shared map, so the app can disclose what it finds | Search-area coordinates and queries, and sample points along a calculated route |
 | U.S. National Weather Service | Local weather and forecasts | Approximate area coordinates |
-| Sentry | Crash and error reporting, and a small set of coordinate-free product metrics we use to keep the App healthy | Diagnostics, configured to exclude location and trip-revealing data before sending; and three app-health events — whether a route request was served, which quick-link category was tapped, and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text) |
+| Sentry | Crash and error reporting, and a small set of coordinate-free product metrics we use to keep the App healthy | Diagnostics, configured to exclude location and trip-revealing data before sending; and four app-health events — whether a route request was served; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category was tapped; and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text) |
 | Netlify | Hosts the Site and receives what you submit through its waitlist and town-request forms | The email address, and for a town request the town or community name, that you type into a Site form; plus standard server logs such as IP address and browser type |
 | Apple | App distribution, and payment processing if paid features are offered | Per Apple's own terms and privacy policy |
 
@@ -78,7 +78,7 @@ If SlowGo crashes or hits an error, a diagnostic report may be sent to our crash
 
 Our crash-reporting provider's own software also attaches an opaque installation identifier to device-layer crash reports. It is not linked to you, your account (there is none), or your location, and we do not use it to identify you.
 
-The same connection also carries three product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not, which quick-link category (for example "Coffee" or "Pharmacy") was tapped, and how many map tiles a session loaded. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working and to keep our map-tile usage within budget.
+The same connection also carries four product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category (for example "Coffee" or "Pharmacy") was tapped; and how many map tiles a session loaded. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working and to keep our map-tile usage within budget.
 
 When SlowGo is connected to a car display, the App also records that the connection started and ended, and whether its map screen loaded — counts and fixed categories only, never coordinates, your route, or your search text.
 

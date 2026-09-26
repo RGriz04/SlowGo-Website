@@ -366,7 +366,7 @@
   <div class="wrap">
     <p class="eyebrow"><span class="dot"></span> Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: September 8, 2026</p>
+    <p class="updated">Last updated: September 26, 2026</p>
 
     <nav class="toc" aria-labelledby="toc-heading">
       <h2 id="toc-heading">Contents</h2>
@@ -398,7 +398,7 @@
 
       <p><strong>We do not require an account.</strong> The App does not ask for your name, email address, phone number, or any login.</p>
 
-      <p><strong>Precise location.</strong> With your permission (through your device's location prompt), the App collects your device's precise location while you use it, to show your position on the map, calculate and display routes, search for nearby places, and provide local weather. When you request a route or search, the relevant coordinates are transmitted to the providers that fulfill the request (see Section 3). Opening the ride postcard also looks up the general area a ride started and ended in, so the card can name those places; that lookup sends only an approximate position — rounded to about 110 metres — and never your exact start or end point. You can withdraw location permission at any time in your device settings; core features of a navigation app will not work without it.</p>
+      <p><strong>Precise location.</strong> With your permission (through your device's location prompt), the App collects your device's precise location while you use it, to show your position on the map, calculate and display routes, search for nearby places, and provide local weather. During a ride you have started, the App keeps reading your position while your phone is locked or the App is in the background, so guidance continues; this stops when the ride ends. When you request a route or search, the relevant coordinates are transmitted to the providers that fulfill the request (see Section 3). Opening the ride postcard also looks up the general area a ride started and ended in, so the card can name those places; that lookup sends only an approximate position — rounded to about 110 metres — and never your exact start or end point. You can withdraw location permission at any time in your device settings; core features of a navigation app will not work without it.</p>
 
       <p><strong>Ride, favorite, and settings data (stored on your device).</strong> The App stores your ride history, favorite places, recent destinations, and settings on your device. See Section 5 for details and controls.</p>
 
@@ -453,7 +453,7 @@
             <tr>
               <th scope="row">Sentry</th>
               <td>Crash and error reporting, and a small set of coordinate-free product metrics we use to keep the App healthy</td>
-              <td>Diagnostics, configured to exclude location and trip-revealing data before sending; and three app-health events — whether a route request was served, which quick-link category was tapped, and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text)</td>
+              <td>Diagnostics, configured to exclude location and trip-revealing data before sending; and four app-health events — whether a route request was served; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category was tapped; and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text)</td>
             </tr>
             <tr>
               <th scope="row">Netlify</th>
@@ -509,7 +509,7 @@
 
       <p>Our crash-reporting provider's own software also attaches an opaque installation identifier to device-layer crash reports. It is not linked to you, your account (there is none), or your location, and we do not use it to identify you.</p>
 
-      <p>The same connection also carries three product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not, which quick-link category (for example "Coffee" or "Pharmacy") was tapped, and how many map tiles a session loaded. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working and to keep our map-tile usage within budget.</p>
+      <p>The same connection also carries four product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category (for example "Coffee" or "Pharmacy") was tapped; and how many map tiles a session loaded. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working and to keep our map-tile usage within budget.</p>
 
       <p>When SlowGo is connected to a car display, the App also records that the connection started and ended, and whether its map screen loaded — counts and fixed categories only, never coordinates, your route, or your search text.</p>
 
