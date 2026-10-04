@@ -1,6 +1,6 @@
 # SlowGo Privacy Policy
 
-**Last updated: September 26, 2026**
+**Last updated: October 4, 2026**
 
 This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "**we**," "**us**," or "**our**") handles information in connection with the SlowGo mobile application (the "**App**") and the slowgoapp.com website (the "**Site**") (together, the "**Service**").
 
@@ -39,7 +39,7 @@ To fulfill your requests, the Service sends your coordinates and related request
 | OpenStreetMap community services (Overpass API) | Nearby-place search, place details, and checking whether paths along a route have cart-access notes recorded on the shared map, so the app can disclose what it finds | Search-area coordinates and queries, and sample points along a calculated route |
 | U.S. National Weather Service | Local weather and forecasts | Approximate area coordinates |
 | Sentry | Crash and error reporting, and a small set of coordinate-free product metrics we use to keep the App healthy | Diagnostics, configured to exclude location and trip-revealing data before sending; and four app-health events — whether a route request was served; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category was tapped; and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text) |
-| Netlify | Hosts the Site and receives what you submit through its waitlist and town-request forms | The email address, and for a town request the town or community name, that you type into a Site form; plus standard server logs such as IP address and browser type |
+| Netlify | Hosts the Site and receives what you submit through its waitlist and town-request forms; also answers the App's connectivity check, a request with no content about once a minute while the App is running, so the App can tell whether you're online | The email address, and for a town request the town or community name, that you type into a Site form; plus standard server logs such as IP address and browser type. For the connectivity check: your IP address and basic device and app information — no location, no identifiers, nothing you type |
 | Apple | App distribution, and payment processing if paid features are offered | Per Apple's own terms and privacy policy |
 
 **When you share.** Some things leave the App because you ask them to, through your device's own share sheet. What you send goes to whichever app you pick there — Messages, Mail, a notes app, anything installed — and from that point it is handled by that app and its provider, not by us. We do not receive a copy and we do not keep a record of what you shared or who you sent it to.
