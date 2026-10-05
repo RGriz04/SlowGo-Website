@@ -10,10 +10,9 @@ import { getStore } from '@netlify/blobs';
 import { FLEET_SHOPS } from '../fleet-shops.mjs';
 
 export const APP_ID = '6803226504';
-// App Store Connect "provider token" (App Analytics → Campaigns → generate a link shows it as pt=).
-// Empty until Ron supplies it; the ct tag still rides on every link, but Apple attributes
-// downloads to a campaign only with pt present.
-export const PROVIDER_TOKEN = '';
+// App Store Connect provider token (pt=), from the campaign link Ron generated 2026-10-05.
+// Not a secret: it appears in every public App Store campaign link. Each link sets its own ct.
+export const PROVIDER_TOKEN = '128827526';
 // Google Play listing. Null until Android launches; set it and every Android visit goes there.
 export const PLAY_URL = null;
 
