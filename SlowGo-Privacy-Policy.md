@@ -1,6 +1,8 @@
 # SlowGo Privacy Policy
 
-**Last updated: October 4, 2026**
+**Last updated: October 5, 2026**
+
+**What changed (October 5, 2026):** Section 4 now explains that our crash-reporting provider estimates, from your connection's IP address, the city and state a report came from, and that we count reports by city to see where SlowGo is used.
 
 This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "**we**," "**us**," or "**our**") handles information in connection with the SlowGo mobile application (the "**App**") and the slowgoapp.com website (the "**Site**") (together, the "**Service**").
 
@@ -72,9 +74,9 @@ If SlowGo crashes or hits an error, a diagnostic report may be sent to our crash
 
 **Reports raised by the App's own code** pass through a filter before they leave the device. That filter works from a list of fields it is allowed to send — anything it does not recognise is dropped rather than forwarded — and it removes latitude and longitude, addresses, route endpoints, search text, and request bodies, URLs, or breadcrumbs that could reveal a trip or destination. Values that look like coordinates are removed outright, not blurred or rounded.
 
-**Reports raised by a crash in the device's own layer** are assembled by the crash reporter itself and do not pass through that filter. They contain no location because there is none for them to find: the App never gives the crash reporter your position, your route, or any place data, and we switch off the reporter's own capture of network requests, which is the other way a coordinate could reach it.
+**Reports raised by a crash in the device's own layer** are assembled by the crash reporter itself and do not pass through that filter. They contain no location from your device because there is none for them to find: the App never gives the crash reporter your position, your route, or any place data, and we switch off the reporter's own capture of network requests, which is the other way a coordinate could reach it.
 
-**In both cases we send no personal identifiers.** There is no account, and the App does not attach a user ID, an email address, or a name to any report. We configure the provider to limit IP-address storage, minimize default data collection, and restrict retention and access. Crash reports are about the App's health, not about where you went.
+**In both cases we send no personal identifiers.** There is no account, and the App does not attach a user ID, an email address, or a name to any report. We configure the provider to limit IP-address storage, minimize default data collection, and restrict retention and access. Our crash-reporting provider also uses your connection's IP address to estimate the city and state a report came from, and we count reports by city to see where SlowGo is used; that estimate is never more precise than a city, and the IP address itself isn't kept with the report. Crash reports are about the App's health, not about where you went.
 
 Our crash-reporting provider's own software also attaches an opaque installation identifier to device-layer crash reports. It is not linked to you, your account (there is none), or your location, and we do not use it to identify you.
 
