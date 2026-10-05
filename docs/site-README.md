@@ -107,52 +107,33 @@ charcoal before the store opens. That is the price of controlling the preview,
 and it was accepted knowingly. Printed QR codes are unaffected — they encode
 `/go` and always did.
 
-### Why `/go` is still two lines in `_redirects`
+### `/go` and `/card` used to be forced rewrites in `_redirects`
 
-They are **rewrites (200)** now, not redirects, pointing at `go/index.html`.
-They look redundant next to a real file at that path, and they are not: `/go`
-is the address printed on the QR code and it has **no trailing slash**. Left to
-Netlify's directory handling a bare `/go` would 301 to `/go/`, or 404 outright
-if someone switched off the "Pretty URLs" toggle — the same toggle this file
-already warns against depending on for `/privacy` and `/terms`. For a URL
-already printed on signage that cannot be reprinted, neither is acceptable.
-These two lines make `/go` resolve at 200, directly, regardless of the
-dashboard. Keep them.
+Until 2026-10-05 both were `200!` rewrites to `go/index.html`, forced because `go/` is a real
+directory and an unforced rule colliding with it is silently ignored. They were removed when the
+link function took over (next section): a forced rule would win over the function. `go/index.html`
+stays — it is the card link previews get.
 
-### `/card` — the same doorway, counted separately
+### Share links — /go, /card, /cards, /rental, /f/<shop> (live since 2026-10-05)
 
-`/card` is two more forced rewrites to the same `go/index.html`. It exists so a
-scan of the printed **card** can be told apart from a scan of the cart-path
-signage in Netlify Analytics, which reports on the path that was requested — the
-rewrite is invisible to the rider and visible in the log.
+The forced `/go` and `/card` rewrites are gone. One Netlify Function owns these paths:
+`netlify/functions/link.mjs` at the **repo root** (the dashboard builds from base `/`, publishes
+`SlowGo-Launch`, and looks for functions in `netlify/functions`).
 
-It is deliberately **not** a redirect to `apps.apple.com`. Routing it through the
-doorway keeps the store URL written in exactly one place and gives `/card` the
-same Open Graph card as `/go`, so a shared `/card` link previews correctly too.
-Both rules are forced (`200!`) for the reason above — `go/` is a real directory.
+| Link | Used for | Counted as |
+|---|---|---|
+| `/go` | Facebook posts and comments | `go` |
+| `/card`, `/cards` | Ron's printed cards (`/cards` is the plural mistype) | `card` |
+| `/rental` | the sample rental card | `rental` |
+| `/f/<shop>` | each real rental shop (one line in `netlify/fleet-shops.mjs`) | the shop name |
 
-The QR artwork in `brand-assets/qr/` still encodes `/go`; a `/card` symbol is a
-new, separately versioned file, and this rule is the destination it points at.
-
-They are written `200!`, forced, and **the bang is load-bearing**. Netlify
-silently ignores a redirect rule whose path collides with something that already
-exists in the publish directory — and `go/` is a real directory. Unforced, these
-lines look right, deploy without complaint, and do nothing at all: `/go` 301s to
-`/go/` and the rule never fires. This was measured on production, not reasoned
-about. If you ever see `/go` answering 301, the bang has gone missing.
-
-`app-store-badge.svg` is Apple's own artwork, byte-for-byte as they serve it.
-Their guidelines require the real badge and forbid altering it — do not inline
-it, recolour it, or redraw it. It is the white variant because the hero is dark.
-
-The Smart App Banner (`<meta name="apple-itunes-app" content="app-id=6803226504">`)
-is in the `<head>` of all seven pages, so Safari on iPhone offers the install
-banner wherever someone lands, not only on the homepage.
-
-`_redirects` rewrites `/privacy` and `/terms` to the `.html` files at status 200,
-so the address bar stays clean. Those two URLs are referenced by the App Store
-privacy-policy field and by in-app links, so the rules must not be removed in
-favour of Netlify's "Pretty URLs" dashboard toggle, which someone could turn off.
+- iPhone → App Store with `pt=128827526` and `ct=<link>`; Android → `/android` until `PLAY_URL`
+  is set in `link.mjs`; computers → home; link previews → `go/index.html`'s card, uncounted.
+- Counts: `<link>/<UTC day>` totals in Netlify Blobs, read by `slowgo-report` from
+  `/api/link-scans` with `SCAN_COUNTS_TOKEN` (Netlify env; Ron's copy in `~/.slowgo/scans.json`).
+- Test locally with the dashboard's settings before any deploy (free plan: ~20 deploys a month):
+  `npx netlify-cli dev --offline --dir SlowGo-Launch --functions netlify/functions` and
+  `npx netlify-cli build --offline` from the repo root.
 
 ## The safety page
 

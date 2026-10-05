@@ -21,7 +21,7 @@ const BOT = /bot|crawler|spider|facebookexternalhit|facebot|slackbot|twitterbot|
 export function sourceFor(pathname) {
   const p = pathname.replace(/\/+$/, '').toLowerCase();
   if (p === '/go') return 'go';
-  if (p === '/card') return 'card';
+  if (p === '/card' || p === '/cards') return 'card';   // /cards: a common mistype of the printed address, counted as card
   if (p === '/rental') return 'rental';
   const m = /^\/f\/([a-z0-9-]{1,40})$/.exec(p);
   if (m && FLEET_SHOPS.includes(m[1])) return m[1];
@@ -77,4 +77,4 @@ export default async (req) => {
   } });
 };
 
-export const config = { path: ['/go', '/go/', '/card', '/card/', '/rental', '/rental/', '/f/:shop', '/f/:shop/'] };
+export const config = { path: ['/go', '/go/', '/card', '/card/', '/cards', '/cards/', '/rental', '/rental/', '/f/:shop', '/f/:shop/'] };
