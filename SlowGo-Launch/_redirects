@@ -48,8 +48,6 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 # collides with something that already exists in the publish directory is
 # silently ignored by Netlify unless it is forced, and go/ is a real directory.
 # Without the bang these two lines look correct, deploy clean, and do nothing.
-/go     /go/index.html    200!
-/go/    /go/index.html    200!
 
 # /card is /go under a second name, for the printed QR card only.
 #
@@ -65,5 +63,11 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 #
 # The QR artwork in brand-assets/qr/ still encodes /go. A /card QR is a new,
 # separately versioned symbol — this rule is what it will point at.
-/card     /go/index.html    200!
-/card/    /go/index.html    200!
+
+# ONE LINK SYSTEM (2026-10-05). /go, /card, /rental and /f/<shop> are no longer rewrites here:
+# netlify/functions/link.mjs owns those paths (its config.path), sends iPhones to the App Store
+# with the source tagged, Android to /android, computers home, and counts each visit. The two
+# forced /go and /card rewrites above were removed — a forced rule would win over the function.
+# Link previews still get go/index.html's card (the function serves it to preview bots).
+/android    /android.html    200
+/android/   /android.html    200
