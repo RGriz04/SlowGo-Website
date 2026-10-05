@@ -333,28 +333,3 @@ paint. `og-image.png` (~59 KB) is fetched by social crawlers, not on page render
 —
 
 *Life's better at 15 mph.*
-
-## Share links — /go, /card, /rental, /f/<shop> (2026-10-05)
-
-One Netlify Function, `netlify/functions/link.mjs`, owns these paths (its `config.path`; the old
-forced `/go` and `/card` rewrites in `_redirects` were removed so they can't win over it):
-
-| Link | Used for |
-|---|---|
-| `/go` | Facebook posts and comments |
-| `/card` | Ron's printed cards |
-| `/rental` | the sample rental card (pitches and demos) |
-| `/f/<shop>` | each real rental shop |
-
-- **iPhone** → the App Store, tagged `ct=<link>` (App Store Connect → Campaigns). Apple credits a
-  campaign only with the provider token: set `PROVIDER_TOKEN` in `link.mjs`.
-- **Android** → `/android` ("SlowGo for Android is almost here"). At Play launch, set `PLAY_URL`
-  in `link.mjs` and every Android visit goes to Google Play.
-- **Computers** (and iPads, which report themselves as Macs) → the home page.
-- **Link previews** (iMessage, Facebook, Slack…) get `go/index.html`'s card and aren't counted.
-- **Counting:** each human visit adds 1 to `<link>/<UTC day>` in Netlify Blobs (store
-  `link-scans`). Totals only: no IP, device or user agent is stored. `slowgo-report` reads them
-  from `/api/link-scans` with the token in the `SCAN_COUNTS_TOKEN` environment variable
-  (Netlify → Site configuration → Environment variables); Ron's copy is `~/.slowgo/scans.json`.
-- **Add a shop:** one line in `netlify/fleet-shops.mjs` (lowercase, letters, digits, dashes), then
-  deploy. An unlisted `/f/` name goes to the home page, uncounted.

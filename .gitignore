@@ -16,9 +16,3 @@ Thumbs.db
 *.jks
 *.key
 *.mobileprovision
-
-# Netlify Functions dependencies (installed by Netlify at deploy)
-node_modules/
-
-# Local Netlify folder
-.netlify
