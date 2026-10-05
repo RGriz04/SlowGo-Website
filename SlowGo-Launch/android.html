@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SlowGo for Android — almost here</title>
+<meta name="description" content="SlowGo for Android is almost here. Check back soon." />
+<meta name="theme-color" content="#0B1F15" />
+
+<!-- Smart App Banner. Safari on iPhone and iPad turns this into a native
+     install banner at the top of every page on the site. It is the only
+     tag Apple needs; the banner links to the listing on its own. -->
+<meta name="apple-itunes-app" content="app-id=6803226504">
+
+<!-- Where Android visitors to /go, /card, /rental and /f/<shop> land until SlowGo is on
+     Google Play (repo-root netlify/functions/link.mjs PLAY_URL). Temporary, so kept out of the index. -->
+<meta name="robots" content="noindex, follow" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231E3A2B'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='36' fill='%23F4EDE0'>S</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..600,30..100,0..1;1,9..144,400..600,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --forest:        #1E3A2B;
+    --charcoal:      #0B1F15;
+    --moss:          #5B7A5F;
+    --amber:         #C8853A;
+    --amber-soft:    #E0A969;
+    --oat:           #F4EDE0;
+    --cream:         #FBF7EF;
+    --drift:         #A09484;
+    --drift-2:       #C7BDAC;
+
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono:  'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+    --max: 1240px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--forest);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+  }
+  ::selection{ background:var(--amber); color:var(--cream); }
+  a{ color:inherit; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:rgba(160,148,132,.6); transition:color .2s ease, text-decoration-color .2s ease; }
+  a:hover{ color:var(--amber); text-decoration-color:var(--amber); }
+  a:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; border-radius:2px; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding-left:32px; padding-right:32px; }
+  @media (max-width: 640px){ .wrap{ padding-left:22px; padding-right:22px; } }
+
+  .skip{
+    position:absolute; left:-9999px; top:0;
+    background:var(--charcoal); color:var(--oat);
+    padding:12px 18px; z-index:50; text-decoration:none; font-size:14px;
+  }
+  .skip:focus{ left:0; }
+
+  /* -------- Topbar -------- */
+  .topbar{
+    background:var(--charcoal);
+    border-bottom:1px solid rgba(244,237,224,.08);
+    color:var(--oat);
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .topbar .mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    color:var(--oat);
+  }
+  .topbar .mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .topbar nav{ display:flex; gap:28px; align-items:center; }
+  .topbar nav a{
+    font-size:13px;
+    text-decoration:none;
+    color:var(--drift-2);
+    letter-spacing:0.01em;
+  }
+  .topbar nav a:hover{ color:var(--amber-soft); }
+  @media (max-width: 720px){
+    .topbar-inner{ padding:14px 22px; }
+  }
+
+  /* -------- Page body -------- */
+  .missing{ flex:1 0 auto; padding: clamp(72px, 9vw, 120px) 0 clamp(80px, 10vw, 140px); }
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--forest);
+    display:inline-flex; align-items:center; gap:10px;
+    margin:0 0 20px 0;
+  }
+  .eyebrow .dot{ width:5px; height:5px; border-radius:50%; background:var(--amber); display:inline-block; }
+  .missing h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 144, "SOFT" 40, "WONK" 0;
+    font-size: clamp(44px, 6vw, 84px);
+    line-height:1.0;
+    letter-spacing:-0.02em;
+    margin:0;
+    text-wrap:balance;
+    max-width:18ch;
+  }
+  .missing h1 em{
+    font-style:italic;
+    font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .missing .sub{
+    font-family:var(--serif);
+    font-style:italic;
+    font-variation-settings:"opsz" 72, "SOFT" 100, "WONK" 1;
+    font-size: clamp(19px, 2.2vw, 24px);
+    line-height:1.45;
+    color:var(--moss);
+    margin:20px 0 0;
+    max-width:44ch;
+  }
+  .missing .lede{
+    font-size:19px;
+    line-height:1.7;
+    color:var(--moss);
+    margin:32px 0 0;
+    max-width:56ch;
+  }
+  .missing .body{
+    font-size:17px;
+    line-height:1.78;
+    margin:20px 0 0;
+    max-width:56ch;
+  }
+
+  /* -------- Where to next -------- */
+  .onward{
+    margin:48px 0 0;
+    padding-top:32px;
+    border-top:1px solid rgba(160,148,132,.28);
+  }
+  .onward h2{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--forest);
+    margin:0 0 20px 0;
+    line-height:1.65;
+  }
+  .onward ul{ list-style:none; margin:0; padding:0; }
+  .onward li{
+    padding:12px 0;
+    border-top:1px solid rgba(160,148,132,.20);
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 24, "SOFT" 60, "WONK" 0;
+    font-size:19px;
+  }
+  .onward li:first-child{ border-top:none; }
+  .onward li a{ text-decoration-color:rgba(200,133,58,.5); }
+  .onward li span{
+    display:block;
+    font-family:var(--sans);
+    font-size:14px;
+    color:var(--moss);
+    margin-top:2px;
+  }
+
+  /* -------- Footer -------- */
+  footer.foot{
+    background: var(--charcoal);
+    color: var(--drift-2);
+    padding: 56px 0 48px;
+    border-top:1px solid rgba(244,237,224,.08);
+  }
+  .foot-mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size: 34px;
+    color:var(--oat);
+    line-height:1;
+    margin: 0 0 28px 0;
+  }
+  .foot-mark a{ text-decoration:none; color:inherit; }
+  .foot-mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .foot-legal{
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    margin-bottom: 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap: 32px;
+    flex-wrap:wrap;
+  }
+  .foot-legal p{
+    font-size:12.5px;
+    line-height:1.7;
+    color:var(--drift);
+    margin:0;
+    max-width:44ch;
+  }
+  .foot-legal .entity{ color:var(--drift-2); }
+  .foot-legal a{ color:var(--drift); text-decoration-color:rgba(160,148,132,.45); }
+  .foot-legal a:hover{ color:var(--amber-soft); text-decoration-color:var(--amber-soft); }
+  .foot-legal-links{
+    list-style:none; margin:0; padding:0;
+    display:flex; gap:24px; align-items:center;
+    font-size:12.5px;
+  }
+  .foot-legal-links a{ text-decoration:none; }
+  @media (max-width: 640px){
+    .foot-legal{ flex-direction:column; gap:18px; }
+  }
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--drift);
+  }
+  .foot-bottom .right{ display:flex; gap:24px; }
+  @media (max-width: 800px){
+    .foot-bottom{ flex-direction:column; gap:14px; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#doc">Skip to content</a>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
+    <nav aria-label="Primary">
+      <a href="/">Back to SlowGo</a>
+    </nav>
+  </div>
+</header>
+
+<main class="missing" id="doc">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> Android</p>
+    <h1>SlowGo for Android is <em>almost here</em>.</h1>
+
+    <p class="lede">We're finishing it up and testing it with riders in Florida and Georgia. Check back soon.</p>
+
+    <p class="body">On an iPhone? SlowGo is free on the App Store today.</p>
+
+    <nav class="onward" aria-labelledby="onward-title">
+      <h2 id="onward-title">In the meantime</h2>
+      <ul>
+        <li>
+          <a href="/">SlowGo home</a>
+          <span>What the app is, where it works, and what's coming.</span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</main>
+
+<footer class="foot" role="contentinfo">
+  <div class="wrap">
+    <p class="foot-mark"><a href="/">Slow<em>Go</em></a></p>
+
+    <div class="foot-legal">
+      <p class="entity">
+        SlowGo is a product of <strong style="font-weight:500;">BackRoad Apps LLC</strong>.<br />
+        4498 Main St, Ste 4 #5690, Amherst, NY 14226<br />
+        <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>
+      </p>
+      <ul class="foot-legal-links" role="list">
+        <li><a href="/safety">Safety</a></li>
+        <li><a href="/support">Support</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 BackRoad Apps LLC. All rights reserved.</span>
+      <span class="right">
+        <span>Made carefully</span>
+        <span>·</span>
+        <span>slowgoapp.com</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

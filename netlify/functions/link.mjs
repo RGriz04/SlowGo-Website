@@ -20,7 +20,6 @@ const BOT = /bot|crawler|spider|facebookexternalhit|facebot|slackbot|twitterbot|
 
 export function sourceFor(pathname) {
   const p = pathname.replace(/\/+$/, '').toLowerCase();
-  if (p === '/link-test') return 'link-test';   // DEPLOY 1 ONLY: proves routing + counting live before /go and /card move
   if (p === '/go') return 'go';
   if (p === '/card') return 'card';
   if (p === '/rental') return 'rental';
@@ -78,5 +77,4 @@ export default async (req) => {
   } });
 };
 
-// DEPLOY 1 (test): only /link-test. /go, /card stay on _redirects until this is proven live.
-export const config = { path: ['/link-test', '/link-test/'] };
+export const config = { path: ['/go', '/go/', '/card', '/card/', '/rental', '/rental/', '/f/:shop', '/f/:shop/'] };
