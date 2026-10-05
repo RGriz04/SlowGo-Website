@@ -22,8 +22,8 @@ SlowGo-Launch/
 ├── go/index.html    # /go — App Store doorway page, carries the OG card
 ├── app-store-badge.svg  # Apple's official badge artwork, unaltered
 ├── screenshots/     # Four App Store screens used on index.html, webp + png
-│                   #   (see screenshots/SOURCES.md for provenance)
-└── README.md        # This file
+│                   #   (provenance: docs/screenshots-SOURCES.md)
+(this file is docs/site-README.md; repo-root docs/ is not published)
 ```
 
 ## Legal pages
@@ -238,7 +238,7 @@ Pushing `main` deploys to Netlify. There is no staging site.
 
 The four screens on the homepage are the **v1.0 App Store submission images**,
 downscaled from the 1290x2796 originals in `~/Desktop/AppStore/6.9in/`.
-They are not captures of the store page. `screenshots/SOURCES.md` records which
+They are not captures of the store page. `docs/screenshots-SOURCES.md` records which
 original each one came from, with the SHA-256 of the original, and how to
 regenerate the derivatives.
 
