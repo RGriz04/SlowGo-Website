@@ -1,6 +1,6 @@
 # SlowGo Terms of Service
 
-**Last updated: July 31, 2026**
+**Last updated: October 6, 2026**
 
 These Terms of Service (the "**Terms**") are a binding agreement between you and **BackRoad Apps LLC**, a New York limited liability company ("**BackRoad Apps**," "**we**," "**us**," or "**our**"), governing your use of the SlowGo mobile application (the "**App**"), the slowgoapp.com website (the "**Site**"), and the routing, mapping, weather, and related features we provide (together, the "**Service**").
 
@@ -47,6 +47,10 @@ The Service's understanding of roads, posted speed limits, and access comes from
 ### 4.3 SlowGo does not determine legal eligibility
 
 Whether a golf cart or low-speed vehicle may lawfully travel on a particular road varies by state, county, municipality, and community, and may also depend on your vehicle's equipment, registration, insurance, and your driver's license status. The Service does not know your vehicle, your licensing, or your local rules, and **we make no representation that any suggested route — or any portion of one — is legal for you to drive.** Confirming and complying with the rules that apply to you is your responsibility.
+
+**Routes and speeds.** SlowGo is designed to prefer roads posted 35 mph or less, to flag stretches posted 36 to 45 mph, and to avoid routing along roads posted over 45 mph. Speed limits, road rules and map data come from public and third-party sources and can be missing, wrong or out of date, so SlowGo can make mistakes.
+
+**Local rules.** SlowGo does not know or check every state, county, city or community rule for golf carts and low-speed vehicles, for example permits, registration, daylight-only or distance limits, or roads and paths where carts aren't allowed. A route SlowGo shows may still be closed to your vehicle. You are responsible for knowing and following the rules where you ride. If SlowGo's directions ever conflict with a sign, a law, a community rule or the conditions in front of you, follow the sign, law, rule or conditions.
 
 ### 4.4 Higher-speed segments
 
