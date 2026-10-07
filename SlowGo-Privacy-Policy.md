@@ -1,6 +1,6 @@
 # SlowGo Privacy Policy
 
-**Last updated: October 5, 2026**
+**Last updated: October 7, 2026**
 
 **What changed (October 5, 2026):** Section 4 now explains that our crash-reporting provider estimates, from your connection's IP address, the city and state a report came from, and that we count reports by city to see where SlowGo is used.
 
@@ -12,7 +12,7 @@ This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "*
 
 **We do not require an account.** The App does not ask for your name, email address, phone number, or any login.
 
-**Precise location.** With your permission (through your device's location prompt), the App collects your device's precise location while you use it, to show your position on the map, calculate and display routes, search for nearby places, and provide local weather. During a ride you have started, the App keeps reading your position while your phone is locked or the App is in the background, so guidance continues; this stops when the ride ends. When you request a route or search, the relevant coordinates are transmitted to the providers that fulfill the request (see Section 3). Opening the ride postcard also looks up the general area a ride started and ended in, so the card can name those places; that lookup sends only an approximate position — rounded to about 110 metres — and never your exact start or end point. You can withdraw location permission at any time in your device settings; core features of a navigation app will not work without it.
+**Precise location.** With your permission (through your device's location prompt), the App collects your device's precise location while you use it, to show your position on the map, calculate and display routes, search for nearby places, and provide local weather. During a ride you have started, the App keeps reading your position while your phone is locked or the App is in the background, so guidance continues; on Android, a notification is shown for as long as this happens. This stops when the ride ends. When you request a route or search, the relevant coordinates are transmitted to the providers that fulfill the request (see Section 3). Opening the ride postcard also looks up the general area a ride started and ended in, so the card can name those places; that lookup sends only an approximate position — rounded to about 110 metres — and never your exact start or end point. You can withdraw location permission at any time in your device settings; core features of a navigation app will not work without it.
 
 **Ride, favorite, and settings data (stored on your device).** The App stores your ride history, favorite places, recent destinations, and settings on your device. See Section 5 for details and controls.
 
@@ -43,6 +43,7 @@ To fulfill your requests, the Service sends your coordinates and related request
 | Sentry | Crash and error reporting, and a small set of coordinate-free product metrics we use to keep the App healthy | Diagnostics, configured to exclude location and trip-revealing data before sending; and four app-health events — whether a route request was served; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category was tapped; and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text) |
 | Netlify | Hosts the Site and receives what you submit through its waitlist and town-request forms; also answers the App's connectivity check, a request with no content about once a minute while the App is running, so the App can tell whether you're online. When you open a SlowGo link such as slowgoapp.com/go or /card, the Site counts the visit by link and day (totals only) and sends you on to the right store; it doesn't keep your IP address or anything about your device. | The email address, and for a town request the town or community name, that you type into a Site form; plus standard server logs such as IP address and browser type. For the connectivity check: your IP address and basic device and app information — no location, no identifiers, nothing you type |
 | Apple | App distribution, and payment processing if paid features are offered | Per Apple's own terms and privacy policy |
+| Google | App distribution on Android (Google Play), and payment processing if paid features are offered there | Per Google's own terms and privacy policy |
 
 **When you share.** Some things leave the App because you ask them to, through your device's own share sheet. What you send goes to whichever app you pick there — Messages, Mail, a notes app, anything installed — and from that point it is handled by that app and its provider, not by us. We do not receive a copy and we do not keep a record of what you shared or who you sent it to.
 
@@ -74,15 +75,15 @@ If SlowGo crashes or hits an error, a diagnostic report may be sent to our crash
 
 **Reports raised by the App's own code** pass through a filter before they leave the device. That filter works from a list of fields it is allowed to send — anything it does not recognise is dropped rather than forwarded — and it removes latitude and longitude, addresses, route endpoints, search text, and request bodies, URLs, or breadcrumbs that could reveal a trip or destination. Values that look like coordinates are removed outright, not blurred or rounded.
 
-**Reports raised by a crash in the device's own layer** are assembled by the crash reporter itself and do not pass through that filter. They contain no location from your device because there is none for them to find: the App never gives the crash reporter your position, your route, or any place data, and we switch off the reporter's own capture of network requests, which is the other way a coordinate could reach it.
+**Reports raised by a crash in the device's own layer** — including, on Android, reports that the App stopped responding — are assembled by the crash reporter itself and do not pass through that filter. They contain no location from your device because there is none for them to find: the App never gives the crash reporter your position, your route, or any place data, and we switch off the reporter's own capture of network requests, which is the other way a coordinate could reach it.
 
 **In both cases we send no personal identifiers.** There is no account, and the App does not attach a user ID, an email address, or a name to any report. We configure the provider to limit IP-address storage, minimize default data collection, and restrict retention and access. Our crash-reporting provider also uses your connection's IP address to estimate the city and state a report came from, and we count reports by city to see where SlowGo is used; that estimate is never more precise than a city, and the IP address itself isn't kept with the report. Crash reports are about the App's health, not about where you went.
 
-Our crash-reporting provider's own software also attaches an opaque installation identifier to device-layer crash reports. It is not linked to you, your account (there is none), or your location, and we do not use it to identify you.
+On iPhone, our crash-reporting provider's own software also attaches an opaque installation identifier to device-layer crash reports. It is not linked to you, your account (there is none), or your location, and we do not use it to identify you. On Android, the App removes that identifier, and the device's boot time, from every report before it is sent.
 
 The same connection also carries four product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category (for example "Coffee" or "Pharmacy") was tapped; and how many map tiles a session loaded. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working and to keep our map-tile usage within budget.
 
-When SlowGo is connected to a car display, the App also records that the connection started and ended, and whether its map screen loaded — counts and fixed categories only, never coordinates, your route, or your search text.
+When SlowGo is connected to a car display, the App also records that the connection started and ended, and whether its map screen loaded, and a crash or error report notes whether a car display was connected at the time (yes or no) — counts and fixed categories only, never coordinates, your route, or your search text.
 
 ## 5. What Stays on Your Phone
 
@@ -96,7 +97,7 @@ When SlowGo is connected to a car display, the App also records that the connect
 
 **Your controls:** you can turn ride saving off ("Save ride history" in Settings), and you can delete all saved rides at any time ("Clear ride history" in Settings). Turning off the App's location permission stops new position readings from being taken or saved. Deleting the App removes all of its on-device data, including the three items above — which, apart from the in-progress ride clearing itself as described, is how they are removed.
 
-**Device protections and backups:** on-device data is stored using standard iOS app storage and is protected by your device's own protections (such as your passcode and the operating system's safeguards). Your device backups (for example, iCloud or computer backups) may include the App's data. We do not separately encrypt this data beyond the protections your device provides.
+**Device protections and backups:** on-device data is stored using your phone's standard app storage and is protected by your device's own protections (such as your passcode and the operating system's safeguards). On iPhone, your device backups (for example, iCloud or computer backups) may include the App's data. On Android, the App's data is excluded from Google backups and from transfers to a new phone. We do not separately encrypt this data beyond the protections your device provides.
 
 ## 6. Data Retention
 
