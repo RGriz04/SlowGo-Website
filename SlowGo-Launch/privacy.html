@@ -367,7 +367,7 @@
   <div class="wrap">
     <p class="eyebrow"><span class="dot"></span> Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: October 7, 2026</p>
+    <p class="updated">Last updated: October 10, 2026</p>
     <p class="changed"><strong>What changed (October 5, 2026):</strong> Section 4 now explains that our crash-reporting provider estimates, from your connection's IP address, the city and state a report came from, and that we count reports by city to see where SlowGo is used.</p>
 
     <nav class="toc" aria-labelledby="toc-heading">
@@ -444,8 +444,8 @@
             </tr>
             <tr>
               <th scope="row">OpenStreetMap community services (Overpass API)</th>
-              <td>Nearby-place search, place details, and checking whether paths along a route have cart-access notes recorded on the shared map, so the app can disclose what it finds</td>
-              <td>Search-area coordinates and queries, and sample points along a calculated route</td>
+              <td>Nearby-place search and place details</td>
+              <td>Search-area coordinates and queries</td>
             </tr>
             <tr>
               <th scope="row">U.S. National Weather Service</th>
@@ -455,7 +455,7 @@
             <tr>
               <th scope="row">Sentry</th>
               <td>Crash and error reporting, and a small set of coordinate-free product metrics we use to keep the App healthy</td>
-              <td>Diagnostics, configured to exclude location and trip-revealing data before sending; and four app-health events — whether a route request was served; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category was tapped; and how many map tiles a session loaded (counts and fixed categories only, never coordinates or your search text)</td>
+              <td>Diagnostics, configured to exclude location and trip-revealing data before sending; and five app-health events — whether a route request was served; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category was tapped; how many map tiles a session loaded; and that a ride postcard was shared, on iPhone (counts and fixed categories only, never coordinates or your search text)</td>
             </tr>
             <tr>
               <th scope="row">Netlify</th>
@@ -484,7 +484,7 @@
         <li><strong>Sharing your savings summary</strong> sends a few lines of text about totals. It contains no locations at all.</li>
       </ul>
 
-      <p><strong>Routing stays with us.</strong> Route calculations and speed-limit verification are performed on SlowGo's own servers. No third party receives your route request — your origin and destination are sent only to our own routing server. (Place search sends your search text and a nearby coordinate to the search providers listed above.) The App previously used outside routing services as a backup when our own server could not be reached; it no longer does, and no such request is made under any circumstances.</p>
+      <p><strong>Routing stays with us.</strong> Route calculations and speed-limit verification are performed on SlowGo's own servers. No third party receives your route request — your origin and destination are sent only to our own routing server. Checking whether paths along a route are marked for carts happens on your device, using a list built into the App from our own copy of the map; no points along your route are sent to anyone for it. (Place search sends your search text and a nearby coordinate to the search providers listed above.) The App previously used outside routing services as a backup when our own server could not be reached; it no longer does, and no such request is made under any circumstances.</p>
 
       <p>These providers process requests to deliver the Service under their own terms or public usage policies, and our agreements with them where they exist. <strong>We do not maintain user accounts and do not intentionally build a persistent, account-linked history of where you go.</strong> Our routing server processes route requests to answer them; our access and security logs are configured not to record route coordinates. Providers may retain request and security logs under their own policies, including where reasonably necessary for security, fraud prevention, legal compliance, or backups.</p>
 
@@ -516,7 +516,7 @@
 
       <p>On iPhone, our crash-reporting provider's own software also attaches an opaque installation identifier to device-layer crash reports. It is not linked to you, your account (there is none), or your location, and we do not use it to identify you. On Android, the App removes that identifier, and the device's boot time, from every report before it is sent.</p>
 
-      <p>The same connection also carries four product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category (for example "Coffee" or "Pharmacy") was tapped; and how many map tiles a session loaded. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working and to keep our map-tile usage within budget.</p>
+      <p>The same connection also carries five product metrics, and we list them here rather than describe them in general terms: whether a route request was served or not; when a ride leaves its route, whether the replacement route was accepted, refused for its speed limits, could not be checked, or could not be fetched, and roughly how long that took; which quick-link category (for example "Coffee" or "Pharmacy") was tapped; how many map tiles a session loaded; and, on iPhone, that you finished sharing a ride postcard — a count only, never the postcard, what it says, where the ride went, or who or which app you sent it to. Each is a fixed category or a whole number — there are no coordinates, no addresses and no text you typed in any of them, and they pass through the same removal step described above. We use them to tell whether routing is working, to keep our map-tile usage within budget, and to see whether postcards are worth keeping.</p>
 
       <p>When SlowGo is connected to a car display, the App also records that the connection started and ended, and whether its map screen loaded, and a crash or error report notes whether a car display was connected at the time (yes or no) — counts and fixed categories only, never coordinates, your route, or your search text.</p>
 
