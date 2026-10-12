@@ -1,6 +1,6 @@
 # SlowGo Privacy Policy
 
-**Last updated: October 10, 2026**
+**Last updated: October 12, 2026**
 
 **What changed (October 5, 2026):** Section 4 now explains that our crash-reporting provider estimates, from your connection's IP address, the city and state a report came from, and that we count reports by city to see where SlowGo is used.
 
