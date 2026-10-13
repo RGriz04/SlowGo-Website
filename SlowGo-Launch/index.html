@@ -925,6 +925,14 @@
     height:auto;
   }
   @media (prefers-reduced-motion: reduce){ .appstore-badge:hover{ transform:none; } }
+  /* Google's "Get it on Google Play" badge (google-play-badge.png, their en_badge_web_generic.png,
+     unaltered). Their PNG carries its own transparent clear space, so the image is drawn larger
+     and pulled in by that margin: the visible badge then matches Apple's height, which Google's
+     guidelines ask for (same size or larger than other store badges). */
+  .store-badges{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:4px 12px; }
+  .foot-cta .store-badges{ justify-content:flex-start; }
+  .appstore-badge.play-badge img{ height:auto; }
+  .play-legal{ font-size:11.5px; line-height:1.6; color:var(--drift); margin:10px 0 0; }
 
   /* -------- Coverage callout (honest scope) -------- */
   .coverage{
@@ -1129,8 +1137,8 @@
       "installUrl": "https://apps.apple.com/app/slowgo/id6803226504",
       "applicationCategory": "TravelApplication",
       "applicationSubCategory": "Navigation",
-      "operatingSystem": "iOS 15.1 or later",
-      "softwareVersion": "1.0",
+      "operatingSystem": "iOS 15.1 or later, Android 7.0 or later",
+      "softwareVersion": "1.4",
       "datePublished": "2026-08-25",
       "fileSize": "38 MB",
       "contentRating": "4+",
@@ -1247,7 +1255,7 @@
       "name": "Android?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "iOS first. Android comes later. Building one platform well is better than building two platforms okay. After SlowGo's iOS version is solid, Android is next on the roadmap."
+        "text": "Yes. SlowGo is free on Google Play for Android 7.0 or later, the same version as the iPhone app. If anything's off on Android, email hello@slowgoapp.com."
       }
     },
     {
@@ -1333,7 +1341,7 @@
     <div class="wrap">
       <div class="hero-meta">
         <span>BackRoad Apps · 2026</span>
-        <span class="live"><span class="pulse" aria-hidden="true"></span>Live on the App Store</span>
+        <span class="live"><span class="pulse" aria-hidden="true"></span>Live on the App Store and Google Play</span>
       </div>
 
       <div class="hero-stack reveal in">
@@ -1365,11 +1373,17 @@
              a screen reader should announce.
              ========================================================== -->
         <div class="appstore-cta">
+          <div class="store-badges">
           <a class="appstore-badge" href="/go">
             <img src="/app-store-badge.svg" width="180" height="60"
                  alt="Download SlowGo on the App Store" />
           </a>
-          <p class="cta-note">Free. iPhone, iOS 15.1 or later.</p>
+          <a class="appstore-badge play-badge" href="https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo">
+            <img src="/google-play-badge.png" width="233" height="90" style="width:233px; margin:-15px -14px;"
+                 alt="Get it on Google Play" />
+          </a>
+          </div>
+          <p class="cta-note">Free. iPhone, iOS 15.1 or later. Android 7.0 or later.</p>
         </div>
 
         <!-- Beaded arc motif -->
@@ -1685,12 +1699,12 @@
         <div class="now">
           <p class="stage">Now</p>
           <p class="when">Public <em>launch</em></p>
-          <p class="what">iOS, free to start. Florida, Georgia and Arizona first, The Villages leading, then outward.</p>
+          <p class="what">iPhone and Android, free to start. Florida, Georgia and Arizona first, The Villages leading, then outward.</p>
         </div>
         <div>
           <p class="stage">Later</p>
-          <p class="when">Android</p>
-          <p class="what">Android, and new states as we finish checking their roads.</p>
+          <p class="when">More <em>states</em></p>
+          <p class="what">New states as we finish checking their roads.</p>
         </div>
       </div>
     </div>
@@ -1763,8 +1777,8 @@
         </details>
         <details>
           <summary>Android?<span class="plus">+</span></summary>
-          <p class="a">iOS first. Android comes later.</p>
-          <p class="a">Building one platform well is better than building two platforms okay. After SlowGo's iOS version is solid, Android is next on the roadmap.</p>
+          <p class="a">Yes. SlowGo is free <a href="https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo">on Google Play</a>, for Android 7.0 or later. It's the same version as the iPhone app.</p>
+          <p class="a">If anything's off on Android, email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
         </details>
         <details>
           <summary>Is there a beta I can join?<span class="plus">+</span></summary>
@@ -1800,13 +1814,19 @@
     <div class="wrap reveal">
       <p class="eyebrow" style="margin-bottom:32px; color:var(--drift-2); justify-content:center;"><span class="dot"></span>One ask, one place</p>
       <h2 class="display-2" id="closer-title">Take your <em>time</em>. Then take the back way.</h2>
-      <p class="lede">SlowGo is on the App Store. Free to start, iOS, Florida, Georgia and Arizona.</p>
+      <p class="lede">SlowGo is on the App Store and Google Play. Free to start, iPhone and Android, Florida, Georgia and Arizona.</p>
 
       <div class="appstore-cta closer-cta">
+        <div class="store-badges">
         <a class="appstore-badge" href="/go">
           <img src="/app-store-badge.svg" width="180" height="60"
                alt="Download SlowGo on the App Store" />
         </a>
+        <a class="appstore-badge play-badge" href="https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo">
+            <img src="/google-play-badge.png" width="233" height="90" style="width:233px; margin:-15px -14px;"
+                 alt="Get it on Google Play" />
+        </a>
+        </div>
       </div>
 
       <!-- bead arc -->
@@ -1842,11 +1862,18 @@
         <!-- Second placement of Apple's badge. Same unaltered asset and the
              same /go link as the hero. -->
         <div class="appstore-cta foot-cta">
+          <div class="store-badges">
           <a class="appstore-badge" href="/go">
             <img src="/app-store-badge.svg" width="152" height="51"
                  alt="Download SlowGo on the App Store" />
           </a>
+          <a class="appstore-badge play-badge" href="https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo">
+            <img src="/google-play-badge.png" width="198" height="77" style="width:198px; margin:-13px -12px;"
+                 alt="Get it on Google Play" />
+          </a>
+          </div>
         </div>
+        <p class="play-legal">Google Play and the Google Play logo are trademarks of Google LLC.</p>
       </div>
 
       <div>
