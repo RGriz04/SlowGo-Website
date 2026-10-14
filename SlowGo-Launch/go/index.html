@@ -30,8 +30,8 @@
      link goes somewhere the homepage does not.
      =================================================================== -->
 
-<title>Download SlowGo — free on the App Store</title>
-<meta name="description" content="Free golf cart GPS for iPhone. Covers Florida and Georgia, more states on the way." />
+<title>Download SlowGo — free on iPhone and Android</title>
+<meta name="description" content="Free golf cart GPS for iPhone and Android. Covers Florida, Georgia and Arizona, more states on the way." />
 <meta name="theme-color" content="#0B1F15" />
 
 <!-- A doorway, not a destination. Keep it out of the index: the homepage
@@ -49,8 +49,9 @@
 
      og:image is identical to the homepage's and must stay that way forever —
      one image everywhere. The title and description deliberately differ: this
-     card is shown for a link whose destination is the App Store, so it names
-     that. Do not "fix" the difference back to matching the homepage.
+     card is shown for a link whose destination is a store (the App Store on an
+     iPhone, Google Play on Android since the Android launch), so it names
+     them. Do not "fix" the difference back to matching the homepage.
 
      The title and description elements above say the same thing, for the same
      reason: they are what a scraper that does not read Open Graph falls back
@@ -62,8 +63,8 @@
 
      Absolute image URL: iMessage and Slack do not resolve relative paths. -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Download SlowGo — free on the App Store" />
-<meta property="og:description" content="Free golf cart GPS for iPhone. Covers Florida and Georgia, more states on the way." />
+<meta property="og:title" content="Download SlowGo — free on iPhone and Android" />
+<meta property="og:description" content="Free golf cart GPS for iPhone and Android. Covers Florida, Georgia and Arizona, more states on the way." />
 <meta property="og:url" content="https://slowgoapp.com/go" />
 <meta property="og:image" content="https://slowgoapp.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -72,8 +73,8 @@
 <meta property="og:site_name" content="SlowGo" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Download SlowGo — free on the App Store" />
-<meta name="twitter:description" content="Free golf cart GPS for iPhone. Covers Florida and Georgia, more states on the way." />
+<meta name="twitter:title" content="Download SlowGo — free on iPhone and Android" />
+<meta name="twitter:description" content="Free golf cart GPS for iPhone and Android. Covers Florida, Georgia and Arizona, more states on the way." />
 <meta name="twitter:image" content="https://slowgoapp.com/og-image.png" />
 <meta name="twitter:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
 
@@ -125,7 +126,10 @@
   // Hand-off #2. replace(), not assign(): this page must not sit in the
   // history stack, or "back" from the App Store would land here and bounce
   // the rider straight out again.
-  location.replace('https://apps.apple.com/app/slowgo/id6803226504');
+  // Android (since the Android launch) goes to Google Play; everyone else to the App Store.
+  location.replace(/Android/i.test(navigator.userAgent)
+    ? 'https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo'
+    : 'https://apps.apple.com/app/slowgo/id6803226504');
 </script>
 
 </body>

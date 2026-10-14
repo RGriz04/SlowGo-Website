@@ -17,6 +17,10 @@ Android 1.4 is published on Google Play (Play Console → Publish).
 - `google-play-badge.png`: Google's en_badge_web_generic.png, downloaded unaltered from
   play.google.com/intl/en_us/badges. The trademark line Google asks for sits under it.
 - `llms.txt`: Android is on Google Play.
+- `go/index.html` (the /go link's preview card and fallback): the card says "free on iPhone and Android" (and
+  Arizona); if the link function ever failed, the page itself sends Android to Google Play.
+- **The launch posts link slowgoapp.com/go** (Ron, 2026-10-13): after this deploy, /go sends Android phones to Google
+  Play (the link function, `PLAY_URL`), iPhones to the App Store, computers home.
 
 ## Before deploying (launch day)
 1. Replace the 3 `LAUNCH-DAY` placeholders with the date (`sitemap.xml` ×2, `llms.txt` ×1):
@@ -26,7 +30,10 @@ Android 1.4 is published on Google Play (Play Console → Publish).
 4. Merge to `main` and push = the deploy. Ron's go first.
 
 ## After deploying
-- Open slowgoapp.com/go from an Android phone (or emulator Chrome): it should land on Google Play.
+- Open slowgoapp.com/go from an Android phone (or emulator Chrome): it should land on Google Play. **This is the
+  link the posts use, so check it before posting.**
+- Paste slowgoapp.com/go into a Facebook post draft (don't post): the preview card should say "free on iPhone and
+  Android". Facebook caches cards; if it shows the old line, use Facebook's Sharing Debugger to refresh it.
 - slowgoapp.com/android shows the new page; slowgoapp.com/go on an iPhone still opens the App Store.
 
 ## Rollback
