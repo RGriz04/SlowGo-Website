@@ -1,4 +1,6 @@
 // ONE LINK SYSTEM (Ron, 2026-10-05): /go, /card, /rental and /f/<shop>.
+// Added 2026-10-17 (drafts, not deployed): ad links /fb1 /fb2 /fb3 (Facebook ad variants) and /asa
+// (Apple Search Ads), and one download link per town page, /t/<town> (counted as "t-<town>").
 //   iPhone   → the App Store, tagged with the link's source (App Store Connect → Campaigns)
 //   Android  → /android ("almost here") until PLAY_URL is set, then Google Play
 //   computer → the home page
@@ -8,6 +10,7 @@
 // for this one routing decision and discarded.
 import { getStore } from '@netlify/blobs';
 import { FLEET_SHOPS } from '../fleet-shops.mjs';
+import { AD_LINKS, TOWN_LINKS } from '../counted-links.mjs';
 
 export const APP_ID = '6803226504';
 // App Store Connect provider token (pt=), from the campaign link Ron generated 2026-10-05.
@@ -23,6 +26,11 @@ export function sourceFor(pathname) {
   if (p === '/go') return 'go';
   if (p === '/card' || p === '/cards') return 'card';   // /cards: a common mistype of the printed address, counted as card
   if (p === '/rental') return 'rental';
+  if (AD_LINKS.includes(p.slice(1))) return p.slice(1);
+  // A town's download link. The count key and App Store tag are "t-<town>": a "/" can't go in a
+  // count key (keys are "<source>/<day>"), and Apple's ct tag allows 40 characters.
+  const t = /^\/t\/([a-z0-9-]{1,38})$/.exec(p);
+  if (t && TOWN_LINKS.includes(t[1])) return `t-${t[1]}`;
   const m = /^\/f\/([a-z0-9-]{1,40})$/.exec(p);
   if (m && FLEET_SHOPS.includes(m[1])) return m[1];
   return null;
@@ -77,4 +85,7 @@ export default async (req) => {
   } });
 };
 
-export const config = { path: ['/go', '/go/', '/card', '/card/', '/cards', '/cards/', '/rental', '/rental/', '/f/:shop', '/f/:shop/'] };
+export const config = { path: ['/go', '/go/', '/card', '/card/', '/cards', '/cards/', '/rental', '/rental/', '/f/:shop', '/f/:shop/',
+  // Ad and town links (2026-10-17). Netlify config must be static, so the ad names are written out here;
+  // tools/test-links.mjs fails if this list and AD_LINKS ever disagree.
+  '/fb1', '/fb1/', '/fb2', '/fb2/', '/fb3', '/fb3/', '/asa', '/asa/', '/t/:town', '/t/:town/'] };

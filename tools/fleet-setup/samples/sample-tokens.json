@@ -1,0 +1,11 @@
+{
+  "note": "Test fixture only: the made-up sample shop's token. Ron's real tokens live in ~/.slowgo/fleet-setup-tokens.json.",
+  "tokens": [
+    {
+      "token": "SAMPLE-token-made-up-0000",
+      "shop": "Pelican Pete's Cart Rentals (SAMPLE)",
+      "issued": "2026-10-17",
+      "used": null
+    }
+  ]
+}

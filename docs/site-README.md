@@ -85,8 +85,8 @@ The text around the image is **meant** to diverge, and that is a ruling, not
 drift. A link to `/go` goes to the App Store, so its card says so:
 
 > **Download SlowGo — free on the App Store**
-> Free golf cart GPS for iPhone. Covers Florida and Georgia, more states on the
-> way.
+> Free golf cart GPS for iPhone. Covers Florida, Georgia and Arizona, more states
+> on the way. (Arizona added 2026-10-17; the state list is the only change.)
 
 The homepage keeps its own line — *Life's better at 15 mph.* — because a link to
 the homepage goes to the homepage. Same picture, honest label underneath.
@@ -126,6 +126,9 @@ The forced `/go` and `/card` rewrites are gone. One Netlify Function owns these 
 | `/card`, `/cards` | Ron's printed cards (`/cards` is the plural mistype) | `card` |
 | `/rental` | the sample rental card | `rental` |
 | `/f/<shop>` | each real rental shop (one line in `netlify/fleet-shops.mjs`) | the shop name |
+| `/fb1`, `/fb2`, `/fb3` | Facebook ad variants (2026-10-17) | `fb1`, `fb2`, `fb3` |
+| `/asa` | Apple Search Ads (2026-10-17) | `asa` |
+| `/t/<town>` | each published town page's download button, and `/t/cart-rules` on the hub (list in `netlify/counted-links.mjs`) | `t-<town>` |
 
 - iPhone → App Store with `pt=128827526` and `ct=<link>`; Android → `/android` until `PLAY_URL`
   is set in `link.mjs`; computers → home; link previews → `go/index.html`'s card, uncounted.
@@ -314,3 +317,16 @@ paint. `og-image.png` (~59 KB) is fetched by social crawlers, not on page render
 —
 
 *Life's better at 15 mph.*
+
+## Added 2026-10-17 (drafts branch `drafts/site-2026-10-17`)
+
+- **Favicon set** from the app's own icon (`assets/icon.png` in the app repo): `favicon.ico` (16/32/48),
+  `favicon-48x48.png`, `favicon-96x96.png`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` (180),
+  `site.webmanifest`. Every page links them; `node tools/add-favicon-links.mjs [paths]` adds the block to
+  any page that lacks it (run it on new pages, e.g. the town pages). The old inline data-URI "S" icon is
+  gone: Google can't crawl a data URI. Search Console steps: `docs/google-search-console-setup.md`.
+- **/business** and the private **/business/setup** form: `docs/business-forms.md` (forms, spam,
+  notifications, the honest auto-reply answer, plan limits with sources, Stadia, the flow).
+- **Counted ad and town links**: `netlify/counted-links.mjs`; `npm test` runs `tools/test-links.mjs`.
+- **Fleet setup drafting** (local only): `tools/fleet-setup/` (`new-token.mjs`, `draft-fleet.mjs`, a
+  made-up sample in `samples/`); `npm test` runs `tools/test-fleet-setup.mjs`.

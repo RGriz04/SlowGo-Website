@@ -71,3 +71,99 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 # Link previews still get go/index.html's card (the function serves it to preview bots).
 /android    /android.html    200
 /android/   /android.html    200
+
+# Town pages (2026-10-17): the /cart-rules hub, the published town and county pages and the three state
+# pages (/golf-carts/florida, /georgia, /arizona), clean URLs (rewrites, 200). 84 lines from
+# tools/town-pages/build.py --links on drafts/town-pages-2026-10-16 (019d338).
+# Their download buttons use the counted links /t/<name> (netlify/counted-links.mjs).
+/cart-rules                        /cart-rules.html                         200
+/cart-rules/                       /cart-rules.html                         200
+/golf-carts/st-pete-beach          /golf-carts/st-pete-beach.html           200
+/golf-carts/st-pete-beach/         /golf-carts/st-pete-beach.html           200
+/golf-carts/dunedin                /golf-carts/dunedin.html                 200
+/golf-carts/dunedin/               /golf-carts/dunedin.html                 200
+/golf-carts/mount-dora             /golf-carts/mount-dora.html              200
+/golf-carts/mount-dora/            /golf-carts/mount-dora.html              200
+/golf-carts/miami-lakes            /golf-carts/miami-lakes.html             200
+/golf-carts/miami-lakes/           /golf-carts/miami-lakes.html             200
+/golf-carts/pine-island            /golf-carts/pine-island.html             200
+/golf-carts/pine-island/           /golf-carts/pine-island.html             200
+/golf-carts/jekyll-island          /golf-carts/jekyll-island.html           200
+/golf-carts/jekyll-island/         /golf-carts/jekyll-island.html           200
+/golf-carts/st-simons-island       /golf-carts/st-simons-island.html        200
+/golf-carts/st-simons-island/      /golf-carts/st-simons-island.html        200
+/golf-carts/tybee-island           /golf-carts/tybee-island.html            200
+/golf-carts/tybee-island/          /golf-carts/tybee-island.html            200
+/golf-carts/pinellas-county        /golf-carts/pinellas-county.html         200
+/golf-carts/pinellas-county/       /golf-carts/pinellas-county.html         200
+/golf-carts/clearwater             /golf-carts/clearwater.html              200
+/golf-carts/clearwater/            /golf-carts/clearwater.html              200
+/golf-carts/st-augustine-beach     /golf-carts/st-augustine-beach.html      200
+/golf-carts/st-augustine-beach/    /golf-carts/st-augustine-beach.html      200
+/golf-carts/flagler-beach          /golf-carts/flagler-beach.html           200
+/golf-carts/flagler-beach/         /golf-carts/flagler-beach.html           200
+/golf-carts/fort-walton-beach      /golf-carts/fort-walton-beach.html       200
+/golf-carts/fort-walton-beach/     /golf-carts/fort-walton-beach.html       200
+/golf-carts/mexico-beach           /golf-carts/mexico-beach.html            200
+/golf-carts/mexico-beach/          /golf-carts/mexico-beach.html            200
+/golf-carts/port-st-joe            /golf-carts/port-st-joe.html             200
+/golf-carts/port-st-joe/           /golf-carts/port-st-joe.html             200
+/golf-carts/key-biscayne           /golf-carts/key-biscayne.html            200
+/golf-carts/key-biscayne/          /golf-carts/key-biscayne.html            200
+/golf-carts/apollo-beach           /golf-carts/apollo-beach.html            200
+/golf-carts/apollo-beach/          /golf-carts/apollo-beach.html            200
+/golf-carts/port-richey            /golf-carts/port-richey.html             200
+/golf-carts/port-richey/           /golf-carts/port-richey.html             200
+/golf-carts/keaton-beach           /golf-carts/keaton-beach.html            200
+/golf-carts/keaton-beach/          /golf-carts/keaton-beach.html            200
+/golf-carts/steinhatchee           /golf-carts/steinhatchee.html            200
+/golf-carts/steinhatchee/          /golf-carts/steinhatchee.html            200
+/golf-carts/north-port             /golf-carts/north-port.html              200
+/golf-carts/north-port/            /golf-carts/north-port.html              200
+/golf-carts/oldsmar                /golf-carts/oldsmar.html                 200
+/golf-carts/oldsmar/               /golf-carts/oldsmar.html                 200
+/golf-carts/winter-garden          /golf-carts/winter-garden.html           200
+/golf-carts/winter-garden/         /golf-carts/winter-garden.html           200
+/golf-carts/oviedo                 /golf-carts/oviedo.html                  200
+/golf-carts/oviedo/                /golf-carts/oviedo.html                  200
+/golf-carts/clermont               /golf-carts/clermont.html                200
+/golf-carts/clermont/              /golf-carts/clermont.html                200
+/golf-carts/st-cloud               /golf-carts/st-cloud.html                200
+/golf-carts/st-cloud/              /golf-carts/st-cloud.html                200
+/golf-carts/celebration            /golf-carts/celebration.html             200
+/golf-carts/celebration/           /golf-carts/celebration.html             200
+/golf-carts/lynn-haven             /golf-carts/lynn-haven.html              200
+/golf-carts/lynn-haven/            /golf-carts/lynn-haven.html              200
+/golf-carts/cutler-bay             /golf-carts/cutler-bay.html              200
+/golf-carts/cutler-bay/            /golf-carts/cutler-bay.html              200
+/golf-carts/palmetto-bay           /golf-carts/palmetto-bay.html            200
+/golf-carts/palmetto-bay/          /golf-carts/palmetto-bay.html            200
+/golf-carts/tequesta               /golf-carts/tequesta.html                200
+/golf-carts/tequesta/              /golf-carts/tequesta.html                200
+/golf-carts/nassau-county          /golf-carts/nassau-county.html           200
+/golf-carts/nassau-county/         /golf-carts/nassau-county.html           200
+/golf-carts/st-johns-county        /golf-carts/st-johns-county.html         200
+/golf-carts/st-johns-county/       /golf-carts/st-johns-county.html         200
+/golf-carts/peachtree-city         /golf-carts/peachtree-city.html          200
+/golf-carts/peachtree-city/        /golf-carts/peachtree-city.html          200
+/golf-carts/port-wentworth         /golf-carts/port-wentworth.html          200
+/golf-carts/port-wentworth/        /golf-carts/port-wentworth.html          200
+/golf-carts/rome                   /golf-carts/rome.html                    200
+/golf-carts/rome/                  /golf-carts/rome.html                    200
+/golf-carts/woodstock              /golf-carts/woodstock.html               200
+/golf-carts/woodstock/             /golf-carts/woodstock.html               200
+/golf-carts/marana                 /golf-carts/marana.html                  200
+/golf-carts/marana/                /golf-carts/marana.html                  200
+/golf-carts/florida                /golf-carts/florida.html                 200
+/golf-carts/florida/               /golf-carts/florida.html                 200
+/golf-carts/georgia                /golf-carts/georgia.html                 200
+/golf-carts/georgia/               /golf-carts/georgia.html                 200
+/golf-carts/arizona                /golf-carts/arizona.html                 200
+/golf-carts/arizona/               /golf-carts/arizona.html                 200
+
+# For businesses (2026-10-17): /business is a page; /business/setup is the private fleet setup
+# form (unlinked, noindex; see netlify.toml X-Robots-Tag).
+/business          /business.html          200
+/business/         /business.html          200
+/business/setup    /business-setup.html    200
+/business/setup/   /business-setup.html    200

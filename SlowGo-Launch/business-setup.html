@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Fleet setup — SlowGo</title>
+<meta name="description" content="Private setup form for a SlowGo rental shop or dealer." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#0B1F15" />
+
+<!-- favicon set (2026-10-17) -->
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..600,30..100,0..1;1,9..144,400..600,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
+<style>  :root{
+    --forest:        #1E3A2B;
+    --charcoal:      #0B1F15;
+    --moss:          #5B7A5F;
+    --amber:         #C8853A;
+    --amber-soft:    #E0A969;
+    --amber-deep:    #8A5620;
+    --oat:           #F4EDE0;
+    --cream:         #FBF7EF;
+    --drift:         #A09484;
+    --drift-2:       #C7BDAC;
+
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono:  'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+    --max: 1240px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--forest);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+  }
+  ::selection{ background:var(--amber); color:var(--cream); }
+  a{ color:inherit; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:rgba(160,148,132,.6); transition:color .2s ease, text-decoration-color .2s ease; }
+  a:hover{ color:var(--amber); text-decoration-color:var(--amber); }
+  a:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; border-radius:2px; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding-left:32px; padding-right:32px; }
+  @media (max-width: 640px){ .wrap{ padding-left:22px; padding-right:22px; } }
+
+  .skip{
+    position:absolute; left:-9999px; top:0;
+    background:var(--charcoal); color:var(--oat);
+    padding:12px 18px; z-index:50; text-decoration:none; font-size:14px;
+  }
+  .skip:focus{ left:0; }
+
+  /* -------- Topbar -------- */
+  .topbar{
+    background:var(--charcoal);
+    border-bottom:1px solid rgba(244,237,224,.08);
+    color:var(--oat);
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .topbar .mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    color:var(--oat);
+  }
+  .topbar .mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .topbar nav{ display:flex; gap:28px; align-items:center; }
+  .topbar nav a{
+    font-size:13px;
+    text-decoration:none;
+    color:var(--drift-2);
+    letter-spacing:0.01em;
+  }
+  .topbar nav a:hover{ color:var(--amber-soft); }
+  @media (max-width: 720px){
+    .topbar-inner{ padding:14px 22px; }
+  }
+
+  /* -------- Page body -------- */
+  .legal{ flex:1 0 auto; padding: clamp(64px, 8vw, 104px) 0 clamp(80px, 10vw, 140px); }
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--drift);
+    display:inline-flex; align-items:center; gap:10px;
+    margin:0 0 20px 0;
+  }
+  .eyebrow .dot{ width:5px; height:5px; border-radius:50%; background:var(--amber); display:inline-block; }
+  .legal h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 144, "SOFT" 40, "WONK" 0;
+    font-size: clamp(40px, 5.4vw, 76px);
+    line-height:1.0;
+    letter-spacing:-0.02em;
+    margin:0;
+    text-wrap:balance;
+  }
+
+  /* -------- Prose -------- */
+  .prose{
+    max-width:74ch;
+    margin:48px 0 0;
+    /* Support page runs at 17px, while terms.html and privacy.html sit at 16.5px.
+       This 0.5px difference is deliberate and temporary: this page serves a 55+
+       audience reading outdoors, so it meets the 17px minimum now. The legal pages
+       will be bumped to match after they return from attorney review — until then,
+       do NOT "fix" this back down to 16.5px to match the other pages. */
+    font-size:17px;
+    line-height:1.78;
+    color:var(--forest);
+  }
+  .prose > p{ margin:20px 0 0; }
+  .prose .lede{
+    font-size:19px;
+    line-height:1.7;
+    color:var(--moss);
+    margin-top:0;
+  }
+  .prose h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 96, "SOFT" 40, "WONK" 0;
+    font-size: clamp(25px, 3vw, 32px);
+    line-height:1.2;
+    letter-spacing:-0.015em;
+    color:var(--forest);
+    margin:56px 0 0;
+    padding-top:28px;
+    border-top:1px solid rgba(160,148,132,.28);
+    scroll-margin-top:24px;
+  }
+  .prose h3{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:-0.005em;
+    color:var(--forest);
+    margin:36px 0 0;
+    scroll-margin-top:24px;
+  }
+  .prose strong{ font-weight:600; color:var(--forest); }
+  .prose a{ text-decoration-color:rgba(200,133,58,.5); }
+
+  /* -------- Contact block -------- */
+  .contact{
+    margin:24px 0 0;
+    font-style:normal;
+    line-height:1.85;
+  }
+
+  /* -------- Footer -------- */
+  footer.foot{
+    background: var(--charcoal);
+    color: var(--drift-2);
+    padding: 56px 0 48px;
+    border-top:1px solid rgba(244,237,224,.08);
+  }
+  .foot-mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size: 34px;
+    color:var(--oat);
+    line-height:1;
+    margin: 0 0 28px 0;
+  }
+  .foot-mark a{ text-decoration:none; color:inherit; }
+  .foot-mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .foot-legal{
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    margin-bottom: 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap: 32px;
+    flex-wrap:wrap;
+  }
+  .foot-legal p{
+    font-size:12.5px;
+    line-height:1.7;
+    color:var(--drift);
+    margin:0;
+    max-width:44ch;
+  }
+  .foot-legal .entity{ color:var(--drift-2); }
+  .foot-legal a{ color:var(--drift); text-decoration-color:rgba(160,148,132,.45); }
+  .foot-legal a:hover{ color:var(--amber-soft); text-decoration-color:var(--amber-soft); }
+  .foot-legal-links{
+    list-style:none; margin:0; padding:0;
+    display:flex; gap:24px; align-items:center;
+    font-size:12.5px;
+  }
+  .foot-legal-links a{ text-decoration:none; }
+  @media (max-width: 640px){
+    .foot-legal{ flex-direction:column; gap:18px; }
+  }
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--drift);
+  }
+  .foot-bottom .right{ display:flex; gap:24px; }
+  @media (max-width: 800px){
+    .foot-bottom{ flex-direction:column; gap:14px; align-items:flex-start; }
+  }
+
+  /* -------- Business forms (2026-10-17) -------- */
+  .biz-nav{ display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 0; padding:0; list-style:none; }
+  .biz-nav a{
+    display:inline-block; padding:9px 16px; border-radius:999px;
+    border:1px solid rgba(30,58,43,.22); text-decoration:none; font-size:15px; background:var(--oat);
+  }
+  .biz-nav a:hover{ border-color:var(--amber); }
+  .biz{ scroll-margin-top:16px; }
+  .biz ul{ margin:14px 0 0; padding-left:1.2em; }
+  .biz li{ margin:6px 0 0; }
+  .bizform{
+    margin:24px 0 0; padding:24px; border-radius:14px;
+    background:var(--oat); border:1px solid rgba(160,148,132,.35);
+  }
+  .bizform .row{ display:grid; grid-template-columns:1fr 1fr; gap:14px 16px; }
+  @media (max-width: 640px){ .bizform{ padding:18px; } .bizform .row{ grid-template-columns:1fr; } }
+  .bizform label{ display:block; font-size:15px; font-weight:500; color:var(--forest); }
+  .bizform label .opt{ font-weight:400; color:var(--moss); font-size:14px; }
+  .bizform input[type=text], .bizform input[type=email], .bizform input[type=tel],
+  .bizform input[type=number], .bizform textarea, .bizform select{
+    display:block; width:100%; margin-top:6px; padding:12px 14px;
+    font:inherit; font-size:17px; color:var(--forest);
+    background:var(--cream); border:1px solid rgba(30,58,43,.25); border-radius:10px;
+  }
+  .bizform textarea{ min-height:96px; resize:vertical; }
+  .bizform input:focus, .bizform textarea:focus, .bizform select:focus{ outline:2px solid var(--amber); outline-offset:1px; }
+  .bizform .full{ grid-column:1 / -1; }
+  .bizform button[type=submit]{
+    margin-top:18px; font:inherit; font-size:15px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--charcoal); background:var(--amber); border:0; border-radius:999px; padding:15px 28px; cursor:pointer;
+  }
+  .bizform button[type=submit]:hover{ background:var(--amber-soft); }
+  .bizform button[type=submit]:disabled{ opacity:.6; cursor:default; }
+  .bizform .note{ font-size:14px; line-height:1.6; color:var(--moss); margin:14px 0 0; }
+  .bizform .form-error{ color:#9B2C1F; font-size:15px; margin:12px 0 0; }
+  .bizform .confirm{ display:none; margin:0; }
+  .bizform[data-state=done] .fields{ display:none; }
+  .bizform[data-state=done] .confirm{ display:block; }
+  .confirm h4{ font-family:var(--serif); font-weight:500; font-size:22px; margin:0; }
+  .confirm ol{ margin:12px 0 0; padding-left:1.3em; }
+  .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+  .draft-banner{ background:#FFF3D6; border:1px solid var(--amber); color:var(--amber-deep); padding:12px 16px; border-radius:10px; font-size:15px; margin:0 0 28px; }
+  .bizform fieldset{ border:0; padding:0; margin:28px 0 0; }
+  .bizform legend{ font-family:var(--serif); font-size:22px; font-weight:500; padding:0; margin:0 0 8px; }
+  .bizform .hint{ font-size:14px; color:var(--moss); margin:4px 0 10px; }
+  #pinmap{ width:100%; height:320px; border-radius:12px; border:1px solid rgba(30,58,43,.25); margin-top:10px; background:#e8e2d6; }
+  .pinread{ font-family:var(--mono); font-size:13px; color:var(--moss); margin:8px 0 0; }
+  .picks{ counter-reset:pick; }
+  .pick{ display:grid; grid-template-columns:2fr 3fr; gap:10px; margin:10px 0 0; }
+  @media (max-width:640px){ .pick{ grid-template-columns:1fr; } }
+  .check{ display:flex; gap:10px; align-items:flex-start; font-weight:400 !important; }
+  .check input{ margin-top:6px; width:20px; height:20px; flex:0 0 auto; }
+  .colorrow{ display:flex; gap:10px; align-items:center; margin-top:6px; }
+  .colorrow input[type=color]{ width:52px; height:44px; padding:2px; border-radius:8px; border:1px solid rgba(30,58,43,.25); background:var(--cream); }
+  .needlink{ background:#FBE9E7; border:1px solid #C0492F; color:#7A2614; padding:14px 16px; border-radius:10px; margin:0 0 20px; }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#doc">Skip to the form</a>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
+    <nav aria-label="Primary">
+      <a href="/">Back to SlowGo</a>
+    </nav>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> Fleet setup</p>
+    <h1>Set up your shop</h1>
+
+    <article class="prose" id="doc">
+      <!-- DRAFT 2026-10-17: remove this banner, and link the fleet agreement below, before this page goes live. -->
+      <p class="draft-banner"><strong>DRAFT, not live.</strong> The agreement link below is a placeholder until Ron publishes the fleet terms.</p>
+
+      <p class="lede">Thanks for saying yes. This takes about ten minutes. Ron checks everything by hand, routes every pick on SlowGo’s quiet-road settings before it goes in, and emails you a proof before anything is printed or switched on.</p>
+
+      <div class="needlink" id="needlink" hidden>This form only works from the private link Ron emailed you. If you can’t find it, email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</div>
+
+      <form class="bizform" id="form-setup" name="fleet-setup" method="POST" action="/business/setup"
+            enctype="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="fleet-setup" />
+        <input type="hidden" name="token" id="setup-token" value="" />
+        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="fields">
+
+          <fieldset>
+            <legend>Your shop</legend>
+            <div class="row">
+              <div><label for="setup-business">Shop name, as riders should see it</label><input id="setup-business" type="text" name="business" maxlength="40" required aria-required="true" autocomplete="organization" /></div>
+              <div><label for="setup-kind">You are a</label>
+                <select id="setup-kind" name="kind" required aria-required="true"><option value="rental">Rental shop</option><option value="dealer">Dealer</option></select></div>
+              <div><label for="setup-name">Your name</label><input id="setup-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
+              <div><label for="setup-email">Email</label><input id="setup-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
+              <div><label for="setup-shop_phone">Shop phone, for the Call button</label><input id="setup-shop_phone" type="tel" name="shop_phone" required aria-required="true" autocomplete="tel" placeholder="(352) 555-0147" /></div>
+              <div><label for="setup-service_phone">Call-for-service number <span class="opt">(dealers; optional)</span></label><input id="setup-service_phone" type="tel" name="service_phone" autocomplete="tel" /></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Logo and colour</legend>
+            <div class="row">
+              <div class="full"><label for="setup-logo">Logo <span class="opt">(PNG, JPG or SVG, up to 4 MB)</span></label>
+                <input id="setup-logo" type="file" name="logo" accept="image/png,image/jpeg,image/svg+xml" />
+                <p class="hint">A square or wide version on a plain background works best. Too big, or no file handy? Email it to hello@slowgoapp.com instead.</p></div>
+              <div><label for="setup-brand_color_pick">Brand colour <span class="opt">(optional)</span></label>
+                <div class="colorrow"><input id="setup-brand_color_pick" type="color" value="#1e3a2b" aria-label="Pick a colour" />
+                <input id="setup-brand_color" type="text" name="brand_color" maxlength="7" placeholder="#1E3A2B" pattern="#[0-9A-Fa-f]{6}" /></div></div>
+            </div>
+          </fieldset>
+
+          <fieldset id="returnset">
+            <legend>Return spot</legend>
+            <p class="hint">Where renters bring the cart back. Type the address, then tap the map to put the pin exactly on your lot. Rental shops only.</p>
+            <div class="row">
+              <div class="full"><label for="setup-return_address">Return address</label><input id="setup-return_address" type="text" name="return_address" autocomplete="street-address" /></div>
+              <div><label for="setup-return_label">What riders should look for <span class="opt">(optional)</span></label><input id="setup-return_label" type="text" name="return_label" maxlength="60" placeholder="e.g. the blue awning behind the marina" /></div>
+            </div>
+            <div id="pinmap" role="application" aria-label="Map: tap to place the return pin"></div>
+            <p class="pinread" id="pinread">No pin yet.</p>
+            <p class="hint" id="maperror" hidden>The map didn’t load. That’s fine: type the address above and Ron will place the pin and send it to you to confirm.</p>
+            <input type="hidden" name="return_lat" id="setup-return_lat" />
+            <input type="hidden" name="return_lng" id="setup-return_lng" />
+          </fieldset>
+
+          <fieldset>
+            <legend>Hours and welcome</legend>
+            <div class="row">
+              <div class="full"><label for="setup-hours">Hours</label><textarea id="setup-hours" name="hours" placeholder="e.g. Mon–Sat 8–6, Sun 9–4" required aria-required="true"></textarea></div>
+              <div class="full"><label for="setup-welcome">Welcome line <span class="opt">(up to 120 characters)</span></label><input id="setup-welcome" type="text" name="welcome" maxlength="120" placeholder="e.g. Welcome to the island! Ride slow and enjoy." /></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="picks">
+            <legend>Your picks</legend>
+            <p class="hint">Up to 8 places you’d send a renter: beaches, food, ice cream, groceries. Ron routes each one on SlowGo’s quiet-road setting; a place with no quiet way to get there is left out, and he tells you which.</p>
+            
+            <div class="pick">
+              <div><label for="setup-pick_1_name">Pick 1</label>
+                <input id="setup-pick_1_name" type="text" name="pick_1_name" maxlength="60" placeholder="e.g. Lighthouse Park" /></div>
+              <div><label for="setup-pick_1_note">Note <span class="opt">(optional)</span></label>
+                <input id="setup-pick_1_note" type="text" name="pick_1_note" maxlength="80" placeholder="e.g. best sunset spot" /></div>
+            </div>
+            <div class="pick">
+              <div><label for="setup-pick_2_name">Pick 2</label>
+                <input id="setup-pick_2_name" type="text" name="pick_2_name" maxlength="60" placeholder="e.g. Main Street ice cream" /></div>
+              <div><label for="setup-pick_2_note">Note <span class="opt">(optional)</span></label>
+                <input id="setup-pick_2_note" type="text" name="pick_2_note" maxlength="80" placeholder="" /></div>
+            </div>
+            <div class="pick">
+              <div><label for="setup-pick_3_name">Pick 3</label>
+                <input id="setup-pick_3_name" type="text" name="pick_3_name" maxlength="60" placeholder="e.g. Publix on Island Dr" /></div>
+              <div><label for="setup-pick_3_note">Note <span class="opt">(optional)</span></label>
+                <input id="setup-pick_3_note" type="text" name="pick_3_note" maxlength="80" placeholder="" /></div>
+            </div>
+            <div class="pick">
+              <div><label for="setup-pick_4_name">Pick 4 <span class="opt">(optional)</span></label>
+                <input id="setup-pick_4_name" type="text" name="pick_4_name" maxlength="60" placeholder="" /></div>
+              <div><label for="setup-pick_4_note">Note <span class="opt">(optional)</span></label>
+                <input id="setup-pick_4_note" type="text" name="pick_4_note" maxlength="80" placeholder="" /></div>
+            </div>
+            <div class="pick">
+              <div><label for="setup-pick_5_name">Pick 5 <span class="opt">(optional)</span></label>
+                <input id="setup-pick_5_name" type="text" name="pick_5_name" maxlength="60" placeholder="" /></div>
+              <div><label for="setup-pick_5_note">Note <span class="opt">(optional)</span></label>
+                <input id="setup-pick_5_note" type="text" name="pick_5_note" maxlength="80" placeholder="" /></div>
+            </div>
+            <div class="pick">
+              <div><label for="setup-pick_6_name">Pick 6 <span class="opt">(optional)</span></label>
+                <input id="setup-pick_6_name" type="text" name="pick_6_name" maxlength="60" placeholder="" /></div>
+              <div><label for="setup-pick_6_note">Note <span class="opt">(optional)</span></label>
+                <input id="setup-pick_6_note" type="text" name="pick_6_note" maxlength="80" placeholder="" /></div>
+            </div>
+            <div class="pick">
+              <div><label for="setup-pick_7_name">Pick 7 <span class="opt">(optional)</span></label>
+                <input id="setup-pick_7_name" type="text" name="pick_7_name" maxlength="60" placeholder="" /></div>
+              <div><label for="setup-pick_7_note">Note <span class="opt">(optional)</span></label>
+                <input id="setup-pick_7_note" type="text" name="pick_7_note" maxlength="80" placeholder="" /></div>
+            </div>
+            <div class="pick">
+              <div><label for="setup-pick_8_name">Pick 8 <span class="opt">(optional)</span></label>
+                <input id="setup-pick_8_name" type="text" name="pick_8_name" maxlength="60" placeholder="" /></div>
+              <div><label for="setup-pick_8_note">Note <span class="opt">(optional)</span></label>
+                <input id="setup-pick_8_note" type="text" name="pick_8_note" maxlength="80" placeholder="" /></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Cards</legend>
+            <div class="row">
+              <div><label for="setup-card_qty">How many cards?</label><input id="setup-card_qty" type="number" name="card_qty" min="10" max="2000" step="10" inputmode="numeric" required aria-required="true" placeholder="e.g. 100" /></div>
+              <div><label for="setup-ship_name">Ship to (name)</label><input id="setup-ship_name" type="text" name="ship_name" required aria-required="true" autocomplete="name" /></div>
+              <div class="full"><label for="setup-ship_address">Shipping address</label><textarea id="setup-ship_address" name="ship_address" required aria-required="true" autocomplete="street-address"></textarea></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Terms</legend>
+            <!-- LEGAL / NEEDS RON: the agreement is a draft in the app repo (docs/plans/fleet-agreement-draft.md on
+                 f16-fleet, "to be reviewed by an attorney before the first paid contract"). It is not published.
+                 Point this link at the published version before the page goes live. -->
+            <label class="check"><input type="checkbox" name="terms" value="accepted" required aria-required="true" />
+              <span>I accept the <a href="#fleet-terms-link-pending" id="terms-link">SlowGo fleet terms</a>, and I confirm the shop may use this logo and these details, and lets SlowGo show them in the app and on its cards.</span></label>
+          </fieldset>
+
+          <button type="submit">Send to Ron</button>
+          <p class="note">This goes only to Ron. He uses it to set up your shop in SlowGo and print your cards. It is stored by Netlify, our website host. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+        </div>
+        <div class="confirm" role="status" aria-live="polite">
+          <h4>Got it. Thank you.</h4>
+          <p>What happens next:</p>
+          <ol>
+            <li>Ron routes each of your picks and your return spot on SlowGo’s quiet-road setting.</li>
+            <li>He emails you a proof: your card, your link, and how your shop will look in the app.</li>
+            <li>When you say it looks right, your cards are printed and shipped.</li>
+          </ol>
+        </div>
+      </form>
+    </article>
+  </div>
+</main>
+
+<footer class="foot" role="contentinfo">
+  <div class="wrap">
+    <p class="foot-mark"><a href="/">Slow<em>Go</em></a></p>
+
+    <div class="foot-legal">
+      <p class="entity">
+        SlowGo is a product of <strong style="font-weight:500;">BackRoad Apps LLC</strong>.<br />
+        4498 Main St, Ste 4 #5690, Amherst, NY 14226<br />
+        <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>
+      </p>
+      <ul class="foot-legal-links" role="list">
+        <li><a href="/safety">Safety</a></li>
+        <li><a href="/support">Support</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 BackRoad Apps LLC. All rights reserved.</span>
+      <span class="right">
+        <span>Made carefully</span>
+        <span>·</span>
+        <span>slowgoapp.com</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('form-setup');
+  // Token from ?t=… (Ron's email). Shape check only; the real check is offline, on Ron's Mac.
+  var t = new URLSearchParams(location.search).get('t') || '';
+  if (/^[A-Za-z0-9_-]{20,64}$/.test(t)) { document.getElementById('setup-token').value = t; }
+  else {
+    document.getElementById('needlink').hidden = false;
+    form.dataset.blocked = '1';
+    var b = form.querySelector('button[type=submit]'); if (b) b.disabled = true;
+  }
+  // Colour picker <-> text box.
+  var cp = document.getElementById('setup-brand_color_pick'), ct = document.getElementById('setup-brand_color');
+  cp.addEventListener('input', function(){ ct.value = cp.value.toUpperCase(); });
+  ct.addEventListener('change', function(){ if (/^#[0-9A-Fa-f]{6}$/.test(ct.value)) cp.value = ct.value; });
+  // Dealers have no return spot.
+  var kind = document.getElementById('setup-kind'), rs = document.getElementById('returnset');
+  function syncKind(){ rs.hidden = kind.value === 'dealer'; }
+  kind.addEventListener('change', syncKind); syncKind();
+  // Before sending: Netlify takes at most 8 MB per submission (files included), so keep the logo to 4 MB.
+  form.precheck = function(){
+    var f = document.getElementById('setup-logo').files[0];
+    if (f && f.size > 4 * 1024 * 1024) { alert('That logo is over 4 MB. Please pick a smaller file, or email it to hello@slowgoapp.com and leave this empty.'); return false; }
+    if (kind.value === 'rental' && !document.getElementById('setup-return_address').value && !document.getElementById('setup-return_lat').value) {
+      alert('Please type the return address or put a pin on the map.'); return false;
+    }
+    return true;
+  };
+  // Map pin: MapLibre with Stadia Maps' style. No key in the page: Stadia authenticates a web page by
+  // its domain (slowgoapp.com must be on the SlowGo property's allowed list; localhost works for testing).
+  var read = document.getElementById('pinread'), lat = document.getElementById('setup-return_lat'), lng = document.getElementById('setup-return_lng');
+  function fail(){ document.getElementById('maperror').hidden = false; document.getElementById('pinmap').style.display = 'none'; }
+  window.addEventListener('load', function(){
+    if (!window.maplibregl) return fail();
+    try {
+      var map = new maplibregl.Map({ container: 'pinmap', style: 'https://tiles.stadiamaps.com/styles/alidade_smooth.json',
+        center: [-82.4, 28.6], zoom: 5.6, attributionControl: { compact: true }, cooperativeGestures: true });
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }));
+      var marker = null;
+      // A tile refused (401/403: this domain isn't on Stadia's allowed list) or unreachable -> the typed-address fallback.
+      map.on('error', function(e){ var er = e && e.error; if (!er) return;
+        if (er.status === 401 || er.status === 403 || /40[13]|Unauthori[sz]ed|Forbidden|Failed to fetch/i.test(String(er.message))) fail(); });
+      map.on('click', function(e){
+        var p = e.lngLat;
+        if (!marker) { marker = new maplibregl.Marker({ color: '#C8853A', draggable: true }).setLngLat(p).addTo(map);
+          marker.on('dragend', function(){ set(marker.getLngLat()); }); }
+        else marker.setLngLat(p);
+        set(p);
+      });
+      function set(p){ lat.value = p.lat.toFixed(6); lng.value = p.lng.toFixed(6); read.textContent = 'Pin: ' + lat.value + ', ' + lng.value + ' (drag it to adjust)'; }
+    } catch (e) { fail(); }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('form.bizform').forEach(function(form){
+    var btn = form.querySelector('button[type=submit]');
+    var label = btn ? btn.textContent : '';
+    var err = form.querySelector('.form-error');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (form.dataset.blocked) return;
+      var bad = null;
+      form.querySelectorAll('[required]').forEach(function(el){ if (!bad && !el.checkValidity()) bad = el; });
+      if (bad){ bad.reportValidity ? bad.reportValidity() : bad.focus(); return; }
+      if (typeof form.precheck === 'function' && !form.precheck()) return;
+      if (err) err.hidden = true;
+      if (btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+      var body = new FormData(form);
+      var hasFile = !!form.querySelector('input[type=file]');
+      var opts = hasFile ? { method: 'POST', body: body }
+        : { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(body).toString() };
+      fetch('/', opts).then(function(res){
+        if (!res || !res.ok) throw new Error('status ' + (res && res.status));
+        form.setAttribute('data-state', 'done');
+        var c = form.querySelector('.confirm'); if (c){ c.setAttribute('tabindex', '-1'); c.focus(); }
+      }).catch(function(){
+        if (btn){ btn.disabled = false; btn.textContent = label; }
+        if (err) err.hidden = false;
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
