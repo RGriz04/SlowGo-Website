@@ -21,7 +21,7 @@ TOWNS = [
   official=("Florida Statutes &sect; 316.212", "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.212.html"),
   publishes="Florida&rsquo;s golf cart and LSV rules are in state law, which the Florida Legislature publishes. Here&rsquo;s a plain-English summary.",
   answer="In Florida, golf carts can use only the public roads that a county or city has opened to them and signed. "
-         "Low-speed vehicles (LSVs) are different: they&rsquo;re titled, registered and insured, and can use streets posted 35 mph or less.",
+         "Low-speed vehicles (LSVs) are a separate class: they&rsquo;re titled, registered and insured, and can use streets posted 35 mph or less.",
   faq=dict(
    license="<p>Not always, for golf carts. Drivers under 18 need a learner&rsquo;s permit or a driver&rsquo;s license; drivers 18 and over need a "
            "government-issued photo ID. Many towns are stricter and require a driver&rsquo;s license. LSV drivers always need a valid driver&rsquo;s license.</p>",
@@ -37,8 +37,9 @@ TOWNS = [
          "<p>Local governments can be stricter than the state, and they can allow carts on sidewalks next to designated streets at 15 mph or less.</p>",
    lsv="<p>A <strong>golf cart</strong> is built for the golf course and can&rsquo;t go faster than 20 mph. A <strong>low-speed vehicle</strong> has four wheels "
        "and a top speed over 20 mph and up to 25 (&sect; 320.01).</p>"
-       "<p>An LSV can use streets posted 35 mph or less, and can cross a faster road at an intersection, unless the county or city has closed a road to LSVs. "
-       "It must be titled, registered and insured, with a licensed driver (&sect; 316.2122).</p>",
+       "<p>An LSV can use streets posted 35 mph or less, unless the county or city has closed a road to LSVs. An LSV can&rsquo;t travel along roads posted over 35; "
+       "lawful crossings are separately regulated. It must be titled, registered and insured, with a licensed driver (&sect; 316.2122).</p>"
+       "<p>The 35 mph rule is for LSVs only. It doesn&rsquo;t open any road to golf carts.</p>",
    hours="<p>Golf carts: sunrise to sunset. Night use is allowed only where the local government permits it and the cart has headlights, brake lights, "
          "turn signals and a windshield (&sect; 316.212(5)).</p>",
   ),
@@ -57,7 +58,7 @@ TOWNS = [
    ("Florida Statutes &sect; 320.01 &mdash; definitions (golf cart, low-speed vehicle)", "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.01.html"),
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under across Florida. It doesn&rsquo;t know which roads each county or city has opened "
+  slowgo="It doesn&rsquo;t know which roads each county or city has opened "
          "to golf carts yet, so a route can use a street that carts can&rsquo;t use. Check the town pages above before you ride.",
   prio="state", prio_note="State page: covers every Florida town, including towns without their own page", quality="high",
   source_type="state statute (leg.state.fl.us)", checked="2026-10-15",
@@ -71,8 +72,8 @@ TOWNS = [
   hub_name="Golf cart laws in Georgia", hub="The state rules: carts are PTVs, and towns decide which streets they can use.",
   official=("Georgia HB 877 (2014), as enacted", "https://www.legis.ga.gov/api/legislation/document/20132014/144917"),
   publishes="Georgia&rsquo;s golf cart and LSV rules are in state law, which the Georgia General Assembly publishes. Here&rsquo;s a plain-English summary.",
-  answer="In Georgia, the street cart most people drive counts as a personal transportation vehicle (PTV), and it can use only the streets and paths "
-         "a city or county has designated for it. Low-speed vehicles (LSVs) can use roads posted 35 mph or less.",
+  answer="In Georgia, a street cart usually counts as a personal transportation vehicle (PTV), and it can use only the streets and paths "
+         "a city or county has designated for it. Low-speed vehicles (LSVs) are a separate, registered class that can use roads posted 35 mph or less.",
   faq=dict(
    license="<p>Usually. A PTV driver needs a valid driver&rsquo;s license, unless the town&rsquo;s cart ordinance allowed unlicensed drivers before 2012. "
            "No license is needed on a PTV-only path or at a designated crossing where the town allows unlicensed drivers. LSVs are motor vehicles: "
@@ -86,10 +87,10 @@ TOWNS = [
          "aren&rsquo;t bound by that limit; their own ordinance decides. (That&rsquo;s our reading of the law, not legal advice.)</p>",
    lsv="<p>Georgia has three kinds of small vehicle:</p>"
        "<ul><li>a <strong>golf car</strong> is for playing golf and averages under 15 mph; it has no street rules of its own;</li>"
-       "<li>a <strong>PTV</strong> has at least four wheels, a top speed under 20 mph, weighs no more than 1,375 lb empty and seats up to eight; "
-       "this is what town cart rules cover;</li>"
+       "<li>a <strong>PTV</strong> (the main modern category) has at least four wheels, a top speed under 20 mph, weighs no more than 1,375 lb empty and seats up to eight; "
+       "this is what town cart rules cover. An older category covers carts with three or more wheels, up to 1,300 lb and 20 mph, that a town approved before 2012;</li>"
        "<li>an <strong>LSV</strong> has four wheels and a top speed over 20 mph and up to 25, built or converted to the federal LSV standard.</li></ul>"
-       "<p>LSVs can use roads posted 35 mph or less, and not faster roads. Georgia&rsquo;s LSV section has no crossing rule.</p>",
+       "<p>LSVs can use roads posted 35 mph or less. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>The state sets no hours for PTVs; towns may. PTVs need head lamps and tail lamps, except daylight-only carts under a pre-2012 ordinance.</p>",
   ),
   extra=[
@@ -109,7 +110,7 @@ TOWNS = [
    ("Georgia Code: low-speed vehicles &mdash; Georgia Department of Public Safety", "https://dps.georgia.gov/georgia-code-low-speed-vehicles"),
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under across Georgia. It doesn&rsquo;t know which streets each town has designated for carts, "
+  slowgo="It doesn&rsquo;t know which streets each town has designated for carts, "
          "its 25 mph lines, or which crossings are signed for carts, so a route can use a road or crossing that carts can&rsquo;t. Check the town pages above before you ride.",
   prio="state", prio_note="State page: covers every Georgia town", quality="high",
   source_type="state legislature (enacted bills on legis.ga.gov) + GA DPS", checked="2026-10-15",
@@ -120,11 +121,11 @@ TOWNS = [
   kind="state", slug="arizona", name="Arizona", st="AZ", state="Arizona", place="Arizona",
   org="the State of Arizona", Org="The State of Arizona", publish=True, counted=True,
   title="Golf Cart Laws in Arizona (Updated October 2026)", h1="Golf cart laws in Arizona", eyebrow="State cart laws",
-  hub_name="Golf cart laws in Arizona", hub="No statewide cart road law: road carts need MVD registration. NEVs on roads up to 35 mph.",
+  hub_name="Golf cart laws in Arizona", hub="No statewide cart road law: road carts need MVD registration. NEVs (low-speed vehicles) can&rsquo;t travel along roads posted over 35.",
   official=("Arizona Revised Statutes &sect; 28-101", "https://www.azleg.gov/ars/28/00101.htm"),
   publishes="Arizona&rsquo;s golf cart and NEV rules are in state law, which the Arizona Legislature publishes. Here&rsquo;s a plain-English summary.",
   answer="Arizona has no statewide law that opens roads to golf carts. A golf cart driven on public roads is treated as a motor vehicle, "
-         "so it needs MVD registration and insurance. Neighborhood electric vehicles (NEVs) can use roads posted 35 mph or less.",
+         "so it needs MVD registration and insurance. Neighborhood electric vehicles (NEVs), a separate class, can use roads posted 35 mph or less.",
   faq=dict(
    license="<p>Yes, on public roads. A golf cart used on the road is a motor vehicle under Arizona law, so the usual driver&rsquo;s license rules apply.</p>",
    age="<p>The statutes we read set no cart-specific age. The normal driver&rsquo;s license rules apply.</p>",
@@ -133,18 +134,18 @@ TOWNS = [
    where="<p>Arizona has <strong>no statewide golf cart road rule</strong> and no scheme for towns to designate cart streets. A registered, insured cart "
          "follows the normal road rules. Some towns publish their own guidance.</p>"
          "<p>One special rule: in an age-restricted community in an unincorporated area of a county with more than three million people, a cart or NEV may "
-         "use the paved shoulder, or keep as close as it can to the right edge where there&rsquo;s no shoulder (&sect; 28-721). Only Maricopa County is that "
-         "large, so this covers unincorporated communities such as Sun City and Sun City West.</p>",
+         "use the paved shoulder, or keep as close as it can to the right edge where there&rsquo;s no shoulder (&sect; 28-721). That rule is about where on the "
+         "road to drive. It doesn&rsquo;t open any road to carts, and it doesn&rsquo;t let an NEV travel along a road posted over 35 mph.</p>",
    lsv="<p>Arizona defines a <strong>golf cart</strong> as a vehicle designed to be driven at no more than 25 mph, under 1,800 lb, carrying four people "
        "or fewer (&sect; 28-101).</p>"
        "<p>Arizona&rsquo;s street-legal low-speed vehicle is the <strong>neighborhood electric vehicle</strong> (NEV): electric, emission-free and built to "
-       "the federal LSV standard. An NEV tops out at 25 mph, can&rsquo;t be driven on a road posted over 35 mph, may cross a faster road at an "
-       "intersection, and must carry a notice of these limits (&sect; 28-966). We didn&rsquo;t find a road rule for gas-powered LSVs.</p>",
+       "the federal LSV standard. An NEV tops out at 25 mph and must carry a notice of its limits. Under &sect; 28-966, an NEV "
+       "can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated. We didn&rsquo;t find a road rule for gas-powered LSVs.</p>",
    hours="<p>The statutes we read set no hours or lights list just for golf carts.</p>",
   ),
   extra=[
    ("Crossing roads",
-    "<p>An NEV may cross a road posted over 35 mph at an intersection. There&rsquo;s no separate crossing rule for golf carts.</p>"),
+    "<p>&sect; 28-966 says its 35 mph limit doesn&rsquo;t stop an NEV from crossing a road posted over 35 at an intersection. We didn&rsquo;t find a separate crossing rule for golf carts.</p>"),
   ],
   sources=[
    ("Arizona Revised Statutes &sect; 28-101 &mdash; definitions (golf cart, neighborhood electric vehicle)", "https://www.azleg.gov/ars/28/00101.htm"),
@@ -153,11 +154,11 @@ TOWNS = [
    ("Arizona Revised Statutes &sect; 28-2153 &mdash; registration exemptions", "https://www.azleg.gov/ars/28/02153.htm"),
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under across Arizona. It doesn&rsquo;t know local cart rules or community roads&rsquo; "
+  slowgo="It doesn&rsquo;t know local cart rules or community roads&rsquo; "
          "own rules, and it doesn&rsquo;t check whether your cart is registered for the road. Check local rules before you ride.",
   prio="state", prio_note="State page: covers Arizona's retirement communities (Sun City, Green Valley, SaddleBrooke...)", quality="high",
   source_type="state statute (azleg.gov)", checked="2026-10-15",
-  gap="'Such as Sun City and Sun City West' is our interpretation of 28-721(C) (age-restricted, unincorporated, Maricopa); flag for Ron. Gas LSVs: no rule found. Insurance limits (25/50/15) left off the page.",
+  gap="A3 (2026-10-16): 28-721(C) and 28-966 re-read on azleg.gov. 28-721(C) is shoulder placement only; 28-966(B) still bars NEVs from roads posted over 35 (crossing at intersections allowed); the 45 mph exception in 28-966(D)-(E) is for neighborhood OCCUPANTLESS electric vehicles only. Named examples (Sun City, Sun City West) removed: whether they are 'age restricted communities' under the statute is our interpretation. Gas LSVs: no rule found. Insurance limits (25/50/15) left off the page.",
   db_row=6,
  ),
  dict(
@@ -178,9 +179,10 @@ TOWNS = [
    where="<p>Golf carts: not on streets, highways, parking lots or sidewalks open to public traffic, according to the state Department of Motor Vehicles. "
          "No state law authorizes them.</p>"
          "<p>LSVs: public roads posted <strong>35 mph or less</strong>, except roads a local authority or the state Department of Transportation has closed "
-         "to LSVs (&sect; 2262).</p>",
+         "to LSVs (&sect; 2262). An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    lsv="<p>An LSV is a limited-use vehicle with a top speed over 20 mph and up to 25 that meets the federal LSV standard (&sect; 121-f). To be registered, it "
-       "must have a speed certified by the maker and appear on the state&rsquo;s list of approved limited-use vehicles.</p>",
+       "must have a speed certified by the maker and appear on the state&rsquo;s list of approved limited-use vehicles. "
+       "An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>We didn&rsquo;t find separate hours for LSVs in the sections we read.</p>",
   ),
   extra=[
@@ -195,6 +197,7 @@ TOWNS = [
    ("Electric scooters, bicycles and other unregistered vehicles &mdash; state Department of Motor Vehicles", "https://dmv.ny.gov/registration/electric-scooters-and-bicycles-and-other-unregistered-vehicles"),
   ],
   street_map=None,
+  slowgo_full=True,
   slowgo="SlowGo doesn&rsquo;t start turn-by-turn routes in this state yet. It doesn&rsquo;t know which roads local authorities have closed to LSVs.",
   prio="state", prio_note="HELD: Ron ruling 2026-10-17, never name New York in public copy", quality="high",
   source_type="state statute (nysenate.gov) + DMV page", checked="2026-10-05 (statute); 2026-10-16 (DMV page)",

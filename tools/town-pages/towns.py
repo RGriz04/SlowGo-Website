@@ -9,7 +9,9 @@
 #   PDFs only; no realtor, tourism or news sites). No agent reads Municode or LexisNexis.
 # - Our own plain-language words. Short quotes only, if any.
 # - No town logos or seals, and never call a page "official".
-# - publish=False keeps a page out of the hub and the sitemap and keeps it noindex (Ron 2026-10-17:
+# - no_carts=True marks a "no carts" page: check.py refuses to publish it without prohibition=dict(vehicle,
+#   roads, jurisdiction, source=<an official source URL on the page>) (Ron 2026-10-17 afternoon, D19).
+# - publish=False keeps a page out of the hub and the sitemap, noindex, in tools/town-pages/held/ (Ron 2026-10-17:
 #   Captiva and Gulf Breeze are HELD).
 
 FL_316212 = ("Florida Statutes &sect; 316.212 &mdash; golf carts on roads",
@@ -21,10 +23,10 @@ GA_HB877 = ("Georgia HB 877 (2014), the enacted bill that set the state&rsquo;s 
 GA_DPS = ("Georgia Code: low-speed vehicles &mdash; Georgia Department of Public Safety",
           "https://dps.georgia.gov/georgia-code-low-speed-vehicles")
 
-FL_LSV = ("<p>A low-speed vehicle (LSV) is different from a golf cart: it goes faster than 20 mph (up to 25), "
-          "and it has to be titled, registered and insured, with a licensed driver. Under Florida law an LSV can use "
-          "streets posted 35 mph or less and can cross faster roads at intersections, unless the local government "
-          "has closed a road to them.</p>")
+FL_LSV = ("<p>A low-speed vehicle (LSV) is different from a golf cart: it goes faster than 20 mph (up to 25), meets the federal "
+          "LSV safety standard, and has to be titled, registered and insured, with a licensed driver. Under Florida law an LSV can use "
+          "streets posted 35 mph or less, unless the local government has closed a road to them. An LSV "
+          "can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>")
 
 # FAQ keys, in page order, with the question each one asks. {n} is the town's short name.
 FAQ_ORDER = [
@@ -44,20 +46,22 @@ TOWNS = [
   slug="st-pete-beach", name="St. Pete Beach", st="FL", state="Florida", place="St. Pete Beach, Florida",
   org="the City of St. Pete Beach", Org="The City of St. Pete Beach", publish=True,
   official=("the city&rsquo;s Golf Carts page", "https://www.stpetebeach.org/498/Golf-Carts"),
-  hub="City streets posted 25 mph or less. City decal; driver&rsquo;s license required.",
-  answer="St. Pete Beach lets golf carts use its quieter city streets: the ones posted 25 mph or less. "
-         "Carts need a city registration and decal, and the driver needs a driver&rsquo;s license.",
+  hub="Designated city streets only; no state or county roads, not even to cross. City decal; licensed drivers.",
+  answer="St. Pete Beach lets registered golf carts use designated city streets. The city says carts may not cross or drive on state or county roads. "
+         "Carts need a city registration and decal, and the city&rsquo;s 2013 ordinance says drivers need a valid driver&rsquo;s license.",
   faq=dict(
-   license="<p>Yes. Only people with a <strong>valid driver&rsquo;s license</strong> may drive a cart on city streets. "
-           "That&rsquo;s stricter than Florida&rsquo;s general rule, which lets 18-year-olds drive a cart with just a photo ID.</p>",
-   age="<p>The city ties driving to the license rather than to an age: the driver needs a valid driver&rsquo;s license.</p>",
+   license="<p>The city&rsquo;s 2013 golf cart ordinance (Ordinance 2013-17) says carts on designated city streets may be driven only by people "
+           "holding a <strong>valid driver&rsquo;s license</strong>. The city&rsquo;s registration page asks for proof that the <strong>owner</strong> has one. "
+           "We read a scanned copy of the ordinance and haven&rsquo;t checked later amendments, so confirm with the city.</p>",
+   age="<p>The ordinance ties driving to the license rather than to an age. Ask the city if you&rsquo;re unsure whether a driver qualifies.</p>",
    permit="<p>Yes. Resident-owned carts are registered with the city every year ($10, paid at City Hall), and the decal goes on the back, "
-          "driver&rsquo;s side. You&rsquo;ll need proof of a valid driver&rsquo;s license and a signed statement that the cart has liability insurance "
+          "driver&rsquo;s side. You&rsquo;ll need proof that the owner has a valid driver&rsquo;s license and a signed statement that the cart has liability insurance "
           "(a rider on a homeowner&rsquo;s policy or a separate policy). The cart can&rsquo;t be able to go faster than 20 mph.</p>"
           "<p>Daytime equipment: good brakes, reliable steering, safe tires, a horn, a rearview mirror, and red reflectors front and rear.</p>",
-   where="<p>City streets posted <strong>25 mph or less</strong>, inside the area shown on the city&rsquo;s map. "
-         "Carts can&rsquo;t drive on or cross state or county roads unless the state or Pinellas County allows it at that spot. "
-         "Gulf Boulevard is a state road.</p>"
+   where="<p>Only <strong>designated city streets</strong>. The 2013 ordinance describes them as city streets posted 25 mph or less; "
+         "the city&rsquo;s restricted roadways map shows which roads are off limits.</p>"
+         "<p>The city&rsquo;s page says <strong>crossing or driving on state or county roads is prohibited</strong>. Gulf Boulevard is a state road. "
+         "We don&rsquo;t know of any approved cart crossing here.</p>"
          "<p>No carts on sidewalks, in parks, on beaches or on other city land.</p>",
    lsv=FL_LSV,
    hours="<p>Sunrise to sunset only, unless the cart also has headlights, brake lights, turn signals and a windshield.</p>",
@@ -69,9 +73,9 @@ TOWNS = [
    ("Restricted roadways map &mdash; City of St. Pete Beach", "https://www.stpetebeach.org/ImageRepository/Document?documentID=884"),
    FL_316212, FL_3162122,
   ],
-  street_map=("the city&rsquo;s restricted roadways map", "https://www.stpetebeach.org/ImageRepository/Document?documentID=884"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know St. Pete Beach&rsquo;s 25 mph line yet, "
-         "so a route here can include a 30 or 35 mph street that carts can&rsquo;t use. Check the city&rsquo;s map before you ride.",
+  street_map=("the City of St. Pete Beach&rsquo;s restricted roadways map for golf carts", "https://www.stpetebeach.org/ImageRepository/Document?documentID=884"),
+  slowgo="It doesn&rsquo;t know St. Pete Beach&rsquo;s designated streets yet, "
+         "so a route here can include a 30 or 35 mph street, or a state or county road, that carts can&rsquo;t use or cross. Check the city&rsquo;s map before you ride.",
  ),
  dict(
   slug="dunedin", name="Dunedin", st="FL", state="Florida", place="Dunedin, Florida",
@@ -92,7 +96,7 @@ TOWNS = [
          "<p>No carts on the Pinellas Trail, sidewalks, in parks or on other city property unless a spot is set aside for them. "
          "Highlander Park is one: carts stay on its shell path and park where the park&rsquo;s cart map shows.</p>",
    lsv="<p>A low-speed vehicle (LSV) goes faster than a golf cart (over 20 mph, up to 25) and needs a state license and registration, as the city&rsquo;s page notes. "
-       "Under Florida law LSVs can use streets posted 35 mph or less.</p>",
+       "Under Florida law LSVs can use streets posted 35 mph or less. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>At night a cart also needs headlights, brake lights, turn signals and a windshield.</p>",
   ),
   extra=[
@@ -104,34 +108,35 @@ TOWNS = [
    ("Golf cart zone map &mdash; City of Dunedin GIS", "https://gis.dunedingov.com/portal/apps/webappviewer/index.html?id=c3f6c0aacba64efb87f795bf3eb195ea"),
    FL_316212, FL_3162122,
   ],
-  street_map=("the city&rsquo;s cart zone map", "https://gis.dunedingov.com/portal/apps/webappviewer/index.html?id=c3f6c0aacba64efb87f795bf3eb195ea"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Dunedin&rsquo;s cart zone or its 30 mph line yet, "
+  street_map=("the City of Dunedin&rsquo;s golf cart zone map (interactive)", "https://gis.dunedingov.com/portal/apps/webappviewer/index.html?id=c3f6c0aacba64efb87f795bf3eb195ea"),
+  slowgo="It doesn&rsquo;t know Dunedin&rsquo;s cart zone or its 30 mph line yet, "
          "so a route can leave the zone or use a 35 mph street. Check the city&rsquo;s map before you ride.",
  ),
  dict(
   slug="mount-dora", name="Mount Dora", st="FL", state="Florida", place="Mount Dora, Florida",
-  org="the City of Mount Dora", Org="The City of Mount Dora", publish=True,
+  org="the City of Mount Dora", Org="The City of Mount Dora", publish=False,   # HELD (Ron 2026-10-17 afternoon)
   official=("the city&rsquo;s Golf Cart Registration page", "https://www.mountdora.gov/1457/Golf-Cart-Registration"),
-  hub="Every city street except a short list of busier roads, around the clock. City permit.",
-  answer="In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, "
-         "around the clock. Carts need a city permit, and drivers under 18 need a learner&rsquo;s permit or license.",
+  hub="City-designated streets, around the clock. City permit.",
+  answer="In Mount Dora, a permitted golf cart can use the streets the city has designated for golf carts, around the clock. "
+         "The city&rsquo;s street usage list and map show the designated streets. Drivers under 18 need a learner&rsquo;s permit or license.",
   faq=dict(
    license="<p>Not at 18 and over: every driver carries a government-issued photo ID, and drivers under 18 need a learner&rsquo;s permit or a driver&rsquo;s license.</p>",
    age="<p>Drivers must be 18, unless they have a learner&rsquo;s permit or driver&rsquo;s license.</p>",
    permit="<p>Yes. A city golf cart permit is required: $25 to register, $10 a year to renew. Bring the application, the affidavit, proof of insurance "
           "and a copy of your license to the Police Department (or email them). The sticker goes on the lower driver&rsquo;s side bumper or fender. "
-          "Country Club of Mount Dora and private or gated communities inside the city don&rsquo;t need it.</p>"
+          "Fees as listed on the city&rsquo;s page when we checked; see the city&rsquo;s page for current fees. "
+          "Private streets and homeowners&rsquo; associations may have their own rules.</p>"
           "<p>Required equipment: windshield; driver&rsquo;s side mirror plus an inside or passenger-side mirror; headlights and tail lights; brakes and a parking brake; "
           "front and rear turn signals; steering; rear and side reflectors; a horn; and grab bars on rear-facing seats.</p>",
-   where="<p><strong>All city streets</strong>, except:</p>"
-         "<ul><li>all county roads and state highways, and streets outside city limits</li>"
-         "<li>US 441, SR 44, SR 46, CR 19A, Old Highway 441, Old Eustis Road, Eudora Road, Round Lake Road, Limit Avenue, Wolf Branch Road, Robie Avenue and Britt Road</li>"
-         "<li>5th Avenue from Highland Avenue to Old Highway 441; Highland Avenue from 5th Avenue to the Orange County line; "
-         "1st Avenue from US 441 to Highland Avenue; Donnelly Street from US 441 to Limit Avenue</li></ul>"
-         "<p>Carts may cross county roads at intersections. They may <strong>not</strong> cross US 441. "
-         "No bike paths or sidewalks. Private streets and gated communities set their own rules.</p>",
-   lsv="<p>A cart modified to go faster than 20 mph counts as a low-speed vehicle. It must be titled, registered and insured with the state, "
-       "and it can&rsquo;t use sidewalks or streets posted over 35 mph.</p>",
+   where="<p>Only <strong>city-designated streets</strong>. The city&rsquo;s street usage list and map (May 17, 2023) show which streets are designated. "
+         "It leaves out county roads, state highways and streets outside city limits, and roads such as US 441, SR 44, SR 46, CR 19A, Old Highway 441, "
+         "Old Eustis Road, Eudora Road, Round Lake Road, Limit Avenue, Wolf Branch Road, Robie Avenue and Britt Road. "
+         "Check the city&rsquo;s current list for crossings.</p>"
+         "<p>No bike paths or sidewalks. Private streets and homeowners&rsquo; associations may have their own rules.</p>",
+   lsv="<p>Mount Dora&rsquo;s permit covers golf carts only (top speed 20 mph or less). A low-speed vehicle (LSV) is a separate class under Florida law: "
+       "a top speed over 20 mph and up to 25, built or converted to meet the federal LSV safety standard, and titled, registered and insured with the state, "
+       "with a licensed driver. Speeding up a golf cart doesn&rsquo;t by itself make it a legal LSV. "
+       "An LSV can&rsquo;t use sidewalks, and it can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>24 hours a day, except when the city closes a street for an event. Every permitted cart has headlights and tail lights (see the equipment list).</p>",
   ),
   extra=[
@@ -142,9 +147,9 @@ TOWNS = [
    ("Golf Carts Street Usage list and map (May 17, 2023) &mdash; City of Mount Dora (PDF)", "https://www.mountdora.gov/DocumentCenter/View/16545"),
    FL_316212, FL_3162122,
   ],
-  street_map=("the city&rsquo;s street usage list and map", "https://www.mountdora.gov/DocumentCenter/View/16545"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Mount Dora&rsquo;s not-allowed list yet, "
-         "so a route could use one of those roads. Check the list above before you ride.",
+  street_map=("the City of Mount Dora&rsquo;s golf cart street usage list and map (May 2023)", "https://www.mountdora.gov/DocumentCenter/View/16545"),
+  slowgo="It doesn&rsquo;t know Mount Dora&rsquo;s designated streets yet, "
+         "so a route could use a road that isn&rsquo;t designated for carts. Check the city&rsquo;s list before you ride.",
  ),
  dict(
   slug="miami-lakes", name="Miami Lakes", st="FL", state="Florida", place="Miami Lakes, Florida",
@@ -174,7 +179,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know that NW 67th and NW 87th Avenues are closed to carts here, "
+  slowgo="It doesn&rsquo;t know that NW 67th and NW 87th Avenues are closed to carts here, "
          "so if a route runs along either one, don&rsquo;t take it in a cart.",
  ),
  dict(
@@ -206,7 +211,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Pine Island&rsquo;s left-out stretches or the daylight rule yet, "
+  slowgo="It doesn&rsquo;t know Pine Island&rsquo;s left-out stretches or the daylight rule yet, "
          "so check a route against the list above, and ride before sunset.",
  ),
  dict(
@@ -234,7 +239,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know which Captiva roads Lee County has signed for carts, "
+  slowgo="It doesn&rsquo;t know which Captiva roads Lee County has signed for carts, "
          "so follow the signs over the route.",
  ),
  dict(
@@ -242,24 +247,37 @@ TOWNS = [
   org="the Jekyll Island Authority", Org="The Jekyll Island Authority", publish=True,
   official=("the Authority&rsquo;s Chapter F rules (PDF)", "https://www.jekyllisland.com/wp-content/uploads/2022/04/Chapter-F-Streets-and-Rights-of-Way-042222.pdf"),
   publishes="The Jekyll Island Authority publishes its rules for golf carts and PTVs. Here&rsquo;s a plain-English summary.",
-  hub="Street-legal PTVs on island streets (not state highways or paths). 16+ with a license.",
-  answer="Jekyll Island is a little different. The street-legal carts most people drive count as personal transportation vehicles (PTVs) "
-         "under Georgia law, and those are welcome on the island&rsquo;s streets. True golf carts, the kind built only for the golf course, are not.",
+  hub="Qualifying PTVs on specified public streets (not state highways or paths). 16+ with a license.",
+  answer="On Jekyll Island, qualifying personal transportation vehicles (PTVs) may use specified public streets, subject to equipment, driver, "
+         "insurance and access rules. True golf carts, the kind built only for the golf course, aren&rsquo;t allowed on the island&rsquo;s public streets.",
+  faq_q=dict(
+   license="Do you need a driver&rsquo;s license to drive a PTV on Jekyll Island?",
+   age="How old do you have to be to drive a PTV on Jekyll Island?",
+   permit="Does a PTV need a permit or insurance on Jekyll Island?",
+   where="Where can PTVs go on Jekyll Island, and are golf carts allowed?",
+   lsv="Golf cart, PTV or LSV: what&rsquo;s the difference on Jekyll Island?",
+   hours="Can you drive a PTV at night on Jekyll Island? Hours and lights",
+  ),
   faq=dict(
-   license="<p>Yes. PTV drivers need a valid driver&rsquo;s license.</p>",
+   license="<p>Yes. PTV drivers need a valid driver&rsquo;s license. True golf carts aren&rsquo;t allowed on the island&rsquo;s public streets.</p>",
    age="<p>At least <strong>16</strong>, with a valid driver&rsquo;s license.</p>",
    permit="<p>No Glynn County registration is needed on Jekyll. The owner needs liability insurance at Georgia&rsquo;s minimum limits, with proof kept in the PTV.</p>"
           "<p>Required: brakes and a parking brake, a reverse warning, a main power switch, headlights and taillights, front and rear turn signals, brake lights, "
-          "reflectors, a rearview mirror, a horn, hip restraints, hand holds, a seat belt for every seat, and the orange slow-moving-vehicle triangle on the back.</p>",
+          "reflectors, a rearview mirror, a horn, hip restraints, hand holds, a seat belt for every seat, and the orange slow-moving-vehicle triangle on the back. "
+          "A gas-powered PTV also needs a working exhaust system that keeps smoke, fumes and noise down.</p>"
+          "<p>That list is on top of any equipment state law requires, so it isn&rsquo;t complete; see the Authority&rsquo;s Chapter F, Article II, for the full rule.</p>",
    where="<p>PTVs can use the island&rsquo;s public streets, but <strong>not</strong> roads that are part of the state highway system. "
          "No PTVs on sidewalks, bike paths, the pedestrian-only paths in the Historic District, unimproved trails, service roads or golf-cart paths.</p>"
          "<p>Park in regular vehicle spaces.</p>",
-   lsv="<p>Georgia law draws the line by speed. A <strong>PTV</strong> has at least four wheels, a top speed under 20 mph, weighs no more than 1,375 lb empty and carries up to eight people. "
-       "A <strong>golf cart</strong> is built only for golf and averages under 15 mph.</p>"
+   lsv="<p>The Authority&rsquo;s rules use the main modern category in Georgia law: a <strong>PTV</strong> has at least four wheels, a top speed under 20 mph, "
+       "weighs no more than 1,375 lb empty and carries up to eight people. (Georgia law also has an older category for carts that towns approved before 2012; "
+       "see our Georgia page.) A <strong>golf cart</strong> is built only for golf and averages under 15 mph.</p>"
        "<p>On Jekyll, golf carts are not allowed on public streets or Authority property, except to cross a street while playing golf, "
        "or at a parade, festival or other event with the sponsor&rsquo;s OK. Privately owned carts aren&rsquo;t allowed on the Authority&rsquo;s golf courses.</p>"
-       "<p>LSVs (low-speed vehicles) are registered and insured with the state, can use streets posted 35 mph or less, and are kept off the same paths as PTVs.</p>",
-   hours="<p>Yes, with lights: PTV lights go on at night, in rain, or when you can&rsquo;t see 500 feet ahead.</p>",
+       "<p>LSVs (low-speed vehicles) are registered and insured with the state, can use streets posted 35 mph or less, and are kept off the same paths as PTVs. "
+       "An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
+   hours="<p>PTVs, yes, with lights: PTV headlights and taillights go on at night, in rain, or when you can&rsquo;t see 500 feet ahead. "
+         "True golf carts aren&rsquo;t allowed on the island&rsquo;s public streets at any hour.</p>",
   ),
   extra=[
    ("On the road",
@@ -271,8 +289,8 @@ TOWNS = [
    GA_HB877, GA_DPS,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Jekyll&rsquo;s rules yet: if a route uses a path here, "
-         "don&rsquo;t take it in a cart or LSV.",
+  slowgo="It doesn&rsquo;t know Jekyll&rsquo;s rules yet: if a route uses a path here, "
+         "don&rsquo;t take it in a PTV or LSV, and don&rsquo;t drive a true golf cart on the island&rsquo;s streets.",
  ),
  dict(
   slug="st-simons-island", name="St. Simons Island", st="GA", state="Georgia", place="St. Simons Island, Georgia (Glynn County)",
@@ -290,7 +308,7 @@ TOWNS = [
    where="<p>Public streets posted <strong>25 mph or less</strong>. The county publishes a map of St. Simons roads by speed limit. "
          "No carts on sidewalks or bike paths, at any time.</p>",
    lsv="<p>A low-speed vehicle (top speed over 20, up to 25 mph) is registered with the Glynn County Tax Commissioner like any other vehicle, "
-       "can use streets posted 35 mph or less, and isn&rsquo;t allowed on sidewalks or bike paths.</p>",
+       "can use streets posted 35 mph or less, and isn&rsquo;t allowed on sidewalks or bike paths. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>Headlights and taillights go on whenever it isn&rsquo;t daylight.</p>",
   ),
   extra=[
@@ -303,16 +321,16 @@ TOWNS = [
    ("St. Simons Island roads by speed limit (June 2025) &mdash; Glynn County (PDF)", "https://content.glynncounty.org/sites/default/files/2025-06/SSI-Roads-MPH.pdf"),
    GA_HB877, GA_DPS,
   ],
-  street_map=("the county&rsquo;s map of St. Simons roads by speed limit", "https://content.glynncounty.org/sites/default/files/2025-06/SSI-Roads-MPH.pdf"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Glynn County&rsquo;s 25 mph line for carts yet, "
+  street_map=("Glynn County&rsquo;s speed limit map for St. Simons", "https://content.glynncounty.org/sites/default/files/2025-06/SSI-Roads-MPH.pdf"),
+  slowgo="It doesn&rsquo;t know Glynn County&rsquo;s 25 mph line for carts yet, "
          "so a route can include a 30 or 35 mph street. Check the county&rsquo;s speed map before you ride.",
  ),
  dict(
   slug="tybee-island", name="Tybee Island", st="GA", state="Georgia", place="Tybee Island, Georgia",
   org="the City of Tybee Island", Org="The City of Tybee Island", publish=True,
   official=("the city&rsquo;s Motorized Cart Information page", "https://www.cityoftybee.org/464/Motorized-Cart-Information"),
-  hub="Every city street except Highway 80, which carts cross at four places. Sticker; 16+ licensed.",
-  answer="Tybee lets registered, inspected carts use every city street except Highway 80, which carts may only cross at four places. "
+  hub="City streets except Highway 80, which carts cross only at designated locations. Sticker; 16+ licensed.",
+  answer="Tybee allows limited use of registered, inspected carts on city streets, except Highway 80, which carts may only cross at designated locations identified by the city. "
          "Drivers must be licensed and 16 or older.",
   faq=dict(
    license="<p>Yes. Carts are for licensed drivers.</p>",
@@ -324,17 +342,18 @@ TOWNS = [
           "Homeowner&rsquo;s policies aren&rsquo;t accepted. Keep proof in the cart.</p>"
           "<p>Required equipment: headlights, tail lights, brake lights, turn signals, a top-mounted flashing amber light, a horn and seat belts. "
           "The cart can&rsquo;t be able to go faster than 20 mph.</p>",
-   where="<p><strong>All city streets except Highway 80.</strong> Carts may cross Highway 80 only at:</p>"
-         "<ul><li>Highway 80/Butler Avenue, at locations south of the Park of 7 Flags</li>"
+   where="<p>The city&rsquo;s flyer says it allows <strong>limited</strong> use of carts, and that registered, properly driven carts may use city streets "
+         "<strong>except Highway 80</strong>. Carts may cross Highway 80 only at designated locations identified by the city. The flyer lists them as:</p>"
+         "<ul><li>Highway 80/Butler Avenue, &ldquo;at locations south of Park of 7 Flags&rdquo; (an area, not one marked crossing; ask the city exactly where)</li>"
          "<li>the traffic light at 14th Street</li>"
          "<li>the traffic light at Campbell Avenue</li>"
          "<li>the traffic light at Jones Avenue</li></ul>"
          "<p>No carts on sidewalks.</p>",
    lsv="<p>Tybee&rsquo;s cart rules are written for carts that can&rsquo;t go faster than 20 mph. Under Georgia law, a low-speed vehicle (LSV) is a separate class: "
        "a four-wheeled electric vehicle with a top speed over 20 mph and not over 25 mph. We didn&rsquo;t find LSV rules on the city&rsquo;s cart page, "
-       "so ask the city before you drive an LSV here.</p>",
-   hours="<p>We didn&rsquo;t find cart hours in the city&rsquo;s rules. Every cart must have headlights, tail lights, brake lights, turn signals "
-         "and a top-mounted flashing amber light.</p>",
+       "so ask the city before you drive an LSV here. Under Georgia law an LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
+   hours="<p>The city&rsquo;s cart page and flyer don&rsquo;t list hours. We haven&rsquo;t read the full ordinance, so that isn&rsquo;t proof there&rsquo;s no hours rule; "
+         "ask the city. Every cart must have headlights, tail lights, brake lights, turn signals and a top-mounted flashing amber light.</p>",
   ),
   extra=[
    ("Parking",
@@ -348,8 +367,8 @@ TOWNS = [
    GA_HB877, GA_DPS,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Tybee&rsquo;s Highway 80 rule yet, "
-         "so if a route runs along Highway 80, don&rsquo;t take it in a cart.",
+  slowgo="It doesn&rsquo;t know Tybee&rsquo;s Highway 80 rule or its designated crossing locations yet, "
+         "so if a route runs along or crosses Highway 80 anywhere else, don&rsquo;t take it in a cart.",
  ),
  dict(
   slug="gulf-breeze", name="Gulf Breeze", st="FL", state="Florida", place="Gulf Breeze, Florida",
@@ -366,7 +385,7 @@ TOWNS = [
          "and <strong>The Loop</strong>, the city&rsquo;s shared-use path for golf carts and other recreational wheels.</p>"
          "<p>Not on the Bob Sikes Bridge or the Pensacola Bay Bridge. Carts can&rsquo;t cross Gulf Breeze Parkway (US 98) at this time. Never on sidewalks.</p>",
    lsv="<p>A cart modified to go faster than 20 mph becomes a low-speed vehicle: it needs a driver&rsquo;s license, a state tag and insurance, "
-       "and it can no longer use the shared-use paths. LSVs can use roads posted 35 mph or less, but <strong>not The Loop</strong>.</p>",
+       "and it can no longer use the shared-use paths. LSVs can use roads posted 35 mph or less, but <strong>not The Loop</strong>. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>After sunset a cart needs headlights, brake lights, turn signals and a windshield. Without them, night driving isn&rsquo;t legal.</p>",
   ),
   extra=[],
@@ -375,7 +394,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Gulf Breeze&rsquo;s under-25 rule yet, "
+  slowgo="It doesn&rsquo;t know Gulf Breeze&rsquo;s under-25 rule yet, "
          "so a route can include a street that carts can&rsquo;t use here. Check the city&rsquo;s page and map before you ride.",
  ),
 ]

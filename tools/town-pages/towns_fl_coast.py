@@ -47,7 +47,7 @@ TOWNS = [
          "<p>In Palm Harbor, a county search result names Palm Harbor Boulevard (Alt US 19), Omaha Street (CR 1) and Nebraska Avenue as closed to carts; check the zone map.</p>"
          "<p>Cities in the county set their own cart rules: see <a href=\"/golf-carts/dunedin\">Dunedin</a> and <a href=\"/golf-carts/st-pete-beach\">St. Pete Beach</a>.</p>",
    lsv="<p>Low-speed vehicles (LSVs, also called neighborhood electric vehicles) are street legal on Pinellas County roads posted <strong>35 mph or less</strong>. "
-       "They must be registered and insured, with a VIN, federal safety equipment and a licensed driver.</p>",
+       "They must be registered and insured, with a VIN, federal safety equipment and a licensed driver. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>From sunset to sunrise, a cart also needs headlights, brake lights, turn signals and a windshield.</p>",
   ),
   extra=[
@@ -58,7 +58,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know where Pinellas County&rsquo;s golf cart zones begin and end yet, "
+  slowgo="It doesn&rsquo;t know where Pinellas County&rsquo;s golf cart zones begin and end yet, "
          "so a route can leave a zone. Check the zone map before you ride.",
   prio="beach", prio_note="Gulf coast communities north of Clearwater (Crystal Beach, Ozona, Palm Harbor); one page for nine zones",
   quality="medium", source_type="county web page + county zone maps", checked="2026-10-16",
@@ -67,18 +67,18 @@ TOWNS = [
  ),
  dict(
   slug="clearwater", name="Clearwater", st="FL", state="Florida", place="Clearwater, Florida",
-  org="the City of Clearwater", Org="The City of Clearwater", publish=True,
+  org="the City of Clearwater", Org="The City of Clearwater", no_carts=True, publish=False,   # HELD (Ron 2026-10-17 afternoon, D19): "no carts" page without an affirmative official prohibition for these roads
   publishes="The City of Clearwater publishes its Clearwater Beach transportation rules, including golf carts and LSVs.",
   official=("the city&rsquo;s Alternative Transportation page for Clearwater Beach", "https://www.myclearwater.com/Visit-the-Beach/Beach-Parking/Alternative-Transportation-Clearwater-Beach"),
-  hub="No streets designated for golf carts, so carts stay off public roads. Street-legal LSVs are fine.",
-  answer="Golf carts aren&rsquo;t allowed on public streets in Clearwater: we found no city rule that opens streets to them, so Florida&rsquo;s default applies. "
-         "The city says Clearwater Beach has no golf cart lanes. Street-legal low-speed vehicles (LSVs) can use streets posted 35 mph or less.",
+  hub="We haven&rsquo;t verified public-road authorization for golf carts. LSVs on streets posted 35 mph or less.",
+  answer="We haven&rsquo;t verified public-road authorization for golf carts in Clearwater. Under Florida law a golf cart may use a public road only where "
+         "the city or county has designated it, and the city says Clearwater Beach has no golf cart lanes. Street-legal low-speed vehicles (LSVs) can use streets posted 35 mph or less.",
   faq=dict(
    license="<p>Golf carts can&rsquo;t use Clearwater&rsquo;s public streets, so this comes down to LSVs: an LSV driver needs a valid driver&rsquo;s license.</p>",
    age="<p>There&rsquo;s no city age rule for golf carts, because they can&rsquo;t use public streets here. An LSV driver needs a valid driver&rsquo;s license.</p>",
    permit="<p>There&rsquo;s no city golf cart registration, since the city hasn&rsquo;t designated streets for carts. LSVs are titled, registered and insured with the state.</p>",
-   where="<p><strong>Not on public streets.</strong> Under Florida law, a golf cart can use a public road only where the county or city has designated it and posted signs, "
-         "and we found no Clearwater designation.</p>"
+   where="<p><strong>We haven&rsquo;t verified public-road authorization.</strong> Under Florida law, a golf cart can use a public road only where the county or city has designated it and posted signs, "
+         "and we haven&rsquo;t found a Clearwater designation.</p>"
          "<p>The city&rsquo;s page says Clearwater Beach has no golf cart lanes and no dedicated public golf cart parking. "
          "Motorized vehicles aren&rsquo;t allowed on Beach Walk, except medical devices.</p>",
    lsv=FL_LSV + "<p>The city says a state-registered LSV may use any city-owned parking space, at the standard fee.</p>",
@@ -90,7 +90,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know that golf carts can&rsquo;t use Clearwater&rsquo;s streets, "
+  slowgo="It doesn&rsquo;t know that golf carts can&rsquo;t use Clearwater&rsquo;s streets, "
          "so it will still plan a route for one. Don&rsquo;t take that route in a golf cart. A street-legal LSV can use streets posted 35 mph or less.",
   prio="beach", prio_note="Clearwater Beach, a top Gulf beach destination (no-designation page)",
   quality="medium", source_type="city web page", checked="2026-10-16",
@@ -99,7 +99,7 @@ TOWNS = [
  ),
  dict(
   slug="st-augustine-beach", name="St. Augustine Beach", st="FL", state="Florida", place="St. Augustine Beach, Florida",
-  org="the City of St. Augustine Beach", Org="The City of St. Augustine Beach", publish=True,
+  org="the City of St. Augustine Beach", Org="The City of St. Augustine Beach", no_carts=True, publish=False,   # HELD (Ron 2026-10-17 afternoon, D19): "no carts" page without an affirmative official prohibition for these roads
   official=("the city&rsquo;s Golf Carts/Low Speed Vehicles page", "https://www.staugbch.com/413/Golf-CartsLow-Speed-Vehicles"),
   hub="Traditional golf carts aren&rsquo;t allowed on public streets. LSVs on streets posted 35 mph or less.",
   answer="Golf carts aren&rsquo;t allowed on public streets in St. Augustine Beach: the city says traditional golf carts may not be driven on them. "
@@ -119,7 +119,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know that golf carts can&rsquo;t use St. Augustine Beach&rsquo;s streets, "
+  slowgo="It doesn&rsquo;t know that golf carts can&rsquo;t use St. Augustine Beach&rsquo;s streets, "
          "so it will still plan a route for one. Don&rsquo;t take that route in a golf cart. A street-legal LSV can use streets posted 35 mph or less.",
   prio="beach", prio_note="Atlantic beach town (ban page)",
   quality="medium", source_type="city page", checked="2026-10-15",
@@ -150,7 +150,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know that A1A and State Road 100 are closed to carts here, "
+  slowgo="It doesn&rsquo;t know that A1A and State Road 100 are closed to carts here, "
          "so if a route runs along either one, don&rsquo;t take it in a cart.",
   prio="beach", prio_note="Atlantic beach town",
   quality="medium", source_type="city registration packet", checked="2026-10-15",
@@ -171,7 +171,7 @@ TOWNS = [
    where="<p>Only on city streets inside one of the city&rsquo;s <strong>two golf cart zones</strong>, and only on streets posted <strong>30 mph or less</strong>:</p>"
          "<ul><li>the north zone (Kenwood)</li><li>the south zone (Elliott Point, Ferry Park and the Downtown Entertainment District)</li></ul>"
          "<p>Golf carts can&rsquo;t drive on or cross state roads: US 98, Eglin Parkway, Beal Parkway, Florida Place SE and Perry Avenue SE.</p>",
-   lsv="<p>Low-speed vehicles can use city streets posted 35 mph or less, but not state roads except to cross at traffic signals. They need the same $25 city decal.</p>",
+   lsv="<p>Low-speed vehicles can use city streets posted 35 mph or less, but not state roads except to cross at traffic signals. They need the same $25 city decal. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>The decal is either daytime only or day and night. Florida law requires headlights, brake lights, turn signals and a windshield for night driving.</p>",
   ),
   extra=[],
@@ -180,8 +180,8 @@ TOWNS = [
    ("Golf cart zone map &mdash; City of Fort Walton Beach", "https://www.fwb.org/ImageRepository/Document?documentId=2924"),
    FL_316212, FL_3162122,
   ],
-  street_map=("the city&rsquo;s golf cart zone map", "https://www.fwb.org/ImageRepository/Document?documentId=2924"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Fort Walton Beach&rsquo;s two zones or its 30 mph line yet, "
+  street_map=("the City of Fort Walton Beach&rsquo;s golf cart zone map", "https://www.fwb.org/ImageRepository/Document?documentId=2924"),
+  slowgo="It doesn&rsquo;t know Fort Walton Beach&rsquo;s two zones or its 30 mph line yet, "
          "so a route can leave a zone or use a 35 mph street. Check the zone map before you ride.",
   prio="beach", prio_note="Emerald Coast beach city",
   quality="medium", source_type="city page", checked="2026-10-16",
@@ -215,7 +215,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Mexico Beach&rsquo;s street list or its sunrise-to-sunset rule yet, "
+  slowgo="It doesn&rsquo;t know Mexico Beach&rsquo;s street list or its sunrise-to-sunset rule yet, "
          "so ride in daylight and cross US 98 only where crossing is allowed.",
   prio="beach", prio_note="Gulf beach town (Forgotten Coast)",
   quality="high", source_type="ordinance PDF + city permit page", checked="2026-10-16",
@@ -251,7 +251,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Port St. Joe&rsquo;s 30 mph line, the Garrison and Long Avenue limits, "
+  slowgo="It doesn&rsquo;t know Port St. Joe&rsquo;s 30 mph line, the Garrison and Long Avenue limits, "
          "or the hours yet, so a route can use a 35 mph road. Check the rules above before you ride.",
   prio="beach", prio_note="Gulf coast town near Cape San Blas",
   quality="high", source_type="ordinance PDF (city site)", checked="2026-10-16",
@@ -284,7 +284,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know that Crandon Boulevard is for crossing only, "
+  slowgo="It doesn&rsquo;t know that Crandon Boulevard is for crossing only, "
          "so if a route runs along Crandon, don&rsquo;t take it in a cart.",
   prio="beach", prio_note="Island village off Miami",
   quality="medium", source_type="village police news release", checked="2026-10-15",
@@ -296,9 +296,9 @@ TOWNS = [
   org="Hillsborough County", Org="Hillsborough County", publish=True,
   official=("the county&rsquo;s golf cart designation page", "https://hcfl.gov/residents/property-owners-and-renters/roads-and-sidewalks/request-golf-cart-designation"),
   publishes="Hillsborough County publishes how its roads get designated for golf carts.",
-  hub="Only county roads the county has designated and signed; none named in Apollo Beach found.",
+  hub="Only county roads the county has designated and signed; we haven&rsquo;t verified public-road authorization here.",
   answer="In Apollo Beach, golf carts can use only county roads that Hillsborough County has designated and signed for them. "
-         "The county designates roads on request, and we didn&rsquo;t find any designated roads named in Apollo Beach.",
+         "The county designates roads on request. We haven&rsquo;t verified public-road authorization for any road in Apollo Beach.",
   faq=dict(
    license="<p>We didn&rsquo;t find a county license rule, so Florida&rsquo;s applies: drivers under 18 need a learner&rsquo;s permit or a driver&rsquo;s license, "
            "and drivers 18 and over need a government-issued photo ID.</p>",
@@ -307,7 +307,7 @@ TOWNS = [
           "or civic association asks; the county&rsquo;s traffic engineers study speed, traffic, sight distance, the mix of vehicles and connections, which can take up to "
           "120 business days; then the county posts signs.</p>",
    where="<p>Only on roads the county has <strong>designated and signed</strong> for golf carts. The county designates only roads posted <strong>30 mph or less</strong>, "
-         "and sidewalk paths at least 8 feet wide. The county doesn&rsquo;t publish a list, and we didn&rsquo;t find any designated roads named in Apollo Beach. "
+         "and sidewalk paths at least 8 feet wide. The county doesn&rsquo;t publish a list, and we haven&rsquo;t verified public-road authorization for any road in Apollo Beach. "
          "Elsewhere, Florida law keeps golf carts off public roads.</p>",
    lsv=FL_LSV,
    hours=FL_HOURS,
@@ -319,7 +319,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know which roads Hillsborough County has designated for carts, "
+  slowgo="It doesn&rsquo;t know which roads Hillsborough County has designated for carts, "
          "so a route can use a road carts can&rsquo;t. Look for posted golf cart signs before you ride.",
   prio="beach", prio_note="Tampa Bay waterfront community",
   quality="medium", source_type="county web page + county FAQ PDF", checked="2026-10-16",
@@ -353,8 +353,8 @@ TOWNS = [
    ("Golf cart brochure and street map &mdash; City of Port Richey Police (PDF)", "https://www.cityofportrichey.gov/DocumentCenter/View/1009"),
    FL_316212, FL_3162122,
   ],
-  street_map=("the city&rsquo;s golf cart brochure and street map", "https://www.cityofportrichey.gov/DocumentCenter/View/1009"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Port Richey&rsquo;s list of closed streets yet, "
+  street_map=("the Port Richey police golf cart brochure (includes a map)", "https://www.cityofportrichey.gov/DocumentCenter/View/1009"),
+  slowgo="It doesn&rsquo;t know Port Richey&rsquo;s list of closed streets yet, "
          "so a route could use one of them. Check the list above before you ride, and don&rsquo;t cross US 19 in a cart.",
   prio="beach", prio_note="Gulf coast waterfront city (Pasco County)",
   quality="medium", source_type="city police brochure PDF", checked="2026-10-15",
@@ -387,7 +387,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know where the Keaton Beach cart area ends yet, "
+  slowgo="It doesn&rsquo;t know where the Keaton Beach cart area ends yet, "
          "so a route can leave it. Stay within the area described above.",
   prio="beach", prio_note="Big Bend Gulf beach community",
   quality="high", source_type="ordinance PDF (county site)", checked="2026-10-15",
@@ -419,7 +419,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Steinhatchee&rsquo;s 25 mph line yet, "
+  slowgo="It doesn&rsquo;t know Steinhatchee&rsquo;s 25 mph line yet, "
          "so a route here can include a 30 or 35 mph road that carts can&rsquo;t use.",
   prio="beach", prio_note="Big Bend Gulf fishing and scalloping town",
   quality="high", source_type="ordinance PDF (county site)", checked="2026-10-15",

@@ -82,8 +82,6 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 /golf-carts/st-pete-beach/         /golf-carts/st-pete-beach.html           200
 /golf-carts/dunedin                /golf-carts/dunedin.html                 200
 /golf-carts/dunedin/               /golf-carts/dunedin.html                 200
-/golf-carts/mount-dora             /golf-carts/mount-dora.html              200
-/golf-carts/mount-dora/            /golf-carts/mount-dora.html              200
 /golf-carts/miami-lakes            /golf-carts/miami-lakes.html             200
 /golf-carts/miami-lakes/           /golf-carts/miami-lakes.html             200
 /golf-carts/pine-island            /golf-carts/pine-island.html             200
@@ -96,10 +94,6 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 /golf-carts/tybee-island/          /golf-carts/tybee-island.html            200
 /golf-carts/pinellas-county        /golf-carts/pinellas-county.html         200
 /golf-carts/pinellas-county/       /golf-carts/pinellas-county.html         200
-/golf-carts/clearwater             /golf-carts/clearwater.html              200
-/golf-carts/clearwater/            /golf-carts/clearwater.html              200
-/golf-carts/st-augustine-beach     /golf-carts/st-augustine-beach.html      200
-/golf-carts/st-augustine-beach/    /golf-carts/st-augustine-beach.html      200
 /golf-carts/flagler-beach          /golf-carts/flagler-beach.html           200
 /golf-carts/flagler-beach/         /golf-carts/flagler-beach.html           200
 /golf-carts/fort-walton-beach      /golf-carts/fort-walton-beach.html       200
@@ -130,8 +124,6 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 /golf-carts/clermont/              /golf-carts/clermont.html                200
 /golf-carts/st-cloud               /golf-carts/st-cloud.html                200
 /golf-carts/st-cloud/              /golf-carts/st-cloud.html                200
-/golf-carts/celebration            /golf-carts/celebration.html             200
-/golf-carts/celebration/           /golf-carts/celebration.html             200
 /golf-carts/lynn-haven             /golf-carts/lynn-haven.html              200
 /golf-carts/lynn-haven/            /golf-carts/lynn-haven.html              200
 /golf-carts/cutler-bay             /golf-carts/cutler-bay.html              200

@@ -8,6 +8,9 @@ Writes <out_dir>/index.html and <out_dir>/review-list.csv. Screenshots are expec
 import csv, html, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import TOWNS, UPDATED, links_text, is_state, plain
+import recheck
+LOG = recheck.read_log()
+SCHED = {x["page"]: x for x in __import__("json").load(open(recheck.SCHEDULE))["pages"]} if os.path.exists(recheck.SCHEDULE) else {}
 
 OUT = sys.argv[1]
 CSV = sys.argv[2] if len(sys.argv) > 2 else os.path.expanduser(
@@ -40,6 +43,14 @@ HOLD_REASON = {
     12: "Sun Lakes: state statute only, no county or community source beyond it. Covered by the Arizona state page.",
 }
 STATEWIDE = {6, 40, 134}
+HELD_WHY = {  # Ron 2026-10-17 afternoon (D19/D20)
+    "mount-dora": "Ron hold (D20, 2026-10-17 afternoon). Codex corrections applied anyway (designated-streets framing, LSV definition, no private/gated exemption claim).",
+    "captiva": "Ron hold (2026-10-17); file moved out of SlowGo-Launch to tools/town-pages/held (D20).",
+    "gulf-breeze": "Ron hold (2026-10-17); file moved out of SlowGo-Launch to tools/town-pages/held (D20).",
+    "clearwater": "D19 hold: absence-based (no designation found). Now says 'We haven't verified public-road authorization.' Needs an official source that affirmatively prohibits before it can be a 'no carts' page.",
+    "st-augustine-beach": "D19 hold: the city page affirmatively says traditional golf carts may not be operated on public streets (vehicle, roads, jurisdiction named), but it's one web page; ordinance (Municode) unread. Ron decides whether the city page meets D19.",
+    "celebration": "D19 hold: the Osceola County policy (live osceola.org copy, Aug 2020) affirmatively bars carts from county roads/sidewalks without an ordinance, but which Celebration streets are county roads (vs CDD/private) is unverified.",
+}
 PRIO_ORDER = {"beach": 0, "retirement": 1, "cart-friendly": 2, "rider": 3}
 
 e = html.escape
@@ -52,13 +63,14 @@ for t in TOWNS:
     first = db if not isinstance(db, list) else (db[0] if db else None)
     r = rows[first] if isinstance(first, int) else {}
     status = ("draft-publish" if t["publish"] else
-              "held: " + ("Ron ruling 2026-10-17, never name New York in public copy" if t.get("never_publish") else (t.get("gap") or "Ron hold")))
+              "held: " + ("Ron ruling 2026-10-17, never name New York in public copy" if t.get("never_publish") else
+                          HELD_WHY.get(t["slug"]) or t.get("gap") or "Ron hold"))
     out_rows.append(dict(
         page=t["slug"], path=f"/golf-carts/{t['slug']}", state=t["st"], kind="state" if is_state(t) else "town",
         title=plain(t.get("title") or f"Golf Cart Rules in {t['name']}, {t['st']} (Updated {UPDATED})"),
         priority=t.get("prio", PRIO10.get(t["slug"], "")), priority_reason=plain(t.get("prio_note", "")),
         source_quality=t.get("quality", r.get("confidence", "")), source_type=t.get("source_type", r.get("source_type", "")),
-        source_url=t["official"][1], checked=t.get("checked", r.get("source_retrieved", "")),
+        source_url=t["official"][1], checked=(recheck.checked_date(t, LOG) or "never") + (f" ({SCHED[t['slug']]['status']}; next due {SCHED[t['slug']]['next_due']})" if t["slug"] in SCHED else ""),
         honest_gap=plain(t.get("gap", "")), status=status, counted_link=f"/t/{t['slug']}" if (t["publish"] and t.get("counted", True)) else "",
         phone=f"screens/{t['slug']}-phone.png", desktop=f"screens/{t['slug']}-desktop.png"))
 for i, r in enumerate(rows):
@@ -109,9 +121,9 @@ table{{border-collapse:collapse;width:100%;min-width:1100px}} th,td{{border-top:
 th{{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}} small{{color:var(--mut)}}
 .thumbs{{display:flex;gap:12px;overflow-x:auto}} .thumbs a{{flex:0 0 auto;text-align:center;font-size:12px}} .thumbs img{{width:130px;display:block;border:1px solid var(--line)}}
 </style></head><body><div class="wrap">
-<h1>Town pages scale-up: review list (2026-10-17)</h1>
+<h1>Town pages: review list (2026-10-17 afternoon: Codex corrections D16&ndash;D24, A3, A5)</h1>
 <p>Website repo, local branch <code>drafts/town-pages-2026-10-16</code>, not pushed, not deployed. Format: the current FAQ layout (commit a1fd1f3), no drawn maps.
-Source database: <code>{e(CSV)}</code> (file modified {mtime}, {len(rows)} rows). Rules checked {UPDATED} on every page.</p>
+Source database: <code>{e(CSV)}</code> (file modified {mtime}, {len(rows)} rows). "Rules checked" now shows the actual day, from <code>tools/town-pages/check-log.csv</code> (Checked column: date, recheck status, next due).</p>
 <p><strong>{len(pub)} published drafts, {len(held)} held</strong> ({summary}). Held rows without a page are database rows we didn't draft.</p>
 <h2>Screenshot sample</h2>
 <div class="thumbs">{''.join(f"<a href='screens/{s}-phone.png'><img src='screens/{s}-phone.png' alt=''>{s}</a>" for s in samples)}</div>

@@ -16,9 +16,9 @@ ok('ad links count under their own name', () => {
   assert.equal(sourceFor('/fb4'), null);
 });
 ok('the hub, town, county and state links count as t-<name>; held and unknown towns do not', () => {
-  assert.equal(TOWN_LINKS.length, 42); assert.equal(sourceFor('/t/arizona'), 't-arizona'); assert.equal(sourceFor('/t/cart-rules'), 't-cart-rules');
+  assert.equal(TOWN_LINKS.length, 38); assert.equal(sourceFor('/t/arizona'), 't-arizona'); assert.equal(sourceFor('/t/cart-rules'), 't-cart-rules');
   for (const t of TOWN_LINKS) assert.equal(sourceFor(`/t/${t}`), `t-${t}`);
-  assert.equal(sourceFor('/t/captiva'), null); assert.equal(sourceFor('/t/gulf-breeze'), null); assert.equal(sourceFor('/t/'), null);
+  for (const h of ['captiva', 'gulf-breeze', 'mount-dora', 'clearwater', 'st-augustine-beach', 'celebration', 'new-york']) assert.equal(sourceFor(`/t/${h}`), null, h); assert.equal(sourceFor('/t/'), null);
   for (const t of TOWN_LINKS) assert.ok(`t-${t}`.length <= 40, 'Apple ct allows 40 characters');
 });
 ok('config.path carries every ad link (bare and slash) and /t/:town', () => {
@@ -42,6 +42,6 @@ ok('routing: iPhone -> App Store tagged with the link, Android -> /android, comp
 const IOS = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)';
 const go = (path, ua) => handler(new Request(`https://slowgoapp.com${path}`, { headers: { 'user-agent': ua } }));
 let r = await go('/fb1', IOS); assert.equal(r.status, 302); assert.match(r.headers.get('location'), /ct=fb1/); n++; console.log('ok', n, 'handler: /fb1 on iPhone -> App Store ct=fb1 (count failure does not block)');
-r = await go('/t/mount-dora/', 'Mozilla/5.0 (Linux; Android 15)'); assert.equal(r.headers.get('location'), 'https://slowgoapp.com/android'); n++; console.log('ok', n, 'handler: /t/mount-dora/ on Android -> /android');
+r = await go('/t/dunedin/', 'Mozilla/5.0 (Linux; Android 15)'); assert.equal(r.headers.get('location'), 'https://slowgoapp.com/android'); n++; console.log('ok', n, 'handler: /t/dunedin/ on Android -> /android');
 r = await go('/t/nowhere', IOS); assert.equal(r.headers.get('location'), 'https://slowgoapp.com/'); n++; console.log('ok', n, 'handler: unknown town -> home, uncounted');
 console.log(`${n}/${n} passed`);

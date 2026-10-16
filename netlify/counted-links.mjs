@@ -8,22 +8,19 @@
 export const AD_LINKS = ['fb1', 'fb2', 'fb3', 'asa'];
 
 // One download link per published town page: slowgoapp.com/t/<name>, counted as "t-<name>".
-// The /cart-rules hub, 38 town and county pages, and the Florida/Georgia/Arizona state pages
-// (drafts/town-pages-2026-10-16 at 019d338, tools/town-pages/build.py --links). Captiva and Gulf Breeze held.
-// TO ADD A TOWN: add one line here, then deploy. No change to link.mjs is needed.
+// Written by tools/town-pages/build.py: the /cart-rules hub and the 37 published town, county and state pages.
+// Held (no link): Mount Dora, Captiva Island, Gulf Breeze, Clearwater, St. Augustine Beach, Celebration.
+// TO ADD A TOWN: publish=True in tools/town-pages, rebuild, then deploy. No change to link.mjs is needed.
 export const TOWN_LINKS = [
   'cart-rules',
   'st-pete-beach',
   'dunedin',
-  'mount-dora',
   'miami-lakes',
   'pine-island',
   'jekyll-island',
   'st-simons-island',
   'tybee-island',
   'pinellas-county',
-  'clearwater',
-  'st-augustine-beach',
   'flagler-beach',
   'fort-walton-beach',
   'mexico-beach',
@@ -39,7 +36,6 @@ export const TOWN_LINKS = [
   'oviedo',
   'clermont',
   'st-cloud',
-  'celebration',
   'lynn-haven',
   'cutler-bay',
   'palmetto-bay',

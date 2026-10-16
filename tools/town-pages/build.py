@@ -5,18 +5,23 @@
 
 Reads towns.py (content) and <site_dir>/safety.html (styles, favicon, fonts and footer are copied
 from it, so a rebuild picks up site-wide changes). Writes:
-    <site_dir>/golf-carts/<slug>.html   every town (publish=False pages stay noindex, unlinked)
+    <site_dir>/golf-carts/<slug>.html   every published page
+    tools/town-pages/held/<slug>.html   every held page (publish=False: noindex, unlinked, never in the publish folder)
     <site_dir>/cart-rules.html          the hub: published towns only, grouped by state
     <site_dir>/sitemap.xml              the block between the town-pages markers only
+    <site_dir>/_redirects               the /golf-carts/ rewrites (published pages only)
+    netlify/counted-links.mjs           TOWN_LINKS (hub + published pages)
+"Rules checked <day>" comes from check-log.csv (recheck.py); see README.md in this folder.
 No JavaScript on any page. Each page carries FAQPage JSON-LD built from the same FAQ text it shows.
 Download links are the counted links /t/<slug> (and /t/cart-rules on the hub), served by
 netlify/functions/link.mjs once its /t/ paths are added (`python3 build.py --links` prints the
 link.mjs list and the _redirects page rewrites the published set needs).
 Check after every build: python3 tools/town-pages/check.py
 """
-import html, importlib, json, os, re, sys
+import datetime, html, importlib, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from towns import FAQ_ORDER
+import recheck
 
 # Content modules, in order. Each defines TOWNS (a list of page dicts in the towns.py schema).
 # towns.py = the first 10 pages (2026-10-16); the rest = the scale-up of 2026-10-17 (state pages have kind="state").
@@ -33,17 +38,40 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 SITE = ARGS[0] if (ARGS and __name__ == "__main__") else os.path.join(ROOT, "SlowGo-Launch")
 ORIGIN = "https://slowgoapp.com"
-UPDATED = "October 2026"      # title "(Updated ...)" and "Rules checked ..."; change when the rules are re-checked
+UPDATED = "October 2026"      # title and eyebrow "(Updated ...)": the month the page text last changed
+# "Rules checked <day>" comes from check-log.csv (recheck.py), never typed by hand (Ron 2026-10-17, D23).
 LASTMOD = "2026-10-16"        # sitemap lastmod for every town page and the hub
 STATE_ORDER = ["Florida", "Georgia", "Arizona"]
-HELD_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "held")   # never_publish pages: outside the publish folder
+HELD_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "held")   # held pages: outside the publish folder
+
+# Ron 2026-10-17 afternoon (Codex review W1/W2): fixed wording on every page. check.py enforces them.
+SIGNS = ("Follow applicable law, posted restrictions and lawful directions from officers. "
+         "If permission is unclear, don&rsquo;t use that road or path until confirmed.")
+SLOWGO_LEAD = ("SlowGo routes on roads posted 35 mph or under and never along faster roads; "
+               "it doesn&rsquo;t establish cart access here.")
+LSV_LINE = "can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated."
 
 
 def page_path(t, site=None):
-    """Where a page's file lives. never_publish pages (the New York draft) go to tools/town-pages/held/, never SlowGo-Launch."""
-    if t.get("never_publish"):
+    """Where a page's file lives. Every held page (publish=False: the New York draft, Captiva, Gulf Breeze, Mount Dora,
+    the D19 "no carts" pages) goes to tools/town-pages/held/, never SlowGo-Launch, so nothing held can ship (D20)."""
+    if not t["publish"]:
         return os.path.join(HELD_DIR, t["slug"] + ".html")
     return os.path.join(site or SITE, "golf-carts", t["slug"] + ".html")
+
+
+def checked_day(t):
+    """'October 15, 2026': the oldest of the page's sources' latest verified checks in check-log.csv."""
+    d = recheck.checked_date(t)
+    if not d:
+        raise SystemExit(f"{t['slug']}: no verified check-log row for every source (tools/town-pages/check-log.csv); run recheck.py")
+    d = datetime.date.fromisoformat(d)
+    return f"{d:%B} {d.day}, {d.year}"
+
+
+def state_page(t):
+    """The published state page for a town page (None for state pages and held states)."""
+    return next((x for x in TOWNS if is_state(x) and x["publish"] and x["state"] == t["state"] and x is not t), None) if not is_state(t) else None
 
 safety = open(os.path.join(SITE, "safety.html"), encoding="utf-8").read()
 STYLE = re.search(r"<style>(.*?)</style>", safety, re.S).group(1)
@@ -71,6 +99,9 @@ EXTRA = """
   .get{ display:inline-block; margin:20px 0 0; padding:12px 22px; border-radius:999px; background:var(--forest);
     color:var(--cream); font-weight:600; font-size:16px; text-decoration:none; }
   .get:hover{ background:var(--charcoal); color:var(--cream); }
+  .warn{ margin:20px 0 0; padding:16px 20px; background:var(--oat); border:2px solid var(--amber); border-radius:6px; color:var(--forest); }
+  .warn p{ margin:0; }
+  .prose .statelink{ margin:14px 0 0; }
   .townfoot{ margin:56px 0 0; padding-top:24px; border-top:1px solid rgba(160,148,132,.28); font-size:15px; color:var(--moss); }
   .prose .townfoot p{ margin:0 0 8px; }
   .prose .towns{ list-style:none; padding:0; }
@@ -158,7 +189,8 @@ DRAFT = """
 
 
 def faq_items(t):
-    return [(q.format(n=t["name"]), t["faq"][k]) for k, q in FAQ_ORDER]
+    qs = t.get("faq_q", {})      # per-page question wording (Jekyll names PTVs, Codex W2)
+    return [(qs.get(k, q).format(n=t["name"]), t["faq"][k]) for k, q in FAQ_ORDER]
 
 
 def faq_jsonld(t):
@@ -180,11 +212,13 @@ def state_towns(t):
 
 
 def map_link(t):
-    """Plain text link to the town's own golf cart map, only where one exists (Ron 2026-10-17)."""
+    """Plain text link to the town's own map, only where one exists, labelled with what the map actually is
+    (Ron 2026-10-17, D21): street_map = (label, url[, note])."""
     sm = t.get("street_map")
     if not sm:
         return ""
-    return f'      <p class="maplink">See <a href="{sm[1]}" rel="noopener">{t["name"]}&rsquo;s official golf cart map</a>.</p>\n'
+    note = f" {sm[2]}" if len(sm) > 2 else ""
+    return f'      <p class="maplink">See <a href="{sm[1]}" rel="noopener">{sm[0]}</a>.{note}</p>\n'
 
 
 def town_page(t):
@@ -205,6 +239,15 @@ def town_page(t):
     if "plain-English" not in publishes:
         publishes += " Here&rsquo;s a plain-English summary."
     secs = [(q, a) for q, a in faq_items(t)] + extra
+    day = checked_day(t)
+    sp = state_page(t)
+    statelink = (f'      <p class="statelink">State law: see <a href="/golf-carts/{sp["slug"]}">golf cart laws in {sp["state"]}</a>.</p>\n'
+                 if sp else "")
+    if t.get("slowgo_full"):
+        slowgo = f"      <p>{t['slowgo']}</p>"
+    else:
+        slowgo = (f"      <p>{SLOWGO_LEAD}</p>\n"
+                  f'      <div class="warn" role="note"><p><strong>Check local rules before you ride.</strong> {t["slowgo"]}</p></div>')
     body = "\n\n".join(f'      <h2 id="{slug_id(h)}">{h}</h2>\n      {b}' for h, b in secs)
     srcs = "\n".join(f'        <li><a href="{u}" rel="noopener">{n}</a></li>' for n, u in t["sources"])
     robots = None if t["publish"] else "noindex, nofollow"
@@ -221,21 +264,21 @@ def town_page(t):
     <article class="prose" id="doc">
 
       <p class="lede">{t['answer']}</p>
-      <p class="meta">Rules checked {UPDATED} &middot; Always follow local signs</p>
-
+      <p class="meta">Rules checked {day} &middot; Always follow local signs</p>
+{statelink}
 {map_link(t)}
 {body}
 
-      <div class="signs"><p><strong>Always follow local signs.</strong> Posted signs and local officers have the final word, and rules can change after we check them. If a sign says something different from this page, follow the sign.</p></div>
+      <div class="signs"><p><strong>Follow the law and posted signs.</strong> {SIGNS} Rules can change after we check them.</p></div>
 
       <h2 id="slowgo">Using SlowGo here</h2>
-      <p>{t['slowgo']}</p>{get}
+{slowgo}{get}
 
       <h2 id="sources">Where these rules come from</h2>
       <ul class="sources">
 {srcs}
       </ul>
-      <p class="meta">Rules checked {UPDATED}</p>
+      <p class="meta">Rules checked {day}</p>
 
 {TOWNFOOT}
 
@@ -274,12 +317,14 @@ def hub_page(pub):
     <article class="prose" id="doc">
 
       <p class="lede">Golf cart rules change from town to town: which streets carts can use, who can drive, whether a cart needs a sticker, and whether it can go out after dark. These are our plain-English summaries, each with links to where the rules come from.</p>
-      <p class="meta">Rules checked {UPDATED} &middot; Always follow local signs</p>
+      <p class="meta">Each page shows the day its rules were checked &middot; Always follow local signs</p>
+      <p>{SLOWGO_LEAD.replace(" here.", ".")}</p>
+      <div class="warn" role="note"><p><strong>Check local rules before you ride.</strong> SlowGo doesn&rsquo;t know each town&rsquo;s own cart rules yet. Each page below says what it doesn&rsquo;t apply.</p></div>
       <a class="get" href="/t/cart-rules">Get SlowGo</a>
 
 {chr(10).join(groups)}
 
-      <div class="signs"><p><strong>Always follow local signs.</strong> Posted signs and local officers have the final word, and rules can change after we check them.</p></div>
+      <div class="signs"><p><strong>Follow the law and posted signs.</strong> {SIGNS} Rules can change after we check them.</p></div>
 
 {TOWNFOOT.replace("This page is", "These pages are")}
 
@@ -307,6 +352,42 @@ def update_sitemap(pub):
     return len(urls)
 
 
+def update_redirects(pub):
+    """SlowGo-Launch/_redirects: the /golf-carts/ rewrites list published pages only (D20)."""
+    path = os.path.join(SITE, "_redirects")
+    if not os.path.exists(path):
+        return 0
+    lines = open(path, encoding="utf-8").read().split("\n")
+    lines = [l for l in lines if not l.startswith("/golf-carts/")]
+    i = next(k for k, l in enumerate(lines) if l.startswith("/cart-rules/ "))
+    new = []
+    for t in pub:
+        a, b = f"/golf-carts/{t['slug']}", f"/golf-carts/{t['slug']}.html"
+        new += [f"{a:<34} {b:<40} 200", f"{a + '/':<34} {b:<40} 200"]
+    lines[i + 1:i + 1] = new
+    open(path, "w", encoding="utf-8").write("\n".join(lines))
+    return len(new)
+
+
+def update_counted_links(pub):
+    """netlify/counted-links.mjs TOWN_LINKS: the hub plus every published, counted page (D20)."""
+    path = os.path.join(ROOT, "netlify", "counted-links.mjs")
+    if not os.path.exists(path) or os.path.abspath(SITE) != os.path.join(ROOT, "SlowGo-Launch"):
+        return 0
+    s = open(path, encoding="utf-8").read()
+    slugs = ["cart-rules"] + [t["slug"] for t in pub if t.get("counted", True)]
+    held = ", ".join(plain(t["name"]) for t in TOWNS if not t["publish"] and not t.get("never_publish"))
+    body = "".join(f"  '{x}',\n" for x in slugs)
+    s = re.sub(r"// One download link per published town page.*?export const TOWN_LINKS = \[\n.*?\];",
+               "// One download link per published town page: slowgoapp.com/t/<name>, counted as \"t-<name>\".\n"
+               f"// Written by tools/town-pages/build.py: the /cart-rules hub and the {len(slugs) - 1} published town, county and state pages.\n"
+               f"// Held (no link): {held}.\n"
+               "// TO ADD A TOWN: publish=True in tools/town-pages, rebuild, then deploy. No change to link.mjs is needed.\n"
+               f"export const TOWN_LINKS = [\n{body}];", s, flags=re.S)
+    open(path, "w", encoding="utf-8").write(s)
+    return len(slugs)
+
+
 def links_text(pub):
     slugs = ["cart-rules"] + [t["slug"] for t in pub if t.get("counted", True)]
     rw = [("/cart-rules", "/cart-rules.html")] + [(f"/golf-carts/{t['slug']}", f"/golf-carts/{t['slug']}.html") for t in pub]
@@ -324,10 +405,16 @@ if __name__ == "__main__":
         print(links_text(pub)); sys.exit(0)
     os.makedirs(os.path.join(SITE, "golf-carts"), exist_ok=True)
     for t in TOWNS:
+        stale = os.path.join(SITE, "golf-carts", t["slug"] + ".html")
+        if not t["publish"] and os.path.exists(stale):
+            os.remove(stale)      # a held page never stays in the publish folder (D20)
         os.makedirs(os.path.dirname(page_path(t)), exist_ok=True)
         with open(page_path(t), "w", encoding="utf-8") as f:
             f.write(town_page(t))
     with open(os.path.join(SITE, "cart-rules.html"), "w", encoding="utf-8") as f:
         f.write(hub_page(pub))
     n = update_sitemap(pub)
-    print(f"{len(TOWNS)} town pages ({len(pub)} published, {len(TOWNS) - len(pub)} held), hub, {n} sitemap entries -> {SITE}")
+    r = update_redirects(pub)
+    c = update_counted_links(pub)
+    print(f"{len(TOWNS)} town pages ({len(pub)} published, {len(TOWNS) - len(pub)} held in tools/town-pages/held), hub, "
+          f"{n} sitemap entries, {r} _redirects lines, {c} counted links -> {SITE}")

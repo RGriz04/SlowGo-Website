@@ -32,7 +32,7 @@ TOWNS = [
    lsv="<p>A low-speed vehicle (LSV) is different from a golf cart: it goes faster than 20 mph (up to 25), and it must be titled, registered and insured, "
        "with a licensed driver. LSVs can use roads posted 35 mph or less, but North Port bans them, whatever the speed limit, on "
        "Atwater Drive, Biscayne Drive, Chamberlain Boulevard, Cranberry Boulevard, Haberland Boulevard, Pan American Boulevard, Panacea Boulevard, "
-       "Price Boulevard, Salford Boulevard, San Mateo Drive, Sumter Boulevard and Toledo Blade Boulevard.</p>",
+       "Price Boulevard, Salford Boulevard, San Mateo Drive, Sumter Boulevard and Toledo Blade Boulevard. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours=FL_HOURS_DEFAULT,
   ),
   extra=[],
@@ -41,7 +41,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know North Port&rsquo;s designated cart roads or its LSV bans yet, "
+  slowgo="It doesn&rsquo;t know North Port&rsquo;s designated cart roads or its LSV bans yet, "
          "so a route can leave Holiday Park, Lakeside Plantation or Plantation Boulevard, or use a boulevard closed to LSVs. Check the list above before you ride.",
   prio="retirement", prio_note="Holiday Park and Lakeside Plantation communities; large retiree city",
   quality="medium", source_type="official city police page", checked="2026-10-15",
@@ -83,8 +83,8 @@ TOWNS = [
    ("Golf cart exclusion map &mdash; City of Oldsmar", "https://oldsmarfl.gov/ImageRepository/Document?documentId=10716"),
    FL_316212, FL_3162122,
   ],
-  street_map=("the city&rsquo;s golf cart exclusion map", "https://oldsmarfl.gov/ImageRepository/Document?documentId=10716"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Oldsmar&rsquo;s 25 mph line or its industrial-park exclusions yet, "
+  street_map=("the City of Oldsmar&rsquo;s golf cart exclusion map", "https://oldsmarfl.gov/ImageRepository/Document?documentId=10716"),
+  slowgo="It doesn&rsquo;t know Oldsmar&rsquo;s 25 mph line or its industrial-park exclusions yet, "
          "so a route can use a 30 or 35 mph street, or a street carts can&rsquo;t use here. Check the city&rsquo;s map before you ride.",
   prio="cart-friendly", prio_note="Pinellas cart town with a full ordinance",
   quality="high", source_type="official city page reproducing ordinance text", checked="2026-10-16",
@@ -125,7 +125,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Winter Garden&rsquo;s approved cart streets or the downtown district&rsquo;s edges yet, "
+  slowgo="It doesn&rsquo;t know Winter Garden&rsquo;s approved cart streets or the downtown district&rsquo;s edges yet, "
          "so a route can use a street that isn&rsquo;t approved for carts. Check the city&rsquo;s district map before you ride.",
   prio="cart-friendly", prio_note="Downtown Golf Cart District, expanded 2026",
   quality="high", source_type="ordinance PDF (city site)", checked="2026-10-16",
@@ -155,7 +155,7 @@ TOWNS = [
          "No sidewalks, bike paths, swales or trails. The city council can add roads by resolution.</p>",
    lsv="<p>The city&rsquo;s page says a plated cart is treated as a low-speed vehicle (LSV) and doesn&rsquo;t need city registration. "
        "Under Florida law an LSV goes faster than 20 mph (up to 25), is titled, registered and insured, has a licensed driver, "
-       "and can use streets posted 35 mph or less.</p>",
+       "and can use streets posted 35 mph or less. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>From 6:00 a.m. to 2:00 a.m.</p>",
   ),
   extra=[
@@ -166,7 +166,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Oviedo&rsquo;s 30 mph line or its closed roads yet, "
+  slowgo="It doesn&rsquo;t know Oviedo&rsquo;s 30 mph line or its closed roads yet, "
          "so a route can use a 35 mph street or one of the roads above. Check the list before you ride.",
   prio="cart-friendly", prio_note="City-wide cart registration program",
   quality="medium", source_type="official city page (read directly)", checked="2026-10-16",
@@ -200,7 +200,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,   # the map is attached to the registration form (a source below); no separate map page, so no map line
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Clermont&rsquo;s pilot area yet, "
+  slowgo="It doesn&rsquo;t know Clermont&rsquo;s pilot area yet, "
          "so a route can go east of US 27 or south of SR 50, where carts can&rsquo;t ride. Check the map before you ride.",
   prio="cart-friendly", prio_note="New 2026 pilot near Lake County retirement communities",
   quality="medium", source_type="official city registration form", checked="2026-10-16",
@@ -232,8 +232,8 @@ TOWNS = [
    ("Golf cart boundary map &mdash; City of St. Cloud", "https://www.stcloudfl.gov/DocumentCenter/View/32845/Golf-Cart-BoundaryPNG"),
    FL_316212, FL_3162122,
   ],
-  street_map=("the city&rsquo;s golf cart boundary map", "https://www.stcloudfl.gov/DocumentCenter/View/32845/Golf-Cart-BoundaryPNG"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know St. Cloud&rsquo;s cart zone yet, "
+  street_map=("the City of St. Cloud&rsquo;s golf cart boundary map", "https://www.stcloudfl.gov/DocumentCenter/View/32845/Golf-Cart-BoundaryPNG"),
+  slowgo="It doesn&rsquo;t know St. Cloud&rsquo;s cart zone yet, "
          "so a route can leave the zone. Check the city&rsquo;s map before you ride.",
   prio="cart-friendly", prio_note="Downtown cart zone",
   quality="medium", source_type="official city page", checked="2026-10-16",
@@ -242,12 +242,12 @@ TOWNS = [
  ),
  dict(
   slug="celebration", name="Celebration", st="FL", state="Florida", place="Celebration, Florida (Osceola County)",
-  org="Osceola County", Org="Osceola County", publish=True,
-  official=("the county&rsquo;s golf cart policy (PDF)", "https://osceolacofl.prelive.opencities.com/files/assets/county/v/1/services/transportation-and-transit-dept-services/documents/golf-cart-policy-and-application.pdf"),
+  org="Osceola County", Org="Osceola County", no_carts=True, publish=False,   # HELD (Ron 2026-10-17 afternoon, D19): "no carts" page without an affirmative official prohibition for these roads
+  official=("the county&rsquo;s golf cart policy (PDF)", "https://www.osceola.org/files/assets/county/v/1/services/transportation-and-transit-dept-services/documents/golf-cart-policy-and-application.pdf"),
   publishes="Osceola County publishes the golf cart rules that cover Celebration. Here&rsquo;s a plain-English summary.",
-  hub="Golf carts aren&rsquo;t allowed on county roads here; LSVs follow state law.",
-  answer="Golf carts aren&rsquo;t allowed on Osceola County roads in Celebration: the county keeps carts off its roads unless it passes an ordinance for a community, "
-         "and we found none for Celebration. Low-speed vehicles (LSVs) can use streets posted 35 mph or less under Florida law.",
+  hub="Osceola County bars golf carts from its roads unless it adopts an ordinance; we haven&rsquo;t verified one for Celebration.",
+  answer="Osceola County&rsquo;s policy prohibits golf carts on or along county roads and sidewalks unless the county adopts an ordinance for that community. "
+         "We haven&rsquo;t verified public-road authorization for Celebration. Low-speed vehicles (LSVs) can use streets posted 35 mph or less under Florida law.",
   faq=dict(
    license="<p>Golf carts aren&rsquo;t allowed on Celebration&rsquo;s county roads, as far as we found. An LSV driver needs a valid driver&rsquo;s license.</p>",
    age="<p>The county&rsquo;s policy doesn&rsquo;t set an age for Celebration, since carts aren&rsquo;t allowed there. Where carts are allowed in Florida, "
@@ -262,15 +262,15 @@ TOWNS = [
   ),
   extra=[],
   sources=[
-   ("Golf Cart Policy and Application &mdash; Osceola County (PDF)", "https://osceolacofl.prelive.opencities.com/files/assets/county/v/1/services/transportation-and-transit-dept-services/documents/golf-cart-policy-and-application.pdf"),
+   ("Golf Cart Policy and Application &mdash; Osceola County (PDF)", "https://www.osceola.org/files/assets/county/v/1/services/transportation-and-transit-dept-services/documents/golf-cart-policy-and-application.pdf"),
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know that golf carts are barred from Celebration&rsquo;s county roads, "
+  slowgo="It doesn&rsquo;t know that golf carts are barred from Celebration&rsquo;s county roads, "
          "so it will still plan a route for a golf cart here. Don&rsquo;t take that route in a golf cart; an LSV can use it.",
   prio="cart-friendly", prio_note="Well-known planned community people search for carts in; no-designation page",
   quality="medium", source_type="county policy PDF (county site)", checked="2026-10-16",
-  gap="Absence-based: no Celebration ordinance found (only Harmony and Pine Grove, Ord. 2019-54, not opened). The policy PDF sits on the county's 'prelive' web host. Which Celebration streets are district or private wasn't checked.",
+  gap="HELD (D19). The county policy (Aug 2020) affirmatively bars carts from county roads/sidewalks without an ordinance, but which Celebration streets are county roads (vs CDD/private) is unverified and no Celebration ordinance was found (only Harmony and Pine Grove, Ord. 2019-54, not opened). Link moved to the live osceola.org copy 2026-10-16 (curl gets Akamai 403; read via a single fetch). Which Celebration streets are district or private wasn't checked.",
   db_row=51,
  ),
  dict(
@@ -300,9 +300,9 @@ TOWNS = [
    ("Golf cart map (updated May 28, 2020) &mdash; City of Lynn Haven (PDF)", "https://www.cityoflynnhaven.gov/DocumentCenter/View/986/Golf-Cart-Map-updated-05-28-20-PDF"),
    FL_316212, FL_3162122,
   ],
-  street_map=("the city&rsquo;s golf cart map", "https://www.cityoflynnhaven.gov/DocumentCenter/View/986/Golf-Cart-Map-updated-05-28-20-PDF"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Lynn Haven&rsquo;s designated subdivisions or its 25 mph line yet, "
-         "so a route can leave them or use a faster street. Check the city&rsquo;s map before you ride.",
+  street_map=("the City of Lynn Haven&rsquo;s golf cart map (May 2020, older than the 2023 ordinance)", "https://www.cityoflynnhaven.gov/DocumentCenter/View/986/Golf-Cart-Map-updated-05-28-20-PDF"),
+  slowgo="It doesn&rsquo;t know Lynn Haven&rsquo;s designated subdivisions or its 25 mph line yet, "
+         "so a route can leave them or use a 30 or 35 mph street. Check the city&rsquo;s map before you ride.",
   prio="cart-friendly", prio_note="Bay County cart town near Panama City",
   quality="medium", source_type="official city page + official city newsletter summary of Ord. 1156", checked="2026-10-16",
   gap="Ordinance 1156 text not read (summary in the city newsletter only). The map dates from 2020, before the 2023 ordinance.",
@@ -337,7 +337,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Cutler Bay&rsquo;s closed streets yet, "
+  slowgo="It doesn&rsquo;t know Cutler Bay&rsquo;s closed streets yet, "
          "so a route can use one of the roads above. Check the list before you ride.",
   prio="cart-friendly", prio_note="Miami-Dade town-wide cart permit",
   quality="medium", source_type="official town page", checked="2026-10-15",
@@ -374,7 +374,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Palmetto Bay&rsquo;s closed streets yet, "
+  slowgo="It doesn&rsquo;t know Palmetto Bay&rsquo;s closed streets yet, "
          "so a route can run along one of them. Check the list above before you ride.",
   prio="cart-friendly", prio_note="Miami-Dade village-wide cart permit",
   quality="medium", source_type="official village registration form quoting code", checked="2026-10-15",
@@ -397,7 +397,7 @@ TOWNS = [
    where="<p>Only the village streets designated for carts and <strong>signed by the police</strong>, in the Tequesta Country Club area. "
          "The 2006 ordinance doesn&rsquo;t list the streets, so follow the signs.</p>",
    lsv="<p>Low-speed vehicles (LSVs) are registered with the state (FLHSMV). Under Florida law an LSV goes faster than 20 mph (up to 25), "
-       "is titled, registered and insured, has a licensed driver, and can use streets posted 35 mph or less.</p>",
+       "is titled, registered and insured, has a licensed driver, and can use streets posted 35 mph or less. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>From sunset to sunrise, only with headlights, brake lights, turn signals and a windshield.</p>",
   ),
   extra=[
@@ -409,7 +409,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know which Tequesta streets are signed for carts, "
+  slowgo="It doesn&rsquo;t know which Tequesta streets are signed for carts, "
          "so a route can leave them. Follow the signs over the route.",
   prio="cart-friendly", prio_note="Country club community on the Palm Beach coast",
   quality="high", source_type="village ordinance text (Ord. 606) on village host", checked="2026-10-16",
@@ -446,7 +446,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know which Nassau County roads are designated for carts, or the daylight rule, "
+  slowgo="It doesn&rsquo;t know which Nassau County roads are designated for carts, or the daylight rule, "
          "so a route can use a road carts can&rsquo;t. Follow the signs, and ride before sunset.",
   prio="cart-friendly", prio_note="Northeast Florida county with a cart designation process",
   quality="high", source_type="county agenda packet ordinance text (strike-through draft)", checked="2026-10-16",
@@ -473,7 +473,7 @@ TOWNS = [
          "Roads designated under the 2010 ordinance stay designated. Community-owned roads (district or private) can apply if they have a traffic enforcement agreement with the Sheriff.</p>"
          "<p>The ordinance doesn&rsquo;t list the designated roads.</p>",
    lsv="<p>Low-speed vehicles (LSVs) and mini trucks can use county roads posted 35 mph or less, unless the county has made a road a Prohibited County Road, "
-       "and may cross a faster road at an intersection. LSVs must be registered, insured and equipped under state law.</p>",
+       "and must be registered, insured and equipped under state law. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>Sunrise to sunset, unless the county allows night use on that road and the cart has headlights, brake lights, turn signals and a windshield.</p>",
   ),
   extra=[],
@@ -483,7 +483,7 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know which St. Johns County roads are designated for carts, its 25 mph line, "
+  slowgo="It doesn&rsquo;t know which St. Johns County roads are designated for carts, its 25 mph line, "
          "or its night rule, so a route can use roads a golf cart can&rsquo;t. Follow the signs, and ride in daylight.",
   prio="cart-friendly", prio_note="Fast-growing county with many cart communities",
   quality="high", source_type="county ordinance PDF (copy on Rivers Edge CDD site; clerk copy seen in search)", checked="2026-10-16",

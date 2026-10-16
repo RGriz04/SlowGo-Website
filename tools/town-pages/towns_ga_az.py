@@ -6,7 +6,7 @@ from towns import GA_HB877, GA_DPS
 
 GA_LSV = ("<p>A low-speed vehicle (LSV) is a separate class under Georgia law: four wheels, a top speed over 20 mph and up to 25, "
           "built or converted to the federal LSV standard. LSVs are registered and insured like other vehicles and can use roads "
-          "posted 35 mph or less.</p>")
+          "posted 35 mph or less. An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>")
 
 TOWNS = [
  dict(
@@ -39,12 +39,13 @@ TOWNS = [
    ("Shared-Use Path System &mdash; City of Peachtree City", "https://peachtree-city.org/1187/Shared-Use-Path-System"),
    GA_HB877, GA_DPS,
   ],
-  street_map=("the city&rsquo;s path map", "https://peachtree-city.org/DocumentCenter/View/19957"),
-  slowgo="SlowGo plans routes on roads posted 35 mph and under and on cart paths it knows about. It doesn&rsquo;t know Peachtree City&rsquo;s street rules "
+  street_map=("Peachtree City&rsquo;s multi-use path system map (2022 master plan update, as of March 2022)", "https://peachtree-city.org/DocumentCenter/View/19957",
+              "It shows existing and proposed paths, not which streets carts may use."),
+  slowgo="It also uses cart paths it knows about. It doesn&rsquo;t know Peachtree City&rsquo;s street rules "
          "or which crossings of GA 54 and GA 74 are signed for carts, so cross those roads only at a signed cart crossing.",
   prio="cart-friendly", prio_note="Georgia's best-known golf cart town (path system)", quality="medium",
   source_type="city website", checked="2026-10-15",
-  gap="Street rules, driver ages and crossing rules are in the city code (Municode, not read); pages read cover paths, registration and LSV path use. Map line points to the city's path map PDF (DocumentCenter/View/19957), not opened in this run.",
+  gap="Street rules, driver ages and crossing rules are in the city code (Municode, not read); pages read cover paths, registration and LSV path use. Map PDF (DocumentCenter/View/19957) opened 2026-10-16: 'Multi-Use Path System 2022 Master Plan Update, as of March 2022', legend Complete/Existing/Proposed/Removed with project numbers; a planning map, labelled as such.",
   db_row=147,
  ),
  dict(
@@ -65,7 +66,7 @@ TOWNS = [
          "<p>Not allowed, except to cross at the listed places: US 21, GA 25, GA 30, Grange Road, Crossgate Road (GA 25 to US 21), "
          "Bonnybridge Road (GA 25 to US 21), Meinhard Road, Monteith Road, Henderson Boulevard and Benton Boulevard.</p>",
    lsv="<p>Port Wentworth treats low-speed vehicles the same as carts: the same roads, registration and license rules. "
-       "(Under Georgia law in general, an LSV has a top speed over 20 mph and up to 25, and can use roads posted 35 mph or less.)</p>",
+       "(Under Georgia law in general, an LSV has a top speed over 20 mph and up to 25, and can use roads posted 35 mph or less.) An LSV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>We didn&rsquo;t find cart hours in the ordinance. Carts must have head lamps and tail lamps.</p>",
   ),
   extra=[
@@ -83,7 +84,7 @@ TOWNS = [
    GA_HB877, GA_DPS,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Port Wentworth&rsquo;s 25 mph line or its crossing list yet, "
+  slowgo="It doesn&rsquo;t know Port Wentworth&rsquo;s 25 mph line or its crossing list yet, "
          "so a route can use a 30 or 35 mph road or cross where carts can&rsquo;t. Check the lists above before you ride.",
   prio="cart-friendly", prio_note="Coastal Georgia (Savannah area) cart town with a full ordinance", quality="high",
   source_type="ordinance PDF (city site)", checked="2026-10-16",
@@ -116,7 +117,7 @@ TOWNS = [
    GA_HB877, GA_DPS,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know where Rome&rsquo;s 25 mph cart zones are yet, "
+  slowgo="It doesn&rsquo;t know where Rome&rsquo;s 25 mph cart zones are yet, "
          "so a route can leave them. Ask the city where the zones are before you ride.",
   prio="cart-friendly", prio_note="Georgia city with a PTV registration program", quality="medium",
   source_type="city page + registration form", checked="2026-10-16",
@@ -148,7 +149,7 @@ TOWNS = [
    GA_HB877, GA_DPS,
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Woodstock&rsquo;s 25 mph line yet, "
+  slowgo="It doesn&rsquo;t know Woodstock&rsquo;s 25 mph line yet, "
          "so a route can include a 30 or 35 mph street that PTVs can&rsquo;t use.",
   prio="cart-friendly", prio_note="Metro Atlanta city with a PTV program", quality="medium",
   source_type="city website (read directly)", checked="2026-10-16",
@@ -171,8 +172,8 @@ TOWNS = [
    where="<p>The town police say carts may use only public streets posted <strong>35 mph or less</strong>. That 35 mph line is the police notice&rsquo;s "
          "wording; we didn&rsquo;t find it in Arizona&rsquo;s statutes, which set 35 mph only for neighborhood electric vehicles.</p>"
          "<p>No carts on sidewalks or multi-use paths.</p>",
-   lsv="<p>Arizona law calls street-legal electric low-speed vehicles neighborhood electric vehicles (NEVs). An NEV tops out at 25 mph, can&rsquo;t be driven "
-       "on a road posted over 35 mph, may cross a faster road at an intersection, and must carry a notice of these limits.</p>",
+   lsv="<p>Arizona law calls street-legal electric low-speed vehicles neighborhood electric vehicles (NEVs). An NEV tops out at 25 mph and must carry a notice "
+       "of its limits. Under &sect; 28-966, an NEV can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated.</p>",
    hours="<p>The police notice doesn&rsquo;t set hours. It says a cart must be properly equipped for road use.</p>",
   ),
   extra=[],
@@ -182,7 +183,7 @@ TOWNS = [
    ("Arizona Revised Statutes &sect; 28-966 &mdash; neighborhood electric vehicles", "https://www.azleg.gov/ars/28/00966.htm"),
   ],
   street_map=None,
-  slowgo="SlowGo plans routes on roads posted 35 mph and under and on cart paths it knows about. It doesn&rsquo;t know that Marana keeps carts off "
+  slowgo="It also uses cart paths it knows about. It doesn&rsquo;t know that Marana keeps carts off "
          "multi-use paths, so if a route uses a path here, don&rsquo;t take it in a cart.",
   prio="retirement", prio_note="Tucson-area town with active-adult communities; the only Arizona town row with a town source", quality="medium",
   source_type="town police news post", checked="2026-10-15",
