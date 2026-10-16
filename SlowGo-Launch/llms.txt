@@ -1,8 +1,8 @@
 # SlowGo
 
-> Navigation for golf carts and low-speed vehicles. SlowGo builds routes that stay
-> on roads posted 35 mph and under wherever possible — the LSV line in Florida —
-> and says so plainly when a trip can't avoid something faster. Where a golf cart
+> Navigation for golf carts and low-speed vehicles. SlowGo builds routes on roads
+> posted 35 mph and under — the LSV line in Florida — and says so plainly when a
+> trip can't be done that way. Where a golf cart
 > may ride is its county's or city's call; SlowGo does not decide that. A product
 > of BackRoad Apps LLC.
 
@@ -28,8 +28,9 @@ Google Play as of LAUNCH-DAY, at https://play.google.com/store/apps/details?id=c
 - **Green** — roads posted 35 mph and under, the LSV line. This is the default,
   and most rides never leave it. It is not a statement that a golf cart may use
   the road: that is the county's or city's designation.
-- **Amber** — roads posted 36 to 45 mph. Offered only if the rider opts in to
-  faster stretches, and the length of the stretch is shown before the ride starts.
+- **Amber** — a stretch the rider should look at before riding, such as a road
+  with no speed limit on record. The route names it, with its length, before the
+  ride starts.
 - **NoGo** — no route exists that stays on 35-and-under roads. SlowGo says so
   rather than quietly routing onto a fast road.
 - Roads confirmed above 45 mph are never routed along.
