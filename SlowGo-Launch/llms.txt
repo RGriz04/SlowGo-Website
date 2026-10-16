@@ -7,7 +7,8 @@
 > of BackRoad Apps LLC.
 
 SlowGo v1.0 is released. The iOS app is on the App Store as of 25 August 2026, free
-to start, at https://slowgoapp.com/go. Android comes later.
+to start, at https://slowgoapp.com/go. The Android app (Android 7.0 or later) is on
+Google Play as of LAUNCH-DAY, at https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo.
 
 ## Status and coverage
 
