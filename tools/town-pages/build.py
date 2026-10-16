@@ -49,7 +49,8 @@ safety = open(os.path.join(SITE, "safety.html"), encoding="utf-8").read()
 STYLE = re.search(r"<style>(.*?)</style>", safety, re.S).group(1)
 FOOTER = re.search(r'(<footer class="foot".*?</footer>)', safety, re.S).group(1)
 FOOTER = FOOTER.replace("<li>Safety</li>", '<li><a href="/safety">Safety</a></li>')
-ICON = re.search(r'(<link rel="icon"[^\n]*/?>)', safety).group(1)
+# Every icon/manifest link in safety.html (favicon.ico, PNG sizes, apple-touch-icon, web manifest)
+ICON = '\n'.join(re.findall(r'<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*>', safety))
 FONTS = "\n".join(l for l in safety.splitlines() if "fonts.g" in l)
 
 EXTRA = """
