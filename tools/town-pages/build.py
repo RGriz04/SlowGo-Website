@@ -18,6 +18,7 @@ netlify/functions/link.mjs once its /t/ paths are added (`python3 build.py --lin
 link.mjs list and the _redirects page rewrites the published set needs).
 Check after every build: python3 tools/town-pages/check.py
 """
+import os
 import datetime, html, importlib, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from towns import FAQ_ORDER
@@ -47,8 +48,13 @@ HELD_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "held")   # 
 # Ron 2026-10-17 afternoon (Codex review W1/W2): fixed wording on every page. check.py enforces them.
 SIGNS = ("Follow applicable law, posted restrictions and lawful directions from officers. "
          "If permission is unclear, don&rsquo;t use that road or path until confirmed.")
-SLOWGO_LEAD = ("SlowGo routes on roads posted 35 mph or under and never along faster roads; "
-               "it doesn&rsquo;t establish cart access here.")
+# Deploy-day wording switch (DEPLOY-PLAN-2026-10-17.md, option a): SLOWGO_PROMISE=1.4 gives the sentence
+# that is true while 1.4 is the store app; the default is Ron's 1.5 sentence (2026-10-17, D18).
+SLOWGO_PROMISE = os.environ.get("SLOWGO_PROMISE", "1.5")
+SLOWGO_LEAD = ("SlowGo routes on roads posted 35 mph or under by default; "
+               "it doesn&rsquo;t establish cart access here.") if SLOWGO_PROMISE == "1.4" else (
+              "SlowGo routes on roads posted 35 mph or under and never along faster roads; "
+              "it doesn&rsquo;t establish cart access here.")
 LSV_LINE = "can&rsquo;t travel along roads posted over 35; lawful crossings are separately regulated."
 
 
@@ -79,7 +85,8 @@ FOOTER = re.search(r'(<footer class="foot".*?</footer>)', safety, re.S).group(1)
 FOOTER = FOOTER.replace("<li>Safety</li>", '<li><a href="/safety">Safety</a></li>')
 # Every icon/manifest link in safety.html (favicon.ico, PNG sizes, apple-touch-icon, web manifest)
 ICON = '\n'.join(re.findall(r'<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*>', safety))
-FONTS = "\n".join(l for l in safety.splitlines() if "fonts.g" in l)
+# Font links from safety.html: self-hosted /fonts/ (B9), or Google Fonts on older heads
+FONTS = "\n".join(l for l in safety.splitlines() if "fonts.g" in l or "/fonts/" in l)
 
 EXTRA = """
   /* -------- Town pages (tools/town-pages) -------- */
