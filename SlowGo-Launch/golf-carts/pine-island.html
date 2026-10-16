@@ -245,36 +245,84 @@
     .foot-bottom{ flex-direction:column; gap:14px; align-items:flex-start; }
   }
 
-  /* -------- Town pages (draft 2026-10-16) -------- */
+  /* -------- Town pages (tools/town-pages) -------- */
   .prose ul{ margin:16px 0 0; padding-left:1.2em; }
   .prose li{ margin:6px 0 0; }
-  .checked{
-    margin:28px 0 0; font-family:var(--mono); font-size:12px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--drift);
-  }
-  .signs{
-    margin:40px 0 0; padding:20px 24px; background:var(--oat);
-    border-left:3px solid var(--amber); border-radius:4px; color:var(--forest);
-  }
+  .indep{ max-width:74ch; margin:0 0 28px; padding:12px 16px; border:1px solid rgba(160,148,132,.45);
+    border-radius:6px; font-size:14px; line-height:1.6; color:var(--moss); }
+  .indep p{ margin:0; } .indep p + p{ margin-top:6px; }
+  .meta{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--drift); }
+  .prose .meta{ margin:14px 0 0; }
+  .signs{ margin:40px 0 0; padding:20px 24px; background:var(--oat); border-left:3px solid var(--amber);
+    border-radius:4px; color:var(--forest); }
   .signs p{ margin:0; }
   .prose .sources{ list-style:none; padding:0; }
-  .prose .sources li{ margin:12px 0 0; padding-left:0; }
-  .indep{ max-width:74ch; margin:24px 0 0; font-size:15px; line-height:1.6; color:var(--moss); }
+  .prose .sources li{ margin:12px 0 0; }
+  .prose .maplink{ margin:20px 0 0; }
+  .get{ display:inline-block; margin:20px 0 0; padding:12px 22px; border-radius:999px; background:var(--forest);
+    color:var(--cream); font-weight:600; font-size:16px; text-decoration:none; }
+  .get:hover{ background:var(--charcoal); color:var(--cream); }
+  .townfoot{ margin:56px 0 0; padding-top:24px; border-top:1px solid rgba(160,148,132,.28); font-size:15px; color:var(--moss); }
+  .prose .townfoot p{ margin:0 0 8px; }
+  .prose .towns{ list-style:none; padding:0; }
+  .prose .towns li{ margin:18px 0 0; }
+  .towns a{ font-family:var(--serif); font-size:21px; font-weight:500; }
+  .towns span{ display:block; color:var(--moss); font-size:16px; }
 </style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "WebPage",
- "name": "Golf carts in Pine Island",
- "description": "Lee County lets golf carts use its roads on Pine Island in daylight, with a few busy stretches left out. Drivers need a driver’s license.",
- "url": "https://slowgoapp.com/golf-carts/pine-island",
- "inLanguage": "en",
- "dateModified": "2026-10-16",
- "isPartOf": {
-  "@type": "WebSite",
-  "name": "SlowGo",
-  "url": "https://slowgoapp.com/"
- }
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Do you need a driver’s license to drive a golf cart in Pine Island?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Only people with a valid driver’s license from their home state or country may drive a cart on these roads."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How old do you have to be to drive a golf cart in Pine Island?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The county ties driving to the license rather than to an age: the driver needs a valid driver’s license."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does a golf cart need a permit or registration in Pine Island?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The county ordinance has no registration or sticker. Equipment: good brakes, reliable steering, safe tires, a rearview mirror, and red reflectors front and rear."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Where can golf carts go in Pine Island?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "County-maintained streets on Pine Island (west of the St. James Creek Bridge), except: Stringfellow Road from the Jug Creek Bridge in Bokeelia to St. Jude Boulevard in St. James City; Pine Island Road east of Stringfellow Road Lee County DOT signs the designated roads and posts golf cart crossings across Stringfellow and Pine Island Roads where it has approved them. No carts on bike paths, shared-use paths or sidewalks, or in the drainage and landscaped areas beside the road."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Golf cart or LSV: what’s the difference in Pine Island?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A low-speed vehicle (LSV) is different from a golf cart: it goes faster than 20 mph (up to 25), and it has to be titled, registered and insured, with a licensed driver. Under Florida law an LSV can use streets posted 35 mph or less and can cross faster roads at intersections, unless the local government has closed a road to them."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can you drive a golf cart at night in Pine Island? Hours and lights",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Daylight only. The ordinance doesn’t allow golf carts on public roads between sunset and sunrise."
+   }
+  }
+ ]
 }
 </script>
 </head>
@@ -286,6 +334,7 @@
   <div class="topbar-inner">
     <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
     <nav aria-label="Primary">
+      <a href="/cart-rules">All towns</a>
       <a href="/">Back to SlowGo</a>
     </nav>
   </div>
@@ -293,44 +342,58 @@
 
 <main class="legal">
   <div class="wrap">
-    <p class="eyebrow"><span class="dot"></span> Local cart rules</p>
-    <h1>Golf carts in Pine Island</h1>
-    <p class="indep">SlowGo is an independent app, not affiliated with Lee County. For official rules, see <a href="https://www.leegov.com/bocc/Ordinances/13-08.pdf" rel="noopener">Lee County Ordinance 13-08 (PDF)</a>.</p>
+    <div class="indep">
+      <p>SlowGo is an independent golf cart navigation app. This page isn&rsquo;t affiliated with or endorsed by Lee County. For official rules, see <a href="https://www.leegov.com/bocc/Ordinances/13-08.pdf" rel="noopener">Lee County Ordinance 13-08 (PDF)</a>.</p>
+      <p>Lee County publishes the golf cart rules for Pine Island. Here&rsquo;s a plain-English summary.</p>
+    </div>
+    <p class="eyebrow"><span class="dot"></span> Local cart rules &middot; Updated October 2026</p>
+    <h1>Golf cart rules in Pine Island, Florida</h1>
 
     <article class="prose" id="doc">
 
       <p class="lede">Lee County lets golf carts use its roads on Pine Island in daylight, with a few busy stretches left out. Drivers need a driver&rsquo;s license.</p>
+      <p class="meta">Rules checked October 2026 &middot; Always follow local signs</p>
 
-      <h2 id="where-carts-can-go">Where carts can go</h2>
+
+      <h2 id="do-you-need-a-driver-s-license-to-drive-a-golf-cart-in-pine-">Do you need a driver&rsquo;s license to drive a golf cart in Pine Island?</h2>
+      <p>Yes. Only people with a <strong>valid driver&rsquo;s license</strong> from their home state or country may drive a cart on these roads.</p>
+
+      <h2 id="how-old-do-you-have-to-be-to-drive-a-golf-cart-in-pine-islan">How old do you have to be to drive a golf cart in Pine Island?</h2>
+      <p>The county ties driving to the license rather than to an age: the driver needs a valid driver&rsquo;s license.</p>
+
+      <h2 id="does-a-golf-cart-need-a-permit-or-registration-in-pine-islan">Does a golf cart need a permit or registration in Pine Island?</h2>
+      <p>The county ordinance has no registration or sticker.</p><p>Equipment: good brakes, reliable steering, safe tires, a rearview mirror, and red reflectors front and rear.</p>
+
+      <h2 id="where-can-golf-carts-go-in-pine-island">Where can golf carts go in Pine Island?</h2>
       <p>County-maintained streets on Pine Island (west of the St. James Creek Bridge), <strong>except</strong>:</p><ul><li>Stringfellow Road from the Jug Creek Bridge in Bokeelia to St. Jude Boulevard in St. James City</li><li>Pine Island Road east of Stringfellow Road</li></ul><p>Lee County DOT signs the designated roads and posts golf cart crossings across Stringfellow and Pine Island Roads where it has approved them.</p><p>No carts on bike paths, shared-use paths or sidewalks, or in the drainage and landscaped areas beside the road.</p>
 
-      <h2 id="who-can-drive">Who can drive</h2>
-      <p>Only people with a <strong>valid driver&rsquo;s license</strong> from their home state or country. Everyone rides seated, no more than the cart has seats, and nobody stands while it moves.</p>
+      <h2 id="golf-cart-or-lsv-what-s-the-difference-in-pine-island">Golf cart or LSV: what&rsquo;s the difference in Pine Island?</h2>
+      <p>A low-speed vehicle (LSV) is different from a golf cart: it goes faster than 20 mph (up to 25), and it has to be titled, registered and insured, with a licensed driver. Under Florida law an LSV can use streets posted 35 mph or less and can cross faster roads at intersections, unless the local government has closed a road to them.</p>
 
-      <h2 id="equipment">Equipment</h2>
-      <p>Good brakes, reliable steering, safe tires, a rearview mirror, and red reflectors front and rear. The county ordinance has no registration or sticker.</p>
-
-      <h2 id="hours">Hours</h2>
+      <h2 id="can-you-drive-a-golf-cart-at-night-in-pine-island-hours-and-">Can you drive a golf cart at night in Pine Island? Hours and lights</h2>
       <p><strong>Daylight only.</strong> The ordinance doesn&rsquo;t allow golf carts on public roads between sunset and sunrise.</p>
 
-      <h2 id="low-speed-vehicles">Low-speed vehicles</h2>
-      <p>A low-speed vehicle (LSV) is different from a golf cart: it goes faster than 20 mph (up to 25), and it has to be titled, registered and insured, with a licensed driver. Under Florida law an LSV can use streets posted 35 mph or less and can cross faster roads at intersections, unless the local government has closed a road to them.</p>
+      <h2 id="passengers">Passengers</h2>
+      <p>Everyone rides seated, no more than the cart has seats, and nobody stands while it moves.</p>
 
       <div class="signs"><p><strong>Always follow local signs.</strong> Posted signs and local officers have the final word, and rules can change after we check them. If a sign says something different from this page, follow the sign.</p></div>
 
-      <h2 id="sources">Official sources</h2>
+      <h2 id="slowgo">Using SlowGo here</h2>
+      <p>SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Pine Island&rsquo;s left-out stretches or the daylight rule yet, so check a route against the list above, and ride before sunset.</p>
+      <a class="get" href="/t/pine-island">Get SlowGo</a>
+
+      <h2 id="sources">Where these rules come from</h2>
       <ul class="sources">
         <li><a href="https://www.leegov.com/bocc/Ordinances/13-08.pdf" rel="noopener">Lee County Ordinance 13-08, adopted April 23, 2013, with its Attachment A street list &mdash; Lee County (PDF)</a></li>
         <li><a href="https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.212.html" rel="noopener">Florida Statutes &sect; 316.212 &mdash; golf carts on roads</a></li>
         <li><a href="https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.2122.html" rel="noopener">Florida Statutes &sect; 316.2122 &mdash; low-speed vehicles</a></li>
       </ul>
-      <p class="checked">Rules checked October 2026</p>
+      <p class="meta">Rules checked October 2026</p>
 
-      <h2 id="slowgo">Using SlowGo here</h2>
-      <p>SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Pine Island&rsquo;s left-out stretches or the daylight rule yet, so check a route against the list above, and ride before sunset.</p>
-      <p><a href="/t/pine-island">Get SlowGo</a></p>
-
-      <p class="closing">This page sums up the official sources above in plain words. It isn&rsquo;t legal advice. Rules change, so check with Lee County if you&rsquo;re unsure. Town staff: see something out of date? Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a> and we&rsquo;ll fix it quickly.</p>
+      <div class="townfoot">
+        <p>Town staff: see something out of date? Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a> and we&rsquo;ll fix it quickly.</p>
+        <p>This page is general information, not legal advice. Always follow posted signs and local rules.</p>
+      </div>
 
     </article>
   </div>

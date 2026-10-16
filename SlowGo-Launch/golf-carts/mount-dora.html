@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <!-- Built by tools/town-pages/build.py from towns.py: edit those, not this file. -->
 <title>Golf Cart Rules in Mount Dora, FL (Updated October 2026)</title>
-<meta name="description" content="In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, around the clock." />
+<meta name="description" content="In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, around the clock. Carts need a city permit, and drivers under 18 need a learner’s permit or license." />
 <meta name="theme-color" content="#0B1F15" />
 <meta name="apple-itunes-app" content="app-id=6803226504">
 <link rel="canonical" href="https://slowgoapp.com/golf-carts/mount-dora" />
 
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Golf Cart Rules in Mount Dora, FL (Updated October 2026)" />
-<meta property="og:description" content="In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, around the clock." />
+<meta property="og:description" content="In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, around the clock. Carts need a city permit, and drivers under 18 need a learner’s permit or license." />
 <meta property="og:url" content="https://slowgoapp.com/golf-carts/mount-dora" />
 <meta property="og:image" content="https://slowgoapp.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -22,7 +22,7 @@
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Golf Cart Rules in Mount Dora, FL (Updated October 2026)" />
-<meta name="twitter:description" content="In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, around the clock." />
+<meta name="twitter:description" content="In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, around the clock. Carts need a city permit, and drivers under 18 need a learner’s permit or license." />
 <meta name="twitter:image" content="https://slowgoapp.com/og-image.png" />
 <meta name="twitter:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
 
@@ -245,36 +245,84 @@
     .foot-bottom{ flex-direction:column; gap:14px; align-items:flex-start; }
   }
 
-  /* -------- Town pages (draft 2026-10-16) -------- */
+  /* -------- Town pages (tools/town-pages) -------- */
   .prose ul{ margin:16px 0 0; padding-left:1.2em; }
   .prose li{ margin:6px 0 0; }
-  .checked{
-    margin:28px 0 0; font-family:var(--mono); font-size:12px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--drift);
-  }
-  .signs{
-    margin:40px 0 0; padding:20px 24px; background:var(--oat);
-    border-left:3px solid var(--amber); border-radius:4px; color:var(--forest);
-  }
+  .indep{ max-width:74ch; margin:0 0 28px; padding:12px 16px; border:1px solid rgba(160,148,132,.45);
+    border-radius:6px; font-size:14px; line-height:1.6; color:var(--moss); }
+  .indep p{ margin:0; } .indep p + p{ margin-top:6px; }
+  .meta{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--drift); }
+  .prose .meta{ margin:14px 0 0; }
+  .signs{ margin:40px 0 0; padding:20px 24px; background:var(--oat); border-left:3px solid var(--amber);
+    border-radius:4px; color:var(--forest); }
   .signs p{ margin:0; }
   .prose .sources{ list-style:none; padding:0; }
-  .prose .sources li{ margin:12px 0 0; padding-left:0; }
-  .indep{ max-width:74ch; margin:24px 0 0; font-size:15px; line-height:1.6; color:var(--moss); }
+  .prose .sources li{ margin:12px 0 0; }
+  .prose .maplink{ margin:20px 0 0; }
+  .get{ display:inline-block; margin:20px 0 0; padding:12px 22px; border-radius:999px; background:var(--forest);
+    color:var(--cream); font-weight:600; font-size:16px; text-decoration:none; }
+  .get:hover{ background:var(--charcoal); color:var(--cream); }
+  .townfoot{ margin:56px 0 0; padding-top:24px; border-top:1px solid rgba(160,148,132,.28); font-size:15px; color:var(--moss); }
+  .prose .townfoot p{ margin:0 0 8px; }
+  .prose .towns{ list-style:none; padding:0; }
+  .prose .towns li{ margin:18px 0 0; }
+  .towns a{ font-family:var(--serif); font-size:21px; font-weight:500; }
+  .towns span{ display:block; color:var(--moss); font-size:16px; }
 </style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "WebPage",
- "name": "Golf carts in Mount Dora",
- "description": "In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, around the clock.",
- "url": "https://slowgoapp.com/golf-carts/mount-dora",
- "inLanguage": "en",
- "dateModified": "2026-10-16",
- "isPartOf": {
-  "@type": "WebSite",
-  "name": "SlowGo",
-  "url": "https://slowgoapp.com/"
- }
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Do you need a driver’s license to drive a golf cart in Mount Dora?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Not at 18 and over: every driver carries a government-issued photo ID, and drivers under 18 need a learner’s permit or a driver’s license."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How old do you have to be to drive a golf cart in Mount Dora?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Drivers must be 18, unless they have a learner’s permit or driver’s license."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does a golf cart need a permit or registration in Mount Dora?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. A city golf cart permit is required: $25 to register, $10 a year to renew. Bring the application, the affidavit, proof of insurance and a copy of your license to the Police Department (or email them). The sticker goes on the lower driver’s side bumper or fender. Country Club of Mount Dora and private or gated communities inside the city don’t need it. Required equipment: windshield; driver’s side mirror plus an inside or passenger-side mirror; headlights and tail lights; brakes and a parking brake; front and rear turn signals; steering; rear and side reflectors; a horn; and grab bars on rear-facing seats."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Where can golf carts go in Mount Dora?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "All city streets, except: all county roads and state highways, and streets outside city limits; US 441, SR 44, SR 46, CR 19A, Old Highway 441, Old Eustis Road, Eudora Road, Round Lake Road, Limit Avenue, Wolf Branch Road, Robie Avenue and Britt Road; 5th Avenue from Highland Avenue to Old Highway 441; Highland Avenue from 5th Avenue to the Orange County line; 1st Avenue from US 441 to Highland Avenue; Donnelly Street from US 441 to Limit Avenue Carts may cross county roads at intersections. They may not cross US 441. No bike paths or sidewalks. Private streets and gated communities set their own rules."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Golf cart or LSV: what’s the difference in Mount Dora?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A cart modified to go faster than 20 mph counts as a low-speed vehicle. It must be titled, registered and insured with the state, and it can’t use sidewalks or streets posted over 35 mph."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can you drive a golf cart at night in Mount Dora? Hours and lights",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "24 hours a day, except when the city closes a street for an event. Every permitted cart has headlights and tail lights (see the equipment list)."
+   }
+  }
+ ]
 }
 </script>
 </head>
@@ -286,6 +334,7 @@
   <div class="topbar-inner">
     <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
     <nav aria-label="Primary">
+      <a href="/cart-rules">All towns</a>
       <a href="/">Back to SlowGo</a>
     </nav>
   </div>
@@ -293,47 +342,60 @@
 
 <main class="legal">
   <div class="wrap">
-    <p class="eyebrow"><span class="dot"></span> Local cart rules</p>
-    <h1>Golf carts in Mount Dora</h1>
-    <p class="indep">SlowGo is an independent app, not affiliated with the City of Mount Dora. For official rules, see <a href="https://www.mountdora.gov/1457/Golf-Cart-Registration" rel="noopener">the city&rsquo;s Golf Cart Registration page</a>.</p>
+    <div class="indep">
+      <p>SlowGo is an independent golf cart navigation app. This page isn&rsquo;t affiliated with or endorsed by the City of Mount Dora. For official rules, see <a href="https://www.mountdora.gov/1457/Golf-Cart-Registration" rel="noopener">the city&rsquo;s Golf Cart Registration page</a>.</p>
+      <p>The City of Mount Dora publishes its golf cart rules. Here&rsquo;s a plain-English summary.</p>
+    </div>
+    <p class="eyebrow"><span class="dot"></span> Local cart rules &middot; Updated October 2026</p>
+    <h1>Golf cart rules in Mount Dora, Florida</h1>
 
     <article class="prose" id="doc">
 
-      <p class="lede">In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, around the clock.</p>
+      <p class="lede">In Mount Dora, a permitted golf cart can use every city street except a short list of busier roads, around the clock. Carts need a city permit, and drivers under 18 need a learner&rsquo;s permit or license.</p>
+      <p class="meta">Rules checked October 2026 &middot; Always follow local signs</p>
 
-      <p class="mapline">See <a href="https://www.mountdora.gov/DocumentCenter/View/16545" rel="noopener">Mount Dora&rsquo;s official golf cart map</a>.</p>
+      <p class="maplink">See <a href="https://www.mountdora.gov/DocumentCenter/View/16545" rel="noopener">Mount Dora&rsquo;s official golf cart map</a>.</p>
 
-      <h2 id="where-carts-can-go">Where carts can go</h2>
+      <h2 id="do-you-need-a-driver-s-license-to-drive-a-golf-cart-in-mount">Do you need a driver&rsquo;s license to drive a golf cart in Mount Dora?</h2>
+      <p>Not at 18 and over: every driver carries a government-issued photo ID, and drivers under 18 need a learner&rsquo;s permit or a driver&rsquo;s license.</p>
+
+      <h2 id="how-old-do-you-have-to-be-to-drive-a-golf-cart-in-mount-dora">How old do you have to be to drive a golf cart in Mount Dora?</h2>
+      <p>Drivers must be 18, unless they have a learner&rsquo;s permit or driver&rsquo;s license.</p>
+
+      <h2 id="does-a-golf-cart-need-a-permit-or-registration-in-mount-dora">Does a golf cart need a permit or registration in Mount Dora?</h2>
+      <p>Yes. A city golf cart permit is required: $25 to register, $10 a year to renew. Bring the application, the affidavit, proof of insurance and a copy of your license to the Police Department (or email them). The sticker goes on the lower driver&rsquo;s side bumper or fender. Country Club of Mount Dora and private or gated communities inside the city don&rsquo;t need it.</p><p>Required equipment: windshield; driver&rsquo;s side mirror plus an inside or passenger-side mirror; headlights and tail lights; brakes and a parking brake; front and rear turn signals; steering; rear and side reflectors; a horn; and grab bars on rear-facing seats.</p>
+
+      <h2 id="where-can-golf-carts-go-in-mount-dora">Where can golf carts go in Mount Dora?</h2>
       <p><strong>All city streets</strong>, except:</p><ul><li>all county roads and state highways, and streets outside city limits</li><li>US 441, SR 44, SR 46, CR 19A, Old Highway 441, Old Eustis Road, Eudora Road, Round Lake Road, Limit Avenue, Wolf Branch Road, Robie Avenue and Britt Road</li><li>5th Avenue from Highland Avenue to Old Highway 441; Highland Avenue from 5th Avenue to the Orange County line; 1st Avenue from US 441 to Highland Avenue; Donnelly Street from US 441 to Limit Avenue</li></ul><p>Carts may cross county roads at intersections. They may <strong>not</strong> cross US 441. No bike paths or sidewalks. Private streets and gated communities set their own rules.</p>
 
-      <h2 id="who-can-drive">Who can drive</h2>
-      <p>Drivers must be 18, unless they have a learner&rsquo;s permit or driver&rsquo;s license, and must carry a government-issued photo ID. Passengers ride seated, no more than the cart is built for.</p>
-
-      <h2 id="permit-and-equipment">Permit and equipment</h2>
-      <p>A city golf cart permit is required: $25 to register, $10 a year to renew. Bring the application, the affidavit, proof of insurance and a copy of your license to the Police Department (or email them). The sticker goes on the lower driver&rsquo;s side bumper or fender. Country Club of Mount Dora and private or gated communities inside the city don&rsquo;t need it.</p><p>Required equipment: windshield; driver&rsquo;s side mirror plus an inside or passenger-side mirror; headlights and tail lights; brakes and a parking brake; front and rear turn signals; steering; rear and side reflectors; a horn; and grab bars on rear-facing seats.</p>
-
-      <h2 id="hours">Hours</h2>
-      <p>24 hours a day, except when the city closes a street for an event.</p>
-
-      <h2 id="low-speed-vehicles">Low-speed vehicles</h2>
+      <h2 id="golf-cart-or-lsv-what-s-the-difference-in-mount-dora">Golf cart or LSV: what&rsquo;s the difference in Mount Dora?</h2>
       <p>A cart modified to go faster than 20 mph counts as a low-speed vehicle. It must be titled, registered and insured with the state, and it can&rsquo;t use sidewalks or streets posted over 35 mph.</p>
+
+      <h2 id="can-you-drive-a-golf-cart-at-night-in-mount-dora-hours-and-l">Can you drive a golf cart at night in Mount Dora? Hours and lights</h2>
+      <p>24 hours a day, except when the city closes a street for an event. Every permitted cart has headlights and tail lights (see the equipment list).</p>
+
+      <h2 id="passengers">Passengers</h2>
+      <p>Passengers ride seated, no more than the cart is built for.</p>
 
       <div class="signs"><p><strong>Always follow local signs.</strong> Posted signs and local officers have the final word, and rules can change after we check them. If a sign says something different from this page, follow the sign.</p></div>
 
-      <h2 id="sources">Official sources</h2>
+      <h2 id="slowgo">Using SlowGo here</h2>
+      <p>SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Mount Dora&rsquo;s not-allowed list yet, so a route could use one of those roads. Check the list above before you ride.</p>
+      <a class="get" href="/t/mount-dora">Get SlowGo</a>
+
+      <h2 id="sources">Where these rules come from</h2>
       <ul class="sources">
         <li><a href="https://www.mountdora.gov/1457/Golf-Cart-Registration" rel="noopener">Golf Cart Registration &mdash; City of Mount Dora</a></li>
         <li><a href="https://www.mountdora.gov/DocumentCenter/View/16545" rel="noopener">Golf Carts Street Usage list and map (May 17, 2023) &mdash; City of Mount Dora (PDF)</a></li>
         <li><a href="https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.212.html" rel="noopener">Florida Statutes &sect; 316.212 &mdash; golf carts on roads</a></li>
         <li><a href="https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.2122.html" rel="noopener">Florida Statutes &sect; 316.2122 &mdash; low-speed vehicles</a></li>
       </ul>
-      <p class="checked">Rules checked October 2026</p>
+      <p class="meta">Rules checked October 2026</p>
 
-      <h2 id="slowgo">Using SlowGo here</h2>
-      <p>SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Mount Dora&rsquo;s not-allowed list yet, so a route could use one of those roads. Check the list above before you ride.</p>
-      <p><a href="/t/mount-dora">Get SlowGo</a></p>
-
-      <p class="closing">This page sums up the official sources above in plain words. It isn&rsquo;t legal advice. Rules change, so check with the City of Mount Dora if you&rsquo;re unsure. Town staff: see something out of date? Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a> and we&rsquo;ll fix it quickly.</p>
+      <div class="townfoot">
+        <p>Town staff: see something out of date? Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a> and we&rsquo;ll fix it quickly.</p>
+        <p>This page is general information, not legal advice. Always follow posted signs and local rules.</p>
+      </div>
 
     </article>
   </div>

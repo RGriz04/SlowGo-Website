@@ -6,7 +6,7 @@ REVIEW notes below are from the 2026-10-15/16 source reads; keep them current wh
 import csv, os, sys, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from towns import TOWNS
-from build import links_text, CHECKED as UPDATED
+from build import links_text, UPDATED
 
 out = sys.argv[1]
 REVIEW = {
@@ -45,21 +45,20 @@ REVIEW = {
 
 NEEDS_RON = [
  "Go on one bundled deploy (counted Netlify deploy): this branch + the /t/ links in link.mjs + the _redirects rewrites below. /t/... returns home or 404 until link.mjs has the list, so the pages and the links must ship together.",
- "Layout restored to the original drafts (37c0472) per Ron 2026-10-17, with only the 7 additions; check.py fails if any other line differs from the original page.",
- "Heading 'Official sources' is back (original wording, latest ruling). An earlier ruling said no 'official' wording beyond the required sentence; the restored closing also says 'official sources above'. Confirm.",
- "St. Simons Island map line reads 'See Glynn County's speed limit map for St. Simons.' (coordinator's wording, not the 'official golf cart map' template), because it is the county's speed-limit map. Confirm.",
- "Captiva and Gulf Breeze are HELD. Their files still sit in the publish folder: noindex and unlinked, but reachable by direct URL. Say if they should move out of SlowGo-Launch before the deploy.",
- "Titles use the two-letter state (FL, GA); the visible heading is the original 'Golf carts in [Town]'. Meta description = the page's lede.",
- "Structured data is plain WebPage (name = heading, description = lede), not FAQPage: the restored pages have no question-and-answer text, so FAQ markup would not match what is visible.",
- "Town pages no longer link to /cart-rules (the original header had only 'Back to SlowGo'); the hub links to them and the sitemap lists all. A home-page or footer link is a shared-file change for the other website branch.",
- "St. Simons Island: the earlier research found a news mention of a county moratorium on a new golf cart ordinance (date unknown). Ruled into the publish set; flagging once more.",
+ "Captiva and Gulf Breeze are HELD as ruled. Their files still sit in the publish folder: noindex and unlinked, but reachable by anyone who types /golf-carts/captiva.html. Say if they should move out of SlowGo-Launch before the deploy.",
+ "Titles use the two-letter state (FL, GA) to stay near 60 characters; the heading on the page spells the state out. Say if you want the full state name in the title.",
+ "Drawn maps removed from every page (Ron 2026-10-17). Plain link 'See [Town]'s official golf cart map.' on the 4 towns with a town map in towns.py: St. Pete Beach, Dunedin, Mount Dora, St. Simons Island. None on Miami Lakes, Pine Island, Jekyll Island, Tybee Island (and the held Captiva, Gulf Breeze).",
+ "St. Simons Island's map is Glynn County's map of St. Simons roads by speed limit (the county's page points cart drivers to the 25 mph line), not a map titled for golf carts, and it belongs to the county, not the island. The ruled wording calls it 'St. Simons Island's official golf cart map'. Keep it, or reword to 'Glynn County's speed limit map for St. Simons'?",
+ "St. Simons Island: the earlier research found a news mention of a county moratorium on a new golf cart ordinance (date unknown). Ruled into the publish set; flagging once more in case a local check is wanted first.",
+ "Nothing links to /cart-rules yet except the town pages and the sitemap. A home-page or footer link is a shared-file change for the other website branch.",
  "slowgo-report needs a small change before the first /t/ visit (otherwise /t/dunedin shows as /f/t-dunedin).",
 ]
 LEGAL = [
- "Each page is our own plain-words summary of published rules with a short independence line ('not affiliated with ...') and the original closing ('It isn't legal advice'). The longer 'not endorsed by' sentence was dropped by ruling. Ron's self-review: enough with no attorney spend?",
- "Pages state rules as facts (fees, ages, closed roads). If a town changes its rules, the page is wrong until we re-check; 'Rules checked October 2026', the signs box and the town-staff email are the mitigation. No re-check schedule is set.",
- "Several rules rest on sources we could not read in full (city codes on Municode, which no agent reads): Dunedin, St. Simons Island and Tybee lean on city/county summary pages.",
+ "Each page is our own plain-English summary of a town's published rules, with the independence line at the top, no logos or seals, the word 'official' only in 'For official rules, see ...', and 'general information, not legal advice' at the bottom. Ron's self-review: is that enough, given no attorney spend for now?",
+ "Pages state rules as facts (fees, ages, closed roads). If a town changes its rules, the page is wrong until we re-check; 'Rules checked October 2026', 'Always follow local signs' and the town-staff email are the mitigation. A re-check schedule is not set.",
+ "Several rules rest on sources we could not read in full (city codes on Municode, which no agent reads): Dunedin, St. Simons Island and Tybee lean on city/county summary pages. See 'Open questions' per town.",
  "Tybee page repeats the city flyer's penalty line (fines up to $1,000 or 12 months in jail) as 'the city's flyer says'.",
+ "FAQPage structured data: Google limits FAQ rich results to government and health sites, so no rich result is expected; the markup is valid and harmless.",
 ]
 
 rows = []
@@ -97,9 +96,9 @@ table{{border-collapse:collapse;width:100%;min-width:1100px}} th,td{{border-top:
 th{{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}} td ul{{margin:0;padding-left:1.1em}} small{{color:var(--mut)}}
 .thumbs{{display:flex;gap:12px;overflow-x:auto}} .thumbs a{{flex:0 0 auto;text-align:center;font-size:12px}} .thumbs img{{width:140px;display:block;border:1px solid var(--line)}}
 </style></head><body><div class="wrap">
-<h1>Golf carts in [town]: 8 pages + hub, original layout restored (2026-10-17)</h1>
+<h1>Golf Cart Rules by Town: 8 pages + hub, ready for review (2026-10-17)</h1>
 <p>Website repo, local branch <code>drafts/town-pages-2026-10-16</code> (worktree ~/dev/SlowGo-Website-drafts), not pushed, not deployed.
-Generator: <code>tools/town-pages/</code> (towns.py = content, build.py = pages + hub + sitemap, check.py = rulings checklist incl. a line-by-line diff against the original drafts 37c0472, review.py = this sheet).
+Generator: <code>tools/town-pages/</code> (towns.py = content, build.py = pages + hub + sitemap, check.py = rulings checklist, review.py = this sheet).
 The 8 published pages and the hub have no noindex and are in sitemap.xml on the branch; nothing is live until Ron's go on a bundled deploy.
 Screenshots: headless Chrome at 375 px (phone, 2x) and 1280 px (desktop), full page; no horizontal scroll at 375 px on any page.</p>
 <h2>Hub</h2><p><code>/cart-rules</code> &middot; <a href="screens/cart-rules-phone.png">phone</a> &middot; <a href="screens/cart-rules-desktop.png">desktop</a></p>
