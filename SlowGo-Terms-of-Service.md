@@ -1,6 +1,6 @@
 # SlowGo Terms of Service
 
-**Last updated: October 6, 2026** *(DRAFT, not live: re-date to the publication day)*
+**Last updated: October 16, 2026** *(DRAFT, not live: re-date to the publication day)*
 
 These Terms of Service (the "**Terms**") are a binding agreement between you and **BackRoad Apps LLC**, a New York limited liability company ("**BackRoad Apps**," "**we**," "**us**," or "**our**"), governing your use of the SlowGo mobile application (the "**App**"), the slowgoapp.com website (the "**Site**"), and the routing, mapping, weather, and related features we provide (together, the "**Service**").
 
@@ -18,7 +18,7 @@ You must be at least 18 years old to agree to these Terms and use the Service. Y
 
 ## 2. What SlowGo Does — and Does Not Do
 
-SlowGo is a navigation and trip-planning tool configured to prefer roads that available map data reports as posted at 35 miles per hour or below. Depending on your settings, the App may also display route segments that available data reports as posted between 36 and 45 miles per hour.
+SlowGo is a navigation and trip-planning tool configured to prefer roads that available map data reports as posted at 35 miles per hour or below. From version 1.5, the App is designed not to give directions along roads that available data reports as posted over 35 miles per hour, although a route may cross them (see Section 4.4). In earlier versions, depending on your settings, the App may also display route segments that available data reports as posted between 36 and 45 miles per hour.
 
 The Service provides route suggestions, map displays, place-search results, estimated travel times and distances, weather information, and related estimates. Those outputs are generated from software, GPS signals, your inputs, and third-party data that may be inaccurate, incomplete, delayed, or out of date. **They are provided for general informational and trip-planning purposes only and are not a substitute for your own attention, judgment, and compliance with the law.**
 
@@ -29,6 +29,8 @@ SlowGo does **not**:
 - know your vehicle's classification, equipment, registration, insurance, licensing, condition, range, or braking ability, or your local permissions;
 - provide real-time traffic, emergency, legal, engineering, or professional advice; or
 - replace your own observation, judgment, route planning, or compliance with signs and law.
+
+**Rules articles on the Site.** The Site may publish articles about golf cart and low-speed vehicle rules in particular states, towns, or communities. They are general educational information, not legal advice. They summarize official sources as of the date shown, may leave out exceptions, conditions, or recent changes, and do not mean that SlowGo or any government has approved a road, path, or crossing for your vehicle. Check the official source and the posted signs.
 
 ## 3. No Account; Device Responsibility
 
@@ -48,13 +50,15 @@ The Service's understanding of roads, posted speed limits, and access comes from
 
 Whether a golf cart or low-speed vehicle may lawfully travel on a particular road varies by state, county, municipality, and community, and may also depend on your vehicle's equipment, registration, insurance, and your driver's license status. The Service does not know your vehicle, your licensing, or your local rules, and **we make no representation that any suggested route — or any portion of one — is legal for you to drive.** Confirming and complying with the rules that apply to you is your responsibility.
 
-**Routes and speeds.** SlowGo is designed to prefer roads posted 35 mph or less, to flag stretches posted 36 to 45 mph, and to avoid routing along roads posted over 45 mph. Speed limits, road rules and map data come from public and third-party sources and can be missing, wrong or out of date, so SlowGo can make mistakes.
+**Routes and speeds.** SlowGo is designed to prefer roads posted 35 mph or less. From version 1.5, it is designed not to route along roads posted over 35 mph (see Section 4.4); earlier versions flag stretches posted 36 to 45 mph and avoid routing along roads posted over 45 mph. Speed limits, road rules and map data come from public and third-party sources and can be missing, wrong or out of date, so SlowGo can make mistakes.
 
 **Local rules.** SlowGo does not know or check every state, county, city or community rule for golf carts and low-speed vehicles, for example permits, registration, daylight-only or distance limits, or roads and paths where carts aren't allowed. A route SlowGo shows may still be closed to your vehicle. You are responsible for knowing and following the rules where you ride. If SlowGo's directions ever conflict with a sign, a law, a community rule or the conditions in front of you, follow the sign, law, rule or conditions.
 
-### 4.4 Higher-speed segments
+### 4.4 Roads posted over 35 mph
 
-By default, the Service is configured to prefer roads that available data reports as 35 mph or below. If you enable the optional setting that permits reported 36–45 mph segments, the App may identify those segments using a different visual treatment (amber) and an estimated duration. Any such classification or duration may be wrong.
+**Version 1.5 and later.** The Service is designed not to give directions along a road that available data reports as posted over 35 mph. A route may still cross such a road, including a short jog along it of up to about 150 feet to reach the other side, and may use a separately mapped path beside it or a golf cart lane identified from an official source. Where the data does not show a road's speed limit, the App may still route along it and will say that the limit is not known. A crossing, jog, path, or lane in a route is not a representation that it is legal, safe, or suitable for your vehicle; crossings in particular are regulated separately and may not be permitted for your vehicle. This design depends on incomplete and changing data and can fail. **It is a routing design, not a guarantee, warranty, or safety certification.**
+
+**Earlier versions.** By default, the Service is configured to prefer roads that available data reports as 35 mph or below. If you enable the optional setting that permits reported 36–45 mph segments, the App may identify those segments using a different visual treatment (amber) and an estimated duration. Any such classification or duration may be wrong.
 
 Enabling that setting, or selecting a route that includes such a segment, is your voluntary choice, and **you assume all risks of that choice.** It is not a representation that the segment is legal, safe, or suitable for your vehicle. The routing system is configured to avoid roads its current data reports above the selected threshold, but that configuration depends on incomplete and changing data and can fail. **It is a routing preference, not a guarantee, warranty, or safety certification.**
 
@@ -90,17 +94,17 @@ Subject to these Terms, we grant you a limited, personal, non-exclusive, non-tra
 
 ### 6.2 Restrictions
 
-You agree not to: (a) copy, modify, distribute, sell, lease, sublicense, or create derivative works of the Service; (b) reverse engineer, decompile, or attempt to extract the source code of the App, except to the extent applicable law expressly permits; (c) access the Service by automated means (including scraping, bots, or bulk requests) or use the Service to build a competing product or dataset; (d) interfere with or disrupt the Service or the servers and networks that provide it, or circumvent any technical or security measure; (e) use the Service to violate any law or the rights of any person; or (f) use the Service for commercial fleet, dispatch, or rideshare operations without our prior written agreement.
+You agree not to: (a) copy, modify, distribute, sell, lease, sublicense, or create derivative works of the Service; (b) reverse engineer, decompile, or attempt to extract the source code of the App, except to the extent applicable law expressly permits; (c) access the Service by automated means (including scraping, bots, or bulk requests) or use the Service to build a competing product or dataset; (d) interfere with or disrupt the Service or the servers and networks that provide it, or circumvent any technical or security measure; (e) use the Service to violate any law or the rights of any person; or (f) use the Service for commercial fleet, dispatch, or rideshare operations without our prior written agreement. These restrictions do not limit any rights you have directly under an open-source or open-data license (such as the Open Database License for OpenStreetMap data) to material that is available under that license.
 
 ## 7. Ownership, Trademarks, and Feedback
 
-The Service, including its software, design, text, graphics, logos, and trademarks (including "SlowGo" and "Life's better at 15 mph"), is owned by BackRoad Apps or its licensors and is protected by intellectual-property laws. Except for the limited license in Section 6, no rights are granted to you. Third-party map data incorporated in the Service is licensed as described in Section 8, and open-source components are provided under their own licenses, with notices available in the App.
+The Service, including its software, design, text, graphics, logos, and trademarks (including "SlowGo" and "Life's better at 15 mph"), is owned by BackRoad Apps or its licensors and is protected by intellectual-property laws. Except for the limited license in Section 6, no rights are granted to you. Third-party map data incorporated in the Service is licensed as described in Section 8, and open-source components are provided under their own licenses, with notices available in the App. We do not claim ownership of OpenStreetMap or other open data, or of public laws and records, and nothing in these Terms limits rights granted directly under those licenses.
 
 If you send us feedback, suggestions, or ideas about the Service, you grant us a perpetual, irrevocable, worldwide, royalty-free license to use them for any purpose, without obligation or compensation to you.
 
 ## 8. Third-Party Services and Data
 
-The Service relies on third-party data and services, including: map data © OpenStreetMap contributors, available under the Open Database License (openstreetmap.org/copyright); map tiles and styles by Stadia Maps and OpenMapTiles; place search (geocoding) by Stadia Maps; routing by the open-source Valhalla engine, running on a routing server operated by us; place search and details from OpenStreetMap community services (Overpass API); and weather data from the U.S. National Weather Service.
+The Service relies on third-party data and services, including: map data © OpenStreetMap contributors, available under the Open Database License (openstreetmap.org/copyright); map tiles and styles by Stadia Maps and OpenMapTiles; place search (geocoding) by Stadia Maps; routing by the open-source Valhalla engine, running on a routing server operated by us; place search and details from our own servers and from OpenStreetMap community services (Overpass API); and weather data from the U.S. National Weather Service.
 
 These providers are not affiliated with BackRoad Apps, we do not control their data or availability, and their data and services are provided under their own terms, which you agree to comply with where applicable. Attribution is displayed in the App's About screen and on the map, and must not be removed or obscured.
 
@@ -132,7 +136,7 @@ Our Privacy Policy (available at slowgoapp.com/privacy and in the App) describes
 
 ### 13.3 Bodily injury, death, and non-excludable liability
 
-The release in Section 5 and the other defenses in these Terms apply to bodily-injury and death claims only to the extent permitted by applicable law. The monetary cap in Section 13.2 does not purport to cap liability for bodily injury or death where such a cap is prohibited or would be unenforceable. **Nothing in these Terms excludes or limits liability for gross negligence, reckless conduct, willful or intentional misconduct, fraud, or any other liability that cannot lawfully be excluded or limited.** Some jurisdictions do not allow certain exclusions or limitations, so portions of this Section may not apply to you.
+The release in Section 5 and the other defenses in these Terms apply to bodily-injury and death claims only to the extent permitted by applicable law. The monetary cap in Section 13.2 does not apply to claims for bodily injury or death. **Nothing in these Terms excludes or limits liability for gross negligence, reckless conduct, willful or intentional misconduct, fraud, or any other liability that cannot lawfully be excluded or limited.** Some jurisdictions do not allow certain exclusions or limitations, so portions of this Section may not apply to you.
 
 ## 14. Indemnification for Wrongful Misuse
 
@@ -186,7 +190,7 @@ Only a court, and not an arbitrator, will decide disputes about the formation, e
 
 ### 16.5 Exceptions
 
-Either party may (a) bring an individual claim in small-claims court if it qualifies; (b) seek injunctive or other equitable relief in a court of competent jurisdiction to protect intellectual property or prevent unauthorized use of the Service; and (c) to the extent your applicable state law provides a non-waivable right to seek public injunctive relief, bring such a claim in a court of competent jurisdiction, which claim is severed from arbitration and stayed pending the arbitration of any individual claims.
+Either party may (a) bring an individual claim in small-claims court if it qualifies, and you may bring it in the small-claims court for the county where you live; (b) ask a court of competent jurisdiction for temporary or preliminary relief, pending arbitration, to stop actual or threatened infringement or misappropriation of intellectual property, or unauthorized access to, attacks on, or automated extraction from the Service's systems; and (c) to the extent your applicable state law provides a non-waivable right to seek public injunctive relief, bring such a claim in a court of competent jurisdiction, which claim is severed from arbitration and stayed pending the arbitration of any individual claims.
 
 ### 16.6 Class and representative action waiver
 
@@ -194,7 +198,7 @@ Either party may (a) bring an individual claim in small-claims court if it quali
 
 ### 16.7 Opt-out right
 
-You may opt out of this arbitration agreement and the class-action waiver by emailing hello@slowgoapp.com within **30 days** of first accepting these Terms, with the subject line "Arbitration Opt-Out" and stating your name and the email or device/acceptance identifier you use with the Service. Opting out will not affect any other provision of these Terms.
+You may opt out of this arbitration agreement and the class-action waiver by sending us a written opt-out within **30 days** of first accepting these Terms, by email to hello@slowgoapp.com (the subject line "Arbitration Opt-Out" helps) or by mail to the address in Section 21. Include enough for us to reasonably identify you, for example your name and the email address you are writing from, and the acceptance identifier shown in the App's Settings if you have it. We will honor any timely opt-out from which we can reasonably identify you, including if your acceptance identifier was deleted or is unavailable. We keep opt-out messages as records of your choice, as described in our Privacy Policy. Opting out will not affect any other provision of these Terms.
 
 ### 16.8 Changes to arbitration terms
 
@@ -202,7 +206,7 @@ If we make a material change to this Section 16, the change will apply prospecti
 
 ## 17. Governing Law and Judicial Venue
 
-These Terms and any dispute arising out of or relating to them or the Service are governed by the laws of the State of New York, without regard to its conflict-of-laws rules, except that Section 16 is governed by the Federal Arbitration Act. Subject to Section 16, any judicial proceeding will be brought exclusively in the state or federal courts located in Erie County, New York, and the parties consent to personal jurisdiction and venue there. Nothing in this Section deprives you of the mandatory consumer protections of the law of the place where you reside.
+These Terms and any dispute arising out of or relating to them or the Service are governed by the laws of the State of New York, without regard to its conflict-of-laws rules, except that Section 16 is governed by the Federal Arbitration Act. Subject to Section 16, and except for small-claims cases you bring in the county where you live under Section 16.5(a) and any venue that applicable law requires, any judicial proceeding will be brought exclusively in the state or federal courts located in Erie County, New York, and the parties consent to personal jurisdiction and venue there. Nothing in this Section deprives you of the mandatory consumer protections of the law of the place where you reside.
 
 ## 18. Suspension and Termination
 
