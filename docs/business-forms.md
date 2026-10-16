@@ -8,16 +8,25 @@ submitted to Netlify; everything was checked on a local static server only.
 **/business** (`SlowGo-Launch/business.html`, linked from the home page footer, in the sitemap): one
 section and one short form for each audience. Five Netlify forms:
 
-| Form name | Who | Asks for |
-|---|---|---|
-| `business-rental` | rental shops | name, shop, town/state, email; optional cart count, website, note |
-| `business-dealer` | dealers | name, dealership, town/state, email; optional carts sold a year, website, note |
-| `business-community` | communities / HOAs | name, community, town/state, email; optional role, homes, note |
-| `business-town` | towns / tourism boards | name, organisation, email, town/state; optional role, note |
-| `business-partner` | realtors / partners | name, company, town/state, email; optional note |
+| Form name | Who | Required | Optional |
+|---|---|---|---|
+| `business-rental` | rental shops | shop (`business`), `email`, town served (`town`), inquiry (`message`) | contact `name`, `phone`, `fleet_band` (carts rented) |
+| `business-dealer` | dealers | dealership, email, town served, inquiry | name, phone, `fleet_band` (carts sold a year) |
+| `business-community` | communities / HOAs | community, email, town, inquiry | name, phone |
+| `business-town` | towns / tourism boards | organisation, email, town, inquiry | name, phone |
+| `business-partner` | realtors / partners | company, email, town, inquiry | name, phone |
 
-No phone number is asked on these (outreach is email only, Ron 2026-10-17). Each form shows its next
-steps on the page after sending.
+Fields follow Ron's privacy ruling of 2026-10-17 (required = business name, contact email, service town,
+inquiry; optional = contact name, phone, fleet-size band). Website, role, home count and the free-number
+cart counts were dropped. `fleet_band` is one of `1-10`, `11-25`, `26-50`, `51-100`, `100+`. Each form
+says "Please don't include renter personal information or payment details." above the button, and a
+Privacy link beside the button goes to `/privacy#business-inquiries` (the anchor the policy update adds).
+Netlify registers the new field names (`phone`, `fleet_band`) at the deploy that ships them. Each form
+shows its next steps on the page after sending.
+
+The setup form (`fleet-setup`) follows the same rule for its contact part: shop name, email and the new
+`town` (town served) are required; contact name, shop phone (`shop_phone`) and `fleet_band` are optional.
+Without a shop phone the app shows no Call button; `draft-fleet.mjs` flags it.
 
 **/business/setup?t=<token>** (`SlowGo-Launch/business-setup.html`): fleet step 2, for a shop that said
 yes. Not linked anywhere, `noindex, nofollow` in the page and as an `X-Robots-Tag` header, not in the

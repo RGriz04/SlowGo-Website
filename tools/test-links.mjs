@@ -2,7 +2,7 @@
 // Local check of the counted-link function (no network, no Netlify): node tools/test-links.mjs
 // Exercises sourceFor/destinationFor and the default handler with a fake Blobs-free path.
 import assert from 'node:assert/strict';
-import handler, { sourceFor, platformFor, destinationFor, config } from '../netlify/functions/link.mjs';
+import handler, { sourceFor, platformFor, destinationFor, config, PLAY_URL } from '../netlify/functions/link.mjs';
 import { AD_LINKS, TOWN_LINKS } from '../netlify/counted-links.mjs';
 
 let n = 0; const ok = (name, fn) => { fn(); n++; console.log('ok', n, name); };
@@ -28,13 +28,15 @@ ok('config.path carries every ad link (bare and slash) and /t/:town', () => {
     .filter((p) => !['go', 'card', 'cards', 'rental'].includes(p));
   assert.deepEqual([...new Set(extra)].sort(), [...AD_LINKS].sort());
 });
-ok('routing: iPhone -> App Store tagged with the link, Android -> /android, computer -> home', () => {
+// Android goes to Google Play once PLAY_URL is set (android-launch-1_4), else to /android.
+const ANDROID_DEST = PLAY_URL || 'https://slowgoapp.com/android';
+ok('routing: iPhone -> App Store tagged with the link, Android -> Google Play (or /android), computer -> home', () => {
   const o = 'https://slowgoapp.com';
   assert.equal(platformFor('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)'), 'ios');
   assert.equal(platformFor('Mozilla/5.0 (Linux; Android 15; Pixel 9)'), 'android');
   assert.match(destinationFor('ios', 'fb2', o), /apps\.apple\.com\/app\/apple-store\/id6803226504\?pt=128827526&ct=fb2&mt=8$/);
   assert.match(destinationFor('ios', 't-tybee-island', o), /ct=t-tybee-island/);
-  assert.equal(destinationFor('android', 'asa', o), `${o}/android`);
+  assert.equal(destinationFor('android', 'asa', o), ANDROID_DEST);
   assert.equal(destinationFor('computer', 't-dunedin', o), `${o}/`);
 });
 // The handler end to end. Netlify Blobs isn't available here, so counting fails and (by design)
@@ -42,6 +44,6 @@ ok('routing: iPhone -> App Store tagged with the link, Android -> /android, comp
 const IOS = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)';
 const go = (path, ua) => handler(new Request(`https://slowgoapp.com${path}`, { headers: { 'user-agent': ua } }));
 let r = await go('/fb1', IOS); assert.equal(r.status, 302); assert.match(r.headers.get('location'), /ct=fb1/); n++; console.log('ok', n, 'handler: /fb1 on iPhone -> App Store ct=fb1 (count failure does not block)');
-r = await go('/t/dunedin/', 'Mozilla/5.0 (Linux; Android 15)'); assert.equal(r.headers.get('location'), 'https://slowgoapp.com/android'); n++; console.log('ok', n, 'handler: /t/dunedin/ on Android -> /android');
+r = await go('/t/dunedin/', 'Mozilla/5.0 (Linux; Android 15)'); assert.equal(r.headers.get('location'), ANDROID_DEST); n++; console.log('ok', n, 'handler: /t/dunedin/ on Android -> Google Play (or /android)');
 r = await go('/t/nowhere', IOS); assert.equal(r.headers.get('location'), 'https://slowgoapp.com/'); n++; console.log('ok', n, 'handler: unknown town -> home, uncounted');
 console.log(`${n}/${n} passed`);

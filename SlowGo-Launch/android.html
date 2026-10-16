@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>SlowGo for Android — almost here</title>
-<meta name="description" content="SlowGo for Android is almost here. Check back soon." />
+<title>SlowGo for Android — free on Google Play</title>
+<meta name="description" content="SlowGo is on Google Play: navigation for golf carts and LSVs, free, Android 7.0 or later." />
 <meta name="theme-color" content="#0B1F15" />
 
 <!-- Smart App Banner. Safari on iPhone and iPad turns this into a native
@@ -12,9 +12,9 @@
      tag Apple needs; the banner links to the listing on its own. -->
 <meta name="apple-itunes-app" content="app-id=6803226504">
 
-<!-- Where Android visitors to /go, /card, /rental and /f/<shop> land until SlowGo is on
-     Google Play (repo-root netlify/functions/link.mjs PLAY_URL). Temporary, so kept out of the index. -->
-<meta name="robots" content="noindex, follow" />
+<!-- SlowGo's Android page. Android visitors to /go, /card, /rental and /f/<shop> now go straight
+     to Google Play (repo-root netlify/functions/link.mjs PLAY_URL); this page is for people who type
+     or are sent slowgoapp.com/android. Indexed since the Android launch (in sitemap.xml). -->
 
 <!-- favicon set (2026-10-17) -->
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -23,9 +23,9 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..600,30..100,0..1;1,9..144,400..600,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preload" href="/fonts/Fraunces-Roman.latin.var.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/Inter.latin.var.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/fonts/fonts.css" />
 
 <style>
   :root{
@@ -154,6 +154,10 @@
     margin:32px 0 0;
     max-width:56ch;
   }
+  .play-badge{ display:inline-block; line-height:0; margin:28px 0 0 -14px; border-radius:12px; }
+  .play-badge:focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
+  .play-badge img{ display:block; width:233px; height:auto; }
+  .play-legal{ font-size:12px; color:var(--drift); margin:28px 0 0; }
   .missing .body{
     font-size:17px;
     line-height:1.78;
@@ -273,14 +277,20 @@
 <main class="missing" id="doc">
   <div class="wrap">
     <p class="eyebrow"><span class="dot"></span> Android</p>
-    <h1>SlowGo for Android is <em>almost here</em>.</h1>
+    <h1>SlowGo is on <em>Android</em>.</h1>
 
-    <p class="lede">We're finishing it up and testing it with riders in Florida and Georgia. Check back soon.</p>
+    <p class="lede">Free on Google Play, for Android 7.0 or later. It's the same SlowGo as on the iPhone: slow roads first, honest when it isn't, in Florida, Georgia and Arizona.</p>
 
-    <p class="body">On an iPhone? SlowGo is free on the App Store today.</p>
+    <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo">
+      <img src="/google-play-badge.png" width="233" height="90" alt="Get it on Google Play" />
+    </a>
+
+    <p class="body">If anything's off on Android, email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. On an iPhone? SlowGo is free <a href="/go">on the App Store</a>.</p>
+
+    <p class="play-legal">Google Play and the Google Play logo are trademarks of Google LLC.</p>
 
     <nav class="onward" aria-labelledby="onward-title">
-      <h2 id="onward-title">In the meantime</h2>
+      <h2 id="onward-title">More about SlowGo</h2>
       <ul>
         <li>
           <a href="/">SlowGo home</a>

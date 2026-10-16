@@ -38,4 +38,8 @@ ok('submission: Netlify export shape (fields under data), picks 1-8, honeypot re
   const s = normalizeSubmission([{ id: 'x', data: { business: 'A', pick_1_name: 'P1', pick_3_name: 'P3', pick_3_note: 'n', terms: 'accepted', 'bot-field': '' } }]);
   assert.deepEqual(s.picks.map((p) => p.n), [1, 3]); assert.equal(s.terms, true); assert.equal(s.honeypot, '');
 });
+ok('submission: B11 fields (2026-10-17): town and fleet band read, contact name optional', () => {
+  const s = normalizeSubmission({ data: { business: 'A', email: 'a@example.com', town: ' Dunedin, FL ', fleet_band: '11-25' } });
+  assert.equal(s.town, 'Dunedin, FL'); assert.equal(s.fleetBand, '11-25'); assert.equal(s.name, ''); assert.equal(s.shopPhone, '');
+});
 console.log(`${n}/${n} passed`);

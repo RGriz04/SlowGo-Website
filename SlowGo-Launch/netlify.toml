@@ -30,6 +30,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Self-hosted fonts (2026-10-17). A rebuilt font gets a new file name, so the woff2 files cache
+# for a year. fonts.css is covered by /*.css above.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # HTML stays fresh
 [[headers]]
   for = "/*.html"

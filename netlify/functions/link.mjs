@@ -2,7 +2,7 @@
 // Added 2026-10-17 (drafts, not deployed): ad links /fb1 /fb2 /fb3 (Facebook ad variants) and /asa
 // (Apple Search Ads), and one download link per town page, /t/<town> (counted as "t-<town>").
 //   iPhone   → the App Store, tagged with the link's source (App Store Connect → Campaigns)
-//   Android  → /android ("almost here") until PLAY_URL is set, then Google Play
+//   Android  → Google Play (PLAY_URL; /android if it is ever set back to null)
 //   computer → the home page
 //   preview bots (iMessage, Facebook, Slack…) → the /go page and its card; not counted
 // Each human visit adds 1 to "<source>/<UTC day>" in Netlify Blobs. Totals only: no IP, no
@@ -16,8 +16,8 @@ export const APP_ID = '6803226504';
 // App Store Connect provider token (pt=), from the campaign link Ron generated 2026-10-05.
 // Not a secret: it appears in every public App Store campaign link. Each link sets its own ct.
 export const PROVIDER_TOKEN = '128827526';
-// Google Play listing. Null until Android launches; set it and every Android visit goes there.
-export const PLAY_URL = null;
+// Google Play listing (Android launch, 1.4). Set back to null and Android visits go to /android.
+export const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo';
 
 const BOT = /bot|crawler|spider|facebookexternalhit|facebot|slackbot|twitterbot|linkedinbot|discordbot|whatsapp|telegrambot|skypeuripreview|embedly|pinterest|vkshare|redditbot|applebot|googlebot|bingbot|preview/i;
 

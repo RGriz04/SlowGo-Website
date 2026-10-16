@@ -10,6 +10,8 @@
     "kind": "rental",
     "name": "Sample Owner",
     "email": "owner@example.com",
+    "town": "Dunedin, FL",
+    "fleet_band": "11-25",
     "shop_phone": "(727) 555-0148",
     "service_phone": "",
     "brand_color": "#1F6F8B",
