@@ -6,7 +6,7 @@
 import html, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from towns import FAQ_ORDER
-from build import plain, UPDATED, ORIGIN, TOWNS, is_state, state_towns
+from build import plain, UPDATED, ORIGIN, TOWNS, is_state, state_towns, page_path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SITE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "SlowGo-Launch")
@@ -46,7 +46,7 @@ def check_faq_ld(page, src):
 pub = [t for t in TOWNS if t["publish"]]
 for t in TOWNS:
     page = f"golf-carts/{t['slug']}.html"
-    src = open(os.path.join(SITE, page), encoding="utf-8").read()
+    src = open(page_path(t, SITE), encoding="utf-8").read()
     body = src.split("<body>", 1)[1].split('<footer class="foot"', 1)[0]
     noindex = 'name="robots" content="noindex' in src
     ok(noindex != t["publish"], f"{page}: noindex {'absent' if t['publish'] else 'present'}")
@@ -63,7 +63,7 @@ for t in TOWNS:
         ok(not t["publish"] and "HELD: Ron ruling 2026-10-17, never name New York in public copy" in src, f"{page}: NY held marker")
         for o in TOWNS:
             if o is not t:
-                osrc = open(os.path.join(SITE, f"golf-carts/{o['slug']}.html"), encoding="utf-8").read()
+                osrc = open(page_path(o, SITE), encoding="utf-8").read()
                 ok(f"/golf-carts/{t['slug']}" not in osrc, f"{page}: not linked from {o['slug']}")
     ok("SlowGo is an independent golf cart navigation app. This page isn&rsquo;t affiliated with or endorsed by" in body, f"{page}: independence line")
     ok(body.index('class="indep"') < body.index("<h1>"), f"{page}: independence line at the top")
@@ -109,6 +109,18 @@ for t in TOWNS:
         ok(first and first.group(1) == t["slug"], f"hub: {t['state']} state page first in its group")
 ok(not re.search(r"<img\b|<script", hub), "hub: no images, no JavaScript")
 ok("<svg" not in hub.split("<body>", 1)[1], "hub: no drawn map")
+
+# Ron 2026-10-17: no New York page may exist anywhere in the publish folder (a file there would ship).
+for t in TOWNS:
+    if t.get("never_publish"):
+        ok(not page_path(t, SITE).startswith(os.path.abspath(SITE)) and os.path.exists(page_path(t, SITE)), f"{t['slug']}: held draft lives outside SlowGo-Launch")
+ny_files = []
+for dp, _, fs in os.walk(SITE):
+    for fn in fs:
+        fp = os.path.join(dp, fn)
+        if "new-york" in fn.lower() or (fn.endswith((".html", ".xml", ".txt")) and "never name New York" in open(fp, encoding="utf-8", errors="ignore").read()):
+            ny_files.append(os.path.relpath(fp, SITE))
+ok(not ny_files, f"no New York page anywhere under the publish folder ({ny_files})")
 
 sm = open(os.path.join(SITE, "sitemap.xml"), encoding="utf-8").read()
 locs = re.findall(r"<loc>(.*?)</loc>", sm)

@@ -36,6 +36,14 @@ ORIGIN = "https://slowgoapp.com"
 UPDATED = "October 2026"      # title "(Updated ...)" and "Rules checked ..."; change when the rules are re-checked
 LASTMOD = "2026-10-16"        # sitemap lastmod for every town page and the hub
 STATE_ORDER = ["Florida", "Georgia", "Arizona"]
+HELD_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "held")   # never_publish pages: outside the publish folder
+
+
+def page_path(t, site=None):
+    """Where a page's file lives. never_publish pages (the New York draft) go to tools/town-pages/held/, never SlowGo-Launch."""
+    if t.get("never_publish"):
+        return os.path.join(HELD_DIR, t["slug"] + ".html")
+    return os.path.join(site or SITE, "golf-carts", t["slug"] + ".html")
 
 safety = open(os.path.join(SITE, "safety.html"), encoding="utf-8").read()
 STYLE = re.search(r"<style>(.*?)</style>", safety, re.S).group(1)
@@ -315,7 +323,8 @@ if __name__ == "__main__":
         print(links_text(pub)); sys.exit(0)
     os.makedirs(os.path.join(SITE, "golf-carts"), exist_ok=True)
     for t in TOWNS:
-        with open(os.path.join(SITE, "golf-carts", t["slug"] + ".html"), "w", encoding="utf-8") as f:
+        os.makedirs(os.path.dirname(page_path(t)), exist_ok=True)
+        with open(page_path(t), "w", encoding="utf-8") as f:
             f.write(town_page(t))
     with open(os.path.join(SITE, "cart-rules.html"), "w", encoding="utf-8") as f:
         f.write(hub_page(pub))
