@@ -15,8 +15,8 @@ ok('ad links count under their own name', () => {
   for (const a of ['fb1', 'fb2', 'fb3', 'asa']) { assert.equal(sourceFor(`/${a}`), a); assert.equal(sourceFor(`/${a.toUpperCase()}/`), a); }
   assert.equal(sourceFor('/fb4'), null);
 });
-ok('the hub + 8 town links count as t-<town>; held and unknown towns do not', () => {
-  assert.equal(TOWN_LINKS.length, 9); assert.equal(sourceFor('/t/cart-rules'), 't-cart-rules');
+ok('the hub, town, county and state links count as t-<name>; held and unknown towns do not', () => {
+  assert.equal(TOWN_LINKS.length, 42); assert.equal(sourceFor('/t/arizona'), 't-arizona'); assert.equal(sourceFor('/t/cart-rules'), 't-cart-rules');
   for (const t of TOWN_LINKS) assert.equal(sourceFor(`/t/${t}`), `t-${t}`);
   assert.equal(sourceFor('/t/captiva'), null); assert.equal(sourceFor('/t/gulf-breeze'), null); assert.equal(sourceFor('/t/'), null);
   for (const t of TOWN_LINKS) assert.ok(`t-${t}`.length <= 40, 'Apple ct allows 40 characters');
