@@ -273,6 +273,10 @@
   }
   .bizform button[type=submit]:hover{ background:var(--amber-soft); }
   .bizform button[type=submit]:disabled{ opacity:.6; cursor:default; }
+  .bizform .nopii{ font-size:15px; line-height:1.5; color:var(--forest); margin:16px 0 0; }
+  .bizform .submitrow{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:14px; }
+  .bizform .submitrow button[type=submit]{ margin-top:0; }
+  .bizform .submitrow .privlink{ font-size:15px; color:var(--forest); text-decoration:underline; text-underline-offset:3px; }
   .bizform .note{ font-size:14px; line-height:1.6; color:var(--moss); margin:14px 0 0; }
   .bizform .form-error{ color:#9B2C1F; font-size:15px; margin:12px 0 0; }
   .bizform .confirm{ display:none; margin:0; }
@@ -338,9 +342,11 @@
               <div><label for="setup-business">Shop name, as riders should see it</label><input id="setup-business" type="text" name="business" maxlength="40" required aria-required="true" autocomplete="organization" /></div>
               <div><label for="setup-kind">You are a</label>
                 <select id="setup-kind" name="kind" required aria-required="true"><option value="rental">Rental shop</option><option value="dealer">Dealer</option></select></div>
-              <div><label for="setup-name">Your name</label><input id="setup-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
+              <div><label for="setup-name">Your name <span class="opt">(optional)</span></label><input id="setup-name" type="text" name="name" autocomplete="name" /></div>
               <div><label for="setup-email">Email</label><input id="setup-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-              <div><label for="setup-shop_phone">Shop phone, for the Call button</label><input id="setup-shop_phone" type="tel" name="shop_phone" required aria-required="true" autocomplete="tel" placeholder="(352) 555-0147" /></div>
+              <div><label for="setup-town">Town you serve, and state</label><input id="setup-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+              <div><label for="setup-fleet_band">How many carts in your fleet? <span class="opt">(optional)</span></label><select id="setup-fleet_band" name="fleet_band"><option value="">Choose one</option><option value="1-10">1 to 10</option><option value="11-25">11 to 25</option><option value="26-50">26 to 50</option><option value="51-100">51 to 100</option><option value="100+">More than 100</option></select></div>
+              <div><label for="setup-shop_phone">Shop phone, for the Call button <span class="opt">(optional; without it there’s no Call button)</span></label><input id="setup-shop_phone" type="tel" name="shop_phone" autocomplete="tel" placeholder="(352) 555-0147" /></div>
               <div><label for="setup-service_phone">Call-for-service number <span class="opt">(dealers; optional)</span></label><input id="setup-service_phone" type="tel" name="service_phone" autocomplete="tel" /></div>
             </div>
           </fieldset>
@@ -451,8 +457,9 @@
               <span>I accept the <a href="#fleet-terms-link-pending" id="terms-link">SlowGo fleet terms</a>, and I confirm the shop may use this logo and these details, and lets SlowGo show them in the app and on its cards.</span></label>
           </fieldset>
 
-          <button type="submit">Send to Ron</button>
-          <p class="note">This goes only to Ron. He uses it to set up your shop in SlowGo and print your cards. It is stored by Netlify, our website host. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="nopii">Please don’t include renter personal information or payment details.</p>
+          <div class="submitrow"><button type="submit">Send to Ron</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
+          <p class="note">This goes only to Ron. He uses it to set up your shop in SlowGo and print your cards. It is stored by Netlify, our website host.</p>
           <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
         </div>
         <div class="confirm" role="status" aria-live="polite">

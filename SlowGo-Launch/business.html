@@ -288,6 +288,10 @@
   }
   .bizform button[type=submit]:hover{ background:var(--amber-soft); }
   .bizform button[type=submit]:disabled{ opacity:.6; cursor:default; }
+  .bizform .nopii{ font-size:15px; line-height:1.5; color:var(--forest); margin:16px 0 0; }
+  .bizform .submitrow{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:14px; }
+  .bizform .submitrow button[type=submit]{ margin-top:0; }
+  .bizform .submitrow .privlink{ font-size:15px; color:var(--forest); text-decoration:underline; text-underline-offset:3px; }
   .bizform .note{ font-size:14px; line-height:1.6; color:var(--moss); margin:14px 0 0; }
   .bizform .form-error{ color:#9B2C1F; font-size:15px; margin:12px 0 0; }
   .bizform .confirm{ display:none; margin:0; }
@@ -332,16 +336,17 @@
         <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
         <div class="fields">
           <div class="row">
-          <div><label for="rental-name">Your name</label><input id="rental-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
           <div><label for="rental-business">Shop name</label><input id="rental-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
-          <div><label for="rental-town">Town and state</label><input id="rental-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
           <div><label for="rental-email">Email</label><input id="rental-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-          <div><label for="rental-fleet_size">How many carts do you rent? <span class="opt">(optional)</span></label><input id="rental-fleet_size" type="number" name="fleet_size" min="1" max="5000" inputmode="numeric" /></div>
-          <div><label for="rental-website">Your website <span class="opt">(optional)</span></label><input id="rental-website" type="text" name="website" autocomplete="url" placeholder="yourshop.com" /></div>
-          <div class="full"><label for="rental-message">Anything else we should know <span class="opt">(optional)</span></label><textarea id="rental-message" name="message" ></textarea></div>
+          <div><label for="rental-town">Town you serve, and state</label><input id="rental-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div><label for="rental-name">Your name <span class="opt">(optional)</span></label><input id="rental-name" type="text" name="name" autocomplete="name" /></div>
+          <div><label for="rental-phone">Phone <span class="opt">(optional)</span></label><input id="rental-phone" type="tel" name="phone" autocomplete="tel" /></div>
+          <div><label for="rental-fleet_band">How many carts do you rent? <span class="opt">(optional)</span></label><select id="rental-fleet_band" name="fleet_band"><option value="">Choose one</option><option value="1-10">1 to 10</option><option value="11-25">11 to 25</option><option value="26-50">26 to 50</option><option value="51-100">51 to 100</option><option value="100+">More than 100</option></select></div>
+          <div class="full"><label for="rental-message">What would you like to know?</label><textarea id="rental-message" name="message" required aria-required="true"></textarea></div>
           </div>
-          <button type="submit">Tell me more</button>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="nopii">Please don’t include renter personal information or payment details.</p>
+          <div class="submitrow"><button type="submit">Tell me more</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
           <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
         </div>
         <div class="confirm" role="status" aria-live="polite">
@@ -363,16 +368,17 @@
         <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
         <div class="fields">
           <div class="row">
-          <div><label for="dealer-name">Your name</label><input id="dealer-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
           <div><label for="dealer-business">Dealership name</label><input id="dealer-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
-          <div><label for="dealer-town">Town and state</label><input id="dealer-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
           <div><label for="dealer-email">Email</label><input id="dealer-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-          <div><label for="dealer-carts_per_year">Roughly how many carts do you sell a year? <span class="opt">(optional)</span></label><input id="dealer-carts_per_year" type="number" name="carts_per_year" min="1" max="100000" inputmode="numeric" /></div>
-          <div><label for="dealer-website">Your website <span class="opt">(optional)</span></label><input id="dealer-website" type="text" name="website" autocomplete="url" /></div>
-          <div class="full"><label for="dealer-message">Anything else we should know <span class="opt">(optional)</span></label><textarea id="dealer-message" name="message" ></textarea></div>
+          <div><label for="dealer-town">Town you serve, and state</label><input id="dealer-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div><label for="dealer-name">Your name <span class="opt">(optional)</span></label><input id="dealer-name" type="text" name="name" autocomplete="name" /></div>
+          <div><label for="dealer-phone">Phone <span class="opt">(optional)</span></label><input id="dealer-phone" type="tel" name="phone" autocomplete="tel" /></div>
+          <div><label for="dealer-fleet_band">How many carts do you sell a year? <span class="opt">(optional)</span></label><select id="dealer-fleet_band" name="fleet_band"><option value="">Choose one</option><option value="1-10">1 to 10</option><option value="11-25">11 to 25</option><option value="26-50">26 to 50</option><option value="51-100">51 to 100</option><option value="100+">More than 100</option></select></div>
+          <div class="full"><label for="dealer-message">What would you like to know?</label><textarea id="dealer-message" name="message" required aria-required="true"></textarea></div>
           </div>
-          <button type="submit">Tell me more</button>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="nopii">Please don’t include renter personal information or payment details.</p>
+          <div class="submitrow"><button type="submit">Tell me more</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
           <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
         </div>
         <div class="confirm" role="status" aria-live="polite">
@@ -394,16 +400,16 @@
         <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
         <div class="fields">
           <div class="row">
-          <div><label for="community-name">Your name</label><input id="community-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
           <div><label for="community-business">Community or HOA name</label><input id="community-business" type="text" name="business" required aria-required="true" /></div>
-          <div><label for="community-town">Town and state</label><input id="community-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
           <div><label for="community-email">Email</label><input id="community-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-          <div><label for="community-role">Your role <span class="opt">(optional)</span></label><input id="community-role" type="text" name="role" autocomplete="organization-title" placeholder="e.g. board member, manager" /></div>
-          <div><label for="community-homes">About how many homes? <span class="opt">(optional)</span></label><input id="community-homes" type="number" name="homes" min="1" max="200000" inputmode="numeric" /></div>
-          <div class="full"><label for="community-message">Anything about your roads, paths or rules we should know <span class="opt">(optional)</span></label><textarea id="community-message" name="message" ></textarea></div>
+          <div><label for="community-town">Town and state</label><input id="community-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div><label for="community-name">Your name <span class="opt">(optional)</span></label><input id="community-name" type="text" name="name" autocomplete="name" /></div>
+          <div><label for="community-phone">Phone <span class="opt">(optional)</span></label><input id="community-phone" type="tel" name="phone" autocomplete="tel" /></div>
+          <div class="full"><label for="community-message">What would you like to know? Anything about your roads, paths or rules helps.</label><textarea id="community-message" name="message" required aria-required="true"></textarea></div>
           </div>
-          <button type="submit">Get in touch</button>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="nopii">Please don’t include renter personal information or payment details.</p>
+          <div class="submitrow"><button type="submit">Get in touch</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
           <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
         </div>
         <div class="confirm" role="status" aria-live="polite">
@@ -425,15 +431,16 @@
         <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
         <div class="fields">
           <div class="row">
-          <div><label for="town-name">Your name</label><input id="town-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
           <div><label for="town-business">Town, county or organization</label><input id="town-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
-          <div><label for="town-role">Your role <span class="opt">(optional)</span></label><input id="town-role" type="text" name="role" autocomplete="organization-title" /></div>
           <div><label for="town-email">Email</label><input id="town-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
           <div><label for="town-town">Town and state</label><input id="town-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
-          <div class="full"><label for="town-message">What would you like us to know or change? <span class="opt">(optional)</span></label><textarea id="town-message" name="message" ></textarea></div>
+          <div><label for="town-name">Your name <span class="opt">(optional)</span></label><input id="town-name" type="text" name="name" autocomplete="name" /></div>
+          <div><label for="town-phone">Phone <span class="opt">(optional)</span></label><input id="town-phone" type="tel" name="phone" autocomplete="tel" /></div>
+          <div class="full"><label for="town-message">What would you like us to know or change?</label><textarea id="town-message" name="message" required aria-required="true"></textarea></div>
           </div>
-          <button type="submit">Get in touch</button>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="nopii">Please don’t include renter personal information or payment details.</p>
+          <div class="submitrow"><button type="submit">Get in touch</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
           <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
         </div>
         <div class="confirm" role="status" aria-live="polite">
@@ -455,14 +462,16 @@
         <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
         <div class="fields">
           <div class="row">
-          <div><label for="partner-name">Your name</label><input id="partner-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
           <div><label for="partner-business">Company</label><input id="partner-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
-          <div><label for="partner-town">Town and state</label><input id="partner-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
           <div><label for="partner-email">Email</label><input id="partner-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-          <div class="full"><label for="partner-message">What do you have in mind? <span class="opt">(optional)</span></label><textarea id="partner-message" name="message" ></textarea></div>
+          <div><label for="partner-town">Town you work in, and state</label><input id="partner-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div><label for="partner-name">Your name <span class="opt">(optional)</span></label><input id="partner-name" type="text" name="name" autocomplete="name" /></div>
+          <div><label for="partner-phone">Phone <span class="opt">(optional)</span></label><input id="partner-phone" type="tel" name="phone" autocomplete="tel" /></div>
+          <div class="full"><label for="partner-message">What do you have in mind?</label><textarea id="partner-message" name="message" required aria-required="true"></textarea></div>
           </div>
-          <button type="submit">Get in touch</button>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="nopii">Please don’t include renter personal information or payment details.</p>
+          <div class="submitrow"><button type="submit">Get in touch</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
           <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
         </div>
         <div class="confirm" role="status" aria-live="polite">

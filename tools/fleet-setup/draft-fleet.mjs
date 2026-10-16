@@ -60,7 +60,7 @@ export function normalizeSubmission(raw) {
   return {
     id: s.id || null, created: s.created_at || null, form: s.form_name || null,
     token: str('token'), business: str('business'), kind: str('kind') === 'dealer' ? 'dealer' : 'rental',
-    name: str('name'), email: str('email'), shopPhone: str('shop_phone'), servicePhone: str('service_phone'),
+    name: str('name'), email: str('email'), town: str('town'), fleetBand: str('fleet_band'), shopPhone: str('shop_phone'), servicePhone: str('service_phone'),
     brandColor: /^#[0-9a-f]{6}$/i.test(str('brand_color')) ? str('brand_color').toUpperCase() : null,
     brandColorRaw: str('brand_color'),
     returnAddress: str('return_address'), returnLabel: str('return_label'),
@@ -279,7 +279,9 @@ export async function draft(file, opts) {
 
   // Required bits.
   if (!sub.terms) flag('Fleet terms box NOT ticked. Do not set up the shop until it is.');
-  if (!phoneE164(sub.shopPhone)) flag(`Shop phone "${sub.shopPhone}" is not a 10-digit US/Canada number.`);
+  if (!sub.shopPhone) flag('No shop phone (optional on the form since 2026-10-17): the app shows no Call button unless the shop sends one.');
+  else if (!phoneE164(sub.shopPhone)) flag(`Shop phone "${sub.shopPhone}" is not a 10-digit US/Canada number.`);
+  if (!sub.town) flag('No service town in the submission (required on the form since 2026-10-17).');
   if (sub.kind === 'dealer' && sub.servicePhone && !phoneE164(sub.servicePhone)) flag(`Service number "${sub.servicePhone}" is not a 10-digit number.`);
   if (sub.brandColorRaw && !sub.brandColor) flag(`Brand colour "${sub.brandColorRaw}" is not #RRGGBB; ignored.`);
   if (sub.welcome.length > 120) flag('Welcome line is over 120 characters.');
@@ -347,7 +349,8 @@ export async function draft(file, opts) {
     servicePhone: phoneE164(sub.servicePhone)?.e164 || sub.servicePhone || null,
     returnAddress: sub.returnAddress || null,
     cards: { quantity: sub.cardQty, shipTo: sub.shipName || null, address: sub.shipAddress || null },
-    contact: { name: sub.name, email: sub.email },
+    contact: { name: sub.name || null, email: sub.email },
+    serviceTown: sub.town || null, fleetBand: sub.fleetBand || null,
     picksBeyondFive: usable.slice(5).map((m) => ({ name: m.pick.name, note: m.pick.note, match: m.best })),
     termsAccepted: sub.terms, submittedAt: sub.created, netlifyId: sub.id,
   };
@@ -374,7 +377,8 @@ export async function draft(file, opts) {
     `Drafted ${date} by tools/fleet-setup/draft-fleet.mjs from ${path.basename(file)}. Nothing was sent, published or deployed.`,
     '',
     `Link:      ${url}   (not live until the id is in netlify/fleet-shops.mjs)`,
-    `Contact:   ${sub.name} <${sub.email}>`,
+    `Contact:   ${sub.name ? `${sub.name} ` : ''}<${sub.email}>`,
+    `Town:      ${sub.town || '?'}${sub.fleetBand ? `   Fleet: ${sub.fleetBand} carts` : ''}`,
     `Phone:     ${profile.phoneLabel}${sub.servicePhone ? `   Service: ${sub.servicePhone}` : ''}`,
     `Return:    ${sub.kind === 'rental' ? (hasPin ? `${sub.returnLat}, ${sub.returnLng}` : 'NO PIN') + (sub.returnAddress ? `  (${sub.returnAddress})` : '') : 'dealer, none'}`,
     `Area:      ${area.name}, ${area.state}`,
