@@ -3,19 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<!-- DRAFT 2026-10-16: not published, not linked from any page, not in sitemap.xml or llms.txt.
-     The noindex line below must stay until Ron approves this page; going live is a separate,
-     counted Netlify deploy (see memory: netlify-deploy-budget, website-deploy-additive-first). -->
-<meta name="robots" content="noindex, nofollow" />
-<title>Golf carts in St. Pete Beach — SlowGo</title>
-<meta name="description" content="The golf cart rules in St. Pete Beach, Florida, in plain words, with links to the official sources." />
+<!-- Built by tools/town-pages/build.py from towns.py: edit those, not this file. -->
+<title>Golf Cart Rules in St. Pete Beach, FL (Updated October 2026)</title>
+<meta name="description" content="St. Pete Beach lets golf carts use its quieter city streets: the ones posted 25 mph or less. Carts need a city registration and decal, and the driver needs a driver’s license." />
 <meta name="theme-color" content="#0B1F15" />
 <meta name="apple-itunes-app" content="app-id=6803226504">
 <link rel="canonical" href="https://slowgoapp.com/golf-carts/st-pete-beach" />
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Golf carts in St. Pete Beach — SlowGo" />
-<meta property="og:description" content="The golf cart rules in St. Pete Beach, Florida, in plain words, with links to the official sources." />
+<meta property="og:title" content="Golf Cart Rules in St. Pete Beach, FL (Updated October 2026)" />
+<meta property="og:description" content="St. Pete Beach lets golf carts use its quieter city streets: the ones posted 25 mph or less. Carts need a city registration and decal, and the driver needs a driver’s license." />
 <meta property="og:url" content="https://slowgoapp.com/golf-carts/st-pete-beach" />
 <meta property="og:image" content="https://slowgoapp.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -24,8 +21,8 @@
 <meta property="og:site_name" content="SlowGo" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Golf carts in St. Pete Beach — SlowGo" />
-<meta name="twitter:description" content="The golf cart rules in St. Pete Beach, Florida, in plain words, with links to the official sources." />
+<meta name="twitter:title" content="Golf Cart Rules in St. Pete Beach, FL (Updated October 2026)" />
+<meta name="twitter:description" content="St. Pete Beach lets golf carts use its quieter city streets: the ones posted 25 mph or less. Carts need a city registration and decal, and the driver needs a driver’s license." />
 <meta name="twitter:image" content="https://slowgoapp.com/og-image.png" />
 <meta name="twitter:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
 
@@ -248,21 +245,96 @@
     .foot-bottom{ flex-direction:column; gap:14px; align-items:flex-start; }
   }
 
-  /* -------- Town pages (draft 2026-10-16) -------- */
+  /* -------- Town pages (tools/town-pages) -------- */
   .prose ul{ margin:16px 0 0; padding-left:1.2em; }
   .prose li{ margin:6px 0 0; }
-  .checked{
-    margin:28px 0 0; font-family:var(--mono); font-size:12px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--drift);
-  }
-  .signs{
-    margin:40px 0 0; padding:20px 24px; background:var(--oat);
-    border-left:3px solid var(--amber); border-radius:4px; color:var(--forest);
-  }
+  .indep{ max-width:74ch; margin:0 0 28px; padding:12px 16px; border:1px solid rgba(160,148,132,.45);
+    border-radius:6px; font-size:14px; line-height:1.6; color:var(--moss); }
+  .indep p{ margin:0; } .indep p + p{ margin-top:6px; }
+  .meta{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--drift); }
+  .prose .meta{ margin:14px 0 0; }
+  .signs{ margin:40px 0 0; padding:20px 24px; background:var(--oat); border-left:3px solid var(--amber);
+    border-radius:4px; color:var(--forest); }
   .signs p{ margin:0; }
   .prose .sources{ list-style:none; padding:0; }
-  .prose .sources li{ margin:12px 0 0; padding-left:0; }
+  .prose .sources li{ margin:12px 0 0; }
+  .diagram{ margin:36px 0 0; }
+  .diagram svg{ display:block; width:100%; height:auto; max-width:520px; }
+  .legend{ list-style:none; padding:0; margin:12px 0 0; font-size:14px; line-height:1.5; }
+  .prose .legend li{ margin:6px 0 0; display:flex; gap:10px; align-items:center; }
+  .sw{ flex:0 0 28px; height:12px; display:inline-block; }
+  .sw-ok{ border-top:4px solid #6E9A6A; height:0; }
+  .sw-no{ border-top:8px solid #B5452F; height:0; }
+  .sw-path{ border-top:3px dashed #8A5620; height:0; }
+  .sw-dot{ flex-basis:14px; height:14px; border-radius:50%; border:3px solid var(--forest); background:var(--cream); margin:0 7px; }
+  .sw-x{ flex-basis:14px; height:14px; margin:0 7px; font:700 16px/14px var(--sans); color:var(--forest); text-align:center; }
+  .diagram figcaption{ margin:10px 0 0; font-size:13.5px; line-height:1.55; color:var(--moss); }
+  .get{ display:inline-block; margin:20px 0 0; padding:12px 22px; border-radius:999px; background:var(--forest);
+    color:var(--cream); font-weight:600; font-size:16px; text-decoration:none; }
+  .get:hover{ background:var(--charcoal); color:var(--cream); }
+  .townfoot{ margin:56px 0 0; padding-top:24px; border-top:1px solid rgba(160,148,132,.28); font-size:15px; color:var(--moss); }
+  .prose .townfoot p{ margin:0 0 8px; }
+  .prose .towns{ list-style:none; padding:0; }
+  .prose .towns li{ margin:18px 0 0; }
+  .towns a{ font-family:var(--serif); font-size:21px; font-weight:500; }
+  .towns span{ display:block; color:var(--moss); font-size:16px; }
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Do you need a driver’s license to drive a golf cart in St. Pete Beach?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Only people with a valid driver’s license may drive a cart on city streets. That’s stricter than Florida’s general rule, which lets 18-year-olds drive a cart with just a photo ID."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How old do you have to be to drive a golf cart in St. Pete Beach?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The city ties driving to the license rather than to an age: the driver needs a valid driver’s license."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does a golf cart need a permit or registration in St. Pete Beach?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Resident-owned carts are registered with the city every year ($10, paid at City Hall), and the decal goes on the back, driver’s side. You’ll need proof of a valid driver’s license and a signed statement that the cart has liability insurance (a rider on a homeowner’s policy or a separate policy). The cart can’t be able to go faster than 20 mph. Daytime equipment: good brakes, reliable steering, safe tires, a horn, a rearview mirror, and red reflectors front and rear."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Where can golf carts go in St. Pete Beach?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "City streets posted 25 mph or less, inside the area shown on the city’s map. Carts can’t drive on or cross state or county roads unless the state or Pinellas County allows it at that spot. Gulf Boulevard is a state road. No carts on sidewalks, in parks, on beaches or on other city land."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Golf cart or LSV: what’s the difference in St. Pete Beach?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A low-speed vehicle (LSV) is different from a golf cart: it goes faster than 20 mph (up to 25), and it has to be titled, registered and insured, with a licensed driver. Under Florida law an LSV can use streets posted 35 mph or less and can cross faster roads at intersections, unless the local government has closed a road to them."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can you drive a golf cart at night in St. Pete Beach? Hours and lights",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sunrise to sunset only, unless the cart also has headlights, brake lights, turn signals and a windshield."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -272,6 +344,7 @@
   <div class="topbar-inner">
     <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
     <nav aria-label="Primary">
+      <a href="/cart-rules">All towns</a>
       <a href="/">Back to SlowGo</a>
     </nav>
   </div>
@@ -279,31 +352,49 @@
 
 <main class="legal">
   <div class="wrap">
-    <p class="eyebrow"><span class="dot"></span> Local cart rules</p>
-    <h1>Golf carts in St. Pete Beach</h1>
+    <div class="indep">
+      <p>SlowGo is an independent golf cart navigation app. This page isn&rsquo;t affiliated with or endorsed by the City of St. Pete Beach. For official rules, see <a href="https://www.stpetebeach.org/498/Golf-Carts" rel="noopener">the city&rsquo;s Golf Carts page</a>.</p>
+      <p>The City of St. Pete Beach publishes its golf cart rules. Here&rsquo;s a plain-English summary.</p>
+    </div>
+    <p class="eyebrow"><span class="dot"></span> Local cart rules &middot; Updated October 2026</p>
+    <h1>Golf cart rules in St. Pete Beach, Florida</h1>
 
     <article class="prose" id="doc">
 
       <p class="lede">St. Pete Beach lets golf carts use its quieter city streets: the ones posted 25 mph or less. Carts need a city registration and decal, and the driver needs a driver&rsquo;s license.</p>
+      <p class="meta">Rules checked October 2026 &middot; Always follow local signs</p>
 
-      <h2 id="where-carts-can-go">Where carts can go</h2>
+      <figure class="diagram" aria-label="Diagram of the golf cart rules in St. Pete Beach">
+        <svg viewBox="0 0 400 268" role="img" aria-labelledby="dt-st-pete-beach dd-st-pete-beach" xmlns="http://www.w3.org/2000/svg"><title id="dt-st-pete-beach">Diagram of the golf cart rules in St. Pete Beach</title><desc id="dd-st-pete-beach">Green streets: City streets posted 25 mph or less, carts allowed. Red: Gulf Blvd (state road); Streets over 25 mph, no carts.</desc><style>.bl{font:600 13px Inter,system-ui,sans-serif;fill:#7A2615;paint-order:stroke;stroke:#FBF7EF;stroke-width:4px;stroke-linejoin:round}.al{font:500 11px Inter,system-ui,sans-serif;fill:#5B7A5F;letter-spacing:.08em;text-transform:uppercase}</style><rect x="8" y="26" width="384" height="234" rx="14" fill="#EFE6D3" stroke="#A09484" stroke-dasharray="5 4"/><line x1="48" y1="32" x2="48" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="96" y1="32" x2="96" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="144" y1="32" x2="144" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="192" y1="32" x2="192" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="240" y1="32" x2="240" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="288" y1="32" x2="288" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="336" y1="32" x2="336" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="384" y1="32" x2="384" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="62" x2="386" y2="62" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="102" x2="386" y2="102" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="142" x2="386" y2="142" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="182" x2="386" y2="182" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="222" x2="386" y2="222" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><path d="M26 244 C 68 230, 98 200, 138 190" fill="none" stroke="#8A5620" stroke-width="3" stroke-dasharray="6 5"/><line x1="8" y1="124" x2="392" y2="124" stroke="#FBF7EF" stroke-width="15"/><line x1="284" y1="26" x2="284" y2="260" stroke="#FBF7EF" stroke-width="15"/><line x1="8" y1="124" x2="392" y2="124" stroke="#B5452F" stroke-width="9"/><line x1="284" y1="26" x2="284" y2="260" stroke="#B5452F" stroke-width="9"/><circle cx="96" cy="124" r="7" fill="#FBF7EF" stroke="#1E3A2B" stroke-width="3"/><circle cx="240" cy="124" r="7" fill="#FBF7EF" stroke="#1E3A2B" stroke-width="3"/><text x="22" y="112" class="bl">Gulf Blvd (state road)</text><text x="272" y="246" class="bl" transform="rotate(-90 272 246)">Streets over 25 mph</text><text x="10" y="17" class="al">St. Pete Beach (city limits)</text><text x="390" y="17" text-anchor="end" class="al">Not to scale</text></svg>
+        <ul class="legend"><li><span class="sw sw-ok"></span>Carts OK: City streets posted 25 mph or less</li><li><span class="sw sw-no"></span>No carts: Gulf Blvd (state road); Streets over 25 mph</li><li><span class="sw sw-dot"></span>Crossing only where the state or county allows it</li><li><span class="sw sw-path"></span>Sidewalks, parks, beaches: no carts</li></ul>
+        <figcaption>A simple diagram SlowGo drew from the rules on this page. It isn&rsquo;t a street map: the streets are placeholders, and it isn&rsquo;t to scale. For the exact streets, see <a href="https://www.stpetebeach.org/ImageRepository/Document?documentID=884" rel="noopener">the city&rsquo;s restricted roadways map</a>.</figcaption>
+      </figure>
+
+      <h2 id="do-you-need-a-driver-s-license-to-drive-a-golf-cart-in-st-pe">Do you need a driver&rsquo;s license to drive a golf cart in St. Pete Beach?</h2>
+      <p>Yes. Only people with a <strong>valid driver&rsquo;s license</strong> may drive a cart on city streets. That&rsquo;s stricter than Florida&rsquo;s general rule, which lets 18-year-olds drive a cart with just a photo ID.</p>
+
+      <h2 id="how-old-do-you-have-to-be-to-drive-a-golf-cart-in-st-pete-be">How old do you have to be to drive a golf cart in St. Pete Beach?</h2>
+      <p>The city ties driving to the license rather than to an age: the driver needs a valid driver&rsquo;s license.</p>
+
+      <h2 id="does-a-golf-cart-need-a-permit-or-registration-in-st-pete-be">Does a golf cart need a permit or registration in St. Pete Beach?</h2>
+      <p>Yes. Resident-owned carts are registered with the city every year ($10, paid at City Hall), and the decal goes on the back, driver&rsquo;s side. You&rsquo;ll need proof of a valid driver&rsquo;s license and a signed statement that the cart has liability insurance (a rider on a homeowner&rsquo;s policy or a separate policy). The cart can&rsquo;t be able to go faster than 20 mph.</p><p>Daytime equipment: good brakes, reliable steering, safe tires, a horn, a rearview mirror, and red reflectors front and rear.</p>
+
+      <h2 id="where-can-golf-carts-go-in-st-pete-beach">Where can golf carts go in St. Pete Beach?</h2>
       <p>City streets posted <strong>25 mph or less</strong>, inside the area shown on the city&rsquo;s map. Carts can&rsquo;t drive on or cross state or county roads unless the state or Pinellas County allows it at that spot. Gulf Boulevard is a state road.</p><p>No carts on sidewalks, in parks, on beaches or on other city land.</p>
 
-      <h2 id="who-can-drive">Who can drive</h2>
-      <p>Only people with a <strong>valid driver&rsquo;s license</strong>. That&rsquo;s stricter than Florida&rsquo;s general rule, which lets 18-year-olds drive a cart with just a photo ID.</p>
-
-      <h2 id="registration-and-equipment">Registration and equipment</h2>
-      <p>Resident-owned carts are registered with the city every year ($10, paid at City Hall), and the decal goes on the back, driver&rsquo;s side. You&rsquo;ll need proof of a valid driver&rsquo;s license and a signed statement that the cart has liability insurance (a rider on a homeowner&rsquo;s policy or a separate policy). The cart can&rsquo;t be able to go faster than 20 mph.</p><p>Daytime equipment: good brakes, reliable steering, safe tires, a horn, a rearview mirror, and red reflectors front and rear.</p>
-
-      <h2 id="after-dark">After dark</h2>
-      <p>Sunrise to sunset only, unless the cart also has headlights, brake lights, turn signals and a windshield.</p>
-
-      <h2 id="low-speed-vehicles">Low-speed vehicles</h2>
+      <h2 id="golf-cart-or-lsv-what-s-the-difference-in-st-pete-beach">Golf cart or LSV: what&rsquo;s the difference in St. Pete Beach?</h2>
       <p>A low-speed vehicle (LSV) is different from a golf cart: it goes faster than 20 mph (up to 25), and it has to be titled, registered and insured, with a licensed driver. Under Florida law an LSV can use streets posted 35 mph or less and can cross faster roads at intersections, unless the local government has closed a road to them.</p>
 
-      <div class="signs"><p><strong>Check local signs.</strong> Posted signs and local officers have the final word, and rules can change after we check them. If a sign says something different from this page, follow the sign.</p></div>
+      <h2 id="can-you-drive-a-golf-cart-at-night-in-st-pete-beach-hours-an">Can you drive a golf cart at night in St. Pete Beach? Hours and lights</h2>
+      <p>Sunrise to sunset only, unless the cart also has headlights, brake lights, turn signals and a windshield.</p>
 
-      <h2 id="sources">Official sources</h2>
+      <div class="signs"><p><strong>Always follow local signs.</strong> Posted signs and local officers have the final word, and rules can change after we check them. If a sign says something different from this page, follow the sign.</p></div>
+
+      <h2 id="slowgo">Using SlowGo here</h2>
+      <p>SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know St. Pete Beach&rsquo;s 25 mph line yet, so a route here can include a 30 or 35 mph street that carts can&rsquo;t use. Check the city&rsquo;s map before you ride.</p>
+      <a class="get" href="/t/st-pete-beach">Get SlowGo</a>
+
+      <h2 id="sources">Where these rules come from</h2>
       <ul class="sources">
         <li><a href="https://www.stpetebeach.org/498/Golf-Carts" rel="noopener">Golf Carts &mdash; City of St. Pete Beach</a></li>
         <li><a href="https://www.stpetebeach.org/DocumentCenter/View/1021/Golf-Cart-Ordinance-PDF" rel="noopener">Ordinance 2013-17 (City Code ch. 82, art. VI) &mdash; City of St. Pete Beach (PDF)</a></li>
@@ -311,12 +402,12 @@
         <li><a href="https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.212.html" rel="noopener">Florida Statutes &sect; 316.212 &mdash; golf carts on roads</a></li>
         <li><a href="https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.2122.html" rel="noopener">Florida Statutes &sect; 316.2122 &mdash; low-speed vehicles</a></li>
       </ul>
-      <p class="checked">Rules checked October 2026</p>
+      <p class="meta">Rules checked October 2026</p>
 
-      <h2 id="slowgo">Using SlowGo here</h2>
-      <p>SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know St. Pete Beach&rsquo;s 25 mph line yet, so a route here can include a 30 or 35 mph street that carts can&rsquo;t use. Check the city&rsquo;s map before you ride.</p>
-
-      <p class="closing">This page sums up the official sources above in plain words. It isn&rsquo;t legal advice. Rules change, so check with the City of St. Pete Beach if you&rsquo;re unsure. Spot something out of date? <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+      <div class="townfoot">
+        <p>Town staff: see something out of date? Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a> and we&rsquo;ll fix it quickly.</p>
+        <p>This page is general information, not legal advice. Always follow posted signs and local rules.</p>
+      </div>
 
     </article>
   </div>
