@@ -1,6 +1,6 @@
 # SlowGo Terms of Service
 
-**Last updated: October 6, 2026**
+**Last updated: October 6, 2026** *(DRAFT, not live: re-date to the publication day)*
 
 These Terms of Service (the "**Terms**") are a binding agreement between you and **BackRoad Apps LLC**, a New York limited liability company ("**BackRoad Apps**," "**we**," "**us**," or "**our**"), governing your use of the SlowGo mobile application (the "**App**"), the slowgoapp.com website (the "**Site**"), and the routing, mapping, weather, and related features we provide (together, the "**Service**").
 
@@ -86,7 +86,7 @@ This release does **not** apply to gross negligence, reckless conduct, willful o
 
 ### 6.1 License
 
-Subject to these Terms, we grant you a limited, personal, non-exclusive, non-transferable, revocable license to install and use the App on Apple-branded products that you own or control, as permitted by the App Store Terms of Service (including the Usage Rules) and by the Apple-required terms in Section 15, and to use the Service for your personal, non-commercial use.
+Subject to these Terms, we grant you a limited, personal, non-exclusive, non-transferable, revocable license to install and use the App on a device that you own or control, as permitted by the terms of the store you got the App from (for Apple's App Store, the App Store Terms of Service, including the Usage Rules, and the Apple-required terms in Section 15; for Google Play, the Google Play Terms of Service and Section 15(j)), and to use the Service for your personal, non-commercial use.
 
 ### 6.2 Restrictions
 
@@ -110,7 +110,7 @@ We may change, suspend, update, or discontinue any part of the Service at any ti
 
 ## 10. Purchases and Subscriptions
 
-The Service is currently offered free of charge. We may in the future offer optional paid features or subscriptions (for example, a premium tier). If we do: (a) purchases made through the App will be billed by Apple through your App Store account, and Apple's payment terms will apply; (b) any subscription will automatically renew at the disclosed price and interval unless you cancel at least 24 hours before the end of the current period, and you can manage or cancel subscriptions in your App Store account settings; (c) we will disclose the title, duration, price, renewal terms, and features before you purchase, provide the required cancellation information, and give notice of price changes as required by applicable automatic-renewal laws and Apple's policies; and (d) refunds for App Store purchases are handled by Apple under Apple's policies. Except as required by law or by Apple's policies, purchases are non-refundable.
+The Service is currently offered free of charge. We may in the future offer optional paid features or subscriptions (for example, a premium tier). If we do: (a) purchases made through the App will be billed by Apple through your App Store account, or by Google through your Google Play account, and that store's payment terms will apply; (b) any subscription will automatically renew at the disclosed price and interval unless you cancel at least 24 hours before the end of the current period, and you can manage or cancel subscriptions in your App Store or Google Play account settings; (c) we will disclose the title, duration, price, renewal terms, and features before you purchase, provide the required cancellation information, and give notice of price changes as required by applicable automatic-renewal laws and the store's policies; and (d) refunds for store purchases are handled by Apple or Google under their own policies. Except as required by law or by those policies, purchases are non-refundable.
 
 ## 11. Privacy
 
@@ -140,9 +140,9 @@ To the maximum extent permitted by applicable law, you will indemnify and hold h
 
 This Section does not require you to indemnify a BackRoad Apps party for that party's own negligence, gross negligence, reckless conduct, willful misconduct, or violation of law. We will provide reasonable notice of a covered claim and may control its defense, while allowing you to participate with your own counsel at your expense. You may not settle a claim in a manner that admits wrongdoing by, or imposes an obligation on, a BackRoad Apps party without our written consent.
 
-## 15. Apple App Store Terms
+## 15. Apple App Store and Google Play Terms
 
-These additional terms apply because the App is distributed through Apple's App Store:
+Items (a) to (i) apply if you got the App from Apple's App Store; item (j) applies if you got it from Google Play:
 
 (a) **Acknowledgment.** These Terms are concluded between you and BackRoad Apps only, and not with Apple Inc. ("Apple"). BackRoad Apps, not Apple, is solely responsible for the App and its content. Your use of the App must also comply with the App Store Terms of Service, and the license granted in Section 6.1 is limited to a non-transferable license to use the App on any Apple-branded products that you own or control, and as permitted by the Usage Rules set forth in the App Store Terms of Service, except that the App may be accessed and used by other accounts associated with you via Family Sharing or volume purchasing.
 
@@ -161,6 +161,8 @@ These additional terms apply because the App is distributed through Apple's App 
 (h) **Third-party terms.** You must comply with applicable third-party terms of agreement when using the App (for example, your wireless data service agreement).
 
 (i) **Third-party beneficiary.** Apple and Apple's subsidiaries are third-party beneficiaries of these Terms, and upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary.
+
+(j) **Google Play.** These Terms are concluded between you and BackRoad Apps only, and not with Google LLC ("Google"). BackRoad Apps, not Google, is solely responsible for the App and its content, and for its maintenance and support. Your use of the App must also comply with the Google Play Terms of Service.
 
 ## 16. Dispute Resolution; Binding Individual Arbitration
 
