@@ -2,7 +2,7 @@
 #
 # History: 10 drafts written 2026-10-16 (sources read 2026-10-15); restructured 2026-10-16/17 for
 # Ron's town-page rulings: FAQ headings (license, age, permits, where, golf cart vs LSV, hours and
-# lights), independence line at the top, our own schematic diagram, per-town counted link /t/<slug>.
+# lights), independence line at the top, per-town counted link /t/<slug>.
 #
 # Rules for editing this file:
 # - Every rule comes from a source listed on the same page (official city/county/state sites and
@@ -36,12 +36,8 @@ FAQ_ORDER = [
     ("hours",   "Can you drive a golf cart at night in {n}? Hours and lights"),
 ]
 
-# Map spec (drawn by build.py as an inline SVG schematic, never a copy of anyone's map):
-#   area  label for the shaded area      ok    what the green streets mean
-#   bars  roads closed to carts: orient h|v, pos 0..1 across the area, name, cross dots|x|None,
-#         count (number of crossing marks), half (draw only from the middle to the right/bottom)
-#   paths text for the dashed "no carts" path, or None
-#   cross_note  legend text for the crossing marks
+# street_map: (label, url) of the town's own golf cart map, or None. build.py shows a plain text link
+# "See [Town]'s official golf cart map." where one exists (Ron 2026-10-17: no drawn maps at all).
 
 TOWNS = [
  dict(
@@ -74,11 +70,6 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=("the city&rsquo;s restricted roadways map", "https://www.stpetebeach.org/ImageRepository/Document?documentID=884"),
-  map=dict(area="St. Pete Beach (city limits)", ok="City streets posted 25 mph or less",
-           bars=[dict(orient="h", pos=.42, name="Gulf Blvd (state road)", cross="dots", count=2),
-                 dict(orient="v", pos=.72, name="Streets over 25 mph", cross=None)],
-           cross_note="Crossing only where the state or county allows it",
-           paths="Sidewalks, parks, beaches: no carts"),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know St. Pete Beach&rsquo;s 25 mph line yet, "
          "so a route here can include a 30 or 35 mph street that carts can&rsquo;t use. Check the city&rsquo;s map before you ride.",
  ),
@@ -114,11 +105,6 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=("the city&rsquo;s cart zone map", "https://gis.dunedingov.com/portal/apps/webappviewer/index.html?id=c3f6c0aacba64efb87f795bf3eb195ea"),
-  map=dict(area="Dunedin golf cart zone", ok="Designated streets in the zone, posted 30 mph or less",
-           bars=[dict(orient="h", pos=.42, name="State or county road", cross="dots", count=2),
-                 dict(orient="v", pos=.72, name="Streets over 30 mph", cross=None)],
-           cross_note="Marked golf cart crossing",
-           paths="Pinellas Trail, sidewalks: no carts"),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Dunedin&rsquo;s cart zone or its 30 mph line yet, "
          "so a route can leave the zone or use a 35 mph street. Check the city&rsquo;s map before you ride.",
  ),
@@ -157,12 +143,6 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=("the city&rsquo;s street usage list and map", "https://www.mountdora.gov/DocumentCenter/View/16545"),
-  map=dict(area="Mount Dora (city limits)", ok="All other city streets",
-           bars=[dict(orient="h", pos=.30, name="US 441", cross="x", count=3),
-                 dict(orient="v", pos=.72, name="County road", cross="dots", count=2),
-                 dict(orient="h", pos=.72, name="Listed streets", cross=None, half=True)],
-           cross_note="Cross at intersections (county roads)", x_note="No crossing (US 441)",
-           paths="Bike paths, sidewalks: no carts"),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Mount Dora&rsquo;s not-allowed list yet, "
          "so a route could use one of those roads. Check the list above before you ride.",
  ),
@@ -194,11 +174,6 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  map=dict(area="Miami Lakes (town limits)", ok="All town streets",
-           bars=[dict(orient="v", pos=.25, name="NW 87th Ave", cross="dots", count=2),
-                 dict(orient="v", pos=.75, name="NW 67th Ave", cross="dots", count=2)],
-           cross_note="Cross only at marked intersections or traffic lights",
-           paths="Parks, bike paths, sidewalks, swales: no carts"),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know that NW 67th and NW 87th Avenues are closed to carts here, "
          "so if a route runs along either one, don&rsquo;t take it in a cart.",
  ),
@@ -231,11 +206,6 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  map=dict(area="Pine Island (Lee County roads)", ok="Other county streets on the island",
-           bars=[dict(orient="v", pos=.45, name="Stringfellow Rd", cross="dots", count=2),
-                 dict(orient="h", pos=.55, name="Pine Island Rd, east", cross=None, half=True)],
-           cross_note="Golf cart crossing, where the county has posted one",
-           paths="Bike paths, shared-use paths, sidewalks: no carts"),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Pine Island&rsquo;s left-out stretches or the daylight rule yet, "
          "so check a route against the list above, and ride before sunset.",
  ),
@@ -264,9 +234,6 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  map=dict(area="Captiva Island (county roads)", ok="County roads signed for carts",
-           bars=[dict(orient="h", pos=.5, name="Roads without a cart sign", cross=None)],
-           cross_note=None, paths=None),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know which Captiva roads Lee County has signed for carts, "
          "so follow the signs over the route.",
  ),
@@ -304,10 +271,6 @@ TOWNS = [
    GA_HB877, GA_DPS,
   ],
   street_map=None,
-  map=dict(area="Jekyll Island", ok="Island streets (PTVs)",
-           bars=[dict(orient="h", pos=.4, name="State highway roads", cross=None)],
-           cross_note=None,
-           paths="Sidewalks, bike paths, trails, cart paths: no PTVs"),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Jekyll&rsquo;s rules yet: if a route uses a path here, "
          "don&rsquo;t take it in a cart or LSV.",
  ),
@@ -341,11 +304,6 @@ TOWNS = [
    GA_HB877, GA_DPS,
   ],
   street_map=("the county&rsquo;s map of St. Simons roads by speed limit", "https://content.glynncounty.org/sites/default/files/2025-06/SSI-Roads-MPH.pdf"),
-  map=dict(area="St. Simons Island", ok="Public streets posted 25 mph or less",
-           bars=[dict(orient="h", pos=.42, name="Streets over 25 mph", cross=None),
-                 dict(orient="v", pos=.70, name="Streets over 25 mph", cross=None)],
-           cross_note=None,
-           paths="Sidewalks, bike paths: no carts"),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Glynn County&rsquo;s 25 mph line for carts yet, "
          "so a route can include a 30 or 35 mph street. Check the county&rsquo;s speed map before you ride.",
  ),
@@ -390,10 +348,6 @@ TOWNS = [
    GA_HB877, GA_DPS,
   ],
   street_map=None,
-  map=dict(area="Tybee Island (city streets)", ok="All city streets",
-           bars=[dict(orient="v", pos=.55, name="Highway 80", cross="dots", count=4)],
-           cross_note="The four places carts may cross (listed above; positions not to scale)",
-           paths="Sidewalks: no carts"),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Tybee&rsquo;s Highway 80 rule yet, "
          "so if a route runs along Highway 80, don&rsquo;t take it in a cart.",
  ),
@@ -421,9 +375,6 @@ TOWNS = [
    FL_316212, FL_3162122,
   ],
   street_map=None,
-  map=dict(area="Gulf Breeze (city)", ok="Neighborhood roads posted under 25 mph, and The Loop",
-           bars=[dict(orient="h", pos=.45, name="Gulf Breeze Pkwy (US 98)", cross="x", count=3)],
-           cross_note=None, x_note="No crossing at this time (US 98)", paths="Sidewalks: no carts"),
   slowgo="SlowGo plans routes on roads posted 35 mph and under. It doesn&rsquo;t know Gulf Breeze&rsquo;s under-25 rule yet, "
          "so a route can include a street that carts can&rsquo;t use here. Check the city&rsquo;s page and map before you ride.",
  ),

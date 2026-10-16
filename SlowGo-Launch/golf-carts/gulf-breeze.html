@@ -261,17 +261,7 @@
   .signs p{ margin:0; }
   .prose .sources{ list-style:none; padding:0; }
   .prose .sources li{ margin:12px 0 0; }
-  .diagram{ margin:36px 0 0; }
-  .diagram svg{ display:block; width:100%; height:auto; max-width:520px; }
-  .legend{ list-style:none; padding:0; margin:12px 0 0; font-size:14px; line-height:1.5; }
-  .prose .legend li{ margin:6px 0 0; display:flex; gap:10px; align-items:center; }
-  .sw{ flex:0 0 28px; height:12px; display:inline-block; }
-  .sw-ok{ border-top:4px solid #6E9A6A; height:0; }
-  .sw-no{ border-top:8px solid #B5452F; height:0; }
-  .sw-path{ border-top:3px dashed #8A5620; height:0; }
-  .sw-dot{ flex-basis:14px; height:14px; border-radius:50%; border:3px solid var(--forest); background:var(--cream); margin:0 7px; }
-  .sw-x{ flex-basis:14px; height:14px; margin:0 7px; font:700 16px/14px var(--sans); color:var(--forest); text-align:center; }
-  .diagram figcaption{ margin:10px 0 0; font-size:13.5px; line-height:1.55; color:var(--moss); }
+  .prose .maplink{ margin:20px 0 0; }
   .get{ display:inline-block; margin:20px 0 0; padding:12px 22px; border-radius:999px; background:var(--forest);
     color:var(--cream); font-weight:600; font-size:16px; text-decoration:none; }
   .get:hover{ background:var(--charcoal); color:var(--cream); }
@@ -367,11 +357,6 @@
       <p class="lede">Gulf Breeze lets registered golf carts use its quiet neighborhood roads and shared-use paths, including The Loop. Low-speed vehicles get the roads but not The Loop.</p>
       <p class="meta">Rules checked October 2026 &middot; Always follow local signs</p>
 
-      <figure class="diagram" aria-label="Diagram of the golf cart rules in Gulf Breeze">
-        <svg viewBox="0 0 400 268" role="img" aria-labelledby="dt-gulf-breeze dd-gulf-breeze" xmlns="http://www.w3.org/2000/svg"><title id="dt-gulf-breeze">Diagram of the golf cart rules in Gulf Breeze</title><desc id="dd-gulf-breeze">Green streets: Neighborhood roads posted under 25 mph, and The Loop, carts allowed. Red: Gulf Breeze Pkwy (US 98), no carts.</desc><style>.bl{font:600 13px Inter,system-ui,sans-serif;fill:#7A2615;paint-order:stroke;stroke:#FBF7EF;stroke-width:4px;stroke-linejoin:round}.al{font:500 11px Inter,system-ui,sans-serif;fill:#5B7A5F;letter-spacing:.08em;text-transform:uppercase}</style><rect x="8" y="26" width="384" height="234" rx="14" fill="#EFE6D3" stroke="#A09484" stroke-dasharray="5 4"/><line x1="48" y1="32" x2="48" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="96" y1="32" x2="96" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="144" y1="32" x2="144" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="192" y1="32" x2="192" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="240" y1="32" x2="240" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="288" y1="32" x2="288" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="336" y1="32" x2="336" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="384" y1="32" x2="384" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="62" x2="386" y2="62" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="102" x2="386" y2="102" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="142" x2="386" y2="142" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="182" x2="386" y2="182" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="222" x2="386" y2="222" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><path d="M26 244 C 68 230, 98 200, 138 190" fill="none" stroke="#8A5620" stroke-width="3" stroke-dasharray="6 5"/><line x1="8" y1="131" x2="392" y2="131" stroke="#FBF7EF" stroke-width="15"/><line x1="8" y1="131" x2="392" y2="131" stroke="#B5452F" stroke-width="9"/><circle cx="96" cy="131" r="8" fill="#FBF7EF"/><path d="M91 126 L101 136 M101 126 L91 136" stroke="#1E3A2B" stroke-width="3" stroke-linecap="round"/><circle cx="192" cy="131" r="8" fill="#FBF7EF"/><path d="M187 126 L197 136 M197 126 L187 136" stroke="#1E3A2B" stroke-width="3" stroke-linecap="round"/><circle cx="288" cy="131" r="8" fill="#FBF7EF"/><path d="M283 126 L293 136 M293 126 L283 136" stroke="#1E3A2B" stroke-width="3" stroke-linecap="round"/><text x="22" y="119" class="bl">Gulf Breeze Pkwy (US 98)</text><text x="10" y="17" class="al">Gulf Breeze (city)</text><text x="390" y="17" text-anchor="end" class="al">Not to scale</text></svg>
-        <ul class="legend"><li><span class="sw sw-ok"></span>Carts OK: Neighborhood roads posted under 25 mph, and The Loop</li><li><span class="sw sw-no"></span>No carts: Gulf Breeze Pkwy (US 98)</li><li><span class="sw sw-x">&times;</span>No crossing at this time (US 98)</li><li><span class="sw sw-path"></span>Sidewalks: no carts</li></ul>
-        <figcaption>A simple diagram SlowGo drew from the rules on this page. It isn&rsquo;t a street map: the streets are placeholders, and it isn&rsquo;t to scale. For the exact streets, see the list above and the sources below.</figcaption>
-      </figure>
 
       <h2 id="do-you-need-a-driver-s-license-to-drive-a-golf-cart-in-gulf-">Do you need a driver&rsquo;s license to drive a golf cart in Gulf Breeze?</h2>
       <p>The city&rsquo;s page says drivers 15 and up need at least a valid learner&rsquo;s permit.</p>

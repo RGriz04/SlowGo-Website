@@ -47,17 +47,7 @@ EXTRA = """
   .signs p{ margin:0; }
   .prose .sources{ list-style:none; padding:0; }
   .prose .sources li{ margin:12px 0 0; }
-  .diagram{ margin:36px 0 0; }
-  .diagram svg{ display:block; width:100%; height:auto; max-width:520px; }
-  .legend{ list-style:none; padding:0; margin:12px 0 0; font-size:14px; line-height:1.5; }
-  .prose .legend li{ margin:6px 0 0; display:flex; gap:10px; align-items:center; }
-  .sw{ flex:0 0 28px; height:12px; display:inline-block; }
-  .sw-ok{ border-top:4px solid #6E9A6A; height:0; }
-  .sw-no{ border-top:8px solid #B5452F; height:0; }
-  .sw-path{ border-top:3px dashed #8A5620; height:0; }
-  .sw-dot{ flex-basis:14px; height:14px; border-radius:50%; border:3px solid var(--forest); background:var(--cream); margin:0 7px; }
-  .sw-x{ flex-basis:14px; height:14px; margin:0 7px; font:700 16px/14px var(--sans); color:var(--forest); text-align:center; }
-  .diagram figcaption{ margin:10px 0 0; font-size:13.5px; line-height:1.55; color:var(--moss); }
+  .prose .maplink{ margin:20px 0 0; }
   .get{ display:inline-block; margin:20px 0 0; padding:12px 22px; border-radius:999px; background:var(--forest);
     color:var(--cream); font-weight:600; font-size:16px; text-decoration:none; }
   .get:hover{ background:var(--charcoal); color:var(--cream); }
@@ -80,87 +70,6 @@ def plain(s):
 
 def slug_id(h):
     return re.sub(r"[^a-z]+", "-", plain(h).lower()).strip("-")[:60]
-
-
-# ---------- Diagram: our own schematic from the facts in towns.py (no one else's map) ----------
-W, H, PAD, TOP = 400, 268, 8, 26     # TOP: band above the area for its label
-GX = list(range(48, 393, 48))      # local street grid
-GY = list(range(TOP + 36, H - 6, 40))
-
-
-def diagram(t):
-    m = t["map"]
-    ax, ay, aw, ah = PAD, TOP, W - 2 * PAD, H - TOP - PAD
-    casing, red = [], []
-    out = [f'<rect x="{ax}" y="{ay}" width="{aw}" height="{ah}" rx="14" fill="#EFE6D3" stroke="#A09484" stroke-dasharray="5 4"/>']
-    for x in GX:
-        out.append(f'<line x1="{x}" y1="{ay + 6}" x2="{x}" y2="{ay + ah - 6}" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/>')
-    for y in GY:
-        out.append(f'<line x1="{ax + 6}" y1="{y}" x2="{ax + aw - 6}" y2="{y}" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/>')
-    if m.get("paths"):
-        out.append(f'<path d="M{ax + 18} {ay + ah - 16} C {ax + 60} {ay + ah - 30}, {ax + 90} {ay + ah - 60}, {ax + 130} {ay + ah - 70}" '
-                   f'fill="none" stroke="#8A5620" stroke-width="3" stroke-dasharray="6 5"/>')
-    vx = [ax + b["pos"] * aw for b in m["bars"] if b["orient"] == "v"]
-    marks, labels = [], []
-    for b in m["bars"]:
-        if b["orient"] == "h":
-            y = round(ay + b["pos"] * ah)
-            x1 = round(vx[0]) if b.get("half") and vx else ax
-            x2 = ax + aw
-            casing.append(f'<line x1="{x1}" y1="{y}" x2="{x2}" y2="{y}" stroke="#FBF7EF" stroke-width="15"/>')
-            red.append(f'<line x1="{x1}" y1="{y}" x2="{x2}" y2="{y}" stroke="#B5452F" stroke-width="9"/>')
-            cands = [x for x in GX if x1 + 20 < x < x2 - 10 and all(abs(x - v) > 30 for v in vx)]
-            pts = [(x, y) for x in spread(cands, b.get("count", 0))] if b.get("cross") else []
-            lx = x1 + 12 if b.get("half") else ax + 14
-            labels.append(f'<text x="{lx}" y="{y - 12}" class="bl">{html.escape(plain(b["name"]))}</text>')
-        else:
-            x = round(ax + b["pos"] * aw)
-            casing.append(f'<line x1="{x}" y1="{ay}" x2="{x}" y2="{ay + ah}" stroke="#FBF7EF" stroke-width="15"/>')
-            red.append(f'<line x1="{x}" y1="{ay}" x2="{x}" y2="{ay + ah}" stroke="#B5452F" stroke-width="9"/>')
-            hy = [round(ay + o["pos"] * ah) for o in m["bars"] if o["orient"] == "h"]
-            cands = [y for y in GY if all(abs(y - h) > 25 for h in hy)]
-            pts = [(x, y) for y in spread(cands, b.get("count", 0))] if b.get("cross") else []
-            labels.append(f'<text x="{x - 12}" y="{ay + ah - 14}" class="bl" transform="rotate(-90 {x - 12} {ay + ah - 14})">{html.escape(plain(b["name"]))}</text>')
-        for (px, py) in pts:
-            if b["cross"] == "dots":
-                marks.append(f'<circle cx="{px}" cy="{py}" r="7" fill="#FBF7EF" stroke="#1E3A2B" stroke-width="3"/>')
-            else:
-                marks.append(f'<circle cx="{px}" cy="{py}" r="8" fill="#FBF7EF"/>'
-                             f'<path d="M{px - 5} {py - 5} L{px + 5} {py + 5} M{px + 5} {py - 5} L{px - 5} {py + 5}" stroke="#1E3A2B" stroke-width="3" stroke-linecap="round"/>')
-    title = f'Diagram of the golf cart rules in {plain(t["name"])}'
-    desc = plain(f'Green streets: {m["ok"]}, carts allowed. Red: ' + "; ".join(b["name"] for b in m["bars"]) + ", no carts.")
-    svg = (f'<svg viewBox="0 0 {W} {H}" role="img" aria-labelledby="dt-{t["slug"]} dd-{t["slug"]}" xmlns="http://www.w3.org/2000/svg">'
-           f'<title id="dt-{t["slug"]}">{html.escape(title)}</title><desc id="dd-{t["slug"]}">{html.escape(desc)}</desc>'
-           '<style>.bl{font:600 13px Inter,system-ui,sans-serif;fill:#7A2615;paint-order:stroke;stroke:#FBF7EF;stroke-width:4px;stroke-linejoin:round}'
-           '.al{font:500 11px Inter,system-ui,sans-serif;fill:#5B7A5F;letter-spacing:.08em;text-transform:uppercase}</style>'
-           + "".join(out) + "".join(casing) + "".join(red) + "".join(marks) + "".join(labels)
-           + f'<text x="{ax + 2}" y="{TOP - 9}" class="al">{html.escape(plain(m["area"]))}</text>'
-           + f'<text x="{ax + aw - 2}" y="{TOP - 9}" text-anchor="end" class="al">Not to scale</text>'
-           + '</svg>')
-    leg = [f'<li><span class="sw sw-ok"></span>Carts OK: {m["ok"]}</li>',
-           '<li><span class="sw sw-no"></span>No carts: ' + "; ".join(b["name"] for b in m["bars"]) + "</li>"]
-    kinds = {b["cross"] for b in m["bars"] if b.get("cross")}
-    if "dots" in kinds:
-        leg.append(f'<li><span class="sw sw-dot"></span>{m.get("cross_note") or "Cart crossing"}</li>')
-    if "x" in kinds:
-        leg.append(f'<li><span class="sw sw-x">&times;</span>{m.get("x_note") or "No crossing"}</li>')
-    if m.get("paths"):
-        leg.append(f'<li><span class="sw sw-path"></span>{m["paths"]}</li>')
-    sm = t.get("street_map")
-    see = f' For the exact streets, see <a href="{sm[1]}" rel="noopener">{sm[0]}</a>.' if sm else " For the exact streets, see the list above and the sources below."
-    cap = ("A simple diagram SlowGo drew from the rules on this page. It isn&rsquo;t a street map: the streets are placeholders, "
-           "and it isn&rsquo;t to scale." + see)
-    return (f'<figure class="diagram" aria-label="{html.escape(title)}">\n        {svg}\n'
-            f'        <ul class="legend">{"".join(leg)}</ul>\n        <figcaption>{cap}</figcaption>\n      </figure>')
-
-
-def spread(cands, n):
-    if n <= 0 or not cands:
-        return []
-    if n >= len(cands):
-        return cands
-    step = len(cands) / n
-    return [cands[int(step * i + step / 2)] for i in range(n)]
 
 
 # ---------- Shared bits ----------
@@ -241,6 +150,14 @@ def faq_jsonld(t):
     }
 
 
+def map_link(t):
+    """Plain text link to the town's own golf cart map, only where one exists (Ron 2026-10-17)."""
+    sm = t.get("street_map")
+    if not sm:
+        return ""
+    return f'      <p class="maplink">See <a href="{sm[1]}" rel="noopener">{t["name"]}&rsquo;s official golf cart map</a>.</p>\n'
+
+
 def town_page(t):
     title = f"Golf Cart Rules in {plain(t['name'])}, {t['st']} (Updated {UPDATED})"
     url = f"{ORIGIN}/golf-carts/{t['slug']}"
@@ -266,8 +183,7 @@ def town_page(t):
       <p class="lede">{t['answer']}</p>
       <p class="meta">Rules checked {UPDATED} &middot; Always follow local signs</p>
 
-      {diagram(t)}
-
+{map_link(t)}
 {body}
 
       <div class="signs"><p><strong>Always follow local signs.</strong> Posted signs and local officers have the final word, and rules can change after we check them. If a sign says something different from this page, follow the sign.</p></div>

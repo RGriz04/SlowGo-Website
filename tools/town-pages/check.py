@@ -58,11 +58,18 @@ for t in TOWNS:
     ok("Town staff: see something out of date? Email" in body and "not legal advice. Always follow posted signs and local rules." in body, f"{page}: town footer lines")
     ok(f"Rules checked {UPDATED}" in body and "Always follow local signs" in body, f"{page}: rules checked + follow signs")
     ok(f'href="/t/{t["slug"]}"' in body, f"{page}: counted link /t/{t['slug']}")
-    ok("<svg viewBox" in body and "/>" in body and "Not to scale" in body, f"{page}: inline SVG diagram")
+    ok("<svg" not in body and "diagram" not in body and "legend" not in body, f"{page}: no drawn map (Ron 2026-10-17)")
+    sm = t.get("street_map")
+    link = re.findall(r'<p class="maplink">See <a href="([^"]+)" rel="noopener">(.*?)</a>\.</p>', body)
+    if sm:
+        ok(link == [(sm[1], f"{t['name']}&rsquo;s official golf cart map")], f"{page}: one official map link to the town's own map")
+    else:
+        ok(not link and "golf cart map" not in body, f"{page}: no map link (no official map)")
     ok(not re.search(r"<img\b", body), f"{page}: no images (no logos or seals)")
     ok(len(re.findall(r"<script(?![^>]*application/ld\+json)", src)) == 0, f"{page}: no JavaScript")
     off = [m.start() for m in re.finditer(r"official", plain(body), re.I)]
-    ok(len(off) == 1 and "For official rules, see" in plain(body), f"{page}: 'official' only in the mandated sentence ({len(off)}x)")
+    ok(len(off) == 1 + bool(t.get("street_map")) and "For official rules, see" in plain(body),
+       f"{page}: 'official' only in the mandated sentence and the map link ({len(off)}x)")
     ok("doesn&rsquo;t know" in body or "don&rsquo;t know" in body, f"{page}: honest SlowGo paragraph")
     ok(not re.search(r"\bfolks\b|New York", body, re.I), f"{page}: copy rules (no 'folks', no New York)")
     # answer within the first sentences after the h1
@@ -79,6 +86,7 @@ for t in TOWNS:
     ok(linked == t["publish"], f"hub: {t['slug']} {'listed' if t['publish'] else 'not listed (held)'}")
 ok(hub.index(">Florida</h2>") < hub.index(">Georgia</h2>"), "hub: grouped by state")
 ok(not re.search(r"<img\b|<script", hub), "hub: no images, no JavaScript")
+ok("<svg" not in hub.split("<body>", 1)[1], "hub: no drawn map")
 
 sm = open(os.path.join(SITE, "sitemap.xml"), encoding="utf-8").read()
 locs = re.findall(r"<loc>(.*?)</loc>", sm)

@@ -258,17 +258,7 @@
   .signs p{ margin:0; }
   .prose .sources{ list-style:none; padding:0; }
   .prose .sources li{ margin:12px 0 0; }
-  .diagram{ margin:36px 0 0; }
-  .diagram svg{ display:block; width:100%; height:auto; max-width:520px; }
-  .legend{ list-style:none; padding:0; margin:12px 0 0; font-size:14px; line-height:1.5; }
-  .prose .legend li{ margin:6px 0 0; display:flex; gap:10px; align-items:center; }
-  .sw{ flex:0 0 28px; height:12px; display:inline-block; }
-  .sw-ok{ border-top:4px solid #6E9A6A; height:0; }
-  .sw-no{ border-top:8px solid #B5452F; height:0; }
-  .sw-path{ border-top:3px dashed #8A5620; height:0; }
-  .sw-dot{ flex-basis:14px; height:14px; border-radius:50%; border:3px solid var(--forest); background:var(--cream); margin:0 7px; }
-  .sw-x{ flex-basis:14px; height:14px; margin:0 7px; font:700 16px/14px var(--sans); color:var(--forest); text-align:center; }
-  .diagram figcaption{ margin:10px 0 0; font-size:13.5px; line-height:1.55; color:var(--moss); }
+  .prose .maplink{ margin:20px 0 0; }
   .get{ display:inline-block; margin:20px 0 0; padding:12px 22px; border-radius:999px; background:var(--forest);
     color:var(--cream); font-weight:600; font-size:16px; text-decoration:none; }
   .get:hover{ background:var(--charcoal); color:var(--cream); }
@@ -364,11 +354,7 @@
       <p class="lede">Dunedin has a golf cart zone: designated city streets posted 30 mph or less. There&rsquo;s no city sticker or fee for carts that top out at 20 mph.</p>
       <p class="meta">Rules checked October 2026 &middot; Always follow local signs</p>
 
-      <figure class="diagram" aria-label="Diagram of the golf cart rules in Dunedin">
-        <svg viewBox="0 0 400 268" role="img" aria-labelledby="dt-dunedin dd-dunedin" xmlns="http://www.w3.org/2000/svg"><title id="dt-dunedin">Diagram of the golf cart rules in Dunedin</title><desc id="dd-dunedin">Green streets: Designated streets in the zone, posted 30 mph or less, carts allowed. Red: State or county road; Streets over 30 mph, no carts.</desc><style>.bl{font:600 13px Inter,system-ui,sans-serif;fill:#7A2615;paint-order:stroke;stroke:#FBF7EF;stroke-width:4px;stroke-linejoin:round}.al{font:500 11px Inter,system-ui,sans-serif;fill:#5B7A5F;letter-spacing:.08em;text-transform:uppercase}</style><rect x="8" y="26" width="384" height="234" rx="14" fill="#EFE6D3" stroke="#A09484" stroke-dasharray="5 4"/><line x1="48" y1="32" x2="48" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="96" y1="32" x2="96" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="144" y1="32" x2="144" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="192" y1="32" x2="192" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="240" y1="32" x2="240" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="288" y1="32" x2="288" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="336" y1="32" x2="336" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="384" y1="32" x2="384" y2="254" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="62" x2="386" y2="62" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="102" x2="386" y2="102" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="142" x2="386" y2="142" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="182" x2="386" y2="182" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><line x1="14" y1="222" x2="386" y2="222" stroke="#6E9A6A" stroke-width="3" stroke-linecap="round"/><path d="M26 244 C 68 230, 98 200, 138 190" fill="none" stroke="#8A5620" stroke-width="3" stroke-dasharray="6 5"/><line x1="8" y1="124" x2="392" y2="124" stroke="#FBF7EF" stroke-width="15"/><line x1="284" y1="26" x2="284" y2="260" stroke="#FBF7EF" stroke-width="15"/><line x1="8" y1="124" x2="392" y2="124" stroke="#B5452F" stroke-width="9"/><line x1="284" y1="26" x2="284" y2="260" stroke="#B5452F" stroke-width="9"/><circle cx="96" cy="124" r="7" fill="#FBF7EF" stroke="#1E3A2B" stroke-width="3"/><circle cx="240" cy="124" r="7" fill="#FBF7EF" stroke="#1E3A2B" stroke-width="3"/><text x="22" y="112" class="bl">State or county road</text><text x="272" y="246" class="bl" transform="rotate(-90 272 246)">Streets over 30 mph</text><text x="10" y="17" class="al">Dunedin golf cart zone</text><text x="390" y="17" text-anchor="end" class="al">Not to scale</text></svg>
-        <ul class="legend"><li><span class="sw sw-ok"></span>Carts OK: Designated streets in the zone, posted 30 mph or less</li><li><span class="sw sw-no"></span>No carts: State or county road; Streets over 30 mph</li><li><span class="sw sw-dot"></span>Marked golf cart crossing</li><li><span class="sw sw-path"></span>Pinellas Trail, sidewalks: no carts</li></ul>
-        <figcaption>A simple diagram SlowGo drew from the rules on this page. It isn&rsquo;t a street map: the streets are placeholders, and it isn&rsquo;t to scale. For the exact streets, see <a href="https://gis.dunedingov.com/portal/apps/webappviewer/index.html?id=c3f6c0aacba64efb87f795bf3eb195ea" rel="noopener">the city&rsquo;s cart zone map</a>.</figcaption>
-      </figure>
+      <p class="maplink">See <a href="https://gis.dunedingov.com/portal/apps/webappviewer/index.html?id=c3f6c0aacba64efb87f795bf3eb195ea" rel="noopener">Dunedin&rsquo;s official golf cart map</a>.</p>
 
       <h2 id="do-you-need-a-driver-s-license-to-drive-a-golf-cart-in-duned">Do you need a driver&rsquo;s license to drive a golf cart in Dunedin?</h2>
       <p>Not always. Under 18, the driver needs a learner&rsquo;s permit or a driver&rsquo;s license. At 18 and over, a government-issued photo ID is enough. (This is Florida&rsquo;s rule, which the city follows.)</p>
