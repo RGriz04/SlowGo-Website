@@ -14,9 +14,20 @@ netlify/functions/link.mjs once its /t/ paths are added (`python3 build.py --lin
 link.mjs list and the _redirects page rewrites the published set needs).
 Check after every build: python3 tools/town-pages/check.py
 """
-import html, json, os, re, sys
+import html, importlib, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from towns import TOWNS, FAQ_ORDER
+from towns import FAQ_ORDER
+
+# Content modules, in order. Each defines TOWNS (a list of page dicts in the towns.py schema).
+# towns.py = the first 10 pages (2026-10-16); the rest = the scale-up of 2026-10-17 (state pages have kind="state").
+MODULES = os.environ.get("TOWN_MODULES", "towns,towns_fl_coast,towns_fl_inland,towns_ga_az,states").split(",")   # TOWN_MODULES limits a test build
+TOWNS = []
+for _m in MODULES:
+    try:
+        TOWNS += importlib.import_module(_m).TOWNS
+    except ModuleNotFoundError as _e:
+        if _e.name != _m:
+            raise
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
@@ -24,7 +35,7 @@ SITE = ARGS[0] if (ARGS and __name__ == "__main__") else os.path.join(ROOT, "Slo
 ORIGIN = "https://slowgoapp.com"
 UPDATED = "October 2026"      # title "(Updated ...)" and "Rules checked ..."; change when the rules are re-checked
 LASTMOD = "2026-10-16"        # sitemap lastmod for every town page and the hub
-STATE_ORDER = ["Florida", "Georgia"]
+STATE_ORDER = ["Florida", "Georgia", "Arizona"]
 
 safety = open(os.path.join(SITE, "safety.html"), encoding="utf-8").read()
 STYLE = re.search(r"<style>(.*?)</style>", safety, re.S).group(1)
@@ -150,6 +161,15 @@ def faq_jsonld(t):
     }
 
 
+def is_state(t):
+    return t.get("kind") == "state"
+
+
+def state_towns(t):
+    """Published town pages in a state page's state (for its "Towns we've checked" section)."""
+    return sorted((x for x in TOWNS if x["publish"] and not is_state(x) and x["state"] == t["state"]), key=lambda x: plain(x["name"]))
+
+
 def map_link(t):
     """Plain text link to the town's own golf cart map, only where one exists (Ron 2026-10-17)."""
     sm = t.get("street_map")
@@ -159,24 +179,35 @@ def map_link(t):
 
 
 def town_page(t):
-    title = f"Golf Cart Rules in {plain(t['name'])}, {t['st']} (Updated {UPDATED})"
+    title = t.get("title") or f"Golf Cart Rules in {plain(t['name'])}, {t['st']} (Updated {UPDATED})"
     url = f"{ORIGIN}/golf-carts/{t['slug']}"
+    h1 = t.get("h1") or f"Golf cart rules in {t['name']}, {t['state']}"
+    eyebrow = t.get("eyebrow") or "Local cart rules"
+    held = t.get("held_note") or DRAFT
+    slug = t["slug"]
+    get = f'\n      <a class="get" href="/t/{slug}">Get SlowGo</a>' if t.get("counted", True) else ""
+    extra = list(t["extra"])
+    if is_state(t):
+        ts = state_towns(t)
+        if ts:
+            lis = "\n".join(f'        <li><a href="/golf-carts/{x["slug"]}">{x["name"]}</a><span>{x["hub"]}</span></li>' for x in ts)
+            extra.append((f"Towns we&rsquo;ve checked in {t['state']}", f'<ul class="towns">\n{lis}\n      </ul>'))
     publishes = t.get("publishes") or f"{t['Org']} publishes its golf cart rules. Here&rsquo;s a plain-English summary."
     if "plain-English" not in publishes:
         publishes += " Here&rsquo;s a plain-English summary."
-    secs = [(q, a) for q, a in faq_items(t)] + list(t["extra"])
+    secs = [(q, a) for q, a in faq_items(t)] + extra
     body = "\n\n".join(f'      <h2 id="{slug_id(h)}">{h}</h2>\n      {b}' for h, b in secs)
     srcs = "\n".join(f'        <li><a href="{u}" rel="noopener">{n}</a></li>' for n, u in t["sources"])
     robots = None if t["publish"] else "noindex, nofollow"
-    return head(title, plain(t["answer"]), url, robots, "article", faq_jsonld(t), "" if t["publish"] else DRAFT) + f"""
+    return head(title, plain(t["answer"]), url, robots, "article", faq_jsonld(t), "" if t["publish"] else held) + f"""
 <main class="legal">
   <div class="wrap">
     <div class="indep">
       <p>SlowGo is an independent golf cart navigation app. This page isn&rsquo;t affiliated with or endorsed by {t['org']}. For official rules, see <a href="{t['official'][1]}" rel="noopener">{t['official'][0]}</a>.</p>
       <p>{publishes}</p>
     </div>
-    <p class="eyebrow"><span class="dot"></span> Local cart rules &middot; Updated {UPDATED}</p>
-    <h1>Golf cart rules in {t['name']}, {t['state']}</h1>
+    <p class="eyebrow"><span class="dot"></span> {eyebrow} &middot; Updated {UPDATED}</p>
+    <h1>{h1}</h1>
 
     <article class="prose" id="doc">
 
@@ -189,8 +220,7 @@ def town_page(t):
       <div class="signs"><p><strong>Always follow local signs.</strong> Posted signs and local officers have the final word, and rules can change after we check them. If a sign says something different from this page, follow the sign.</p></div>
 
       <h2 id="slowgo">Using SlowGo here</h2>
-      <p>{t['slowgo']}</p>
-      <a class="get" href="/t/{t['slug']}">Get SlowGo</a>
+      <p>{t['slowgo']}</p>{get}
 
       <h2 id="sources">Where these rules come from</h2>
       <ul class="sources">
@@ -213,14 +243,15 @@ def town_page(t):
 
 def hub_page(pub):
     title = f"Golf Cart Rules by Town (Updated {UPDATED})"
-    desc = ("Plain-English summaries of local golf cart rules in Florida and Georgia towns: where carts can go, "
+    desc = ("Plain-English summaries of golf cart rules in Florida, Georgia and Arizona towns: where carts can go, "
             "licenses, age, permits, LSVs, and night driving, with links to each town's own rules.")
     groups = []
     for st in STATE_ORDER:
-        ts = sorted((t for t in pub if t["state"] == st), key=lambda t: plain(t["name"]))
+        sp = [t for t in pub if t["state"] == st and is_state(t)]
+        ts = sp + sorted((t for t in pub if t["state"] == st and not is_state(t)), key=lambda t: plain(t["name"]))
         if not ts:
             continue
-        lis = "\n".join(f'        <li><a href="/golf-carts/{t["slug"]}">{t["name"]}</a><span>{t["hub"]}</span></li>' for t in ts)
+        lis = "\n".join(f'        <li><a href="/golf-carts/{t["slug"]}">{t.get("hub_name") or t["name"]}</a><span>{t["hub"]}</span></li>' for t in ts)
         groups.append(f'      <h2 id="{st.lower()}">{st}</h2>\n      <ul class="towns">\n{lis}\n      </ul>')
     return head(title, desc, f"{ORIGIN}/cart-rules", None, "website") + f"""
 <main class="legal">
@@ -268,7 +299,7 @@ def update_sitemap(pub):
 
 
 def links_text(pub):
-    slugs = ["cart-rules"] + [t["slug"] for t in pub]
+    slugs = ["cart-rules"] + [t["slug"] for t in pub if t.get("counted", True)]
     rw = [("/cart-rules", "/cart-rules.html")] + [(f"/golf-carts/{t['slug']}", f"/golf-carts/{t['slug']}.html") for t in pub]
     lines = ["# netlify/functions/link.mjs: counted links /t/<name> -> source 't-<name>'",
              "export const TOWN_LINKS = [" + ", ".join(f"'{s}'" for s in slugs) + "];",

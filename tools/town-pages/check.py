@@ -5,8 +5,8 @@
 """
 import html, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from towns import TOWNS, FAQ_ORDER
-from build import plain, UPDATED, ORIGIN
+from towns import FAQ_ORDER
+from build import plain, UPDATED, ORIGIN, TOWNS, is_state, state_towns
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SITE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "SlowGo-Launch")
@@ -51,13 +51,29 @@ for t in TOWNS:
     noindex = 'name="robots" content="noindex' in src
     ok(noindex != t["publish"], f"{page}: noindex {'absent' if t['publish'] else 'present'}")
     title = re.search(r"<title>(.*?)</title>", src).group(1)
-    ok(html.unescape(title) == f"Golf Cart Rules in {plain(t['name'])}, {t['st']} (Updated {UPDATED})", f"{page}: title format ({title})")
+    want_title = t.get("title") or f"Golf Cart Rules in {plain(t['name'])}, {t['st']} (Updated {UPDATED})"
+    ok(html.unescape(title) == plain(want_title), f"{page}: title format ({title})")
+    if is_state(t):
+        ok(html.unescape(title) == f"Golf Cart Laws in {t['state']} (Updated {UPDATED})", f"{page}: state title format")
+        for x in state_towns(t):
+            ok(f'href="/golf-carts/{x["slug"]}"' in body, f"{page}: links town page {x['slug']}")
+    if t["publish"]:
+        ok(not re.search(r"New York|\bN\.?Y\.?\b", plain(body)), f"{page}: never names New York (Ron 2026-10-05/10-17)")
+    if t.get("never_publish"):
+        ok(not t["publish"] and "HELD: Ron ruling 2026-10-17, never name New York in public copy" in src, f"{page}: NY held marker")
+        for o in TOWNS:
+            if o is not t:
+                osrc = open(os.path.join(SITE, f"golf-carts/{o['slug']}.html"), encoding="utf-8").read()
+                ok(f"/golf-carts/{t['slug']}" not in osrc, f"{page}: not linked from {o['slug']}")
     ok("SlowGo is an independent golf cart navigation app. This page isn&rsquo;t affiliated with or endorsed by" in body, f"{page}: independence line")
     ok(body.index('class="indep"') < body.index("<h1>"), f"{page}: independence line at the top")
     ok("publishes" in body and "plain-English summary" in body, f"{page}: respectful line")
     ok("Town staff: see something out of date? Email" in body and "not legal advice. Always follow posted signs and local rules." in body, f"{page}: town footer lines")
     ok(f"Rules checked {UPDATED}" in body and "Always follow local signs" in body, f"{page}: rules checked + follow signs")
-    ok(f'href="/t/{t["slug"]}"' in body, f"{page}: counted link /t/{t['slug']}")
+    if t.get("counted", True):
+        ok(f'href="/t/{t["slug"]}"' in body, f"{page}: counted link /t/{t['slug']}")
+    else:
+        ok('href="/t/' not in body, f"{page}: no counted link")
     ok("<svg" not in body and "diagram" not in body and "legend" not in body, f"{page}: no drawn map (Ron 2026-10-17)")
     sm = t.get("street_map")
     link = re.findall(r'<p class="maplink">See <a href="([^"]+)" rel="noopener">(.*?)</a>\.</p>', body)
@@ -71,7 +87,7 @@ for t in TOWNS:
     ok(len(off) == 1 + bool(t.get("street_map")) and "For official rules, see" in plain(body),
        f"{page}: 'official' only in the mandated sentence and the map link ({len(off)}x)")
     ok("doesn&rsquo;t know" in body or "don&rsquo;t know" in body, f"{page}: honest SlowGo paragraph")
-    ok(not re.search(r"\bfolks\b|New York", body, re.I), f"{page}: copy rules (no 'folks', no New York)")
+    ok(not re.search(r"\bfolks\b", body, re.I) and (t.get("never_publish") or not re.search(r"New York", body)), f"{page}: copy rules (no 'folks', no New York)")
     # answer within the first sentences after the h1
     after = plain(body.split("</h1>", 1)[1])
     ok(after.startswith(plain(t["answer"])[:50]), f"{page}: answer first after the heading")
@@ -85,6 +101,12 @@ for t in TOWNS:
     linked = f'href="/golf-carts/{t["slug"]}"' in hub
     ok(linked == t["publish"], f"hub: {t['slug']} {'listed' if t['publish'] else 'not listed (held)'}")
 ok(hub.index(">Florida</h2>") < hub.index(">Georgia</h2>"), "hub: grouped by state")
+ok(not re.search(r"New York|\bN\.?Y\.?\b", plain(hub.split("<body>", 1)[1].split('<footer class="foot"', 1)[0])), "hub: never names New York")
+for t in TOWNS:
+    if is_state(t) and t["publish"]:
+        grp = hub.split(f'>{t["state"]}</h2>', 1)[1].split("</ul>", 1)[0]
+        first = re.search(r'href="/golf-carts/([a-z-]+)"', grp)
+        ok(first and first.group(1) == t["slug"], f"hub: {t['state']} state page first in its group")
 ok(not re.search(r"<img\b|<script", hub), "hub: no images, no JavaScript")
 ok("<svg" not in hub.split("<body>", 1)[1], "hub: no drawn map")
 
