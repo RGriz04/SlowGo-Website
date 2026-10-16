@@ -35,3 +35,23 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# The private fleet setup form (2026-10-17): never indexed, whatever a crawler finds. The page also
+# carries <meta name="robots" content="noindex, nofollow">; the header covers both of its URLs.
+[[headers]]
+  for = "/business/setup*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "no-referrer"
+
+[[headers]]
+  for = "/business-setup.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "no-referrer"
+
+# Favicon set (2026-10-17). The web app manifest gets its proper type.
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"

@@ -1,8 +1,11 @@
 {
   "name": "slowgo-website",
   "private": true,
-  "description": "slowgoapp.com — static pages plus two Netlify Functions (netlify/functions).",
+  "description": "slowgoapp.com \u2014 static pages plus two Netlify Functions (netlify/functions).",
   "dependencies": {
     "@netlify/blobs": "^8.1.0"
+  },
+  "scripts": {
+    "test": "node tools/test-links.mjs && node tools/test-fleet-setup.mjs"
   }
 }

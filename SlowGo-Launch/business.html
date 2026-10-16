@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SlowGo for businesses: rentals, dealers, towns</title>
+<meta name="description" content="Free SlowGo cards with your own QR code for cart rental shops and dealers, plus ways for communities, towns, tourism boards and realtors to work with us." />
+<meta name="theme-color" content="#0B1F15" />
+<link rel="canonical" href="https://slowgoapp.com/business" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SlowGo for businesses: rentals, dealers, towns" />
+<meta property="og:description" content="Free SlowGo cards with your own QR code for cart rental shops and dealers, plus ways for communities, towns, tourism boards and realtors to work with us." />
+<meta property="og:url" content="https://slowgoapp.com/business" />
+<meta property="og:image" content="https://slowgoapp.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
+<meta property="og:site_name" content="SlowGo" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SlowGo for businesses: rentals, dealers, towns" />
+<meta name="twitter:description" content="Free SlowGo cards with your own QR code for cart rental shops and dealers, plus ways for communities, towns, tourism boards and realtors to work with us." />
+<meta name="twitter:image" content="https://slowgoapp.com/og-image.png" />
+<meta name="twitter:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
+
+<!-- favicon set (2026-10-17) -->
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..600,30..100,0..1;1,9..144,400..600,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>  :root{
+    --forest:        #1E3A2B;
+    --charcoal:      #0B1F15;
+    --moss:          #5B7A5F;
+    --amber:         #C8853A;
+    --amber-soft:    #E0A969;
+    --amber-deep:    #8A5620;
+    --oat:           #F4EDE0;
+    --cream:         #FBF7EF;
+    --drift:         #A09484;
+    --drift-2:       #C7BDAC;
+
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono:  'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+    --max: 1240px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--forest);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+  }
+  ::selection{ background:var(--amber); color:var(--cream); }
+  a{ color:inherit; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:rgba(160,148,132,.6); transition:color .2s ease, text-decoration-color .2s ease; }
+  a:hover{ color:var(--amber); text-decoration-color:var(--amber); }
+  a:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; border-radius:2px; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding-left:32px; padding-right:32px; }
+  @media (max-width: 640px){ .wrap{ padding-left:22px; padding-right:22px; } }
+
+  .skip{
+    position:absolute; left:-9999px; top:0;
+    background:var(--charcoal); color:var(--oat);
+    padding:12px 18px; z-index:50; text-decoration:none; font-size:14px;
+  }
+  .skip:focus{ left:0; }
+
+  /* -------- Topbar -------- */
+  .topbar{
+    background:var(--charcoal);
+    border-bottom:1px solid rgba(244,237,224,.08);
+    color:var(--oat);
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .topbar .mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    color:var(--oat);
+  }
+  .topbar .mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .topbar nav{ display:flex; gap:28px; align-items:center; }
+  .topbar nav a{
+    font-size:13px;
+    text-decoration:none;
+    color:var(--drift-2);
+    letter-spacing:0.01em;
+  }
+  .topbar nav a:hover{ color:var(--amber-soft); }
+  @media (max-width: 720px){
+    .topbar-inner{ padding:14px 22px; }
+  }
+
+  /* -------- Page body -------- */
+  .legal{ flex:1 0 auto; padding: clamp(64px, 8vw, 104px) 0 clamp(80px, 10vw, 140px); }
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--drift);
+    display:inline-flex; align-items:center; gap:10px;
+    margin:0 0 20px 0;
+  }
+  .eyebrow .dot{ width:5px; height:5px; border-radius:50%; background:var(--amber); display:inline-block; }
+  .legal h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 144, "SOFT" 40, "WONK" 0;
+    font-size: clamp(40px, 5.4vw, 76px);
+    line-height:1.0;
+    letter-spacing:-0.02em;
+    margin:0;
+    text-wrap:balance;
+  }
+
+  /* -------- Prose -------- */
+  .prose{
+    max-width:74ch;
+    margin:48px 0 0;
+    /* Support page runs at 17px, while terms.html and privacy.html sit at 16.5px.
+       This 0.5px difference is deliberate and temporary: this page serves a 55+
+       audience reading outdoors, so it meets the 17px minimum now. The legal pages
+       will be bumped to match after they return from attorney review — until then,
+       do NOT "fix" this back down to 16.5px to match the other pages. */
+    font-size:17px;
+    line-height:1.78;
+    color:var(--forest);
+  }
+  .prose > p{ margin:20px 0 0; }
+  .prose .lede{
+    font-size:19px;
+    line-height:1.7;
+    color:var(--moss);
+    margin-top:0;
+  }
+  .prose h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 96, "SOFT" 40, "WONK" 0;
+    font-size: clamp(25px, 3vw, 32px);
+    line-height:1.2;
+    letter-spacing:-0.015em;
+    color:var(--forest);
+    margin:56px 0 0;
+    padding-top:28px;
+    border-top:1px solid rgba(160,148,132,.28);
+    scroll-margin-top:24px;
+  }
+  .prose h3{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:-0.005em;
+    color:var(--forest);
+    margin:36px 0 0;
+    scroll-margin-top:24px;
+  }
+  .prose strong{ font-weight:600; color:var(--forest); }
+  .prose a{ text-decoration-color:rgba(200,133,58,.5); }
+
+  /* -------- Contact block -------- */
+  .contact{
+    margin:24px 0 0;
+    font-style:normal;
+    line-height:1.85;
+  }
+
+  /* -------- Footer -------- */
+  footer.foot{
+    background: var(--charcoal);
+    color: var(--drift-2);
+    padding: 56px 0 48px;
+    border-top:1px solid rgba(244,237,224,.08);
+  }
+  .foot-mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size: 34px;
+    color:var(--oat);
+    line-height:1;
+    margin: 0 0 28px 0;
+  }
+  .foot-mark a{ text-decoration:none; color:inherit; }
+  .foot-mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .foot-legal{
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    margin-bottom: 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap: 32px;
+    flex-wrap:wrap;
+  }
+  .foot-legal p{
+    font-size:12.5px;
+    line-height:1.7;
+    color:var(--drift);
+    margin:0;
+    max-width:44ch;
+  }
+  .foot-legal .entity{ color:var(--drift-2); }
+  .foot-legal a{ color:var(--drift); text-decoration-color:rgba(160,148,132,.45); }
+  .foot-legal a:hover{ color:var(--amber-soft); text-decoration-color:var(--amber-soft); }
+  .foot-legal-links{
+    list-style:none; margin:0; padding:0;
+    display:flex; gap:24px; align-items:center;
+    font-size:12.5px;
+  }
+  .foot-legal-links a{ text-decoration:none; }
+  @media (max-width: 640px){
+    .foot-legal{ flex-direction:column; gap:18px; }
+  }
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--drift);
+  }
+  .foot-bottom .right{ display:flex; gap:24px; }
+  @media (max-width: 800px){
+    .foot-bottom{ flex-direction:column; gap:14px; align-items:flex-start; }
+  }
+
+  /* -------- Business forms (2026-10-17) -------- */
+  .biz-nav{ display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 0; padding:0; list-style:none; }
+  .biz-nav a{
+    display:inline-block; padding:9px 16px; border-radius:999px;
+    border:1px solid rgba(30,58,43,.22); text-decoration:none; font-size:15px; background:var(--oat);
+  }
+  .biz-nav a:hover{ border-color:var(--amber); }
+  .biz{ scroll-margin-top:16px; }
+  .biz ul{ margin:14px 0 0; padding-left:1.2em; }
+  .biz li{ margin:6px 0 0; }
+  .bizform{
+    margin:24px 0 0; padding:24px; border-radius:14px;
+    background:var(--oat); border:1px solid rgba(160,148,132,.35);
+  }
+  .bizform .row{ display:grid; grid-template-columns:1fr 1fr; gap:14px 16px; }
+  @media (max-width: 640px){ .bizform{ padding:18px; } .bizform .row{ grid-template-columns:1fr; } }
+  .bizform label{ display:block; font-size:15px; font-weight:500; color:var(--forest); }
+  .bizform label .opt{ font-weight:400; color:var(--moss); font-size:14px; }
+  .bizform input[type=text], .bizform input[type=email], .bizform input[type=tel],
+  .bizform input[type=number], .bizform textarea, .bizform select{
+    display:block; width:100%; margin-top:6px; padding:12px 14px;
+    font:inherit; font-size:17px; color:var(--forest);
+    background:var(--cream); border:1px solid rgba(30,58,43,.25); border-radius:10px;
+  }
+  .bizform textarea{ min-height:96px; resize:vertical; }
+  .bizform input:focus, .bizform textarea:focus, .bizform select:focus{ outline:2px solid var(--amber); outline-offset:1px; }
+  .bizform .full{ grid-column:1 / -1; }
+  .bizform button[type=submit]{
+    margin-top:18px; font:inherit; font-size:15px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--charcoal); background:var(--amber); border:0; border-radius:999px; padding:15px 28px; cursor:pointer;
+  }
+  .bizform button[type=submit]:hover{ background:var(--amber-soft); }
+  .bizform button[type=submit]:disabled{ opacity:.6; cursor:default; }
+  .bizform .note{ font-size:14px; line-height:1.6; color:var(--moss); margin:14px 0 0; }
+  .bizform .form-error{ color:#9B2C1F; font-size:15px; margin:12px 0 0; }
+  .bizform .confirm{ display:none; margin:0; }
+  .bizform[data-state=done] .fields{ display:none; }
+  .bizform[data-state=done] .confirm{ display:block; }
+  .confirm h4{ font-family:var(--serif); font-weight:500; font-size:22px; margin:0; }
+  .confirm ol{ margin:12px 0 0; padding-left:1.3em; }
+  .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#doc">Skip to the forms</a>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
+    <nav aria-label="Primary">
+      <a href="/">Back to SlowGo</a>
+    </nav>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> For businesses</p>
+    <h1>SlowGo for businesses</h1>
+
+    <article class="prose" id="doc">
+      <p class="lede">SlowGo is navigation for golf carts and low-speed vehicles. It’s free for riders, with no ads and no account. If your business puts people in carts, or welcomes people who ride them, here’s how we can work together.</p>
+      <ul class="biz-nav" role="list"><li><a href="#rental">Rental shops</a></li><li><a href="#dealer">Dealers</a></li><li><a href="#community">Communities & HOAs</a></li><li><a href="#town">Towns & tourism</a></li><li><a href="#partner">Realtors & partners</a></li></ul>
+
+      <section class="biz" id="rental" aria-labelledby="rental-title">
+      <h2 id="rental-title">Cart rental shops</h2>
+      <p>Give every renter a better first ride, and see how many of your cards get used.</p>
+      <ul><li>Free SlowGo cards with your shop’s name and its own QR code (slowgoapp.com/f/your-shop).</li><li>A count of how many times your cards are scanned, by day. Never who scanned them or where anyone rode.</li><li>Coming next, in testing now and not in the App Store yet: your name and logo in the app, “Return your cart here” saved for the renter, a Call the shop button, and your own recommended spots.</li></ul>
+      
+      <form class="bizform" id="form-rental" name="business-rental" method="POST" action="/business"
+            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="business-rental" />
+        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="fields">
+          <div class="row">
+          <div><label for="rental-name">Your name</label><input id="rental-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
+          <div><label for="rental-business">Shop name</label><input id="rental-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
+          <div><label for="rental-town">Town and state</label><input id="rental-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div><label for="rental-email">Email</label><input id="rental-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
+          <div><label for="rental-fleet_size">How many carts do you rent? <span class="opt">(optional)</span></label><input id="rental-fleet_size" type="number" name="fleet_size" min="1" max="5000" inputmode="numeric" /></div>
+          <div><label for="rental-website">Your website <span class="opt">(optional)</span></label><input id="rental-website" type="text" name="website" autocomplete="url" placeholder="yourshop.com" /></div>
+          <div class="full"><label for="rental-message">Anything else we should know <span class="opt">(optional)</span></label><textarea id="rental-message" name="message" ></textarea></div>
+          </div>
+          <button type="submit">Tell me more</button>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+        </div>
+        <div class="confirm" role="status" aria-live="polite">
+          <h4>Thanks. Ron reads every one of these himself.</h4>
+          <p>What happens next:</p>
+          <ol><li>Ron replies by email.</li><li>If it’s a fit, he sends a short private setup link: your logo, phone number, return spot and favorite places.</li><li>Your cards are printed and shipped, and your /f/ link starts counting.</li></ol>
+        </div>
+      </form>
+      </section>
+
+      <section class="biz" id="dealer" aria-labelledby="dealer-title">
+      <h2 id="dealer-title">Golf cart dealers</h2>
+      <p>Hand every new owner a way to ride their town on the right roads, with your name on it.</p>
+      <ul><li>Free “Your cart from [your dealership]” cards with your own QR code, for every cart you sell.</li><li>A count of how many times your cards are scanned, by day. Nothing about the riders.</li><li>Coming next, in testing now: your name in the app and a “Call for service” button that rings your service desk.</li></ul>
+      
+      <form class="bizform" id="form-dealer" name="business-dealer" method="POST" action="/business"
+            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="business-dealer" />
+        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="fields">
+          <div class="row">
+          <div><label for="dealer-name">Your name</label><input id="dealer-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
+          <div><label for="dealer-business">Dealership name</label><input id="dealer-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
+          <div><label for="dealer-town">Town and state</label><input id="dealer-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div><label for="dealer-email">Email</label><input id="dealer-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
+          <div><label for="dealer-carts_per_year">Roughly how many carts do you sell a year? <span class="opt">(optional)</span></label><input id="dealer-carts_per_year" type="number" name="carts_per_year" min="1" max="100000" inputmode="numeric" /></div>
+          <div><label for="dealer-website">Your website <span class="opt">(optional)</span></label><input id="dealer-website" type="text" name="website" autocomplete="url" /></div>
+          <div class="full"><label for="dealer-message">Anything else we should know <span class="opt">(optional)</span></label><textarea id="dealer-message" name="message" ></textarea></div>
+          </div>
+          <button type="submit">Tell me more</button>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+        </div>
+        <div class="confirm" role="status" aria-live="polite">
+          <h4>Thanks. Ron reads every one of these himself.</h4>
+          <p>What happens next:</p>
+          <ol><li>Ron replies by email.</li><li>If it’s a fit, he sends a short private setup link for your logo, service number and card order.</li><li>Your cards are printed and shipped.</li></ol>
+        </div>
+      </form>
+      </section>
+
+      <section class="biz" id="community" aria-labelledby="community-title">
+      <h2 id="community-title">Communities and HOAs</h2>
+      <p>Help residents find the quiet way around, on the roads and paths your community allows.</p>
+      <ul><li>We check how SlowGo routes around your community and tell you what we find.</li><li>Cards or a QR code for welcome packets, newsletters and the clubhouse board.</li><li>If your community isn’t covered yet, your note helps decide where we check next.</li></ul>
+      
+      <form class="bizform" id="form-community" name="business-community" method="POST" action="/business"
+            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="business-community" />
+        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="fields">
+          <div class="row">
+          <div><label for="community-name">Your name</label><input id="community-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
+          <div><label for="community-business">Community or HOA name</label><input id="community-business" type="text" name="business" required aria-required="true" /></div>
+          <div><label for="community-town">Town and state</label><input id="community-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div><label for="community-email">Email</label><input id="community-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
+          <div><label for="community-role">Your role <span class="opt">(optional)</span></label><input id="community-role" type="text" name="role" autocomplete="organization-title" placeholder="e.g. board member, manager" /></div>
+          <div><label for="community-homes">About how many homes? <span class="opt">(optional)</span></label><input id="community-homes" type="number" name="homes" min="1" max="200000" inputmode="numeric" /></div>
+          <div class="full"><label for="community-message">Anything about your roads, paths or rules we should know <span class="opt">(optional)</span></label><textarea id="community-message" name="message" ></textarea></div>
+          </div>
+          <button type="submit">Get in touch</button>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+        </div>
+        <div class="confirm" role="status" aria-live="polite">
+          <h4>Thanks. Ron reads every one of these himself.</h4>
+          <p>What happens next:</p>
+          <ol><li>Ron replies by email.</li><li>He looks at how SlowGo routes around your community and sends you what he finds.</li><li>If you’d like cards or a QR code for residents, he sends those next.</li></ol>
+        </div>
+      </form>
+      </section>
+
+      <section class="biz" id="town" aria-labelledby="town-title">
+      <h2 id="town-title">Towns and tourism boards</h2>
+      <p>Point visitors with carts toward the streets you want them on.</p>
+      <ul><li>Our plain-English cart rules pages link to your own published rules, and we correct them when you tell us something changed.</li><li>Tell us about streets carts can’t use, new paths, or seasonal closures.</li><li>SlowGo is independent: it isn’t affiliated with or endorsed by any town, and it never presents itself as official.</li></ul>
+      
+      <form class="bizform" id="form-town" name="business-town" method="POST" action="/business"
+            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="business-town" />
+        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="fields">
+          <div class="row">
+          <div><label for="town-name">Your name</label><input id="town-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
+          <div><label for="town-business">Town, county or organization</label><input id="town-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
+          <div><label for="town-role">Your role <span class="opt">(optional)</span></label><input id="town-role" type="text" name="role" autocomplete="organization-title" /></div>
+          <div><label for="town-email">Email</label><input id="town-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
+          <div><label for="town-town">Town and state</label><input id="town-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div class="full"><label for="town-message">What would you like us to know or change? <span class="opt">(optional)</span></label><textarea id="town-message" name="message" ></textarea></div>
+          </div>
+          <button type="submit">Get in touch</button>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+        </div>
+        <div class="confirm" role="status" aria-live="polite">
+          <h4>Thanks. Ron reads every one of these himself.</h4>
+          <p>What happens next:</p>
+          <ol><li>Ron replies by email.</li><li>If you’ve pointed out a rule or a street, he checks it against your published source and tells you what changed.</li></ol>
+        </div>
+      </form>
+      </section>
+
+      <section class="biz" id="partner" aria-labelledby="partner-title">
+      <h2 id="partner-title">Realtors and partners</h2>
+      <p>Welcoming people to a cart town? SlowGo makes a good first gift.</p>
+      <ul><li>Cards with a QR code for closing gifts, welcome bags and open houses.</li><li>Ideas for working together are welcome: cart clubs, events, local guides.</li></ul>
+      
+      <form class="bizform" id="form-partner" name="business-partner" method="POST" action="/business"
+            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="business-partner" />
+        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="fields">
+          <div class="row">
+          <div><label for="partner-name">Your name</label><input id="partner-name" type="text" name="name" required aria-required="true" autocomplete="name" /></div>
+          <div><label for="partner-business">Company</label><input id="partner-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
+          <div><label for="partner-town">Town and state</label><input id="partner-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div><label for="partner-email">Email</label><input id="partner-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
+          <div class="full"><label for="partner-message">What do you have in mind? <span class="opt">(optional)</span></label><textarea id="partner-message" name="message" ></textarea></div>
+          </div>
+          <button type="submit">Get in touch</button>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+        </div>
+        <div class="confirm" role="status" aria-live="polite">
+          <h4>Thanks. Ron reads every one of these himself.</h4>
+          <p>What happens next:</p>
+          <ol><li>Ron replies by email.</li><li>If there’s something to send, like cards or a QR code, he sends it next.</li></ol>
+        </div>
+      </form>
+      </section>
+
+      <h2 id="questions">Questions</h2>
+      <p>Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. Ron answers every message himself.</p>
+    </article>
+  </div>
+</main>
+
+<footer class="foot" role="contentinfo">
+  <div class="wrap">
+    <p class="foot-mark"><a href="/">Slow<em>Go</em></a></p>
+
+    <div class="foot-legal">
+      <p class="entity">
+        SlowGo is a product of <strong style="font-weight:500;">BackRoad Apps LLC</strong>.<br />
+        4498 Main St, Ste 4 #5690, Amherst, NY 14226<br />
+        <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>
+      </p>
+      <ul class="foot-legal-links" role="list">
+        <li><a href="/safety">Safety</a></li>
+        <li><a href="/support">Support</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 BackRoad Apps LLC. All rights reserved.</span>
+      <span class="right">
+        <span>Made carefully</span>
+        <span>·</span>
+        <span>slowgoapp.com</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('form.bizform').forEach(function(form){
+    var btn = form.querySelector('button[type=submit]');
+    var label = btn ? btn.textContent : '';
+    var err = form.querySelector('.form-error');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (form.dataset.blocked) return;
+      var bad = null;
+      form.querySelectorAll('[required]').forEach(function(el){ if (!bad && !el.checkValidity()) bad = el; });
+      if (bad){ bad.reportValidity ? bad.reportValidity() : bad.focus(); return; }
+      if (typeof form.precheck === 'function' && !form.precheck()) return;
+      if (err) err.hidden = true;
+      if (btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+      var body = new FormData(form);
+      var hasFile = !!form.querySelector('input[type=file]');
+      var opts = hasFile ? { method: 'POST', body: body }
+        : { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(body).toString() };
+      fetch('/', opts).then(function(res){
+        if (!res || !res.ok) throw new Error('status ' + (res && res.status));
+        form.setAttribute('data-state', 'done');
+        var c = form.querySelector('.confirm'); if (c){ c.setAttribute('tabindex', '-1'); c.focus(); }
+      }).catch(function(){
+        if (btn){ btn.disabled = false; btn.textContent = label; }
+        if (err) err.hidden = false;
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

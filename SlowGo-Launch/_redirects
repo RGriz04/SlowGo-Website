@@ -71,3 +71,32 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 # Link previews still get go/index.html's card (the function serves it to preview bots).
 /android    /android.html    200
 /android/   /android.html    200
+
+# Town pages (2026-10-17): the /cart-rules hub and the 8 published towns, clean URLs (rewrites, 200).
+# Lines from tools/town-pages/build.py --links on drafts/town-pages-2026-10-16 (a2ef9f3).
+# Their download buttons use the counted links /t/<name> (netlify/counted-links.mjs).
+/cart-rules                        /cart-rules.html                         200
+/cart-rules/                       /cart-rules.html                         200
+/golf-carts/st-pete-beach          /golf-carts/st-pete-beach.html           200
+/golf-carts/st-pete-beach/         /golf-carts/st-pete-beach.html           200
+/golf-carts/dunedin                /golf-carts/dunedin.html                 200
+/golf-carts/dunedin/               /golf-carts/dunedin.html                 200
+/golf-carts/mount-dora             /golf-carts/mount-dora.html              200
+/golf-carts/mount-dora/            /golf-carts/mount-dora.html              200
+/golf-carts/miami-lakes            /golf-carts/miami-lakes.html             200
+/golf-carts/miami-lakes/           /golf-carts/miami-lakes.html             200
+/golf-carts/pine-island            /golf-carts/pine-island.html             200
+/golf-carts/pine-island/           /golf-carts/pine-island.html             200
+/golf-carts/jekyll-island          /golf-carts/jekyll-island.html           200
+/golf-carts/jekyll-island/         /golf-carts/jekyll-island.html           200
+/golf-carts/st-simons-island       /golf-carts/st-simons-island.html        200
+/golf-carts/st-simons-island/      /golf-carts/st-simons-island.html        200
+/golf-carts/tybee-island           /golf-carts/tybee-island.html            200
+/golf-carts/tybee-island/          /golf-carts/tybee-island.html            200
+
+# For businesses (2026-10-17): /business is a page; /business/setup is the private fleet setup
+# form (unlinked, noindex; see netlify.toml X-Robots-Tag).
+/business          /business.html          200
+/business/         /business.html          200
+/business/setup    /business-setup.html    200
+/business/setup/   /business-setup.html    200

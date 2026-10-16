@@ -1,0 +1,13 @@
+{
+  "name": "SlowGo",
+  "short_name": "SlowGo",
+  "description": "Navigation for golf carts and low-speed vehicles.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0B1F15",
+  "theme_color": "#0B1F15",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
