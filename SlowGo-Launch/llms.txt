@@ -8,7 +8,7 @@
 
 SlowGo v1.0 is released. The iOS app is on the App Store as of 25 August 2026, free
 to start, at https://slowgoapp.com/go. The Android app (Android 7.0 or later) is on
-Google Play as of LAUNCH-DAY, at https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo.
+Google Play as of October 16, 2026, at https://play.google.com/store/apps/details?id=com.slowgoapp.slowgo.
 
 ## Status and coverage
 
@@ -21,7 +21,7 @@ Google Play as of LAUNCH-DAY, at https://play.google.com/store/apps/details?id=c
   the same speed labels show on the cart's screen; saved favorites can be chosen
   and a ride started from the screen; the phone can stay locked in the cupholder.
 - Built with cart communities in mind — The Villages, Hilton Head, Peachtree City,
-  Fire Island, and similar places.
+  and similar places.
 
 ## How routing works
 

@@ -50,7 +50,8 @@ SIGNS = ("Follow applicable law, posted restrictions and lawful directions from 
          "If permission is unclear, don&rsquo;t use that road or path until confirmed.")
 # Deploy-day wording switch (DEPLOY-PLAN-2026-10-17.md, option a): SLOWGO_PROMISE=1.4 gives the sentence
 # that is true while 1.4 is the store app; the default is Ron's 1.5 sentence (2026-10-17, D18).
-SLOWGO_PROMISE = os.environ.get("SLOWGO_PROMISE", "1.5")
+# Ron 2026-10-16: option (a) — 1.4 wording until 1.5 ships; change this default to "1.5" on 1.5 day.
+SLOWGO_PROMISE = os.environ.get("SLOWGO_PROMISE", "1.4")
 SLOWGO_LEAD = ("SlowGo routes on roads posted 35 mph or under by default; "
                "it doesn&rsquo;t establish cart access here.") if SLOWGO_PROMISE == "1.4" else (
               "SlowGo routes on roads posted 35 mph or under and never along faster roads; "
