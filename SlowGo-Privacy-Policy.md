@@ -1,8 +1,8 @@
 # SlowGo Privacy Policy
 
-**Last updated: October 16, 2026** *(DRAFT, not live: re-date to the publication day)*
+**Last updated: October 17, 2026**
 
-**What changed (October 16, 2026):** We checked this Policy against what each version of the App actually sends, and corrected it where it said too little or claimed too much. In short: on iPhone, crash reports and product metrics carry a device identifier, so they are not anonymous (Section 4); version 1.3 sends sample points along the off-path parts of a route to the Overpass service, and every version sends a place's coordinates there when you open its card or arrive at it (Section 3); tapping the map sends that point to Stadia Maps (Section 3); we now name our infrastructure providers by category, and some providers operate outside the United States (Sections 3 and 9); the Site's business inquiry forms are described (Section 3); and changes that arrive with version 1.5 are marked where they apply.
+**What changed (October 17, 2026):** The town-request form now also asks for the town's state, the retired waitlist form is no longer described, and business inquiry forms are on pages under slowgoapp.com/business. **Earlier (October 16, 2026):** We checked this Policy against what each version of the App actually sends, and corrected it where it said too little or claimed too much. In short: on iPhone, crash reports and product metrics carry a device identifier, so they are not anonymous (Section 4); version 1.3 sends sample points along the off-path parts of a route to the Overpass service, and every version sends a place's coordinates there when you open its card or arrive at it (Section 3); tapping the map sends that point to Stadia Maps (Section 3); we now name our infrastructure providers by category, and some providers operate outside the United States (Sections 3 and 9); the Site's business inquiry forms are described (Section 3); and changes that arrive with version 1.5 are marked where they apply.
 
 This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "**we**," "**us**," or "**our**") handles information in connection with the SlowGo mobile application (the "**App**") and the slowgoapp.com website (the "**Site**") (together, the "**Service**"). Where versions of the App behave differently, this Policy says which version does what. You can see your version in the App's Settings.
 
@@ -22,7 +22,7 @@ This Privacy Policy describes how **BackRoad Apps LLC** ("**BackRoad Apps**," "*
 
 **Information you send us.** If you email hello@slowgoapp.com, we receive your email address, any name in your email, and the contents of your message, which we use to respond and to improve the Service. If you email us to opt out of arbitration under the Terms of Service, we keep that message as a record of your choice (Section 6).
 
-**Information you give us through the Site's forms.** The Site has a waitlist form, which asks for your email address; a town-request form, which asks for your email address and the name of a town or community; and business inquiry forms, described in Section 3 under "Business inquiries." All are optional, and none is part of the App. Section 3 describes what happens to what you submit.
+**Information you give us through the Site's forms.** The Site has a town-request form, which asks for your email address, the name of a town or community, and its state; and business inquiry forms, described in Section 3 under "Business inquiries." All are optional, and none is part of the App. Section 3 describes what happens to what you submit.
 
 **Your acceptance of the Terms.** When you agree to the Terms of Service in the App, the App saves a record on your phone: which versions you agreed to, when, the App and operating-system versions, your language setting, and a random acceptance identifier. It stays on your phone and is not sent to us, unless you choose to include the identifier in an email to us.
 
@@ -65,9 +65,9 @@ We may also disclose information if required by law, to protect the rights, safe
 
 **We do not sell your personal information, and we do not share it for cross-context behavioral advertising.**
 
-### The Site's waitlist and town-request forms
+### The Site's town-request form
 
-The **waitlist** form collects your email address. The **town-request** form collects your email address and the name of a town or community. Nothing else is asked for, and the App never uses these forms.
+The **town-request** form collects your email address, the name of a town or community, and its state (chosen from a list). Nothing else is asked for, and the App never uses this form.
 
 We use what you submit for one purpose each: to write to you when SlowGo is available where you ride, and to decide which areas to build coverage for next. Submissions are handled by **Netlify**, which hosts the Site and stores form entries for us as a service provider, and a copy reaches our email provider as a notification.
 
@@ -77,7 +77,7 @@ We keep a submission until we have sent the launch notification for your area, o
 
 ### Business inquiries
 
-The Site's page for businesses (slowgoapp.com/business) has inquiry forms for rental shops, dealers, communities, towns, tourism boards, and other organizations. They ask for your **business or organization name, a contact email, the town you serve, and your inquiry**. You may also give a **contact name, a phone number, and a rough fleet size** (a range, not an exact count); these are optional. Please don't include renters' personal information or any payment details.
+The Site's page for businesses (slowgoapp.com/business and the pages under it) has inquiry forms for rental shops, dealers, communities, towns, tourism boards, and other organizations. They ask for your **business or organization name, a contact email, the town you serve, and your inquiry**. You may also give a **contact name, a phone number, and a rough fleet size** (a range, not an exact count); these are optional. Please don't include renters' personal information or any payment details.
 
 We use what you send to answer your inquiry and to discuss whether SlowGo can work for your business. We don't add you to a mailing list or send you promotions unless you separately ask us to, and we do not sell this information or share it for advertising. An inquiry is not an agreement to anything. Submissions are stored by **Netlify**, our website host, as our service provider, and a copy reaches our email provider as a notification. If a public body sends us an inquiry, it may be subject to public-records laws we don't control.
 
@@ -131,7 +131,7 @@ Each metric is a fixed category or a number — there are no coordinates, no add
 
 ## 6. Data Retention
 
-Ride history, favorites, recents, the parked spot, your Terms acceptance record, and settings remain on your device until you delete them or delete the App (the parked spot is deleted after 7 days, or sooner as described in Section 5). For information we or our infrastructure process: our servers' access and security logs are retained no more than 14 days and are configured not to include route coordinates; crash reports and product metrics are retained by Sentry for no more than 90 days (currently about 30 days); emails you send us are retained approximately 24 months, or longer if needed for a legal matter; arbitration opt-out messages are kept for as long as we offer the App and 7 years after, because an opt-out can matter in any later dispute; waitlist and town-request submissions are kept until the launch notification for that area has been sent or you ask us to delete them, whichever comes first; business inquiries are kept as described in Section 3; and routine Site server logs are retained approximately 30 days. If we introduce paid features, transaction and tax records may be retained up to 7 years as required by law. Third-party providers retain request data under their own policies. We may keep information longer only where the law requires it, or to deal with an actual or reasonably expected legal claim, and only for as long as that lasts.
+Ride history, favorites, recents, the parked spot, your Terms acceptance record, and settings remain on your device until you delete them or delete the App (the parked spot is deleted after 7 days, or sooner as described in Section 5). For information we or our infrastructure process: our servers' access and security logs are retained no more than 14 days and are configured not to include route coordinates; crash reports and product metrics are retained by Sentry for no more than 90 days (currently about 30 days); emails you send us are retained approximately 24 months, or longer if needed for a legal matter; arbitration opt-out messages are kept for as long as we offer the App and 7 years after, because an opt-out can matter in any later dispute; town-request submissions are kept until the launch notification for that area has been sent or you ask us to delete them, whichever comes first; business inquiries are kept as described in Section 3; and routine Site server logs are retained approximately 30 days. If we introduce paid features, transaction and tax records may be retained up to 7 years as required by law. Third-party providers retain request data under their own policies. We may keep information longer only where the law requires it, or to deal with an actual or reasonably expected legal claim, and only for as long as that lasts.
 
 ## 7. Security
 
@@ -143,7 +143,7 @@ Requests between the App and service providers are transmitted using industry-st
 - **Ride history:** toggle saving off, or clear it, in the App's Settings.
 - **Lock screen (version 1.5):** turn off "Show turns on the lock screen" in Settings.
 - **Crash reporting and reliability data:** these are limited and configured to exclude trip data; deleting the App stops all collection. On iPhone, deleting and reinstalling the App changes the device identifier described in Section 4.
-- **Waitlist, town requests, and business inquiries:** email hello@slowgoapp.com to have your submission deleted.
+- **Town requests and business inquiries:** email hello@slowgoapp.com to have your submission deleted.
 - **Do Not Track / Global Privacy Control:** the Service does not track you across other companies' apps or websites, so there is nothing for these signals to opt out of.
 
 ## 9. Your Privacy Rights
