@@ -84,6 +84,9 @@ safety = open(os.path.join(SITE, "safety.html"), encoding="utf-8").read()
 STYLE = re.search(r"<style>(.*?)</style>", safety, re.S).group(1)
 FOOTER = re.search(r'(<footer class="foot".*?</footer>)', safety, re.S).group(1)
 FOOTER = FOOTER.replace("<li>Safety</li>", '<li><a href="/safety">Safety</a></li>')
+# The site menu (2026-10-17) is copied from safety.html too: Golf cart rules by town, For businesses, Back to
+# SlowGo, and the phone Menu button (a <details> element, so the pages stay free of JavaScript).
+HEADER = re.search(r'(<header class="topbar".*?</header>)', safety, re.S).group(1)
 # Every icon/manifest link in safety.html (favicon.ico, PNG sizes, apple-touch-icon, web manifest)
 ICON = '\n'.join(re.findall(r'<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*>', safety))
 # Font links from safety.html: self-hosted /fonts/ (B9), or Google Fonts on older heads
@@ -174,15 +177,7 @@ def head(title, desc, url, robots, og_type, jsonld=None, draft_note=""):
 
 <a class="skip" href="#doc">Skip to the page</a>
 
-<header class="topbar" role="banner">
-  <div class="topbar-inner">
-    <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
-    <nav aria-label="Primary">
-      <a href="/cart-rules">All towns</a>
-      <a href="/">Back to SlowGo</a>
-    </nav>
-  </div>
-</header>
+{HEADER}
 """
 
 

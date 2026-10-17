@@ -31,6 +31,36 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://slowgoapp.com/business/rental-shops</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://slowgoapp.com/business/dealers</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://slowgoapp.com/business/communities</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://slowgoapp.com/business/towns-tourism</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://slowgoapp.com/business/partners</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://slowgoapp.com/android</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>

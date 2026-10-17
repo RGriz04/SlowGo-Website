@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SlowGo for communities and HOAs</title>
+<meta name="description" content="Help residents find the quiet way around, on the roads and paths your community allows. Tell us about your community or HOA." />
+<meta name="theme-color" content="#0B1F15" />
+<link rel="canonical" href="https://slowgoapp.com/business/communities" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SlowGo for communities and HOAs" />
+<meta property="og:description" content="Help residents find the quiet way around, on the roads and paths your community allows. Tell us about your community or HOA." />
+<meta property="og:url" content="https://slowgoapp.com/business/communities" />
+<meta property="og:image" content="https://slowgoapp.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
+<meta property="og:site_name" content="SlowGo" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SlowGo for communities and HOAs" />
+<meta name="twitter:description" content="Help residents find the quiet way around, on the roads and paths your community allows. Tell us about your community or HOA." />
+<meta name="twitter:image" content="https://slowgoapp.com/og-image.png" />
+<meta name="twitter:image:alt" content="The SlowGo wordmark above the line 'Life's better at 15 mph.'" />
+
+<!-- /business/communities: one of the five business pages split out of /business (2026-10-17). Its form keeps its Netlify name. -->
+<!-- favicon set (2026-10-17) -->
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preload" href="/fonts/Fraunces-Roman.latin.var.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/Inter.latin.var.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/fonts/fonts.css" />
+
+<style>  :root{
+    --forest:        #1E3A2B;
+    --charcoal:      #0B1F15;
+    --moss:          #5B7A5F;
+    --amber:         #C8853A;
+    --amber-soft:    #E0A969;
+    --amber-deep:    #8A5620;
+    --oat:           #F4EDE0;
+    --cream:         #FBF7EF;
+    --drift:         #A09484;
+    --drift-2:       #C7BDAC;
+
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono:  'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+    --max: 1240px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--forest);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+  }
+  ::selection{ background:var(--amber); color:var(--cream); }
+  a{ color:inherit; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:rgba(160,148,132,.6); transition:color .2s ease, text-decoration-color .2s ease; }
+  a:hover{ color:var(--amber); text-decoration-color:var(--amber); }
+  a:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; border-radius:2px; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding-left:32px; padding-right:32px; }
+  @media (max-width: 640px){ .wrap{ padding-left:22px; padding-right:22px; } }
+
+  .skip{
+    position:absolute; left:-9999px; top:0;
+    background:var(--charcoal); color:var(--oat);
+    padding:12px 18px; z-index:50; text-decoration:none; font-size:14px;
+  }
+  .skip:focus{ left:0; }
+
+  /* -------- Topbar -------- */
+  .topbar{
+    background:var(--charcoal);
+    border-bottom:1px solid rgba(244,237,224,.08);
+    color:var(--oat);
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .topbar .mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    color:var(--oat);
+  }
+  .topbar .mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .topbar nav{ display:flex; gap:28px; align-items:center; }
+  .topbar nav a{
+    font-size:13px;
+    text-decoration:none;
+    color:var(--drift-2);
+    letter-spacing:0.01em;
+  }
+  .topbar nav a:hover{ color:var(--amber-soft); }
+  @media (max-width: 720px){
+    .topbar-inner{ padding:14px 22px; }
+  }
+
+  /* -------- Page body -------- */
+  .legal{ flex:1 0 auto; padding: clamp(64px, 8vw, 104px) 0 clamp(80px, 10vw, 140px); }
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--drift);
+    display:inline-flex; align-items:center; gap:10px;
+    margin:0 0 20px 0;
+  }
+  .eyebrow .dot{ width:5px; height:5px; border-radius:50%; background:var(--amber); display:inline-block; }
+  .legal h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 144, "SOFT" 40, "WONK" 0;
+    font-size: clamp(40px, 5.4vw, 76px);
+    line-height:1.0;
+    letter-spacing:-0.02em;
+    margin:0;
+    text-wrap:balance;
+  }
+
+  /* -------- Prose -------- */
+  .prose{
+    max-width:74ch;
+    margin:48px 0 0;
+    /* Support page runs at 17px, while terms.html and privacy.html sit at 16.5px.
+       This 0.5px difference is deliberate and temporary: this page serves a 55+
+       audience reading outdoors, so it meets the 17px minimum now. The legal pages
+       will be bumped to match after they return from attorney review — until then,
+       do NOT "fix" this back down to 16.5px to match the other pages. */
+    font-size:17px;
+    line-height:1.78;
+    color:var(--forest);
+  }
+  .prose > p{ margin:20px 0 0; }
+  .prose .lede{
+    font-size:19px;
+    line-height:1.7;
+    color:var(--moss);
+    margin-top:0;
+  }
+  .prose h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-variation-settings:"opsz" 96, "SOFT" 40, "WONK" 0;
+    font-size: clamp(25px, 3vw, 32px);
+    line-height:1.2;
+    letter-spacing:-0.015em;
+    color:var(--forest);
+    margin:56px 0 0;
+    padding-top:28px;
+    border-top:1px solid rgba(160,148,132,.28);
+    scroll-margin-top:24px;
+  }
+  .prose h3{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:-0.005em;
+    color:var(--forest);
+    margin:36px 0 0;
+    scroll-margin-top:24px;
+  }
+  .prose strong{ font-weight:600; color:var(--forest); }
+  .prose a{ text-decoration-color:rgba(200,133,58,.5); }
+
+  /* -------- Contact block -------- */
+  .contact{
+    margin:24px 0 0;
+    font-style:normal;
+    line-height:1.85;
+  }
+
+  /* -------- Footer -------- */
+  footer.foot{
+    background: var(--charcoal);
+    color: var(--drift-2);
+    padding: 56px 0 48px;
+    border-top:1px solid rgba(244,237,224,.08);
+  }
+  .foot-mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size: 34px;
+    color:var(--oat);
+    line-height:1;
+    margin: 0 0 28px 0;
+  }
+  .foot-mark a{ text-decoration:none; color:inherit; }
+  .foot-mark em{ font-style:italic; font-variation-settings:"opsz" 96, "SOFT" 100, "WONK" 1; }
+  .foot-legal{
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    margin-bottom: 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap: 32px;
+    flex-wrap:wrap;
+  }
+  .foot-legal p{
+    font-size:12.5px;
+    line-height:1.7;
+    color:var(--drift);
+    margin:0;
+    max-width:44ch;
+  }
+  .foot-legal .entity{ color:var(--drift-2); }
+  .foot-legal a{ color:var(--drift); text-decoration-color:rgba(160,148,132,.45); }
+  .foot-legal a:hover{ color:var(--amber-soft); text-decoration-color:var(--amber-soft); }
+  .foot-legal-links{
+    list-style:none; margin:0; padding:0;
+    display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center;
+    font-size:12.5px;
+  }
+  .foot-legal-links a{ text-decoration:none; }
+  @media (max-width: 640px){
+    .foot-legal{ flex-direction:column; gap:18px; }
+  }
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid rgba(244,237,224,.10);
+    padding-top: 28px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--drift);
+  }
+  .foot-bottom .right{ display:flex; gap:24px; }
+  @media (max-width: 800px){
+    .foot-bottom{ flex-direction:column; gap:14px; align-items:flex-start; }
+  }
+
+  /* -------- Business forms (2026-10-17) -------- */
+  .biz-nav{ display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 0; padding:0; list-style:none; }
+  .biz-nav a{
+    display:inline-block; padding:9px 16px; border-radius:999px;
+    border:1px solid rgba(30,58,43,.22); text-decoration:none; font-size:15px; background:var(--oat);
+  }
+  .biz-nav a:hover{ border-color:var(--amber); }
+  .biz{ scroll-margin-top:16px; }
+  .biz ul{ margin:14px 0 0; padding-left:1.2em; }
+  .biz li{ margin:6px 0 0; }
+  .bizform{
+    margin:24px 0 0; padding:24px; border-radius:14px;
+    background:var(--oat); border:1px solid rgba(160,148,132,.35);
+  }
+  .bizform .row{ display:grid; grid-template-columns:1fr 1fr; gap:14px 16px; }
+  @media (max-width: 640px){ .bizform{ padding:18px; } .bizform .row{ grid-template-columns:1fr; } }
+  .bizform label{ display:block; font-size:15px; font-weight:500; color:var(--forest); }
+  .bizform label .opt{ font-weight:400; color:var(--moss); font-size:14px; }
+  .bizform input[type=text], .bizform input[type=email], .bizform input[type=tel],
+  .bizform input[type=number], .bizform textarea, .bizform select{
+    display:block; width:100%; margin-top:6px; padding:12px 14px;
+    font:inherit; font-size:17px; color:var(--forest);
+    background:var(--cream); border:1px solid rgba(30,58,43,.25); border-radius:10px;
+  }
+  .bizform textarea{ min-height:96px; resize:vertical; }
+  .bizform input:focus, .bizform textarea:focus, .bizform select:focus{ outline:2px solid var(--amber); outline-offset:1px; }
+  .bizform .full{ grid-column:1 / -1; }
+  .bizform button[type=submit]{
+    margin-top:18px; font:inherit; font-size:15px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--charcoal); background:var(--amber); border:0; border-radius:999px; padding:15px 28px; cursor:pointer;
+  }
+  .bizform button[type=submit]:hover{ background:var(--amber-soft); }
+  .bizform button[type=submit]:disabled{ opacity:.6; cursor:default; }
+  .bizform .nopii{ font-size:15px; line-height:1.5; color:var(--forest); margin:16px 0 0; }
+  .bizform .submitrow{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:14px; }
+  .bizform .submitrow button[type=submit]{ margin-top:0; }
+  .bizform .submitrow .privlink{ font-size:15px; color:var(--forest); text-decoration:underline; text-underline-offset:3px; }
+  .bizform .note{ font-size:14px; line-height:1.6; color:var(--moss); margin:14px 0 0; }
+  .bizform .form-error{ color:#9B2C1F; font-size:15px; margin:12px 0 0; }
+  .bizform .confirm{ display:none; margin:0; }
+  .bizform[data-state=done] .fields{ display:none; }
+  .bizform[data-state=done] .confirm{ display:block; }
+  .confirm h4{ font-family:var(--serif); font-weight:500; font-size:22px; margin:0; }
+  .confirm ol{ margin:12px 0 0; padding-left:1.3em; }
+  .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+  /* -------- Site menu (2026-10-17): links in the bar on wide screens, a Menu button on phones.
+     No JavaScript: the phone menu is a <details> element. -------- */
+  .topbar-inner{ position:relative; }
+  .topbar .mnav{ display:none; }
+  .topbar .mnav > summary{
+    list-style:none; cursor:pointer;
+    display:inline-flex; align-items:center; gap:9px;
+    font-size:12.5px; font-weight:500; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--oat); padding:9px 15px; border:1px solid rgba(244,237,224,.30); border-radius:999px;
+    -webkit-user-select:none; user-select:none;
+  }
+  .topbar .mnav > summary::-webkit-details-marker{ display:none; }
+  .topbar .mnav > summary::before{
+    content:""; width:14px; height:10px; flex:none;
+    background:
+      linear-gradient(currentColor,currentColor) 0 0 / 100% 2px no-repeat,
+      linear-gradient(currentColor,currentColor) 0 50% / 100% 2px no-repeat,
+      linear-gradient(currentColor,currentColor) 0 100% / 100% 2px no-repeat;
+  }
+  .topbar .mnav[open] > summary{ background:rgba(244,237,224,.12); }
+  .topbar .mnav > summary:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+  .topbar .mnav-panel{
+    position:absolute; left:0; right:0; top:100%; z-index:40;
+    display:flex; flex-direction:column;
+    background:var(--charcoal); padding:4px 22px 12px;
+    border-top:1px solid rgba(244,237,224,.10); border-bottom:1px solid rgba(244,237,224,.14);
+    box-shadow:0 18px 32px rgba(0,0,0,.28);
+  }
+  .topbar .mnav-panel a{
+    display:block; padding:14px 0; font-size:17px; letter-spacing:0; color:var(--oat);
+    text-decoration:none; border-bottom:1px solid rgba(244,237,224,.08);
+  }
+  .topbar .mnav-panel a:last-child{ border-bottom:0; }
+  .topbar .mnav-panel a:hover{ color:var(--amber-soft); }
+  @media (max-width: 720px){
+    .topbar nav > a:not(.cta){ display:none; }
+    .topbar .mnav{ display:block; }
+    .topbar nav{ gap:12px; }
+  }
+
+  /* -------- Business overview cards and form pages (2026-10-17 split) -------- */
+  .biz-cards{ list-style:none; margin:40px 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(270px, 1fr)); gap:16px; }
+  .biz-card{
+    position:relative; display:flex; flex-direction:column; gap:10px;
+    padding:22px 22px 20px; border-radius:14px; background:var(--oat);
+    border:1px solid rgba(160,148,132,.35); scroll-margin-top:16px;
+    transition:border-color .2s ease, transform .15s ease;
+  }
+  .biz-card:hover{ border-color:var(--amber); }
+  .biz-card:focus-within{ outline:2px solid var(--amber); outline-offset:2px; }
+  .prose .biz-card h2{
+    margin:0; padding:0; border:0; font-size:24px; line-height:1.2;
+  }
+  .biz-card h2 a{ text-decoration:none; color:var(--forest); }
+  .biz-card h2 a::after{ content:""; position:absolute; inset:0; border-radius:14px; }
+  .biz-card h2 a:focus-visible{ outline:none; }
+  .prose .biz-card p{ margin:0; font-size:16px; line-height:1.6; color:var(--moss); }
+  .biz-card .more{ margin-top:auto; padding-top:6px; font-size:14px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--amber-deep); }
+  .eyebrow a{ color:inherit; text-decoration-color:rgba(160,148,132,.6); }
+  .biz-others{ list-style:none; margin:14px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px; }
+  .biz-others a{
+    display:inline-block; padding:9px 16px; border-radius:999px;
+    border:1px solid rgba(30,58,43,.22); text-decoration:none; font-size:15px; background:var(--oat);
+  }
+  .biz-others a:hover{ border-color:var(--amber); }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#doc">Skip to the form</a>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
+    <nav aria-label="Primary">
+      <a href="/cart-rules">Golf cart rules by town</a>
+      <a href="/business">For businesses</a>
+      <a href="/">Back to SlowGo</a>
+      <details class="mnav">
+        <summary>Menu</summary>
+        <div class="mnav-panel">
+          <a href="/cart-rules">Golf cart rules by town</a>
+          <a href="/business">For businesses</a>
+          <a href="/">Back to SlowGo</a>
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> <a href="/business">For businesses</a></p>
+    <h1>Communities and HOAs</h1>
+
+    <article class="prose" id="doc">
+      <p class="lede">Help residents find the quiet way around, on the roads and paths your community allows.</p>
+
+      <section class="biz" id="community" aria-label="Communities and HOAs">
+      <ul><li>We check how SlowGo routes around your community and tell you what we find.</li><li>Cards or a QR code for welcome packets, newsletters and the clubhouse board.</li><li>If your community isn’t covered yet, your note helps decide where we check next.</li></ul>
+      
+      <form class="bizform" id="form-community" name="business-community" method="POST" action="/business/communities"
+            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="business-community" />
+        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="fields">
+          <div class="row">
+          <div><label for="community-business">Community or HOA name</label><input id="community-business" type="text" name="business" required aria-required="true" /></div>
+          <div><label for="community-email">Email</label><input id="community-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
+          <div><label for="community-town">Town and state</label><input id="community-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
+          <div><label for="community-name">Your name <span class="opt">(optional)</span></label><input id="community-name" type="text" name="name" autocomplete="name" /></div>
+          <div><label for="community-phone">Phone <span class="opt">(optional)</span></label><input id="community-phone" type="tel" name="phone" autocomplete="tel" /></div>
+          <div class="full"><label for="community-message">What would you like to know? Anything about your roads, paths or rules helps.</label><textarea id="community-message" name="message" required aria-required="true"></textarea></div>
+          </div>
+          <p class="nopii">Please don’t include renter personal information or payment details.</p>
+          <div class="submitrow"><button type="submit">Get in touch</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
+          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
+        </div>
+        <div class="confirm" role="status" aria-live="polite">
+          <h4>Thanks. Ron reads every one of these himself.</h4>
+          <p>What happens next:</p>
+          <ol><li>Ron replies by email.</li><li>He looks at how SlowGo routes around your community and sends you what he finds.</li><li>If you’d like cards or a QR code for residents, he sends those next.</li></ol>
+        </div>
+      </form>
+      </section>
+
+      <h2 id="questions">Questions</h2>
+      <p>Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. Ron answers every message himself.</p>
+
+      <h2 id="others">Other ways to work with SlowGo</h2>
+      <ul class="biz-others" role="list"><li><a href="/business/rental-shops">Rental shops</a></li><li><a href="/business/dealers">Dealers</a></li><li><a href="/business/towns-tourism">Towns &amp; tourism</a></li><li><a href="/business/partners">Realtors &amp; partners</a></li><li><a href="/business">All of them</a></li></ul>
+    </article>
+  </div>
+</main>
+
+<footer class="foot" role="contentinfo">
+  <div class="wrap">
+    <p class="foot-mark"><a href="/">Slow<em>Go</em></a></p>
+
+    <div class="foot-legal">
+      <p class="entity">
+        SlowGo is a product of <strong style="font-weight:500;">BackRoad Apps LLC</strong>.<br />
+        4498 Main St, Ste 4 #5690, Amherst, NY 14226<br />
+        <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>
+      </p>
+      <ul class="foot-legal-links" role="list">
+        <li><a href="/cart-rules">Golf cart rules by town</a></li>
+        <li><a href="/business">For businesses</a></li>
+        <li><a href="/safety">Safety</a></li>
+        <li><a href="/support">Support</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 BackRoad Apps LLC. All rights reserved.</span>
+      <span class="right">
+        <span>Made carefully</span>
+        <span>·</span>
+        <span>slowgoapp.com</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('form.bizform').forEach(function(form){
+    var btn = form.querySelector('button[type=submit]');
+    var label = btn ? btn.textContent : '';
+    var err = form.querySelector('.form-error');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (form.dataset.blocked) return;
+      var bad = null;
+      form.querySelectorAll('[required]').forEach(function(el){ if (!bad && !el.checkValidity()) bad = el; });
+      if (bad){ bad.reportValidity ? bad.reportValidity() : bad.focus(); return; }
+      if (typeof form.precheck === 'function' && !form.precheck()) return;
+      if (err) err.hidden = true;
+      if (btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+      var body = new FormData(form);
+      var hasFile = !!form.querySelector('input[type=file]');
+      var opts = hasFile ? { method: 'POST', body: body }
+        : { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(body).toString() };
+      fetch('/', opts).then(function(res){
+        if (!res || !res.ok) throw new Error('status ' + (res && res.status));
+        form.setAttribute('data-state', 'done');
+        var c = form.querySelector('.confirm'); if (c){ c.setAttribute('tabindex', '-1'); c.focus(); }
+      }).catch(function(){
+        if (btn){ btn.disabled = false; btn.textContent = label; }
+        if (err) err.hidden = false;
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

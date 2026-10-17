@@ -5,8 +5,14 @@ submitted to Netlify; everything was checked on a local static server only.
 
 ## What's on the pages
 
-**/business** (`SlowGo-Launch/business.html`, linked from the home page footer, in the sitemap): one
-section and one short form for each audience. Five Netlify forms:
+**Split 2026-10-17 (drafts/site3-2026-10-17):** **/business** (`SlowGo-Launch/business.html`, in the site
+menu and every footer, in the sitemap) is now an overview with five cards and no form. Each audience has
+its own page holding only its own form, at /business/rental-shops, /business/dealers,
+/business/communities, /business/towns-tourism and /business/partners (flat files
+`SlowGo-Launch/business-<path>.html`, served by 200 rewrites in `_redirects`, like the held setup form).
+The form names, fields, honeypot, Privacy line and next steps are unchanged; only each form's no-JS
+`action` now points at its own page. The overview cards keep the old anchors (#rental, #dealer,
+#community, #town, #partner). Five Netlify forms:
 
 | Form name | Who | Required | Optional |
 |---|---|---|---|

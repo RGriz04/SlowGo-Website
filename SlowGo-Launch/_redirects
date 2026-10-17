@@ -157,3 +157,18 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 # form (unlinked, noindex; see netlify.toml X-Robots-Tag).
 /business          /business.html          200
 /business/         /business.html          200
+
+# The five business pages (2026-10-17): /business is now an overview with five cards, and each audience has
+# its own page holding only its own form (same Netlify form names as before: business-rental, -dealer,
+# -community, -town, -partner). Flat files, like the held setup form, so there is no business/ folder for
+# Netlify to treat as a directory. Rewrites (200), bare and with the slash. /business/setup has no rule: 404.
+/business/rental-shops      /business-rental-shops.html      200
+/business/rental-shops/     /business-rental-shops.html      200
+/business/dealers           /business-dealers.html           200
+/business/dealers/          /business-dealers.html           200
+/business/communities       /business-communities.html       200
+/business/communities/      /business-communities.html       200
+/business/towns-tourism     /business-towns-tourism.html     200
+/business/towns-tourism/    /business-towns-tourism.html     200
+/business/partners          /business-partners.html          200
+/business/partners/         /business-partners.html          200

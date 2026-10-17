@@ -219,6 +219,33 @@ for dp, _, fs in os.walk(SITE):
 ok(os.path.exists(recheck.LOG) and os.path.exists(recheck.SCHEDULE), "check-log.csv and recheck-schedule.json exist")
 ok(all(r["page"] and r["source_url"] and r["fetched"] and r["result"] and r["verified"] in ("yes", "no") for r in LOG), "check-log rows complete")
 
+# Site menu and footer (Ron 2026-10-17): every page with the shared menu links the cart rules hub and /business,
+# in the bar, in the phone Menu (<details class="mnav">) and in the footer. Never a held page.
+MENU_LINKS = ('href="/cart-rules"', 'href="/business"')
+menu_pages = ["index.html", "support.html", "safety.html", "terms.html", "privacy.html", "android.html", "beta.html",
+              "404.html", "business.html", "cart-rules.html"]
+menu_pages += [f for f in sorted(os.listdir(SITE)) if re.match(r"business-[a-z-]+\.html$", f)]
+menu_pages += [f"golf-carts/{t['slug']}.html" for t in pub]
+for mp in menu_pages:
+    src = open(os.path.join(SITE, mp), encoding="utf-8").read()
+    hd = re.search(r'<header class="topbar".*?</header>', src, re.S)
+    ft = re.search(r'<footer class="foot".*?</footer>', src, re.S)
+    ok(hd and ft, f"{mp}: has the shared header and footer")
+    if not (hd and ft):
+        continue
+    hd, ft = hd.group(0), ft.group(0)
+    panel = re.search(r'<details class="mnav">.*?</details>', hd, re.S)
+    bar = re.sub(r'<details class="mnav">.*?</details>', "", hd, flags=re.S)
+    for l in MENU_LINKS:
+        ok(l in bar, f"{mp}: menu bar links {l}")
+        ok(panel and l in panel.group(0), f"{mp}: phone Menu links {l}")
+        ok(l in ft, f"{mp}: footer links {l}")
+    ok(".topbar .mnav{ display:none; }" in src and ".topbar .mnav{ display:block; }" in src, f"{mp}: phone Menu CSS")
+    for t in TOWNS:
+        if not t["publish"]:
+            ok(f'/golf-carts/{t["slug"]}"' not in hd + ft, f"{mp}: menu/footer never link held page {t['slug']}")
+    ok("/business/setup" not in hd + ft, f"{mp}: menu/footer never link the held setup form")
+
 print(f"{n - len(fails)}/{n} checks passed")
 for f in fails:
     print("FAIL", f)

@@ -233,7 +233,7 @@
   .foot-legal a:hover{ color:var(--amber-soft); text-decoration-color:var(--amber-soft); }
   .foot-legal-links{
     list-style:none; margin:0; padding:0;
-    display:flex; gap:24px; align-items:center;
+    display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center;
     font-size:12.5px;
   }
   .foot-legal-links a{ text-decoration:none; }
@@ -301,17 +301,93 @@
   .confirm ol{ margin:12px 0 0; padding-left:1.3em; }
   .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
   .visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+  /* -------- Site menu (2026-10-17): links in the bar on wide screens, a Menu button on phones.
+     No JavaScript: the phone menu is a <details> element. -------- */
+  .topbar-inner{ position:relative; }
+  .topbar .mnav{ display:none; }
+  .topbar .mnav > summary{
+    list-style:none; cursor:pointer;
+    display:inline-flex; align-items:center; gap:9px;
+    font-size:12.5px; font-weight:500; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--oat); padding:9px 15px; border:1px solid rgba(244,237,224,.30); border-radius:999px;
+    -webkit-user-select:none; user-select:none;
+  }
+  .topbar .mnav > summary::-webkit-details-marker{ display:none; }
+  .topbar .mnav > summary::before{
+    content:""; width:14px; height:10px; flex:none;
+    background:
+      linear-gradient(currentColor,currentColor) 0 0 / 100% 2px no-repeat,
+      linear-gradient(currentColor,currentColor) 0 50% / 100% 2px no-repeat,
+      linear-gradient(currentColor,currentColor) 0 100% / 100% 2px no-repeat;
+  }
+  .topbar .mnav[open] > summary{ background:rgba(244,237,224,.12); }
+  .topbar .mnav > summary:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+  .topbar .mnav-panel{
+    position:absolute; left:0; right:0; top:100%; z-index:40;
+    display:flex; flex-direction:column;
+    background:var(--charcoal); padding:4px 22px 12px;
+    border-top:1px solid rgba(244,237,224,.10); border-bottom:1px solid rgba(244,237,224,.14);
+    box-shadow:0 18px 32px rgba(0,0,0,.28);
+  }
+  .topbar .mnav-panel a{
+    display:block; padding:14px 0; font-size:17px; letter-spacing:0; color:var(--oat);
+    text-decoration:none; border-bottom:1px solid rgba(244,237,224,.08);
+  }
+  .topbar .mnav-panel a:last-child{ border-bottom:0; }
+  .topbar .mnav-panel a:hover{ color:var(--amber-soft); }
+  @media (max-width: 720px){
+    .topbar nav > a:not(.cta){ display:none; }
+    .topbar .mnav{ display:block; }
+    .topbar nav{ gap:12px; }
+  }
+
+  /* -------- Business overview cards and form pages (2026-10-17 split) -------- */
+  .biz-cards{ list-style:none; margin:40px 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(270px, 1fr)); gap:16px; }
+  .biz-card{
+    position:relative; display:flex; flex-direction:column; gap:10px;
+    padding:22px 22px 20px; border-radius:14px; background:var(--oat);
+    border:1px solid rgba(160,148,132,.35); scroll-margin-top:16px;
+    transition:border-color .2s ease, transform .15s ease;
+  }
+  .biz-card:hover{ border-color:var(--amber); }
+  .biz-card:focus-within{ outline:2px solid var(--amber); outline-offset:2px; }
+  .prose .biz-card h2{
+    margin:0; padding:0; border:0; font-size:24px; line-height:1.2;
+  }
+  .biz-card h2 a{ text-decoration:none; color:var(--forest); }
+  .biz-card h2 a::after{ content:""; position:absolute; inset:0; border-radius:14px; }
+  .biz-card h2 a:focus-visible{ outline:none; }
+  .prose .biz-card p{ margin:0; font-size:16px; line-height:1.6; color:var(--moss); }
+  .biz-card .more{ margin-top:auto; padding-top:6px; font-size:14px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--amber-deep); }
+  .eyebrow a{ color:inherit; text-decoration-color:rgba(160,148,132,.6); }
+  .biz-others{ list-style:none; margin:14px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px; }
+  .biz-others a{
+    display:inline-block; padding:9px 16px; border-radius:999px;
+    border:1px solid rgba(30,58,43,.22); text-decoration:none; font-size:15px; background:var(--oat);
+  }
+  .biz-others a:hover{ border-color:var(--amber); }
 </style>
 </head>
 <body>
 
-<a class="skip" href="#doc">Skip to the forms</a>
+<a class="skip" href="#doc">Skip to the page</a>
 
 <header class="topbar" role="banner">
   <div class="topbar-inner">
     <a class="mark" href="/" aria-label="SlowGo home">Slow<em>Go</em></a>
     <nav aria-label="Primary">
+      <a href="/cart-rules">Golf cart rules by town</a>
+      <a href="/business">For businesses</a>
       <a href="/">Back to SlowGo</a>
+      <details class="mnav">
+        <summary>Menu</summary>
+        <div class="mnav-panel">
+          <a href="/cart-rules">Golf cart rules by town</a>
+          <a href="/business">For businesses</a>
+          <a href="/">Back to SlowGo</a>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
@@ -323,164 +399,35 @@
 
     <article class="prose" id="doc">
       <p class="lede">SlowGo is navigation for golf carts and low-speed vehicles. It’s free for riders, with no ads and no account. If your business puts people in carts, or welcomes people who ride them, here’s how we can work together.</p>
-      <ul class="biz-nav" role="list"><li><a href="#rental">Rental shops</a></li><li><a href="#dealer">Dealers</a></li><li><a href="#community">Communities & HOAs</a></li><li><a href="#town">Towns & tourism</a></li><li><a href="#partner">Realtors & partners</a></li></ul>
+      <p>Pick the one that fits you. Each has a short form, and Ron reads every one himself.</p>
 
-      <section class="biz" id="rental" aria-labelledby="rental-title">
-      <h2 id="rental-title">Cart rental shops</h2>
-      <p>Give every renter a better first ride, and see how many of your cards get used.</p>
-      <ul><li>Free SlowGo cards with your shop’s name and its own QR code (slowgoapp.com/f/your-shop).</li><li>A daily count of how many times your card’s link is opened. It counts opens, not unique riders, and never says who opened it or where anyone rode.</li><li>Coming next, in testing now and not in the App Store yet: your name and logo in the app, “Return your cart here” saved for the renter, a Call the shop button, and your own recommended spots.</li></ul>
-      
-      <form class="bizform" id="form-rental" name="business-rental" method="POST" action="/business"
-            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
-        <input type="hidden" name="form-name" value="business-rental" />
-        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
-        <div class="fields">
-          <div class="row">
-          <div><label for="rental-business">Shop name</label><input id="rental-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
-          <div><label for="rental-email">Email</label><input id="rental-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-          <div><label for="rental-town">Town you serve, and state</label><input id="rental-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
-          <div><label for="rental-name">Your name <span class="opt">(optional)</span></label><input id="rental-name" type="text" name="name" autocomplete="name" /></div>
-          <div><label for="rental-phone">Phone <span class="opt">(optional)</span></label><input id="rental-phone" type="tel" name="phone" autocomplete="tel" /></div>
-          <div><label for="rental-fleet_band">How many carts do you rent? <span class="opt">(optional)</span></label><select id="rental-fleet_band" name="fleet_band"><option value="">Choose one</option><option value="1-10">1 to 10</option><option value="11-25">11 to 25</option><option value="26-50">26 to 50</option><option value="51-100">51 to 100</option><option value="100+">More than 100</option></select></div>
-          <div class="full"><label for="rental-message">What would you like to know?</label><textarea id="rental-message" name="message" required aria-required="true"></textarea></div>
-          </div>
-          <p class="nopii">Please don’t include renter personal information or payment details.</p>
-          <div class="submitrow"><button type="submit">Tell me more</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-        </div>
-        <div class="confirm" role="status" aria-live="polite">
-          <h4>Thanks. Ron reads every one of these himself.</h4>
-          <p>What happens next:</p>
-          <ol><li>Ron replies by email.</li><li>If it’s a fit, he sends a short private setup link: your logo, phone number, return spot and favorite places.</li><li>Your cards are printed and shipped, and your /f/ link starts counting.</li></ol>
-        </div>
-      </form>
-      </section>
-
-      <section class="biz" id="dealer" aria-labelledby="dealer-title">
-      <h2 id="dealer-title">Golf cart dealers</h2>
-      <p>Hand every new owner a way to ride their town on the right roads, with your name on it.</p>
-      <ul><li>Free “Your cart from [your dealership]” cards with your own QR code, for every cart you sell.</li><li>A daily count of how many times your card’s link is opened. It counts opens, not unique riders, and says nothing about the riders.</li><li>Coming next, in testing now: your name in the app and a “Call for service” button that rings your service desk.</li></ul>
-      
-      <form class="bizform" id="form-dealer" name="business-dealer" method="POST" action="/business"
-            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
-        <input type="hidden" name="form-name" value="business-dealer" />
-        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
-        <div class="fields">
-          <div class="row">
-          <div><label for="dealer-business">Dealership name</label><input id="dealer-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
-          <div><label for="dealer-email">Email</label><input id="dealer-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-          <div><label for="dealer-town">Town you serve, and state</label><input id="dealer-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
-          <div><label for="dealer-name">Your name <span class="opt">(optional)</span></label><input id="dealer-name" type="text" name="name" autocomplete="name" /></div>
-          <div><label for="dealer-phone">Phone <span class="opt">(optional)</span></label><input id="dealer-phone" type="tel" name="phone" autocomplete="tel" /></div>
-          <div><label for="dealer-fleet_band">How many carts do you sell a year? <span class="opt">(optional)</span></label><select id="dealer-fleet_band" name="fleet_band"><option value="">Choose one</option><option value="1-10">1 to 10</option><option value="11-25">11 to 25</option><option value="26-50">26 to 50</option><option value="51-100">51 to 100</option><option value="100+">More than 100</option></select></div>
-          <div class="full"><label for="dealer-message">What would you like to know?</label><textarea id="dealer-message" name="message" required aria-required="true"></textarea></div>
-          </div>
-          <p class="nopii">Please don’t include renter personal information or payment details.</p>
-          <div class="submitrow"><button type="submit">Tell me more</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-        </div>
-        <div class="confirm" role="status" aria-live="polite">
-          <h4>Thanks. Ron reads every one of these himself.</h4>
-          <p>What happens next:</p>
-          <ol><li>Ron replies by email.</li><li>If it’s a fit, he sends a short private setup link for your logo, service number and card order.</li><li>Your cards are printed and shipped.</li></ol>
-        </div>
-      </form>
-      </section>
-
-      <section class="biz" id="community" aria-labelledby="community-title">
-      <h2 id="community-title">Communities and HOAs</h2>
-      <p>Help residents find the quiet way around, on the roads and paths your community allows.</p>
-      <ul><li>We check how SlowGo routes around your community and tell you what we find.</li><li>Cards or a QR code for welcome packets, newsletters and the clubhouse board.</li><li>If your community isn’t covered yet, your note helps decide where we check next.</li></ul>
-      
-      <form class="bizform" id="form-community" name="business-community" method="POST" action="/business"
-            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
-        <input type="hidden" name="form-name" value="business-community" />
-        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
-        <div class="fields">
-          <div class="row">
-          <div><label for="community-business">Community or HOA name</label><input id="community-business" type="text" name="business" required aria-required="true" /></div>
-          <div><label for="community-email">Email</label><input id="community-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-          <div><label for="community-town">Town and state</label><input id="community-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
-          <div><label for="community-name">Your name <span class="opt">(optional)</span></label><input id="community-name" type="text" name="name" autocomplete="name" /></div>
-          <div><label for="community-phone">Phone <span class="opt">(optional)</span></label><input id="community-phone" type="tel" name="phone" autocomplete="tel" /></div>
-          <div class="full"><label for="community-message">What would you like to know? Anything about your roads, paths or rules helps.</label><textarea id="community-message" name="message" required aria-required="true"></textarea></div>
-          </div>
-          <p class="nopii">Please don’t include renter personal information or payment details.</p>
-          <div class="submitrow"><button type="submit">Get in touch</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-        </div>
-        <div class="confirm" role="status" aria-live="polite">
-          <h4>Thanks. Ron reads every one of these himself.</h4>
-          <p>What happens next:</p>
-          <ol><li>Ron replies by email.</li><li>He looks at how SlowGo routes around your community and sends you what he finds.</li><li>If you’d like cards or a QR code for residents, he sends those next.</li></ol>
-        </div>
-      </form>
-      </section>
-
-      <section class="biz" id="town" aria-labelledby="town-title">
-      <h2 id="town-title">Towns and tourism boards</h2>
-      <p>Point visitors with carts toward the streets you want them on.</p>
-      <ul><li>Our plain-English cart rules pages link to your own published rules, and we correct them when you tell us something changed.</li><li>Tell us about streets carts can’t use, new paths, or seasonal closures.</li><li>SlowGo is independent: it isn’t affiliated with or endorsed by any town, and it never presents itself as official.</li></ul>
-      
-      <form class="bizform" id="form-town" name="business-town" method="POST" action="/business"
-            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
-        <input type="hidden" name="form-name" value="business-town" />
-        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
-        <div class="fields">
-          <div class="row">
-          <div><label for="town-business">Town, county or organization</label><input id="town-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
-          <div><label for="town-email">Email</label><input id="town-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-          <div><label for="town-town">Town and state</label><input id="town-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
-          <div><label for="town-name">Your name <span class="opt">(optional)</span></label><input id="town-name" type="text" name="name" autocomplete="name" /></div>
-          <div><label for="town-phone">Phone <span class="opt">(optional)</span></label><input id="town-phone" type="tel" name="phone" autocomplete="tel" /></div>
-          <div class="full"><label for="town-message">What would you like us to know or change?</label><textarea id="town-message" name="message" required aria-required="true"></textarea></div>
-          </div>
-          <p class="nopii">Please don’t include renter personal information or payment details.</p>
-          <div class="submitrow"><button type="submit">Get in touch</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-        </div>
-        <div class="confirm" role="status" aria-live="polite">
-          <h4>Thanks. Ron reads every one of these himself.</h4>
-          <p>What happens next:</p>
-          <ol><li>Ron replies by email.</li><li>If you’ve pointed out a rule or a street, he checks it against your published source and tells you what changed.</li></ol>
-        </div>
-      </form>
-      </section>
-
-      <section class="biz" id="partner" aria-labelledby="partner-title">
-      <h2 id="partner-title">Realtors and partners</h2>
-      <p>Welcoming people to a cart town? SlowGo makes a good first gift.</p>
-      <ul><li>Cards with a QR code for closing gifts, welcome bags and open houses.</li><li>Ideas for working together are welcome: cart clubs, events, local guides.</li></ul>
-      
-      <form class="bizform" id="form-partner" name="business-partner" method="POST" action="/business"
-            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
-        <input type="hidden" name="form-name" value="business-partner" />
-        <p class="hp" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
-        <div class="fields">
-          <div class="row">
-          <div><label for="partner-business">Company</label><input id="partner-business" type="text" name="business" required aria-required="true" autocomplete="organization" /></div>
-          <div><label for="partner-email">Email</label><input id="partner-email" type="email" name="email" required aria-required="true" autocomplete="email" /></div>
-          <div><label for="partner-town">Town you work in, and state</label><input id="partner-town" type="text" name="town" required aria-required="true" autocomplete="address-level2" placeholder="e.g. Dunedin, FL" /></div>
-          <div><label for="partner-name">Your name <span class="opt">(optional)</span></label><input id="partner-name" type="text" name="name" autocomplete="name" /></div>
-          <div><label for="partner-phone">Phone <span class="opt">(optional)</span></label><input id="partner-phone" type="tel" name="phone" autocomplete="tel" /></div>
-          <div class="full"><label for="partner-message">What do you have in mind?</label><textarea id="partner-message" name="message" required aria-required="true"></textarea></div>
-          </div>
-          <p class="nopii">Please don’t include renter personal information or payment details.</p>
-          <div class="submitrow"><button type="submit">Get in touch</button> <a class="privlink" href="/privacy#business-inquiries">Privacy</a></div>
-          <p class="note">We use what you send only to write back to you about SlowGo for your business. It is stored by Netlify, our website host, and you can ask us to delete it any time at <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-          <p class="form-error" role="alert" hidden>That didn't go through. Try again in a moment, or email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>.</p>
-        </div>
-        <div class="confirm" role="status" aria-live="polite">
-          <h4>Thanks. Ron reads every one of these himself.</h4>
-          <p>What happens next:</p>
-          <ol><li>Ron replies by email.</li><li>If there’s something to send, like cards or a QR code, he sends it next.</li></ol>
-        </div>
-      </form>
-      </section>
+      <ul class="biz-cards" role="list">
+        <li class="biz-card" id="rental">
+          <h2><a href="/business/rental-shops">Rental shops</a></h2>
+          <p>Free cards with your shop&rsquo;s name and its own QR code, and a daily count of how often your link is opened.</p>
+          <span class="more" aria-hidden="true">Get in touch &rarr;</span>
+        </li>
+        <li class="biz-card" id="dealer">
+          <h2><a href="/business/dealers">Dealers</a></h2>
+          <p>Free &ldquo;Your cart from [your dealership]&rdquo; cards with your own QR code, for every cart you sell.</p>
+          <span class="more" aria-hidden="true">Get in touch &rarr;</span>
+        </li>
+        <li class="biz-card" id="community">
+          <h2><a href="/business/communities">Communities &amp; HOAs</a></h2>
+          <p>We check how SlowGo routes around your community, and send cards or a QR code for residents.</p>
+          <span class="more" aria-hidden="true">Get in touch &rarr;</span>
+        </li>
+        <li class="biz-card" id="town">
+          <h2><a href="/business/towns-tourism">Towns &amp; tourism</a></h2>
+          <p>Tell us about streets carts can&rsquo;t use, new paths or closures. Our cart rules pages link to your published rules.</p>
+          <span class="more" aria-hidden="true">Get in touch &rarr;</span>
+        </li>
+        <li class="biz-card" id="partner">
+          <h2><a href="/business/partners">Realtors &amp; partners</a></h2>
+          <p>Cards with a QR code for closing gifts, welcome bags and open houses, and ideas for working together.</p>
+          <span class="more" aria-hidden="true">Get in touch &rarr;</span>
+        </li>
+      </ul>
 
       <h2 id="questions">Questions</h2>
       <p>Email <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>. Ron answers every message himself.</p>
@@ -499,6 +446,8 @@
         <a href="mailto:hello@slowgoapp.com">hello@slowgoapp.com</a>
       </p>
       <ul class="foot-legal-links" role="list">
+        <li><a href="/cart-rules">Golf cart rules by town</a></li>
+        <li><a href="/business">For businesses</a></li>
         <li><a href="/safety">Safety</a></li>
         <li><a href="/support">Support</a></li>
         <li><a href="/privacy">Privacy Policy</a></li>
@@ -517,37 +466,6 @@
   </div>
 </footer>
 
-<script>
-(function(){
-  document.querySelectorAll('form.bizform').forEach(function(form){
-    var btn = form.querySelector('button[type=submit]');
-    var label = btn ? btn.textContent : '';
-    var err = form.querySelector('.form-error');
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      if (form.dataset.blocked) return;
-      var bad = null;
-      form.querySelectorAll('[required]').forEach(function(el){ if (!bad && !el.checkValidity()) bad = el; });
-      if (bad){ bad.reportValidity ? bad.reportValidity() : bad.focus(); return; }
-      if (typeof form.precheck === 'function' && !form.precheck()) return;
-      if (err) err.hidden = true;
-      if (btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
-      var body = new FormData(form);
-      var hasFile = !!form.querySelector('input[type=file]');
-      var opts = hasFile ? { method: 'POST', body: body }
-        : { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(body).toString() };
-      fetch('/', opts).then(function(res){
-        if (!res || !res.ok) throw new Error('status ' + (res && res.status));
-        form.setAttribute('data-state', 'done');
-        var c = form.querySelector('.confirm'); if (c){ c.setAttribute('tabindex', '-1'); c.focus(); }
-      }).catch(function(){
-        if (btn){ btn.disabled = false; btn.textContent = label; }
-        if (err) err.hidden = false;
-      });
-    });
-  });
-})();
-</script>
 
 </body>
 </html>
