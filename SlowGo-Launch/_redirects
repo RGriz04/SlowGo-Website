@@ -153,9 +153,7 @@ https://www.slowgoapp.com/*   https://slowgoapp.com/:splat    301!
 /golf-carts/arizona                /golf-carts/arizona.html                 200
 /golf-carts/arizona/               /golf-carts/arizona.html                 200
 
-# For businesses (2026-10-17): /business is a page; /business/setup is the private fleet setup
+# For businesses (2026-10-17): /business is a page. /business/setup (private fleet setup) is HELD in tools/held/ until the fleet terms are published and reviewed (Ron 2026-10-16)
 # form (unlinked, noindex; see netlify.toml X-Robots-Tag).
 /business          /business.html          200
 /business/         /business.html          200
-/business/setup    /business-setup.html    200
-/business/setup/   /business-setup.html    200
